@@ -7,11 +7,11 @@ if(empty($_SESSION['supplier_id'])){
 error_reporting(E_ALL);
 $userClass=new DB_con();
 if(isset($_POST['submit'])) {
-    $response=$userClass->Profile();
+    $response=$userClass->profileUpdate();
 }
+
 $result = mysqli_query($con,"select * from suppliers where (id='$_SESSION[supplier_id]')");
 $supplierData = mysqli_fetch_assoc($result);
-//print_r($supplierData);die;
 ?>
 
 <!DOCTYPE html>

@@ -75,8 +75,10 @@ class DB_con {
         return $response;
     }
 
-    // Function for Profile
-    public function Profile()
+
+
+    // Function for profileUpdate
+    public function profileUpdate()
     {
         $result = mysqli_query($this->db,"select * from suppliers where (id='$_SESSION[supplier_id]')");
         $supplierData = mysqli_fetch_assoc($result);
@@ -196,7 +198,7 @@ class DB_con {
         else
             $password = $supplierData['password'];
 
-        $result =   mysqli_query($this->db,"UPDATE suppliers SET  
+        $result =   "UPDATE suppliers SET  
                                        customer_id='$customer_id',
                                          company_name='$company_name',
                                          contact_fname='$contact_fname',
@@ -220,9 +222,9 @@ class DB_con {
                                            current_order='$current_order',
                                             type_goods='$type_goods',
                                              password='$password'
-                                             WHERE  id='$_SESSION[supplier_id]'") ;
+                                             WHERE  id='$_SESSION[supplier_id]'" ;
 
-        if (mysqli_num_rows($result) > 0) {
+        if (mysqli_query($this->db, $result)) {
             $response = array(
                 "type" => "success",
                 "message" => "You have registered successfully."

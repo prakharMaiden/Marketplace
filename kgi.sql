@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 15, 2020 at 03:56 PM
+-- Generation Time: May 06, 2020 at 02:49 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -38,13 +38,6 @@ CREATE TABLE `category` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `category`
---
-
-INSERT INTO `category` (`id`, `name`, `description`, `picture`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'mobile', 'mobile', NULL, 1, '2020-05-15 11:11:51', '2020-05-15 11:11:51');
-
 -- --------------------------------------------------------
 
 --
@@ -59,7 +52,6 @@ CREATE TABLE `customers` (
   `email_verification_code` varchar(255) DEFAULT NULL,
   `email_verified` tinyint(4) NOT NULL DEFAULT '0',
   `mobile_verified` tinyint(4) NOT NULL DEFAULT '0',
-  `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -68,8 +60,8 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `email`, `mobile`, `password`, `email_verification_code`, `email_verified`, `mobile_verified`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, 0, '2020-05-01 12:45:12', '2020-05-15 13:11:36');
+INSERT INTO `customers` (`id`, `email`, `mobile`, `password`, `email_verification_code`, `email_verified`, `mobile_verified`, `created_at`, `updated_at`) VALUES
+(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, '2020-05-01 12:45:12', '2020-05-02 14:10:23');
 
 -- --------------------------------------------------------
 
@@ -216,18 +208,9 @@ CREATE TABLE `products` (
   `current_order` varchar(100) DEFAULT NULL,
   `logo` varchar(100) DEFAULT NULL,
   `size_url` varchar(50) NOT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `products`
---
-
-INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 5, 'wdad', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', NULL, 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', NULL, NULL, '56', 1, '2020-05-15 11:18:36', '2020-05-15 11:18:36'),
-(2, 1, 1, 5, 'wdad', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', NULL, 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', NULL, NULL, '56', 1, '2020-05-15 11:19:04', '2020-05-15 11:19:04');
 
 -- --------------------------------------------------------
 
@@ -239,7 +222,6 @@ CREATE TABLE `shipper` (
   `id` int(11) NOT NULL,
   `company_name` varchar(191) DEFAULT NULL,
   `phone` varchar(12) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -261,14 +243,6 @@ CREATE TABLE `subcategory` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `subcategory`
---
-
-INSERT INTO `subcategory` (`id`, `category_id`, `name`, `description`, `picture`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'smartphone', 'smartphone', '', 1, '2020-05-15 11:12:33', '2020-05-15 11:12:33'),
-(2, 1, 'apple', 'smartphone', '', 1, '2020-05-15 11:12:49', '2020-05-15 11:12:49');
-
 -- --------------------------------------------------------
 
 --
@@ -277,12 +251,11 @@ INSERT INTO `subcategory` (`id`, `category_id`, `name`, `description`, `picture`
 
 CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL,
-  `customer_id` int(11) DEFAULT NULL,
+  `customer_id` int(11) NOT NULL,
   `company_name` varchar(255) DEFAULT NULL,
   `contact_fname` varchar(50) DEFAULT NULL,
   `contact_lname` varchar(50) DEFAULT NULL,
   `contact_title` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
   `address1` text,
   `address2` varchar(255) DEFAULT NULL,
   `city` varchar(10) DEFAULT NULL,
@@ -301,17 +274,9 @@ CREATE TABLE `suppliers` (
   `current_order` varchar(50) DEFAULT NULL,
   `logo` varchar(100) DEFAULT NULL,
   `size_url` varchar(100) DEFAULT NULL,
-  `active` tinyint(4) NOT NULL DEFAULT '1',
-  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `suppliers`
---
-
-INSERT INTO `suppliers` (`id`, `customer_id`, `company_name`, `contact_fname`, `contact_lname`, `contact_title`, `password`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `phone`, `fax`, `email`, `url`, `payment_methods`, `discount_type`, `type_goods`, `notes`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(5, 1, 'gdfsgdfgdfgdfASDASD', 'Mayank', 'Chaudhary', 'czxczxcasdfdsfSADASDAS', 'e10adc3949ba59abbe56e057f20f883e', 'dfsdfdzf', 'dsfsdfsd', 'dfsdfsdf', 'dsfsdfsdf', 'dfsdfsd', 'dsfsdfsdf', '9891494860', 'dfsdfdsfxcvxcvx', 'mayanklion1994@gmail.com', 'dsfsdfsdfzvxcvxcvxcvxcvxcvx', 'sdfsdfsdfssdsdfdsfsdasfdasdasdasd', 'zxczxczxcxzvzczx', 'dsfsdfsdfdzfdzfdf', 'tyrtyrtyrt', 'dsfsdfsdfsddsfdfsdf', 'sdfsdfsdfASDASDAS', NULL, 'sdfsdfsdfsdfSDsdSD', 0, '2020-05-14 18:18:24', '2020-05-14 18:18:24');
 
 --
 -- Indexes for dumped tables
@@ -395,7 +360,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -425,7 +390,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `shipper`
@@ -437,13 +402,13 @@ ALTER TABLE `shipper`
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables

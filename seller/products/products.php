@@ -5,8 +5,9 @@ if(empty($_SESSION['supplier_id'])){
 }
 error_reporting(E_ALL);
 $productClass=new Product();
-
 $products=$productClass->listing();
+
+
 
 ?>
 <!DOCTYPE html>
@@ -22,13 +23,13 @@ $products=$productClass->listing();
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-<style>
-    .error{color:red;}
-    h2{
-        font-weight: bold;
-        font-size: 50px;
-    }
-</style>
+    <style>
+        .error{color:red;}
+        h2{
+            font-weight: bold;
+            font-size: 50px;
+        }
+    </style>
 </head>
 <body>
 <nav class="navbar navbar-default">
@@ -45,45 +46,57 @@ $products=$productClass->listing();
     </div>
 </nav>
 <div class="container">
-    <h2>Products</h2>
-
-    <table class="table table-bordered table-striped">
-        <thead>
-        <tr>
-            <th>S.No.</th>
-            <th>Name</th>
-            <th>SKU</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th>Color</th>
-            <th>Discount</th>
-            <th>MSRP</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <?php
-        $x =0;
-        foreach ($products as $product){
-            ++$x;
-        ?>
-        <tr>
-            <td><?php  echo $x;?></td>
-            <td><?php  echo $product['name'];?></td>
-            <td><?php  echo $product['id_sku'].'-'.$product['sku'];?></td>
-            <td><?php  echo $product['quantity_per_unit'];?></td>
-            <td><?php  echo $product['unit_price'];?></td>
-            <td><?php  echo $product['color'];?></td>
-            <td><?php  echo $product['discount'];?></td>
-            <td><?php  echo $product['msrp'];?></td>
-            <td>
-                <a href="edit.php?id=<?php  echo $product['id'];?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-            </td>
-         </tr>
-        <?php  }
-        ?>
-        </tbody>
-    </table>
+    <div class="left col-md-6"><h2>Products</h2></div>
+    <div class="right col-md-6">
+        <a class="btn btn-success" style="float: right" href="add.php">
+            Add Product
+        </a></div>
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th>S.No.</th>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Color</th>
+                <th>Discount</th>
+                <th>MSRP</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <?php
+            $x =0;
+            foreach ($products as $product){
+                ++$x;
+                ?>
+                <tr>
+                    <td><?php  echo $x;?></td>
+                    <td><?php  echo $product['name'];?></td>
+                    <td><?php  echo $product['id_sku'].'-'.$product['sku'];?></td>
+                    <td><?php  echo $product['quantity_per_unit'];?></td>
+                    <td><?php  echo $product['unit_price'];?></td>
+                    <td><?php  echo $product['color'];?></td>
+                    <td><?php  echo $product['discount'];?></td>
+                    <td><?php  echo $product['msrp'];?></td>
+                    <td>
+                        <a href="edit.php?id=<?php  echo $product['id'];?>"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                        <?php  if($product['active'] == 0){
+                            ?>
+                            <i class="fa fa-toggle-off" style="color:#3e8f3e;cursor: pointer;"></i>
+                            <?php
+                        }else {?>
+                            <i class="fa fa-toggle-on"    style="color:#3e8f3e;cursor: pointer;"></i>
+                        <?php }?>
+                    </td>
+                </tr>
+            <?php  }
+            ?>
+            </tbody>
+        </table>
+    </div>
 </div>
 </body>
 </html>

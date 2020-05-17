@@ -22,11 +22,36 @@ class Product {
 
     // Function for add
     public function add() {
+        $result = "INSERT INTO products (name,supplier_id,category_id,subcategory_id,description,msrp,quantity_per_unit,sku,id_sku,unit_price,available_size,available_colors,size,color,discount,unit_weight,unit_in_stock,unit_on_order,reorder_level,product_available,size_url,discount_available,current_order)
+                   VALUES('$_REQUEST[name]','$_SESSION[supplier_id]','$_REQUEST[category_id]','$_REQUEST[subcategory_id]','$_REQUEST[description]','$_REQUEST[msrp]','$_REQUEST[quantity_per_unit]','$_REQUEST[sku]','$_REQUEST[id_sku]','$_REQUEST[unit_price]','$_REQUEST[available_size]','$_REQUEST[available_colors]','$_REQUEST[size]','$_REQUEST[color]','$_REQUEST[discount]','$_REQUEST[unit_weight]','$_REQUEST[unit_in_stock]','$_REQUEST[unit_on_order]','$_REQUEST[reorder_level]','$_REQUEST[product_available]','$_REQUEST[size_url]','$_REQUEST[discount_available]','$_REQUEST[current_order]')";
+
+        if (mysqli_query($this->db, $result)) {
+            header("location:products.php");
+            $response = array(
+                "type" => "success",
+                "message" => "You have registered successfully."
+            );
+        } else {
+            $response = array(
+                "type" => "danger",
+                "message" => "Something went wrong!"
+            );
+        }
+
+        return $response;
 
     }
 
     // Function for edit
     public function edit($id){
+        $result=mysqli_query($this->db,"select * from products where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
+        $product= mysqli_fetch_assoc($result);
+        return $product;
+
+    }
+
+    // Function for update
+    public function update($id){
         $result=mysqli_query($this->db,"select * from products where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
         $productData = mysqli_fetch_assoc($result);
         if(!empty($_REQUEST['name']))
@@ -139,7 +164,8 @@ class Product {
         else
             $size_url = $productData['size_url'];
 
-        $result =   mysqli_query($this->db,"UPDATE products SET  
+
+        $result = "UPDATE products SET  
                                        category_id='$category_id',
                                          subcategory_id='$subcategory_id',
                                          name='$name',
@@ -163,33 +189,54 @@ class Product {
                                            size_url='$size_url',
                                            discount_available='$discount_available',
                                            current_order='$current_order'
-                                             WHERE  id='$id'") ;
-
-        if (mysqli_num_rows($result) > 0) {
+                                             WHERE  id='$id'";
+        if (mysqli_query($this->db, $result)) {
+            header("location:products.php");
             $response = array(
                 "type" => "success",
                 "message" => "You have registered successfully."
             );
-        }else{
+        } else {
+            $response = array(
+                "type" => "danger",
+                "message" => "Something went wrong!"
+            );
+        }
+
+        return $response;
+
+    }
+
+
+    // Function for active
+    public function active($id){
+        $result = "UPDATE products SET active='1' where (supplier_id='$_SESSION[supplier_id]') and (id='$id')" ;
+        if (mysqli_query($this->db, $result)) {
+            header("location:products.php");
+
+        } else {
+            $response = array(
+                "type" => "danger",
+                "message" => "Something went wrong!"
+            );
+        }
+
+        return $response;
+    }
+
+    // Function for deactive
+    public function deactive($id){
+        $result = "UPDATE products SET active='0' where (supplier_id='$_SESSION[supplier_id]') and (id='$id')" ;
+        if (mysqli_query($this->db, $result)) {
+            header("location:products.php");
+
+        } else {
             $response = array(
                 "type" => "danger",
                 "message" => "Something went wrong!"
             );
         }
         return $response;
-
-    }
-
-    // Function for active
-    public function active($id){
-        mysqli_query($this->db,"UPDATE products SET active='1' where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
-        header("location:products.php");
-    }
-
-    // Function for deactive
-    public function deactive($id){
-        mysqli_query($this->db,"UPDATE products SET active='0' where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
-        header("location:products.php");
     }
 }
 ?>

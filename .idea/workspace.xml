@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="736e8ea4-a8bf-4146-bf33-53db3aae7811" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/products/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/products/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/products/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/products.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1bIaW02SC8qnlTok2BHM6KCYnTi" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/functions/seller/products" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\kgi\functions\seller\products" />
+      <recent name="C:\xampp\htdocs\kgi\seller\products" />
+      <recent name="C:\xampp\htdocs\kgi\public\css" />
+      <recent name="C:\xampp\htdocs\kgi\seller" />
+      <recent name="C:\xampp\htdocs\kgi\functions" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\kgi\functions\customer" />
+      <recent name="C:\xampp\htdocs\kgi\functions\seller" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="736e8ea4-a8bf-4146-bf33-53db3aae7811" name="Default Changelist" comment="" />
+      <created>1588322088412</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1588322088412</updated>
+      <workItem from="1588322091709" duration="10965000" />
+      <workItem from="1588411551395" duration="2892000" />
+      <workItem from="1588584074844" duration="9056000" />
+      <workItem from="1588604658787" duration="2584000" />
+      <workItem from="1588668007777" duration="8836000" />
+      <workItem from="1588754927768" duration="4248000" />
+      <workItem from="1588847997020" duration="4720000" />
+      <workItem from="1588929357401" duration="476000" />
+      <workItem from="1588934760477" duration="5320000" />
+      <workItem from="1589185415999" duration="17036000" />
+      <workItem from="1589375592370" duration="7359000" />
+      <workItem from="1589461867077" duration="7862000" />
+      <workItem from="1589536527490" duration="13911000" />
+      <workItem from="1589624770754" duration="10155000" />
+      <workItem from="1589709419843" duration="12386000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588756614529">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1588756614529" />
+    <state x="450" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589538344734">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="450" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1589538344734" />
+    <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1589538263847">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1589538263847" />
+    <state x="339" y="164" key="run.anything.popup" timestamp="1589464748051">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="164" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1589464748051" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1588603988776">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1588603988776" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php</url>
+          <line>158</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
