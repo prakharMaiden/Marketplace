@@ -33,7 +33,7 @@ if(isset($_POST['submit'])) {
         body{ font: 14px sans-serif; }
         .error{color:red;}
         .login-form {
-            width: 340px;
+            width: 500px;
             margin: 50px auto;
         }
         .login-form form {

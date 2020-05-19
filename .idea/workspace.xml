@@ -11,10 +11,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736e8ea4-a8bf-4146-bf33-53db3aae7811" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/adminlte.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/adminlte.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/adminlte.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/adminlte.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/demo.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/pages/dashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/pages/dashboard2.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/pages/dashboard3.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seller/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/seller/signup.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kgi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Marketplace.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/products/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/products/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/products/products.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/products.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/profile.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,19 +58,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/functions/seller/products" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\public\css" />
+      <recent name="C:\xampp\htdocs\kgi\functions\customer" />
+      <recent name="C:\xampp\htdocs\kgi\functions\seller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\public" />
+      <recent name="C:\xampp\htdocs\Marketplace\seller" />
       <recent name="C:\xampp\htdocs\kgi\functions\seller\products" />
       <recent name="C:\xampp\htdocs\kgi\seller\products" />
       <recent name="C:\xampp\htdocs\kgi\public\css" />
-      <recent name="C:\xampp\htdocs\kgi\seller" />
-      <recent name="C:\xampp\htdocs\kgi\functions" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\kgi\functions\customer" />
-      <recent name="C:\xampp\htdocs\kgi\functions\seller" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -80,6 +99,8 @@
       <workItem from="1589536527490" duration="13911000" />
       <workItem from="1589624770754" duration="10155000" />
       <workItem from="1589709419843" duration="12386000" />
+      <workItem from="1589725165005" duration="977000" />
+      <workItem from="1589881444713" duration="15703000" />
     </task>
     <servers />
   </component>
@@ -107,6 +128,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="450" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1589538344734" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1589885828141">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589885828141" />
     <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1589538263847">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
