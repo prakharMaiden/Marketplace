@@ -208,8 +208,8 @@ class DB_con {
 
                 $name = $_FILES['logo']['name'];
                 getcwd();
-                chdir("../public/img/seller/logo/");
-                $target_dir = getcwd();
+                chdir("../../public/img/seller/logo/");
+               $target_dir = getcwd();
                 $target_file = $target_dir . basename($_FILES["logo"]["name"]);
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
                 $extensions_arr = array("jpg","jpeg","png");
@@ -222,6 +222,8 @@ class DB_con {
 
                 }
             }
+        }else{
+            $imageName = $supplierData['logo'];
         }
 
         $result =   "UPDATE suppliers SET  
