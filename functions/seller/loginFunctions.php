@@ -1,6 +1,6 @@
 <?PHP
 
-require_once("./../config/config.php");
+require_once("./../../config/config.php");
 error_reporting(E_ALL);
 
 class DB_con {
@@ -56,7 +56,7 @@ class DB_con {
                 if($row['city'] == Null && $row['state'] == Null){
                     header("location:profile.php");
                 }else{
-                    header("location:dashboard.php");
+                    header("location:../dashboard.php");
                 }
             }else{
                 $response = array(
@@ -198,6 +198,32 @@ class DB_con {
         else
             $password = $supplierData['password'];
 
+        if(!empty($_REQUEST['active']))
+            $active = $_REQUEST['active'];
+        else
+            $active = $supplierData['active'];
+
+        if(!empty($_FILES['logo'])){
+            if(file_exists($_FILES['logo']['tmp_name'])){
+
+                $name = $_FILES['logo']['name'];
+                getcwd();
+                chdir("../public/img/seller/logo/");
+                $target_dir = getcwd();
+                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                $extensions_arr = array("jpg","jpeg","png");
+                if( in_array($imageFileType,$extensions_arr) ){
+                    $image_base64 = base64_encode(file_get_contents($_FILES['logo']['tmp_name']) );
+                    $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+                    $imageName = date("ymdhis").'-'. $name;
+                    move_uploaded_file($_FILES['logo']['tmp_name'],$imageName);
+
+
+                }
+            }
+        }
+
         $result =   "UPDATE suppliers SET  
                                        customer_id='$customer_id',
                                          company_name='$company_name',
@@ -221,13 +247,15 @@ class DB_con {
                                            discount_available='$discount_available',
                                            current_order='$current_order',
                                             type_goods='$type_goods',
-                                             password='$password'
+                                             password='$password',
+                                             active='$active',
+                                             logo='$imageName'
                                              WHERE  id='$_SESSION[supplier_id]'" ;
 
         if (mysqli_query($this->db, $result)) {
             $response = array(
                 "type" => "success",
-                "message" => "You have registered successfully."
+                "message" => "Profile updated successfully."
             );
         }else{
             $response = array(
