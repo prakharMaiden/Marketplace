@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2020 at 02:49 PM
+-- Generation Time: May 24, 2020 at 01:00 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -38,6 +38,13 @@ CREATE TABLE `category` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `category`
+--
+
+INSERT INTO `category` (`id`, `name`, `description`, `picture`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'mobile', 'mobile', NULL, 1, '2020-05-15 11:11:51', '2020-05-15 11:11:51');
+
 -- --------------------------------------------------------
 
 --
@@ -52,6 +59,7 @@ CREATE TABLE `customers` (
   `email_verification_code` varchar(255) DEFAULT NULL,
   `email_verified` tinyint(4) NOT NULL DEFAULT '0',
   `mobile_verified` tinyint(4) NOT NULL DEFAULT '0',
+  `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -60,8 +68,8 @@ CREATE TABLE `customers` (
 -- Dumping data for table `customers`
 --
 
-INSERT INTO `customers` (`id`, `email`, `mobile`, `password`, `email_verification_code`, `email_verified`, `mobile_verified`, `created_at`, `updated_at`) VALUES
-(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, '2020-05-01 12:45:12', '2020-05-02 14:10:23');
+INSERT INTO `customers` (`id`, `email`, `mobile`, `password`, `email_verification_code`, `email_verified`, `mobile_verified`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, 0, '2020-05-01 12:45:12', '2020-05-15 13:11:36');
 
 -- --------------------------------------------------------
 
@@ -208,9 +216,19 @@ CREATE TABLE `products` (
   `current_order` varchar(100) DEFAULT NULL,
   `logo` varchar(100) DEFAULT NULL,
   `size_url` varchar(50) NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `products`
+--
+
+INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 1, '2020-05-15 11:18:36', '2020-05-24 09:53:35'),
+(2, 1, 1, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 1, '2020-05-15 11:19:04', '2020-05-24 09:53:54'),
+(11, 1, 1, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 0, '2020-05-15 11:19:04', '2020-05-24 09:53:39');
 
 -- --------------------------------------------------------
 
@@ -222,9 +240,39 @@ CREATE TABLE `shipper` (
   `id` int(11) NOT NULL,
   `company_name` varchar(191) DEFAULT NULL,
   `phone` varchar(12) DEFAULT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stock_management`
+--
+
+CREATE TABLE `stock_management` (
+  `id` int(11) NOT NULL,
+  `supplier_id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
+  `subcategory_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `quantity` varchar(10) NOT NULL,
+  `price_per_product` varchar(10) NOT NULL,
+  `total_price` varchar(10) NOT NULL,
+  `total_discount` varchar(10) NOT NULL,
+  `date_in_stock` datetime NOT NULL,
+  `active` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stock_management`
+--
+
+INSERT INTO `stock_management` (`id`, `supplier_id`, `category_id`, `subcategory_id`, `product_id`, `quantity`, `price_per_product`, `total_price`, `total_discount`, `date_in_stock`, `active`, `created_at`, `updated_at`) VALUES
+(1, 5, 1, 1, 1, '50', '100', '12000', '123', '2222-02-22 00:00:00', 1, '2020-05-24 10:50:51', '2020-05-24 10:50:51');
 
 -- --------------------------------------------------------
 
@@ -243,6 +291,14 @@ CREATE TABLE `subcategory` (
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `subcategory`
+--
+
+INSERT INTO `subcategory` (`id`, `category_id`, `name`, `description`, `picture`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 'smartphone', 'smartphone', '', 1, '2020-05-15 11:12:33', '2020-05-15 11:12:33'),
+(2, 1, 'apple', 'smartphone', '', 1, '2020-05-15 11:12:49', '2020-05-15 11:12:49');
+
 -- --------------------------------------------------------
 
 --
@@ -251,11 +307,12 @@ CREATE TABLE `subcategory` (
 
 CREATE TABLE `suppliers` (
   `id` int(11) NOT NULL,
-  `customer_id` int(11) NOT NULL,
+  `customer_id` int(11) DEFAULT NULL,
   `company_name` varchar(255) DEFAULT NULL,
   `contact_fname` varchar(50) DEFAULT NULL,
   `contact_lname` varchar(50) DEFAULT NULL,
   `contact_title` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
   `address1` text,
   `address2` varchar(255) DEFAULT NULL,
   `city` varchar(10) DEFAULT NULL,
@@ -274,9 +331,17 @@ CREATE TABLE `suppliers` (
   `current_order` varchar(50) DEFAULT NULL,
   `logo` varchar(100) DEFAULT NULL,
   `size_url` varchar(100) DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `active` tinyint(4) NOT NULL DEFAULT '1',
+  `created_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `suppliers`
+--
+
+INSERT INTO `suppliers` (`id`, `customer_id`, `company_name`, `contact_fname`, `contact_lname`, `contact_title`, `password`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `phone`, `fax`, `email`, `url`, `payment_methods`, `discount_type`, `type_goods`, `notes`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
+(5, 1, 'INFINIKEY MEDIA PVT LTD', 'Mayank', 'Chaudhary', 'INFINIKEY MEDIA PVT LTD', 'e10adc3949ba59abbe56e057f20f883e', 'dfsdfdzf', 'dsfsdfsd', 'dfsdfsdf', 'dsfsdfsdf', 'dfsdfsd', 'dsfsdfsdf', '9891494860', 'dfsdfdsfxcvxcvx', 'mayanklion1994@gmail.com', 'dsfsdfsdfzvxcvxcvxcvxcvxcvx', 'sdfsdfsdfssdsdfdsfsdasfdasdasdasd', 'zxczxczxcxzvzczx', 'dsfsdfsdfdzfdzfdf', 'tyrtyrtyrt', 'dsfsdfsdfsddsfdfsdf', 'sdfsdfsdfASDASDAS', '200524092139-852.jpg', 'sdfsdfsdfsdfSDsdSD', 1, '2020-05-24 07:21:39', '2020-05-24 07:21:39');
 
 --
 -- Indexes for dumped tables
@@ -339,6 +404,16 @@ ALTER TABLE `shipper`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `stock_management`
+--
+ALTER TABLE `stock_management`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`),
+  ADD KEY `subcategory_id` (`subcategory_id`),
+  ADD KEY `product_id` (`product_id`),
+  ADD KEY `supplier_id` (`supplier_id`);
+
+--
 -- Indexes for table `subcategory`
 --
 ALTER TABLE `subcategory`
@@ -360,7 +435,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
@@ -390,7 +465,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `shipper`
@@ -399,16 +474,22 @@ ALTER TABLE `shipper`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `stock_management`
+--
+ALTER TABLE `stock_management`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `subcategory`
 --
 ALTER TABLE `subcategory`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `suppliers`
 --
 ALTER TABLE `suppliers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables
@@ -441,6 +522,15 @@ ALTER TABLE `products`
   ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `products_ibfk_4` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `products_ibfk_5` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `stock_management`
+--
+ALTER TABLE `stock_management`
+  ADD CONSTRAINT `stock_management_ibfk_4` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stock_management_ibfk_5` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stock_management_ibfk_6` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stock_management_ibfk_7` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subcategory`
