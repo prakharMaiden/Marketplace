@@ -1,8 +1,7 @@
 <?php
 require_once("./../config/config.php");
-session_start();
 if(empty($_SESSION['supplier_id'])){
-    header("location:login.php");
+    header("location:login/login.php");
 }
 ?>
 <?php include("includes/header.php");?>

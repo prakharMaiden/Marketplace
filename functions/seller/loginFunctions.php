@@ -212,13 +212,20 @@ class DB_con {
                $target_dir = getcwd();
                 $target_file = $target_dir . basename($_FILES["logo"]["name"]);
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                $extensions_arr = array("jpg","jpeg","png");
-                if( in_array($imageFileType,$extensions_arr) ){
+                $extensions_arr = array("png");
+                if(in_array($imageFileType,$extensions_arr) ){
                     $image_base64 = base64_encode(file_get_contents($_FILES['logo']['tmp_name']) );
                     $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
                     $imageName = date("ymdhis").'-'. $name;
                     move_uploaded_file($_FILES['logo']['tmp_name'],$imageName);
 
+
+                }else{
+                    $response = array(
+                        "type" => "danger",
+                        "message" => "Please choose png image only!"
+                    );
+                    return $response;
 
                 }
             }

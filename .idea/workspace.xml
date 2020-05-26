@@ -11,12 +11,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="736e8ea4-a8bf-4146-bf33-53db3aae7811" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/seller/products/general/category.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/seller/loginFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions/seller/loginFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/dashboard.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/login/200524010948-15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/login/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/login/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/products/general/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/products/general/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/stock_management/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/stock_management/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/stock_management/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,19 +52,19 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/functions/seller" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\seller\products\general" />
+      <recent name="C:\xampp\htdocs\Marketplace\seller\login" />
+      <recent name="C:\xampp\htdocs\Marketplace\seller\includes" />
+      <recent name="C:\xampp\htdocs\Marketplace\public\css" />
+      <recent name="C:\xampp\htdocs\kgi\functions\customer" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Marketplace\functions\seller" />
       <recent name="C:\xampp\htdocs\Marketplace\seller\stock_management" />
       <recent name="C:\xampp\htdocs\Marketplace\public" />
       <recent name="C:\xampp\htdocs\Marketplace\seller" />
       <recent name="C:\xampp\htdocs\kgi\functions\seller\products" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Marketplace\seller\login" />
-      <recent name="C:\xampp\htdocs\Marketplace\seller\includes" />
-      <recent name="C:\xampp\htdocs\Marketplace\seller\products\general" />
-      <recent name="C:\xampp\htdocs\Marketplace\public\css" />
-      <recent name="C:\xampp\htdocs\kgi\functions\customer" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -88,7 +95,8 @@
       <workItem from="1589725165005" duration="977000" />
       <workItem from="1589881444713" duration="15931000" />
       <workItem from="1590057252016" duration="6138000" />
-      <workItem from="1590303370177" duration="12711000" />
+      <workItem from="1590303370177" duration="14919000" />
+      <workItem from="1590495716017" duration="2818000" />
     </task>
     <servers />
   </component>
@@ -124,10 +132,14 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589885828141" />
-    <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1590319209162">
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1590498084173">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1590319209162" />
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1590498084173" />
+    <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1590497043679">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1590497043679" />
     <state x="339" y="164" key="run.anything.popup" timestamp="1589464748051">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

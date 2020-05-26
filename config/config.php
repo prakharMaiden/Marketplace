@@ -1,7 +1,6 @@
 <?php
 
 session_start();
-error_reporting(1);
 define('DB_SERVER', 'localhost');
 define('DB_USER', 'root');
 define('DB_PASSWORD', '');

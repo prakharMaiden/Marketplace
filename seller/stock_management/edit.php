@@ -42,38 +42,6 @@ include("../includes/header.php");
                                         <?php echo $response["message"]; ?>
                                     </div>
                                 <?php } ?>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="category_id">Category</label>
-                                            <div class="controls">
-                                                <select id="category_id" name="category_id" class="form-control"  required>
-                                                    <option value="">Please select</option>
-                                                    <?php
-                                                    $categories=mysqli_query($con,"select * from category") ;
-                                                    foreach ($categories as $category) {  ?>
-                                                        <option value="<?php  echo $category['id'];?>" ><?php echo $category['name']  ; ?></option>
-                                                    <?php  }  ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="subcategory_id">Sub Category</label>
-                                            <div class="controls">
-                                                <select id="subcategory_id" name="subcategory_id" class="form-control" required>
-                                                    <option value="">Please select</option>
-                                                    <?php
-                                                    $subcategories=mysqli_query($con,"select * from subcategory") ;
-                                                    foreach ($subcategories as $subcategory) {  ?>
-                                                        <option value="<?php  echo $subcategory['id'];?>" ><?php echo $subcategory['name']  ; ?></option>
-                                                    <?php  }  ?>
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
                                     <div class="col-md-6">

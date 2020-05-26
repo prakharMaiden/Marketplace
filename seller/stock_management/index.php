@@ -49,8 +49,6 @@ include("../includes/header.php");
                                 <thead>
                                 <tr>
                                     <th>S.No.</th>
-                                    <th>Category</th>
-                                    <th>Sub-category</th>
                                     <th>Product</th>
                                     <th>Quantity</th>
                                     <th>Price per product</th>
@@ -65,21 +63,12 @@ include("../includes/header.php");
                                 <?php
                                 $x =0;
                                 foreach($stocks as $stock){
+                                    $products = mysqli_query($con, "select * from products where (id='$stock[product_id]')");
+                                    $product = mysqli_fetch_assoc($products);
                                     ++$x;
                                     ?>
                                     <tr>
                                         <td><?php  echo $x;?></td>
-                                        <?php
-                                        $result = mysqli_query($con, "select * from category where (id='$stock[category_id]')");
-                                        $category = mysqli_fetch_assoc($result);
-                                        $subcategories = mysqli_query($con, "select * from subcategory where (id='$stock[subcategory_id]')");
-                                        $subcategory = mysqli_fetch_assoc($subcategories);
-                                        $products = mysqli_query($con, "select * from products where (id='$stock[product_id]')");
-                                        $product = mysqli_fetch_assoc($products);
-
-                                        ?>
-                                        <td><?php  echo $category['name'];?></td>
-                                        <td><?php  echo $subcategory['name'];?></td>
                                         <td><?php  echo $product['name'];?></td>
                                         <td><?php  echo $stock['quantity'];?></td>
                                         <td><?php  echo $stock['price_per_product'];?></td>

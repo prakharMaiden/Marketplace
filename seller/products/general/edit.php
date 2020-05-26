@@ -329,4 +329,22 @@ include("../../includes/header.php");
 <?php include("../../includes/footer.php");?>
 <script>
     var validator = $("#productAddForm").validate();
+    $(document).ready(function() {
+        $('#category_id').on('change', function() {
+            var category_id = this.value;
+            $.ajax({
+                url: "category.php",
+                type: "POST",
+                data: {
+                    category_id: category_id
+                },
+                cache: false,
+                success: function(dataResult){
+                    $("#subcategory_id").html(dataResult);
+                }
+            });
+
+
+        });
+    });
 </script>
