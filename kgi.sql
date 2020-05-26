@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 24, 2020 at 01:00 PM
+-- Generation Time: May 26, 2020 at 03:12 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -254,8 +254,6 @@ CREATE TABLE `shipper` (
 CREATE TABLE `stock_management` (
   `id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
-  `category_id` int(11) NOT NULL,
-  `subcategory_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` varchar(10) NOT NULL,
   `price_per_product` varchar(10) NOT NULL,
@@ -271,8 +269,8 @@ CREATE TABLE `stock_management` (
 -- Dumping data for table `stock_management`
 --
 
-INSERT INTO `stock_management` (`id`, `supplier_id`, `category_id`, `subcategory_id`, `product_id`, `quantity`, `price_per_product`, `total_price`, `total_discount`, `date_in_stock`, `active`, `created_at`, `updated_at`) VALUES
-(1, 5, 1, 1, 1, '50', '100', '12000', '123', '2222-02-22 00:00:00', 1, '2020-05-24 10:50:51', '2020-05-24 10:50:51');
+INSERT INTO `stock_management` (`id`, `supplier_id`, `product_id`, `quantity`, `price_per_product`, `total_price`, `total_discount`, `date_in_stock`, `active`, `created_at`, `updated_at`) VALUES
+(1, 5, 1, '50', '100', '12000', '123', '2222-02-22 00:00:00', 1, '2020-05-24 10:50:51', '2020-05-24 10:50:51');
 
 -- --------------------------------------------------------
 
@@ -341,7 +339,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `customer_id`, `company_name`, `contact_fname`, `contact_lname`, `contact_title`, `password`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `phone`, `fax`, `email`, `url`, `payment_methods`, `discount_type`, `type_goods`, `notes`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(5, 1, 'INFINIKEY MEDIA PVT LTD', 'Mayank', 'Chaudhary', 'INFINIKEY MEDIA PVT LTD', 'e10adc3949ba59abbe56e057f20f883e', 'dfsdfdzf', 'dsfsdfsd', 'dfsdfsdf', 'dsfsdfsdf', 'dfsdfsd', 'dsfsdfsdf', '9891494860', 'dfsdfdsfxcvxcvx', 'mayanklion1994@gmail.com', 'dsfsdfsdfzvxcvxcvxcvxcvxcvx', 'sdfsdfsdfssdsdfdsfsdasfdasdasdasd', 'zxczxczxcxzvzczx', 'dsfsdfsdfdzfdzfdf', 'tyrtyrtyrt', 'dsfsdfsdfsddsfdfsdf', 'sdfsdfsdfASDASDAS', '200524092139-852.jpg', 'sdfsdfsdfsdfSDsdSD', 1, '2020-05-24 07:21:39', '2020-05-24 07:21:39');
+(5, 1, 'INFINIKEY MEDIA PVT LTD', 'Mayank', 'Chaudhary', 'INFINIKEY MEDIA PVT LTD', 'e10adc3949ba59abbe56e057f20f883e', ' Block M Market', 'Greater Kailash Part 1', 'delhi', 'Delhi', '110048', 'India', '9891494860', '', 'mayanklion1994@gmail.com', '', '', '', '', '', '', '', '', '', 1, '2020-05-26 12:48:12', '2020-05-26 12:48:12');
 
 --
 -- Indexes for dumped tables
@@ -408,8 +406,6 @@ ALTER TABLE `shipper`
 --
 ALTER TABLE `stock_management`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `category_id` (`category_id`),
-  ADD KEY `subcategory_id` (`subcategory_id`),
   ADD KEY `product_id` (`product_id`),
   ADD KEY `supplier_id` (`supplier_id`);
 
@@ -465,7 +461,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `shipper`
@@ -527,10 +523,8 @@ ALTER TABLE `products`
 -- Constraints for table `stock_management`
 --
 ALTER TABLE `stock_management`
-  ADD CONSTRAINT `stock_management_ibfk_4` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stock_management_ibfk_5` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stock_management_ibfk_6` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `stock_management_ibfk_7` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `stock_management_ibfk_8` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `stock_management_ibfk_9` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `subcategory`
