@@ -6,24 +6,95 @@
         <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="736e8ea4-a8bf-4146-bf33-53db3aae7811" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seller/products/general/category.php" afterDir="false" />
+    <list default="true" id="07a1ef17-1738-41a9-89e4-34fd634d84f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/login_footer.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/includes/login_header.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/login/login.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/login/logout.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/login/profile.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/login/signup.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/autopart.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/electronic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/furniture.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/home-kids.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/home-photo.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/market-place-1.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/market-place-2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/market-place-3.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/market-place-4.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/organic.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/technology.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/css/vendor.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/Chart.js/Chart.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/bootstrap4/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/bootstrap4/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/css/font-awesome.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/gmap3.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/imagesloaded.pkgd.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/isotope.pkgd.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-1.12.4.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-bar-rating/dist/jquery.barrating.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_444444_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_555555_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_777620_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_777777_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_cc0000_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_ffffff_256x240.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/jquery-ui.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/jquery-ui.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery.matchHeight-min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/jquery.slimscroll.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/css/lightgallery.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd41d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/loading.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/video-play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/vimeo-play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/youtube-play.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/js/lightgallery-all.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/masonry.pkgd.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/assets/owl.carousel.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/assets/owl.video.play.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.carousel.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/popper.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/select2/dist/css/select2.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/select2/dist/js/select2.full.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/slick-animation.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/slick/slick/slick.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/slick/slick/slick.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/plugins/sticky-sidebar/dist/sticky-sidebar.min.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/functions/seller/loginFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions/seller/loginFunctions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/login/200524010948-15.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/login/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/login/profile.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/products/general/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/products/general/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/stock_management/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/stock_management/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/stock_management/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/login/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/functions/customer/loginFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions/customer/loginFunctions.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,7 +107,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1bIaW02SC8qnlTok2BHM6KCYnTi" />
+  <component name="ProjectId" id="1cUITmMUDHYD2Asm6Dc46ADQHez" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
@@ -48,23 +119,18 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/functions/seller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/includes" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Marketplace\seller\products\general" />
-      <recent name="C:\xampp\htdocs\Marketplace\seller\login" />
-      <recent name="C:\xampp\htdocs\Marketplace\seller\includes" />
-      <recent name="C:\xampp\htdocs\Marketplace\public\css" />
-      <recent name="C:\xampp\htdocs\kgi\functions\customer" />
+      <recent name="C:\xampp\htdocs\Marketplace\customer\login" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Marketplace\functions\seller" />
-      <recent name="C:\xampp\htdocs\Marketplace\seller\stock_management" />
+      <recent name="C:\xampp\htdocs\Marketplace\customer\includes" />
+      <recent name="C:\xampp\htdocs\Marketplace\customer" />
       <recent name="C:\xampp\htdocs\Marketplace\public" />
-      <recent name="C:\xampp\htdocs\Marketplace\seller" />
-      <recent name="C:\xampp\htdocs\kgi\functions\seller\products" />
+      <recent name="C:\xampp\htdocs\Marketplace\public\js" />
+      <recent name="C:\xampp\htdocs\Marketplace\public\css" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -72,31 +138,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="736e8ea4-a8bf-4146-bf33-53db3aae7811" name="Default Changelist" comment="" />
-      <created>1588322088412</created>
+      <changelist id="07a1ef17-1738-41a9-89e4-34fd634d84f8" name="Default Changelist" comment="" />
+      <created>1590576761222</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1588322088412</updated>
-      <workItem from="1588322091709" duration="10965000" />
-      <workItem from="1588411551395" duration="2892000" />
-      <workItem from="1588584074844" duration="9056000" />
-      <workItem from="1588604658787" duration="2584000" />
-      <workItem from="1588668007777" duration="8836000" />
-      <workItem from="1588754927768" duration="4248000" />
-      <workItem from="1588847997020" duration="4720000" />
-      <workItem from="1588929357401" duration="476000" />
-      <workItem from="1588934760477" duration="5320000" />
-      <workItem from="1589185415999" duration="17036000" />
-      <workItem from="1589375592370" duration="7359000" />
-      <workItem from="1589461867077" duration="7862000" />
-      <workItem from="1589536527490" duration="13911000" />
-      <workItem from="1589624770754" duration="10155000" />
-      <workItem from="1589709419843" duration="12386000" />
-      <workItem from="1589725165005" duration="977000" />
-      <workItem from="1589881444713" duration="15931000" />
-      <workItem from="1590057252016" duration="6138000" />
-      <workItem from="1590303370177" duration="14919000" />
-      <workItem from="1590495716017" duration="2818000" />
+      <updated>1590576761222</updated>
+      <workItem from="1590576801300" duration="6695000" />
     </task>
     <servers />
   </component>
@@ -113,51 +160,19 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1588756614529">
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590588217657">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="22" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1366.728@0.0.1366.728" timestamp="1588756614529" />
-    <state x="450" y="165" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1589538344734">
+    <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1590588217657" />
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1590578782380">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="450" y="165" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1589538344734" />
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1590311581203">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1590578782380" />
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590585979758">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="0" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1590311581203" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1589885828141">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1589885828141" />
-    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1590498084173">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1590498084173" />
-    <state x="0" y="0" width="587" height="728" key="find.popup" timestamp="1590497043679">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="0" y="0" width="587" height="728" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1590497043679" />
-    <state x="339" y="164" key="run.anything.popup" timestamp="1589464748051">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="339" y="164" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1589464748051" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1590318234864">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1590318234864" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.php</url>
-          <line>158</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1590585979758" />
   </component>
 </project>

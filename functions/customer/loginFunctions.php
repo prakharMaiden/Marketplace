@@ -1,6 +1,6 @@
 <?PHP
 
-require_once("./../config/config.php");
+require_once("./../../config/config.php");
 error_reporting(E_ALL);
 
 class DB_con {
@@ -55,7 +55,7 @@ class DB_con {
             $row = mysqli_fetch_assoc($result);
             if($row['active']  == 1){
                 $_SESSION['customer_id']= $row['id'];
-                header("location:dashboard.php");
+                header("location:../dashboard.php");
             }else{
                 $response = array(
                     "type" => "danger",
