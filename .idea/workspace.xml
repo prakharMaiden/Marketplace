@@ -20,81 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07a1ef17-1738-41a9-89e4-34fd634d84f8" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/includes/login_footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/includes/login_header.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/login/login.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/login/logout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/login/profile.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/customer/login/signup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/autopart.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/electronic.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/furniture.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/home-kids.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/home-photo.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/market-place-1.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/market-place-2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/market-place-3.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/market-place-4.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/organic.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/technology.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/vendor.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/chart.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/Chart.js/Chart.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/bootstrap4/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/bootstrap4/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/css/font-awesome.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfont5b62.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/font-awesome/fonts/fontawesome-webfontd41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/gmap3.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/imagesloaded.pkgd.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/isotope.pkgd.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-1.12.4.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-bar-rating/dist/jquery.barrating.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_444444_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_555555_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_777620_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_777777_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_cc0000_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/images/ui-icons_ffffff_256x240.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/jquery-ui.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery-ui/jquery-ui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery.matchHeight-min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/jquery.slimscroll.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/css/lightgallery.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd41d.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/fonts/lgd641.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/loading.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/video-play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/vimeo-play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/img/youtube-play.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/lightGallery-master/dist/js/lightgallery-all.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/masonry.pkgd.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/assets/owl.carousel.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/assets/owl.video.play.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/owl-carousel/owl.carousel.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/popper.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/select2/dist/css/select2.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/select2/dist/js/select2.full.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/slick-animation.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/slick/slick/slick.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/slick/slick/slick.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/plugins/sticky-sidebar/dist/sticky-sidebar.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/login/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/login.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/login_footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/login_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/login/index.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/login/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/functions/customer/loginFunctions.php" beforeDir="false" afterPath="$PROJECT_DIR$/functions/customer/loginFunctions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,15 +57,16 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/includes" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Marketplace\customer\login" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Marketplace\customer\includes" />
       <recent name="C:\xampp\htdocs\Marketplace\customer" />
       <recent name="C:\xampp\htdocs\Marketplace\public" />
       <recent name="C:\xampp\htdocs\Marketplace\public\js" />
       <recent name="C:\xampp\htdocs\Marketplace\public\css" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\customer" />
+      <recent name="C:\xampp\htdocs\Marketplace\customer\login" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -144,6 +80,7 @@
       <option name="presentableId" value="Default" />
       <updated>1590576761222</updated>
       <workItem from="1590576801300" duration="6695000" />
+      <workItem from="1590661519852" duration="12741000" />
     </task>
     <servers />
   </component>
@@ -160,6 +97,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1590588217657">

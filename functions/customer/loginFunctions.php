@@ -29,9 +29,11 @@ class DB_con {
                 );
             }
         }else{
-            mysqli_query($this->db,"insert into customers(email,mobile,password) values('$email','$mobile','$password')") ;
+            $result = "insert into customers(email,mobile,password) values('$email','$mobile','$password')";
+            mysqli_query($this->db,$result) ;
             $customer_id = mysqli_insert_id($this->db);
-            $customer_detail=mysqli_query($this->db,"insert into customer_detail(customer_id,first_name,last_name) values($customer_id,'$first_name','$last_name')");
+            $res="insert into customer_detail(customer_id,first_name,last_name) values($customer_id,'$first_name','$last_name')";
+            $customer_detail=mysqli_query($this->db,$res);
             if (mysqli_num_rows($customer_detail) > 0) {
                 $response = array(
                     "type" => "success",

@@ -6,7 +6,7 @@ if(isset($_POST['submit'])) {
     $response= $loginData->signIn($_POST['login'],md5($_POST['password']));
 }
 if(isset($_POST['register_submit'])) {
-    $response=$userData->signUp($_POST['first_name'],$_POST['last_name'],$_POST['mobile'],$_POST['email'],md5($_POST['password']));
+    $response=$loginData->signUp($_POST['first_name'],$_POST['last_name'],$_POST['mobile'],$_POST['email'],md5($_POST['password']));
 }
 ?>
 <?php include("../includes/login_header.php");?>
@@ -14,7 +14,7 @@ if(isset($_POST['register_submit'])) {
     <div class="ps-breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="../index.php">Home</a></li>
                 <li>My account</li>
             </ul>
         </div>
@@ -92,6 +92,7 @@ if(isset($_POST['register_submit'])) {
                                 <div class="form-group">
                                     <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="form-control" required>
                                 </div>
+                                <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                                 <div class="form-group submtit">
                                     <button class="ps-btn ps-btn--fullwidth" type="submit" id="register_submit"  name="register_submit">Register</button>
                                 </div>
@@ -117,6 +118,15 @@ if(isset($_POST['register_submit'])) {
     .error{color:red;}
 </style>
 <?php include("../includes/login_footer.php");?>
+<script src="https://www.google.com/recaptcha/api.js?render=6Lep0vIUAAAAAJuq4uHJRPuuY3ik9SYNuUvMeiTu"></script>
+<script>
+    grecaptcha.ready(function () {
+        grecaptcha.execute('6Lep0vIUAAAAAJuq4uHJRPuuY3ik9SYNuUvMeiTu', { action: 'contact' }).then(function (token) {
+            var recaptchaResponse = document.getElementById('recaptchaResponse');
+            recaptchaResponse.value = token;
+        });
+    });
+</script>
 <script src="<?php echo PUBLIC_PATH;?>/css/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?php echo PUBLIC_PATH;?>/css/plugins/jquery-validation/additional-methods.min.js"></script>
 <script type="text/javascript">
@@ -138,7 +148,7 @@ if(isset($_POST['register_submit'])) {
         $("#registrationForm").validate({
             rules: {
                 password: {required: true,minlength: 6},
-                confirm_password: {equalTo: "#password"}
+                confirm_password: {equalTo: "#password-field"}
             },
             messages: {
                 password: " Password must be at least 6 character",
