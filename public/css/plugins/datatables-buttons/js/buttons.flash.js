@@ -466,7 +466,7 @@ window.ZeroClipboard_TableTools = ZeroClipboard_TableTools;
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * Local (private) functions
+ * Local (private) controller
  */
 
 /**

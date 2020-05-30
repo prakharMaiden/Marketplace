@@ -96,7 +96,7 @@
                     </div>
                     <div class="ps-block--user-header">
                         <div class="ps-block__left"><i class="icon-user"></i></div>
-                        <div class="ps-block__right"><a href="../login/login.php">Login</a><a href="../login/login.php">Register</a></div>
+                        <div class="ps-block__right"><a href="../auth/login.php">Login</a><a href="../auth/login.php">Register</a></div>
                     </div>
                 </div>
             </div>
@@ -171,7 +171,7 @@
                 </div>
                 <div class="ps-block--user-header">
                     <div class="ps-block__left"><i class="icon-user"></i></div>
-                    <div class="ps-block__right"><a href="../login/login.php">Login</a><a href="../login/login.php">Register</a></div>
+                    <div class="ps-block__right"><a href="../auth/login.php">Login</a><a href="../auth/login.php">Register</a></div>
                 </div>
             </div>
         </div>

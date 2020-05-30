@@ -239,7 +239,7 @@ DataTable.fileSave = _saveAs;
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- * Local (private) functions
+ * Local (private) controller
  */
 
 /**

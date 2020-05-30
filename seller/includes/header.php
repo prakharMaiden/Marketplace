@@ -39,11 +39,11 @@ $supplier = mysqli_fetch_assoc($result);
 
                 </a>
                 <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-                    <a href="<?php echo PATH;?>/seller/login/profile.php" class="dropdown-item">
+                    <a href="<?php echo PATH;?>/seller/auth/profile.php" class="dropdown-item">
                         <i class="fas fa-user mr-2"></i> Profile
                     </a>
                     <div class="dropdown-divider"></div>
-                    <a href="<?php echo PATH;?>/seller/login/logout.php" class="dropdown-item">
+                    <a href="<?php echo PATH;?>/seller/auth/logout.php" class="dropdown-item">
                         <i class="fas fa-sign-out-alt mr-2"></i> logout
                     </a>
                 </div>
@@ -83,7 +83,7 @@ $supplier = mysqli_fetch_assoc($result);
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="<?php echo PATH;?>/seller/login/logout.php" class="nav-link">
+                        <a href="<?php echo PATH;?>/seller/auth/logout.php" class="nav-link">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>logout</p>
                         </a>

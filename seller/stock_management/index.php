@@ -1,11 +1,10 @@
 <?php
 
-include_once("./../../functions/seller/stock_management/functions.php");
+include_once("./../controller/stock_management/stockManagementController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:../login/login.php");
+    header("location:../auth/loginController.php");
 }
-error_reporting(E_ALL);
-$stockManagement=new stockManagement();
+$stockManagement=new stockManagementController();
 $stocks=$stockManagement->listing();
 
 include("../includes/header.php");

@@ -2419,7 +2419,7 @@
          * Based on https://gist.github.com/jlmakes/47eba84c54bc306186ac1ab2ffd336d4
          * and also https://gist.github.com/paulirish/1579671
          *
-         * _requestAnimationFrameFn and _cancelAnimationFrameFn hold the current functions
+         * _requestAnimationFrameFn and _cancelAnimationFrameFn hold the current controller
          * But requestAnimationFrame and cancelAnimationFrame shall be called since
          * in order to be in window context
          */

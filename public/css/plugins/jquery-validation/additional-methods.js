@@ -964,7 +964,7 @@ $.validator.addMethod( "mobileRU", function( phone_number, element ) {
 	return this.optional( element ) || ruPhone_number.length > 9 && /^((\+7|7|8)+([0-9]){10})$/.test( ruPhone_number );
 }, "Please specify a valid mobile number" );
 
-/* For UK phone functions, do the following server side processing:
+/* For UK phone controller, do the following server side processing:
  * Compare original input with this RegEx pattern:
  * ^\(?(?:(?:00\)?[\s\-]?\(?|\+)(44)\)?[\s\-]?\(?(?:0\)?[\s\-]?\(?)?|0)([1-9]\d{1,4}\)?[\s\d\-]+)$
  * Extract $1 and set $prefix to '+44<space>' if $1 is '44', otherwise set $prefix to '0'
@@ -1196,7 +1196,7 @@ $.validator.addMethod( "phonePL", function( phone_number, element ) {
 	return this.optional( element ) || regexp.test( phone_number );
 }, "Please specify a valid phone number" );
 
-/* For UK phone functions, do the following server side processing:
+/* For UK phone controller, do the following server side processing:
  * Compare original input with this RegEx pattern:
  * ^\(?(?:(?:00\)?[\s\-]?\(?|\+)(44)\)?[\s\-]?\(?(?:0\)?[\s\-]?\(?)?|0)([1-9]\d{1,4}\)?[\s\d\-]+)$
  * Extract $1 and set $prefix to '+44<space>' if $1 is '44', otherwise set $prefix to '0'
@@ -1212,7 +1212,7 @@ $.validator.addMethod( "phonesUK", function( phone_number, element ) {
 		phone_number.match( /^(?:(?:(?:00\s?|\+)44\s?|0)(?:1\d{8,9}|[23]\d{9}|7(?:[1345789]\d{8}|624\d{6})))$/ );
 }, "Please specify a valid uk phone number" );
 
-/* For UK phone functions, do the following server side processing:
+/* For UK phone controller, do the following server side processing:
  * Compare original input with this RegEx pattern:
  * ^\(?(?:(?:00\)?[\s\-]?\(?|\+)(44)\)?[\s\-]?\(?(?:0\)?[\s\-]?\(?)?|0)([1-9]\d{1,4}\)?[\s\d\-]+)$
  * Extract $1 and set $prefix to '+44<space>' if $1 is '44', otherwise set $prefix to '0'

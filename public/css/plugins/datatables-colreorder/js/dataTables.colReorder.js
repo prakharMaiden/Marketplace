@@ -212,7 +212,7 @@ $.fn.dataTableExt.oApi.fnColReorder = function ( oSettings, iFrom, iTo, drop, in
 		oSettings.aLastSort[i].src = aiInvertMapping[ val.src ];
 	} );
 
-	/* Update the Get and Set functions for each column */
+	/* Update the Get and Set controller for each column */
 	for ( i=0, iLen=iCols ; i<iLen ; i++ )
 	{
 		oCol = oSettings.aoColumns[i];
@@ -281,7 +281,7 @@ $.fn.dataTableExt.oApi.fnColReorder = function ( oSettings, iFrom, iTo, drop, in
 	/* Columns */
 	fnArraySwitch( oSettings.aoColumns, iFrom, iTo );
 
-	// regenerate the get / set functions
+	// regenerate the get / set controller
 	for ( i=0, iLen=iCols ; i<iLen ; i++ ) {
 		oSettings.oApi._fnColumnOptions( oSettings, i, {} );
 	}

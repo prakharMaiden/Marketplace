@@ -1,11 +1,10 @@
 <?php
-include_once("./../../../functions/seller/products/functions.php");
+include_once("./../../controller/products/productController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:../../login/login.php");
+    header("location:../../auth/loginController.php");
 }
-error_reporting(E_ALL);
 $id = $_GET['id'];
-$productClass=new Product();
+$productClass=new productController();
 $product=$productClass->edit($id);
 if(isset($_POST['submit'])) {
     $response=$productClass->update($id);

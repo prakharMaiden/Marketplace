@@ -1014,7 +1014,7 @@ Responsive.breakpoints = [
 
 
 /**
- * Display methods - functions which define how the hidden data should be shown
+ * Display methods - controller which define how the hidden data should be shown
  * in the table.
  *
  * @namespace
@@ -1164,7 +1164,7 @@ function _childNodesRestore( dt, row, col ) {
 
 
 /**
- * Display methods - functions which define how the hidden data should be shown
+ * Display methods - controller which define how the hidden data should be shown
  * in the table.
  *
  * @namespace

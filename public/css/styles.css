@@ -1704,7 +1704,7 @@ form.search-form {
 .blank-page {
     background: #fff;
 }
-/*--login-page--*/
+/*--auth-page--*/
 .login-page {
     width: 40%;
     margin: 1em auto 0;
@@ -1874,7 +1874,7 @@ form.search-form {
 	-o-transform: rotateY(360deg);
 	-ms-transform: rotateY(360deg);
 }
-/*--//login-page--*/
+/*--//auth-page--*/
 
 /*-- icons --*/
 .codes a {

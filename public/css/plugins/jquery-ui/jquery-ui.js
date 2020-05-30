@@ -1461,7 +1461,7 @@ $.effects = {
 	// Colors = jQuery.Color.names
 	colors,
 
-	// Local aliases of functions called often
+	// Local aliases of controller called often
 	each = jQuery.each;
 
 // Determine rgba support immediately
@@ -2401,7 +2401,7 @@ $.extend( $.effects, {
 		};
 	},
 
-	// Injects recently queued functions to be first in line (after "inprogress")
+	// Injects recently queued controller to be first in line (after "inprogress")
 	unshift: function( element, queueLength, count ) {
 		var queue = element.queue();
 
@@ -15788,7 +15788,7 @@ var widgetsSortable = $.widget( "ui.sortable", $.ui.mouse, {
 
 	},
 
-	/* Be careful with the following core functions */
+	/* Be careful with the following core controller */
 	_intersectsWith: function( item ) {
 
 		var x1 = this.positionAbs.left,

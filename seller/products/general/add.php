@@ -1,10 +1,9 @@
 <?php
-include_once("./../../../functions/seller/products/functions.php");
+include_once("./../../controller/products/productController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:../../login/login.php");
+    header("location:../../auth/loginController.php");
 }
-error_reporting(E_ALL);
-$productClass=new Product();
+$productClass=new productController();
 if(isset($_POST['submit'])) {
     $response=$productClass->add();
 }

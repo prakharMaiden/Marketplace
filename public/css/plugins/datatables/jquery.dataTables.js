@@ -142,7 +142,7 @@
 		 * rows are found, the data returned is the original data array/object that was used to
 		 * create the row (or a generated array if from a DOM source).
 		 *
-		 * This method is often useful in-combination with $ where both functions are given the
+		 * This method is often useful in-combination with $ where both controller are given the
 		 * same parameters and the array indexes will match identically.
 		 *  @param {string|node|jQuery} sSelector jQuery selector or node collection to act on
 		 *  @param {object} [oOpts] Optional parameters for modifying the rows to be included
@@ -1032,7 +1032,7 @@
 			] );
 			_fnMap( oSettings.oLanguage, oInit, "fnInfoCallback" );
 			
-			/* Callback functions which are array driven */
+			/* Callback controller which are array driven */
 			_fnCallbackReg( oSettings, 'aoDrawCallback',       oInit.fnDrawCallback,      'user' );
 			_fnCallbackReg( oSettings, 'aoServerParams',       oInit.fnServerParams,      'user' );
 			_fnCallbackReg( oSettings, 'aoStateSaveParams',    oInit.fnStateSaveParams,   'user' );
@@ -1314,8 +1314,8 @@
 	
 	/*
 	 * It is useful to have variables which are scoped locally so only the
-	 * DataTables functions can access them and they don't leak into global space.
-	 * At the same time these functions are often useful over multiple files in the
+	 * DataTables controller can access them and they don't leak into global space.
+	 * At the same time these controller are often useful over multiple files in the
 	 * core and API, so we list, or at least document, all variables which are used
 	 * by DataTables as private variables here. This also ensures that there is no
 	 * clashing of variable names and that they can easily referenced for reuse.
@@ -2060,7 +2060,7 @@
 			_fnMap( oCol, oOptions, "aDataSort" );
 		}
 	
-		/* Cache the data get and set functions for speed */
+		/* Cache the data get and set controller for speed */
 		var mDataSrc = oCol.mData;
 		var mData = _fnGetObjectDataFn( mDataSrc );
 		var mRender = oCol.mRender ? _fnGetObjectDataFn( oCol.mRender ) : null;
@@ -2578,7 +2578,7 @@
 	{
 		if ( $.isPlainObject( mSource ) )
 		{
-			/* Build an object of get functions, and wrap them in a single call */
+			/* Build an object of get controller, and wrap them in a single call */
 			var o = {};
 			$.each( mSource, function (key, val) {
 				if ( val ) {
@@ -3461,7 +3461,7 @@
 					}
 				}
 	
-				// Row callback functions - might want to manipulate the row
+				// Row callback controller - might want to manipulate the row
 				// iRowCount and j are not currently documented. Are they at all
 				// useful?
 				_fnCallbackFire( oSettings, 'aoRowCallback', null,
@@ -3504,7 +3504,7 @@
 		body.children().detach();
 		body.append( $(anRows) );
 	
-		/* Call all required callback functions for the end of a draw */
+		/* Call all required callback controller for the end of a draw */
 		_fnCallbackFire( oSettings, 'aoDrawCallback', 'draw', [oSettings] );
 	
 		/* Draw is complete, sorting and filtering must be as well */
@@ -4309,7 +4309,7 @@
 	
 	
 	/**
-	 * Apply custom filtering functions
+	 * Apply custom filtering controller
 	 *  @param {object} oSettings dataTables settings object
 	 *  @memberof DataTable#oApi
 	 */
@@ -4391,7 +4391,7 @@
 		var display, invalidated, i;
 		var filtered = [];
 	
-		// Need to take account of custom filtering functions - always filter
+		// Need to take account of custom filtering controller - always filter
 		if ( DataTable.ext.search.length !== 0 ) {
 			force = true;
 		}
@@ -5982,7 +5982,7 @@
 			 * methods which do not have a pre-sort formatting function.
 			 */
 			if ( formatters === aSort.length ) {
-				// All sort types have formatting functions
+				// All sort types have formatting controller
 				displayMaster.sort( function ( a, b ) {
 					var
 						x, y, k, test, sort,
@@ -6342,7 +6342,7 @@
 				return;
 			}
 	
-			// Allow custom and plug-in manipulation functions to alter the saved data set and
+			// Allow custom and plug-in manipulation controller to alter the saved data set and
 			// cancelling of loading by returning false
 			var abStateLoad = _fnCallbackFire( settings, 'aoStateLoadParams', 'stateLoadParams', [settings, s] );
 			if ( $.inArray( false, abStateLoad ) !== -1 ) {
@@ -6596,7 +6596,7 @@
 	
 	/**
 	 * Register a callback function. Easily allows a callback function to be added to
-	 * an array store of callback functions that can then all be called together.
+	 * an array store of callback controller that can then all be called together.
 	 *  @param {object} oSettings dataTables settings object
 	 *  @param {string} sStore Name of the array storage for the callbacks in oSettings
 	 *  @param {function} fn Function to be called back
@@ -6616,7 +6616,7 @@
 	
 	
 	/**
-	 * Fire callback functions and trigger events. Note that the loop over the
+	 * Fire callback controller and trigger events. Note that the loop over the
 	 * callback array store is done backwards! Further note that you do not want to
 	 * fire off triggers in time sensitive applications (for example cell creation)
 	 * as its slow.
@@ -7544,7 +7544,7 @@
 	 */
 	_api_register( 'page.len()', function ( len ) {
 		// Note that we can't call this function 'length()' because `length`
-		// is a Javascript property of functions which defines how many arguments
+		// is a Javascript property of controller which defines how many arguments
 		// the function expects.
 		if ( len === undefined ) {
 			return this.context.length !== 0 ?
@@ -9291,7 +9291,7 @@
 	} );
 	
 	
-	// jQuery functions to operate on the tables
+	// jQuery controller to operate on the tables
 	$.each( [ 'on', 'one', 'off' ], function (i, key) {
 		_api_register( key+'()', function ( /* event, handler */ ) {
 			var args = Array.prototype.slice.call(arguments);
@@ -13329,14 +13329,14 @@
 		"sDestroyWidth": 0,
 	
 		/**
-		 * Callback functions array for every time a row is inserted (i.e. on a draw).
+		 * Callback controller array for every time a row is inserted (i.e. on a draw).
 		 *  @type array
 		 *  @default []
 		 */
 		"aoRowCallback": [],
 	
 		/**
-		 * Callback functions for the header on each draw.
+		 * Callback controller for the header on each draw.
 		 *  @type array
 		 *  @default []
 		 */
@@ -13350,21 +13350,21 @@
 		"aoFooterCallback": [],
 	
 		/**
-		 * Array of callback functions for draw callback functions
+		 * Array of callback controller for draw callback controller
 		 *  @type array
 		 *  @default []
 		 */
 		"aoDrawCallback": [],
 	
 		/**
-		 * Array of callback functions for row created function
+		 * Array of callback controller for row created function
 		 *  @type array
 		 *  @default []
 		 */
 		"aoRowCreatedCallback": [],
 	
 		/**
-		 * Callback functions for just before the table is redrawn. A return of
+		 * Callback controller for just before the table is redrawn. A return of
 		 * false will be used to cancel the draw.
 		 *  @type array
 		 *  @default []
@@ -13372,7 +13372,7 @@
 		"aoPreDrawCallback": [],
 	
 		/**
-		 * Callback functions for when the table has been initialised.
+		 * Callback controller for when the table has been initialised.
 		 *  @type array
 		 *  @default []
 		 */
@@ -13506,7 +13506,7 @@
 		"iStateDuration": 0,
 	
 		/**
-		 * Array of callback functions for state saving. Each array element is an
+		 * Array of callback controller for state saving. Each array element is an
 		 * object with the following parameters:
 		 *   <ul>
 		 *     <li>function:fn - function to call. Takes two parameters, oSettings
@@ -13521,7 +13521,7 @@
 		"aoStateSave": [],
 	
 		/**
-		 * Array of callback functions for state loading. Each array element is an
+		 * Array of callback controller for state loading. Each array element is an
 		 * object with the following parameters:
 		 *   <ul>
 		 *     <li>function:fn - function to call. Takes two parameters, oSettings
@@ -13741,7 +13741,7 @@
 		"oInit": null,
 	
 		/**
-		 * Destroy callback functions - for plug-ins to attach themselves to the
+		 * Destroy callback controller - for plug-ins to attach themselves to the
 		 * destroy so they can clean up markup and events.
 		 *  @type array
 		 *  @default []
@@ -13974,7 +13974,7 @@
 		 * and your logic decides if it should be included in the searching data set
 		 * or not.
 		 *
-		 * Searching functions have the following input parameters:
+		 * Searching controller have the following input parameters:
 		 *
 		 * 1. `{object}` DataTables settings object: see
 		 *    {@link DataTable.models.oSettings}
@@ -14037,7 +14037,7 @@
 		 * which can be used in conjunction with the existing built in selector
 		 * options.
 		 *
-		 * Each property is an array to which functions can be pushed. The functions
+		 * Each property is an array to which controller can be pushed. The controller
 		 * take three attributes:
 		 *
 		 * * Settings object for the host table
@@ -14057,7 +14057,7 @@
 	
 	
 		/**
-		 * Internal functions, exposed for used in plug-ins.
+		 * Internal controller, exposed for used in plug-ins.
 		 * 
 		 * Please note that you should not need to use the internal methods for
 		 * anything other than a plug-in (and even then, try to avoid if possible).
@@ -14093,7 +14093,7 @@
 		 * Each entry in this object is a function and defines which buttons should
 		 * be shown by the pagination rendering method that is used for the table:
 		 * {@link DataTable.ext.renderer.pageButton}. The renderer addresses how the
-		 * buttons are displayed in the document, while the functions here tell it
+		 * buttons are displayed in the document, while the controller here tell it
 		 * what buttons to display. This is done by returning an array of button
 		 * descriptions (what each button will do).
 		 *
@@ -14101,7 +14101,7 @@
 		 * options defined here) can be used through the `paginationType`
 		 * initialisation parameter.
 		 *
-		 * The functions defined take two parameters:
+		 * The controller defined take two parameters:
 		 *
 		 * 1. `{int} page` The current page index
 		 * 2. `{int} pages` The number of pages in the table
@@ -14118,7 +14118,7 @@
 		 *   containing 'DIV' element (might be useful for styling).
 		 *
 		 * Note that DataTables v1.9- used this object slightly differently whereby
-		 * an object with two functions would be defined for each plug-in. That
+		 * an object with two controller would be defined for each plug-in. That
 		 * ability is still supported by DataTables 1.10+ to provide backwards
 		 * compatibility, but this option of use is now decremented and no longer
 		 * documented in DataTables 1.10+.
@@ -14160,7 +14160,7 @@
 		 * function is run here depends on the `dt-init columns.orderDataType`
 		 * parameter that is used for the column (if any).
 		 *
-		 * The functions defined take two parameters:
+		 * The controller defined take two parameters:
 		 *
 		 * 1. `{object}` DataTables settings object: see
 		 *    {@link DataTable.models.oSettings}
@@ -14196,13 +14196,13 @@
 		 */
 		type: {
 			/**
-			 * Type detection functions.
+			 * Type detection controller.
 			 *
-			 * The functions defined in this object are used to automatically detect
+			 * The controller defined in this object are used to automatically detect
 			 * a column's type, making initialisation of DataTables super easy, even
 			 * when complex data is in the table.
 			 *
-			 * The functions defined take two parameters:
+			 * The controller defined take two parameters:
 			 *
 		     *  1. `{*}` Data from the column cell to be analysed
 		     *  2. `{settings}` DataTables settings object. This can be used to
@@ -14214,7 +14214,7 @@
 			 * Each function is expected to return:
 			 *
 			 * * `{string|null}` Data type detected, or null if unknown (and thus
-			 *   pass it on to the other type detection functions.
+			 *   pass it on to the other type detection controller.
 			 *
 			 *  @type array
 			 *
@@ -14241,7 +14241,7 @@
 			/**
 			 * Type based search formatting.
 			 *
-			 * The type based searching functions can be used to pre-format the
+			 * The type based searching controller can be used to pre-format the
 			 * data to be search on. For example, it can be used to strip HTML
 			 * tags or to de-format telephone numbers for numeric only searching.
 			 *
@@ -14254,11 +14254,11 @@
 			 * custom sorting, but it can also be used to provide custom searching
 			 * by allowing you to pre-processing the data and returning the data in
 			 * the format that should be searched upon. This is done by adding
-			 * functions this object with a parameter name which matches the sType
+			 * controller this object with a parameter name which matches the sType
 			 * for that target column. This is the corollary of <i>afnSortData</i>
 			 * for searching data.
 			 *
-			 * The functions defined take a single parameter:
+			 * The controller defined take a single parameter:
 			 *
 		     *  1. `{*}` Data from the column cell to be prepared for searching
 			 *
@@ -14282,7 +14282,7 @@
 			 *
 			 * The column type tells DataTables what ordering to apply to the table
 			 * when a column is sorted upon. The order for each type that is defined,
-			 * is defined by the functions available in this object.
+			 * is defined by the controller available in this object.
 			 *
 			 * Each ordering option can be described by three properties added to
 			 * this object:
@@ -14295,7 +14295,7 @@
 			 * `{type}-asc` and `{type}-desc` together. It is generally recommended
 			 * that only `{type}-pre` is used, as this provides the optimal
 			 * implementation in terms of speed, although the others are provided
-			 * for compatibility with existing Javascript sort functions.
+			 * for compatibility with existing Javascript sort controller.
 			 *
 			 * `{type}-pre`: Functions defined take a single parameter:
 			 *
@@ -14306,7 +14306,7 @@
 			 * * `{*}` Data to be sorted upon
 			 *
 			 * `{type}-asc` and `{type}-desc`: Functions are typical Javascript sort
-			 * functions, taking two parameters:
+			 * controller, taking two parameters:
 			 *
 		     *  1. `{*}` Data to compare to the second parameter
 		     *  2. `{*}` Data to compare to the first parameter
@@ -14369,7 +14369,7 @@
 	
 	
 		/**
-		 * Index for what 'this' index API functions should use
+		 * Index for what 'this' index API controller should use
 		 *  @type int
 		 *  @deprecated Since v1.10
 		 */
@@ -14721,7 +14721,7 @@
 	
 	
 	
-	// Filter formatting functions. See model.ext.ofnSearch for information about
+	// Filter formatting controller. See model.ext.ofnSearch for information about
 	// what is required from these methods.
 	// 
 	// Note that additional search methods are added for the html numbers and
@@ -14777,7 +14777,7 @@
 	};
 	
 	
-	// Add the numeric 'deformatting' functions for sorting and search. This is done
+	// Add the numeric 'deformatting' controller for sorting and search. This is done
 	// in a function to provide an easy ability for the language options to add
 	// additional methods if a non-period decimal place is used.
 	function _addNumericSort ( decimalPlace ) {
@@ -14936,9 +14936,9 @@
 	} );
 	
 	/*
-	 * Public helper functions. These aren't used internally by DataTables, or
+	 * Public helper controller. These aren't used internally by DataTables, or
 	 * called by any of the options passed into DataTables, but they can be used
-	 * externally by developers working with DataTables. They are helper functions
+	 * externally by developers working with DataTables. They are helper controller
 	 * to make working with DataTables a little bit easier.
 	 */
 	
@@ -14952,7 +14952,7 @@
 	 * Helpers for `columns.render`.
 	 *
 	 * The options defined here can be used with the `columns.render` initialisation
-	 * option to provide a display renderer. The following functions are defined:
+	 * option to provide a display renderer. The following controller are defined:
 	 *
 	 * * `number` - Will format numeric data (defined by `columns.data`) for
 	 *   display, retaining the original unformatted data for sorting and filtering.
@@ -15026,7 +15026,7 @@
 	
 	
 	/**
-	 * Create a wrapper function for exporting an internal functions to an external API.
+	 * Create a wrapper function for exporting an internal controller to an external API.
 	 *  @param {string} fn API function name
 	 *  @returns {function} wrapped function
 	 *  @memberof DataTable#internal
@@ -15043,8 +15043,8 @@
 	
 	
 	/**
-	 * Reference to internal functions for use by plug-in developers. Note that
-	 * these methods are references to internal functions and are considered to be
+	 * Reference to internal controller for use by plug-in developers. Note that
+	 * these methods are references to internal controller and are considered to be
 	 * private. If you use these methods, be aware that they are liable to change
 	 * between versions.
 	 *  @namespace
