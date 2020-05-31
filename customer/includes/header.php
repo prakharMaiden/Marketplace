@@ -100,7 +100,7 @@
                             foreach ($categories as $category) {  ?>
                                 <li <?php  if($category['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php  echo $category['id'];?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
+                                    <a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $category['id']  ; ?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
                                     <?php  if($category['child'] != 0){ ?>
                                         <div class="mega-menu">
                                             <div class="mega-menu__column">
@@ -109,7 +109,7 @@
                                                     <?php
                                                     $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
                                                     foreach ($subcategories as $subcategory) {  ?>
-                                                        <li><a href="#"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             </div>

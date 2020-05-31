@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 30, 2020 at 04:10 PM
+-- Generation Time: May 26, 2020 at 03:12 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -33,8 +33,6 @@ CREATE TABLE `category` (
   `name` varchar(255) NOT NULL,
   `description` text,
   `picture` varchar(100) DEFAULT NULL,
-  `icon` varchar(20) DEFAULT NULL,
-  `child` int(11) NOT NULL DEFAULT '0',
   `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -44,9 +42,8 @@ CREATE TABLE `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `name`, `description`, `picture`, `icon`, `child`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'mobile', 'mobile', '200524011210-7.jpg', 'icon-phone', 1, 1, '2020-05-15 11:11:51', '2020-05-30 13:32:29'),
-(2, 'Laptops', 'Laptops', '200524011210-9.jpg', 'icon-desktop', 0, 1, '2020-05-28 13:11:56', '2020-05-30 13:36:06');
+INSERT INTO `category` (`id`, `name`, `description`, `picture`, `active`, `created_at`, `updated_at`) VALUES
+(1, 'mobile', 'mobile', NULL, 1, '2020-05-15 11:11:51', '2020-05-15 11:11:51');
 
 -- --------------------------------------------------------
 
@@ -72,8 +69,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `email`, `mobile`, `password`, `email_verification_code`, `email_verified`, `mobile_verified`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, 0, '2020-05-01 12:45:12', '2020-05-15 13:11:36'),
-(2, 'mayanklion1994@gmail.com', '9891494860', 'e10adc3949ba59abbe56e057f20f883e', NULL, 0, 0, 1, '2020-05-28 10:40:59', '2020-05-28 10:40:59');
+(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, 0, '2020-05-01 12:45:12', '2020-05-15 13:11:36');
 
 -- --------------------------------------------------------
 
@@ -119,8 +115,7 @@ CREATE TABLE `customer_detail` (
 --
 
 INSERT INTO `customer_detail` (`id`, `customer_id`, `first_name`, `last_name`, `class`, `room`, `building`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `voicemail`, `credit_card`, `credit_card_type_id`, `card_exp_mo`, `card_ex_yr`, `billing_address`, `billing_city`, `billing_region`, `billing_postal_code`, `billing_country`, `shipping_address`, `shipping_city`, `shipping_region`, `shipping_postal_code`, `shipping_country`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Swati', 'Chaudhary', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-01 12:45:12', '2020-05-01 14:10:51'),
-(2, 2, 'Mayank', 'Chaudhary', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-28 10:41:00', '2020-05-28 10:41:00');
+(1, 1, 'Swati', 'Chaudhary', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-01 12:45:12', '2020-05-01 14:10:51');
 
 -- --------------------------------------------------------
 
@@ -196,6 +191,7 @@ CREATE TABLE `payment` (
 
 CREATE TABLE `products` (
   `id` int(11) NOT NULL,
+  `category_id` int(11) NOT NULL,
   `subcategory_id` int(11) NOT NULL,
   `supplier_id` int(11) NOT NULL,
   `sku` varchar(10) DEFAULT NULL,
@@ -229,11 +225,10 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `subcategory_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 1, '2020-05-15 11:18:36', '2020-05-24 09:53:35'),
-(2, 1, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 1, '2020-05-15 11:19:04', '2020-05-24 09:53:54'),
-(11, 1, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 0, '2020-05-15 11:19:04', '2020-05-24 09:53:39'),
-(12, 2, 5, '', '', NULL, 'sasa', 'asasas', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', NULL, '', 1, '2020-05-30 11:31:52', '2020-05-30 14:02:53');
+INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 1, '2020-05-15 11:18:36', '2020-05-24 09:53:35'),
+(2, 1, 1, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 1, '2020-05-15 11:19:04', '2020-05-24 09:53:54'),
+(11, 1, 1, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', NULL, '56', 0, '2020-05-15 11:19:04', '2020-05-24 09:53:39');
 
 -- --------------------------------------------------------
 
@@ -288,7 +283,7 @@ CREATE TABLE `subcategory` (
   `category_id` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `description` text NOT NULL,
-  `picture` varchar(50) NOT NULL,
+  `picture` varchar(10) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
@@ -299,8 +294,8 @@ CREATE TABLE `subcategory` (
 --
 
 INSERT INTO `subcategory` (`id`, `category_id`, `name`, `description`, `picture`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 'smartphone', 'smartphone', '200524011210-1.jpg', 1, '2020-05-15 11:12:33', '2020-05-30 13:58:30'),
-(2, 1, 'apple', 'apple', '200524011210-7.jpg', 1, '2020-05-15 11:12:49', '2020-05-30 13:58:51');
+(1, 1, 'smartphone', 'smartphone', '', 1, '2020-05-15 11:12:33', '2020-05-15 11:12:33'),
+(2, 1, 'apple', 'smartphone', '', 1, '2020-05-15 11:12:49', '2020-05-15 11:12:49');
 
 -- --------------------------------------------------------
 
@@ -396,6 +391,7 @@ ALTER TABLE `payment`
 --
 ALTER TABLE `products`
   ADD PRIMARY KEY (`id`),
+  ADD KEY `category_id` (`category_id`),
   ADD KEY `supplier_id` (`supplier_id`),
   ADD KEY `subcategory_id` (`subcategory_id`);
 
@@ -435,19 +431,19 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `customer_detail`
 --
 ALTER TABLE `customer_detail`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orders`
@@ -465,7 +461,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `shipper`
@@ -519,6 +515,7 @@ ALTER TABLE `order_details`
 -- Constraints for table `products`
 --
 ALTER TABLE `products`
+  ADD CONSTRAINT `products_ibfk_3` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `products_ibfk_4` FOREIGN KEY (`supplier_id`) REFERENCES `suppliers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `products_ibfk_5` FOREIGN KEY (`subcategory_id`) REFERENCES `subcategory` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 

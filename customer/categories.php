@@ -87,20 +87,21 @@ $categoryName= mysqli_fetch_assoc($result);
 
                 <div class="ps-block__content">
                     <?php
+
                     $subcategories=mysqli_query($con,"select * from subcategory where category_id='$categoryName[id]'") ;
-                    foreach ($subcategories as $subcategory) {
+                    foreach ($subcategories as $subcategoryName) {
                         ?>
                         <div class="ps-block__item">
                             <a class="ps-block__overlay" href="#"></a>
                             <?php  if(!empty($category['picture'] )){?>
-                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/subcategory/<?php echo $subcategory['picture'];?>" alt="">
+                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/subcategory/<?php echo $subcategoryName['picture'];?>" alt="">
 
                             <?php }else {?>
                                 <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
                             <?php }?>
-                            <p> <?php echo ucfirst($subcategory['name'])?> </p>
-                            <?php $products = mysqli_query($con,"select * from products where subcategory_id='$subcategory[id]'") ;?>
-                            <span><?php echo count($products)?> Items</span>
+                            <p> <?php echo ucfirst($subcategoryName['name'])?> </p>
+                            <?php $products = mysqli_query($con,"select COUNT(*) from products where subcategory_id='$subcategoryName[id]'") ;?>
+                            <span><?php print_r(count($products));die;echo ($products)?> Items</span>
                         </div>
                     <?php }?>
                 </div>
