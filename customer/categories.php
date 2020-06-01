@@ -87,23 +87,23 @@ $categoryName= mysqli_fetch_assoc($result);
 
                 <div class="ps-block__content">
                     <?php
-
-                    $subcategories=mysqli_query($con,"select * from subcategory where category_id='$categoryName[id]'") ;
-                    foreach ($subcategories as $subcategoryName) {
+                    $subcategories = mysqli_query($con, "select count(*) as products,subcategory.name,subcategory.picture,subcategory.id from subcategory, products where subcategory.id=products.subcategory_id group by subcategory.name");
+                    foreach ($subcategories as $subcategory) {
                         ?>
                         <div class="ps-block__item">
-                            <a class="ps-block__overlay" href="#"></a>
-                            <?php  if(!empty($category['picture'] )){?>
-                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/subcategory/<?php echo $subcategoryName['picture'];?>" alt="">
+                            <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategory['id']  ; ?>">  </a>
+                            <?php  if(!empty($subcategory['picture'] )){?>
+                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/subcategory/<?php echo $subcategory['picture'];?>" alt="">
 
                             <?php }else {?>
                                 <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
                             <?php }?>
-                            <p> <?php echo ucfirst($subcategoryName['name'])?> </p>
-                            <?php $products = mysqli_query($con,"select COUNT(*) from products where subcategory_id='$subcategoryName[id]'") ;?>
-                            <span><?php print_r(count($products));die;echo ($products)?> Items</span>
+                            <p> <?php echo ucfirst($subcategory['name'])?> </p>
+
+                            <span><?php echo $subcategory['products'];?> Items</span>
+
                         </div>
-                    <?php }?>
+                    <?php } die;?>
                 </div>
             </div>
         </div>

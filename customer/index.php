@@ -72,10 +72,20 @@ include("includes/header.php");
                         $products=mysqli_query($con,"select * from products where date(created_at) ='$currentDate'  and discount != ''") ;
                         foreach ($products as $product) {  ?>
                             <div class="ps-product ps-product--inner">
-                                <div class="ps-product__thumbnail"><a href="#"><img src="<?php echo PUBLIC_PATH;?>/img/products/home/1.jpg" alt=""></a>
-                                    <div class="ps-product__badge">-<?php echo $product['discount'];?></div>
+                                <div class="ps-product__thumbnail">
+                                    <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>">
+                                        <?php  if(!empty($product['logo'] )){?>
+                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['logo'];?>" alt="">
+
+                                        <?php }else {?>
+                                            <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
+                                        <?php }?>
+
+
+                                    </a>
+                                    <div class="ps-product__badge"><?php echo $product['discount'];?></div>
                                     <ul class="ps-product__actions">
-                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                        <li><a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
@@ -153,43 +163,57 @@ include("includes/header.php");
                     </div>
                     <div class="ps-section__content">
                         <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                            <div class="ps-product">
-                                <div class="ps-product__thumbnail"><a href="#"><img src="<?php echo PUBLIC_PATH;?>/img/products/electronic/1.jpg" alt=""></a>
-                                    <div class="ps-product__badge">-16%</div>
-                                    <ul class="ps-product__actions">
-                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                    </ul>
-                                </div>
-                                <div class="ps-product__container"><a class="ps-product__vendor" href="#">Go Pro</a>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="#">Marshall Kilburn Portable Wireless</a>
-                                        <div class="ps-product__rating">
-                                            <select class="ps-rating" data-read-only="true">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select><span>01</span>
-                                        </div>
-                                        <p class="ps-product__price sale">$567.99 <del>$670.00 </del></p>
-                                    </div>
-                                    <div class="ps-product__content hover"><a class="ps-product__title" href="#">Marshall Kilburn Portable Wireless</a>
-                                        <p class="ps-product__price sale">$567.99 <del>$670.00 </del></p>
-                                    </div>
-                                </div>
+            <?php
+            $subcatproducts = mysqli_query($con, "select * from   products where products.category_id='$category[id]'");
+
+            foreach ($subcatproducts as $subcatproduct){
+                $res= mysqli_query($con,"select * from suppliers where id='$subcatproduct[supplier_id]'") ;
+                $supplier= mysqli_fetch_assoc($res);
+                ?>
+
+                <div class="ps-product">
+                    <div class="ps-product__thumbnail">
+
+                        <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>">
+                            <?php  if(!empty($subcatproduct['logo'] )){?>
+                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $subcatproduct['logo'];?>" alt="">
+                            <?php }else {?>
+                                <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
+                            <?php }?>
+                        </a>
+                <?php  if(!empty($subcatproduct['discount'] )){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?></div> <?php }?>
+                        <ul class="ps-product__actions">
+                            <li><a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
+                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                        </ul>
+                    </div>
+
+                    <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
+                        <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                            <div class="ps-product__rating">
+                                <select class="ps-rating" data-read-only="true">
+                                    <option value="1">1</option>
+                                    <option value="1">2</option>
+                                    <option value="1">3</option>
+                                    <option value="1">4</option>
+                                    <option value="2">5</option>
+                                </select><span>01 Comment</span>
                             </div>
+                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
+                        </div>
+                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
+                        </div>
+                    </div>
+                </div>
+            <?php }?>
                         </div>
                     </div>
                 </div>
             </div>
           <?php }?>
-
-
-
-
 
         <div class="ps-home-ads">
             <div class="ps-container">
@@ -221,7 +245,14 @@ include("includes/header.php");
                         <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
                             <div class="ps-product--horizontal">
                                 <div class="ps-product__thumbnail">
-                                    <a href="#"><img src="<?php echo PUBLIC_PATH;?>/img/products/arrivals/1.jpg" alt=""></a></div>
+                                    <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>">
+                                        <?php  if(!empty($product['logo'] )){?>
+                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['logo'];?>" alt="">
+                                        <?php }else {?>
+                                            <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
+                                        <?php }?>
+                                    </a>
+                                </div>
                                 <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>"><?php echo ucfirst( $product['name']);?></a>
                                     <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?> <del>Rs. <?php echo $product['msrp'];?></del></p>
                                 </div>

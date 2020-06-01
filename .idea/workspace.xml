@@ -24,7 +24,7 @@
       <change beforePath="$PROJECT_DIR$/customer/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/categories.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/kgi.sql" beforeDir="false" afterPath="$PROJECT_DIR$/kgi.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/subcategories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/subcategories.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +83,12 @@
       <workItem from="1590919525242" duration="1588000" />
       <workItem from="1590921816513" duration="1749000" />
       <workItem from="1590923630253" duration="1902000" />
-      <workItem from="1590925561442" duration="1218000" />
+      <workItem from="1590925561442" duration="1309000" />
+      <workItem from="1591012975559" duration="1670000" />
+      <workItem from="1591014704732" duration="1764000" />
+      <workItem from="1591016520767" duration="1822000" />
+      <workItem from="1591018389741" duration="2128000" />
+      <workItem from="1591023302335" duration="283000" />
     </task>
     <servers />
   </component>

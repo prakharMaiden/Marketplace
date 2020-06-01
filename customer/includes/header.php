@@ -32,20 +32,20 @@
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            $categories=mysqli_query($con,"select * from category") ;
-                            foreach ($categories as $category) {  ?>
-                                <li <?php  if($category['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+                            $categoriesw=mysqli_query($con,"select * from category") ;
+                            foreach ($categoriesw as $categoryw) {  ?>
+                                <li <?php  if($categoryw['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php  echo $category['id'];?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
-                                    <?php  if($category['child'] != 0){ ?>
+                                    <a href="<?php  echo $categoryw['id'];?>"><i class="<?php echo $categoryw['icon']  ; ?>"></i> <?php echo ucfirst($categoryw['name'])  ; ?></a>
+                                    <?php  if($categoryw['child'] != 0){ ?>
                                         <div class="mega-menu">
                                             <div class="mega-menu__column">
-                                                <h4><?php echo ucfirst($category['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                <h4><?php echo ucfirst($categoryw['name'])  ; ?><span class="sub-toggle"></span></h4>
                                                 <ul class="mega-menu__list">
                                                     <?php
-                                                    $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
-                                                    foreach ($subcategories as $subcategory) {  ?>
-                                                        <li><a href="#"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                                    $subcategoriess=mysqli_query($con,"select * from subcategory where category_id='$categoryw[id]'") ;
+                                                    foreach ($subcategoriess as $subcategorys){   ?>
+                                                        <li><a href="#"><?php echo ucfirst($subcategorys['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -65,9 +65,9 @@
                         <select class="form-control" name="category_id" id="category_id">
                             <option value="all" selected="selected">All</option>
                             <?php
-                            $categories=mysqli_query($con,"select * from category") ;
-                            foreach ($categories as $category) {  ?>
-                                <option value="<?php  echo $category['id'];?>" ><?php echo $category['name']  ; ?></option>
+                            $categoriess=mysqli_query($con,"select * from category") ;
+                            foreach ($categoriess as $categorys) {  ?>
+                                <option value="<?php  echo $categorys['id'];?>" ><?php echo $categorys['name']  ; ?></option>
                             <?php  }  ?>
                         </select>
                     </div>
@@ -96,20 +96,20 @@
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            $categories=mysqli_query($con,"select * from category") ;
-                            foreach ($categories as $category) {  ?>
-                                <li <?php  if($category['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+                            $categoriesShow=mysqli_query($con,"select * from category") ;
+                            foreach ($categoriesShow as $categorieShow) {  ?>
+                                <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $category['id']  ; ?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
-                                    <?php  if($category['child'] != 0){ ?>
+                                    <a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                                    <?php  if($categorieShow['child'] != 0){ ?>
                                         <div class="mega-menu">
                                             <div class="mega-menu__column">
-                                                <h4><?php echo ucfirst($category['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                                 <ul class="mega-menu__list">
                                                     <?php
-                                                    $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
-                                                    foreach ($subcategories as $subcategory) {  ?>
-                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                                    $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
+                                                    foreach ($subcategoriesShow as $subcategorieShow) {  ?>
+                                                        <li><a href="#"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -184,20 +184,20 @@
     <div class="ps-panel__content">
         <ul class="menu--mobile">
             <?php
-            $categories=mysqli_query($con,"select * from category") ;
-            foreach ($categories as $category) {  ?>
-                <li <?php  if($category['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+            $categoriesShow=mysqli_query($con,"select * from category") ;
+            foreach ($categoriesShow as $categorieShow) {  ?>
+                <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                    <a href="<?php  echo $category['id'];?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
-                    <?php  if($category['child'] != 0){ ?>
+                    <a href="<?php  echo $categorieShow['id'];?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                    <?php  if($categorieShow['child'] != 0){ ?>
                         <div class="mega-menu">
                             <div class="mega-menu__column">
-                                <h4><?php echo ucfirst($category['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                 <ul class="mega-menu__list">
                                     <?php
-                                    $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
-                                    foreach ($subcategories as $subcategory) {  ?>
-                                        <li><a href="#"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                    $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
+                                    foreach ($subcategoriesShow as $subcategorieShow) {  ?>
+                                        <li><a href="#"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                     <?php }?>
                                 </ul>
                             </div>
