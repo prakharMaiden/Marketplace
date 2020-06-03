@@ -8,7 +8,7 @@ $categoryName= mysqli_fetch_assoc($result);
     <div class="ps-breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
-                <li><a href="index.php">Home</a></li>
+                <li><a href="<?php echo PATH;?>/customer/index.php">Home</a></li>
                 <li><?php echo ucfirst($categoryName['name'])?></li>
             </ul>
         </div>

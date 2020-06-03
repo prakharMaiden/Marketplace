@@ -57,7 +57,7 @@
 
                         </ul>
                     </div>
-                </div><a class="ps-logo" href="<?php echo PATH;?>/index.php"><h3>Krishna Golds Industries</h3></a>
+                </div><a class="ps-logo" href="<?php echo PATH;?>/customer/index.php"><h3>Krishna Golds Industries</h3></a>
             </div>
             <div class="header__center">
                 <form class="ps-form--quick-search" action="" method="Post">
@@ -109,7 +109,7 @@
                                                     <?php
                                                     $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
                                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                                        <li><a href="#"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -126,11 +126,11 @@
             <div class="navigation__right">
                 <ul class="menu">
                     <li class="current-menu-item menu-item-has-children" style="visibility: hidden">
-                        <a href="../index.php">Home</a><span class="sub-toggle"></span>
+                        <a href="<?php echo PATH; ?>/customer/index.php">Home</a><span class="sub-toggle"></span>
                     </li>
                 </ul>
                 <ul class="navigation__extra">
-                    <li><a href="#">Sell on Krishna Golds Industries</a></li>
+                    <li><a href="<?php echo PATH; ?>/seller/auth/signup.php">Sell on Krishna Golds Industries</a></li>
                     <li><a href="#">Track your order</a></li>
 
                 </ul>
@@ -144,7 +144,7 @@
         </div>
         <div class="header__right">
             <ul class="navigation__extra">
-                <li><a href="#">Sell on Krishna Golds Industries</a></li>
+                <li><a href="<?php echo PATH;?>/seller/auth/signup.php">Sell on Krishna Golds Industries</a></li>
                 <li><a href="#">Track your order</a></li>
             </ul>
         </div>
@@ -197,7 +197,7 @@
                                     <?php
                                     $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                        <li><a href="#"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                     <?php }?>
                                 </ul>
                             </div>

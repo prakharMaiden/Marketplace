@@ -22,9 +22,20 @@
     <list default="true" id="07a1ef17-1738-41a9-89e4-34fd634d84f8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/checkout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/compare.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/compare.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/contact-us.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/contact-us.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/faqs.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/faqs.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/policy.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/policy.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/product-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/product-details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/shopping-cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/shopping-cart.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/subcategories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/subcategories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/term-condition.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/term-condition.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/vendor-store.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/vendor-store.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/whishlist.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/wishlist.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +100,9 @@
       <workItem from="1591016520767" duration="1822000" />
       <workItem from="1591018389741" duration="2128000" />
       <workItem from="1591023302335" duration="283000" />
+      <workItem from="1591181853550" duration="1736000" />
+      <workItem from="1591186935986" duration="2156000" />
+      <workItem from="1591189157344" duration="1286000" />
     </task>
     <servers />
   </component>
@@ -124,5 +138,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="389" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1590837679588" />
+    <state x="339" y="164" key="run.anything.popup" timestamp="1591183128171">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="164" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1591183128171" />
   </component>
 </project>

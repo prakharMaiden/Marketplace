@@ -159,7 +159,7 @@ include("includes/header.php");
             <div class="ps-product-list ps-clothings">
                 <div class="ps-container">
                     <div class="ps-section__header">
-                        <h3><?php echo $category['name']  ; ?></h3>
+                        <h3><?php echo strtoupper($category['name'])  ; ?></h3>
                     </div>
                     <div class="ps-section__content">
                         <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
