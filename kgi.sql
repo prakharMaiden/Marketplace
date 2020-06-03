@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 03:44 PM
+-- Generation Time: Jun 03, 2020 at 03:47 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -234,8 +234,8 @@ CREATE TABLE `products` (
 INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `customer_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '3%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-1.jpg', '56', 1, '2020-05-31 11:18:36', '2020-06-01 13:17:08'),
 (2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '10%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-7.jpg', '56', 1, '2020-05-31 11:19:04', '2020-06-01 13:17:23'),
-(11, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-9.jpg', '56', 0, '2020-06-01 11:19:04', '2020-06-01 13:21:28'),
-(12, 2, 2, 0, 5, '', '', NULL, 'sasa', 'asasas', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '200524011210-1.jpg', '', 1, '2020-06-01 11:31:52', '2020-06-01 13:20:59');
+(11, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-9.jpg', '56', 0, '2020-06-03 11:19:04', '2020-06-03 13:46:47'),
+(12, 2, 2, 0, 5, '', '', NULL, 'sasa', 'asasas', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '200524011210-1.jpg', '', 1, '2020-06-03 11:31:52', '2020-06-03 13:46:42');
 
 -- --------------------------------------------------------
 
