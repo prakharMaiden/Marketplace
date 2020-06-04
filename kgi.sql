@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 03, 2020 at 03:47 PM
+-- Generation Time: Jun 04, 2020 at 02:35 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -220,7 +220,8 @@ CREATE TABLE `products` (
   `product_available` varchar(50) DEFAULT NULL,
   `discount_available` varchar(50) DEFAULT NULL,
   `current_order` varchar(100) DEFAULT NULL,
-  `logo` varchar(100) DEFAULT NULL,
+  `featured_image` varchar(256) DEFAULT NULL,
+  `images` varchar(256) DEFAULT NULL,
   `size_url` varchar(50) NOT NULL,
   `active` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -231,11 +232,10 @@ CREATE TABLE `products` (
 -- Dumping data for table `products`
 --
 
-INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `customer_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '3%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-1.jpg', '56', 1, '2020-05-31 11:18:36', '2020-06-01 13:17:08'),
-(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '10%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-7.jpg', '56', 1, '2020-05-31 11:19:04', '2020-06-01 13:17:23'),
-(11, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-9.jpg', '56', 0, '2020-06-03 11:19:04', '2020-06-03 13:46:47'),
-(12, 2, 2, 0, 5, '', '', NULL, 'sasa', 'asasas', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '200524011210-1.jpg', '', 1, '2020-06-03 11:31:52', '2020-06-03 13:46:42');
+INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `customer_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `featured_image`, `images`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '3%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-1.jpg', '', '56', 1, '2020-05-31 11:18:36', '2020-06-01 13:17:08'),
+(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '10%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-7.jpg', '', '56', 1, '2020-05-31 11:19:04', '2020-06-01 13:17:23'),
+(11, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-9.jpg', '', '56', 1, '2020-06-03 11:19:04', '2020-06-04 12:03:56');
 
 -- --------------------------------------------------------
 
@@ -271,6 +271,14 @@ CREATE TABLE `stock_management` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stock_management`
+--
+
+INSERT INTO `stock_management` (`id`, `supplier_id`, `product_id`, `quantity`, `price_per_product`, `total_price`, `total_discount`, `date_in_stock`, `active`, `created_at`, `updated_at`) VALUES
+(1, 5, 2, '50', '50000', '12000', '3', '2020-06-30 00:00:00', 1, '2020-06-04 08:08:39', '2020-06-04 12:02:21'),
+(2, 5, 1, '50', '100', '12007', '4', '2020-06-30 00:00:00', 1, '2020-06-04 12:00:13', '2020-06-04 12:02:15');
 
 -- --------------------------------------------------------
 
@@ -461,7 +469,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `shipper`
@@ -473,7 +481,7 @@ ALTER TABLE `shipper`
 -- AUTO_INCREMENT for table `stock_management`
 --
 ALTER TABLE `stock_management`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
