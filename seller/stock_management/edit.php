@@ -1,12 +1,13 @@
 <?php
 include_once("./../controller/stock_management/stockManagementController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:../auth/loginController.php");
+    header("location:../auth/login.php");
 }
 $id = $_GET['id'];
-$stockManagement=new stockManagementController();
+$stockManagementClass=new stockManagementController();
+$stockManagement=$stockManagementClass->edit($id);
 if(isset($_POST['submit'])) {
-    $response=$stockManagement->update($id);
+    $response=$stockManagementClass->update($id);
 }
 include("../includes/header.php");
 ?>
@@ -52,7 +53,7 @@ include("../includes/header.php");
                                                     <?php
                                                     $products=mysqli_query($con,"select * from products") ;
                                                     foreach ($products as $product) {  ?>
-                                                        <option value="<?php  echo $product['id'];?>" ><?php echo $product['name']  ; ?></option>
+                                                        <option value="<?php  echo $product['id'];?>" <?php if($stockManagement['product_id'] == $product['id']){ echo'selected'; }?>><?php echo $product['name']  ; ?></option>
                                                     <?php  }  ?>
                                                 </select></div>
                                         </div>
@@ -63,10 +64,10 @@ include("../includes/header.php");
                                             <div class="controls">
                                                 <select id="quantity" name="quantity" class="form-control" required>
                                                     <option value="">Please select</option>
-                                                    <option value="50">50</option>
-                                                    <option value="100">100</option>
-                                                    <option value="500">500</option>
-                                                    <option value="1000">1000</option>
+                                                    <option value="50"  <?php if($stockManagement['quantity'] == '50'){ echo'selected'; }?>>50</option>
+                                                    <option value="100" <?php if($stockManagement['quantity'] == '100'){ echo'selected'; }?>>100</option>
+                                                    <option value="500" <?php if($stockManagement['quantity'] == '500'){ echo'selected'; }?>>500</option>
+                                                    <option value="1000" <?php if($stockManagement['quantity'] == '1000'){ echo'selected'; }?>>1000</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -78,7 +79,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="price_per_product">Price per product</label>
                                             <div class="controls">
-                                                <input type="text" id="price_per_product" name="price_per_product"  class="form-control" >
+                                                <input type="number" min="0"  id="price_per_product" value="<?php echo $stockManagement['price_per_product']?>"  name="price_per_product"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -86,7 +87,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="total_price">Total Price</label>
                                             <div class="controls">
-                                                <input type="text" id="total_price" name="total_price"  class="form-control" >
+                                                <input type="number" min="0"  id="total_price" value="<?php echo $stockManagement['total_price']?>"  name="total_price"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -97,7 +98,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="total_discount">Total Discount</label>
                                             <div class="controls">
-                                                <input type="text" id="total_discount" name="total_discount"  class="form-control" >
+                                                <input type="number" min="0" id="total_discount" value="<?php echo $stockManagement['total_discount']?>"  name="total_discount"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +106,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="date_in_stock">In stock date</label>
                                             <div class="controls">
-                                                <input type="date" id="date_in_stock" name="date_in_stock"  class="form-control" >
+                                                <input type="date" id="date_in_stock" value="<?php echo date('Y-m-d', strtotime($stockManagement['date_in_stock']))?>"  name="date_in_stock"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -118,8 +119,8 @@ include("../includes/header.php");
                                             <div class="controls">
                                                 <select id="active" name="active" class="form-control" >
                                                     <option value="">Please select</option>
-                                                    <option value="1" >Active</option>
-                                                    <option value="0" >De-active</option>
+                                                    <option value="1" <?php if($stockManagement['active'] == '1'){ echo'selected'; }?>>Yes</option>
+                                                    <option value="0" <?php if($stockManagement['active'] == '0'){ echo'selected'; }?>>No</option>
                                                 </select>
                                             </div>
                                         </div>

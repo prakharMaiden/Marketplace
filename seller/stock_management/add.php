@@ -77,7 +77,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="price_per_product">Price per product</label>
                                             <div class="controls">
-                                                <input type="text" id="price_per_product" name="price_per_product"  class="form-control" >
+                                                <input type="number" min="0"  id="price_per_product" name="price_per_product"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -85,7 +85,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="total_price">Total Price</label>
                                             <div class="controls">
-                                                <input type="text" id="total_price" name="total_price"  class="form-control" >
+                                                <input type="number" min="0"  id="total_price" name="total_price"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -96,7 +96,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="total_discount">Total Discount</label>
                                             <div class="controls">
-                                                <input type="text" id="total_discount" name="total_discount"  class="form-control" >
+                                                <input type="number" min="0"  id="total_discount" name="total_discount"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -117,8 +117,8 @@ include("../includes/header.php");
                                             <div class="controls">
                                                 <select id="active" name="active" class="form-control" >
                                                     <option value="">Please select</option>
-                                                    <option value="1" >Active</option>
-                                                    <option value="0" >De-active</option>
+                                                    <option value="1" >Yes</option>
+                                                    <option value="0" >No</option>
                                                 </select>
                                             </div>
                                         </div>

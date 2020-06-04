@@ -23,8 +23,8 @@ class stockManagementController {
 
     // Function for add
     public function add() {
-        $result = "INSERT INTO stock_management (supplier_id,category_id,subcategory_id,product_id,quantity,price_per_product,total_price,total_discount,date_in_stock,active)
-                   VALUES('$_SESSION[supplier_id]','$_REQUEST[category_id]','$_REQUEST[subcategory_id]','$_REQUEST[product_id]','$_REQUEST[quantity]','$_REQUEST[price_per_product]','$_REQUEST[total_price]','$_REQUEST[total_discount]','$_REQUEST[date_in_stock]','$_REQUEST[active]')";
+        $result = "INSERT INTO stock_management (supplier_id,product_id,quantity,price_per_product,total_price,total_discount,date_in_stock,active)
+                   VALUES('$_SESSION[supplier_id]','$_REQUEST[product_id]','$_REQUEST[quantity]','$_REQUEST[price_per_product]','$_REQUEST[total_price]','$_REQUEST[total_discount]','$_REQUEST[date_in_stock]','$_REQUEST[active]')";
 
         if (mysqli_query($this->db, $result)) {
             header("location:index.php");
@@ -55,17 +55,7 @@ class stockManagementController {
     public function update($id){
         $result=mysqli_query($this->db,"select * from stock_management where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
         $productData = mysqli_fetch_assoc($result);
-         if(!empty($_REQUEST['category_id']))
-            $category_id = $_REQUEST['category_id'];
-        else
-            $category_id = $productData['category_id'];
-
-        if(!empty($_REQUEST['subcategory_id']))
-            $subcategory_id = $_REQUEST['subcategory_id'];
-        else
-            $subcategory_id = $productData['subcategory_id'];
-
-        if(!empty($_REQUEST['product_id']))
+         if(!empty($_REQUEST['product_id']))
             $product_id = $_REQUEST['product_id'];
         else
             $product_id = $productData['product_id'];
@@ -102,16 +92,16 @@ class stockManagementController {
 
 
         $result = "UPDATE stock_management SET  
-                                       category_id='$category_id',
-                                         subcategory_id='$subcategory_id',
                                          product_id='$product_id',          
                                           quantity='$quantity',
                                           price_per_product='$price_per_product',
                                            total_price='$total_price',
                                            total_discount='$total_discount',
-                                           date_in_stock='$date_in_stock,
+                                           date_in_stock='$date_in_stock',
                                            active='$active'
                                              WHERE  id='$id'";
+
+        //print_r($result);die;
         if (mysqli_query($this->db, $result)) {
             header("location:index.php");
             $response = array(

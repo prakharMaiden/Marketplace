@@ -8,7 +8,9 @@ if(isset($_POST['submit'])) {
     $response=$productClass->add();
 }
 include("../../includes/header.php");
-?><div class="content-wrapper">
+?>
+<link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/summernote/summernote-bs4.css">
+<div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
@@ -39,7 +41,7 @@ include("../../includes/header.php");
                                     </div>
                                 <?php } ?>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="name">Name</label>
                                             <div class="controls">
@@ -47,39 +49,7 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="description">Description</label>
-                                            <div class="controls">
-                                                <input type="text" id="description" name="description"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="sku">SKU</label>
-                                            <div class="controls">
-                                                <input type="text" id="sku" name="sku"   class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="id_sku">ID SKU</label>
-                                            <div class="controls">
-                                                <input type="text" id="id_sku" name="id_sku"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="category_id">Category</label>
                                             <div class="controls">
@@ -94,13 +64,12 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="subcategory_id">Sub Category</label>
                                             <div class="controls">
                                                 <select id="subcategory_id" name="subcategory_id" class="form-control" required>
                                                     <option value="">Please select</option>
-
                                                 </select>
                                             </div>
                                         </div>
@@ -108,34 +77,79 @@ include("../../includes/header.php");
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="quantity_per_unit">Quantity Per Unit</label>
-                                            <div class="controls">
-                                                <input type="text" id="quantity_per_unit" name="quantity_per_unit"  class="form-control" >
+                                            <label for="featured_image">Featured image</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="featured_image" name="featured_image" required>
+                                                    <label class="custom-file-label" for="featured_image">Choose file</label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label for="images">Images</label>
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" id="images" name="images[]" multiple>
+                                                    <label class="custom-file-label" for="images">Choose file</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="unit_price">Unit price</label>
                                             <div class="controls">
-                                                <input type="text" id="unit_price" name="unit_price"  class="form-control" >
+                                                <input type="number" min="0" id="unit_price" name="unit_price"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="msrp">MSRP</label>
+                                            <label class="control-label" for="sku">SKU</label>
                                             <div class="controls">
-                                                <input type="text" id="msrp" name="msrp"  class="form-control" >
+                                                <input type="text" id="sku" name="sku"   class="form-control" >
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="id_sku">ID SKU</label>
+                                            <div class="controls">
+                                                <input type="text" id="id_sku" name="id_sku"  class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="quantity_per_unit">Quantity Per Unit</label>
+                                            <div class="controls">
+                                                <input type="number" min="0"  id="quantity_per_unit" name="quantity_per_unit"  class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="msrp">MSRP</label>
+                                            <div class="controls">
+                                                <input type="number" min="0"  id="msrp" name="msrp"  class="form-control" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="available_size">Available size</label>
                                             <div class="controls">
@@ -143,10 +157,7 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="available_colors">Available colors</label>
                                             <div class="controls">
@@ -154,7 +165,11 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="size">Size</label>
                                             <div class="controls">
@@ -162,10 +177,8 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="color">Color</label>
                                             <div class="controls">
@@ -173,18 +186,18 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="discount">Discount</label>
                                             <div class="controls">
-                                                <input type="text" id="discount" name="discount"  class="form-control" >
+                                                <input type="number" min="0"  id="discount" name="discount"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="unit_weight">Unit weight</label>
                                             <div class="controls">
@@ -192,7 +205,7 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="unit_in_stock">Unit in stock</label>
                                             <div class="controls">
@@ -200,10 +213,7 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="available_size">Available size</label>
                                             <div class="controls">
@@ -211,7 +221,11 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="available_colors">Available colors</label>
                                             <div class="controls">
@@ -219,10 +233,8 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="reorder_level">Reorder level</label>
                                             <div class="controls">
@@ -230,7 +242,7 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="unit_on_order">Unit on order</label>
                                             <div class="controls">
@@ -241,26 +253,31 @@ include("../../includes/header.php");
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="product_available">Product available</label>
                                             <div class="controls">
-                                                <input type="text" id="product_available" name="product_available"  class="form-control" >
+                                                <select id="product_available" name="product_available" class="form-control" >
+                                                    <option value="">Please select</option>
+                                                    <option value="yes" >Yes</option>
+                                                    <option value="no" >No</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="discount_available">Discount available</label>
                                             <div class="controls">
-                                                <input type="text" id="discount_available" name="discount_available"  class="form-control" >
+                                                <select id="discount_available" name="discount_available" class="form-control" >
+                                                    <option value="">Please select</option>
+                                                    <option value="yes">Yes</option>
+                                                    <option value="no">No</option>
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="current_order">Current order</label>
                                             <div class="controls">
@@ -268,22 +285,14 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="size_url">Size Url</label>
-                                            <div class="controls">
-                                                <input type="text" id="size_url" name="size_url"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="logo">Image</label>
+                                            <label class="control-label" for="size_url">Size Url</label>
                                             <div class="controls">
-                                                <input type="file" id="logo" name="logo[]"  class="form-control" >
+                                                <input type="text" id="size_url" name="size_url"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -293,9 +302,20 @@ include("../../includes/header.php");
                                             <div class="controls">
                                                 <select id="active" name="active" class="form-control" >
                                                     <option value="">Please select</option>
-                                                    <option value="1" >Active</option>
-                                                    <option value="0" >De-active</option>
+                                                    <option value="1" >Yes</option>
+                                                    <option value="0" >No</option>
                                                 </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="description">Description</label>
+                                            <div class="controls">
+                                                <textarea type="text" id="description" name="description"  class="form-control"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -319,6 +339,13 @@ include("../../includes/header.php");
     </section>
 </div>
 <?php include("../../includes/footer.php");?>
+<script src="<?php echo PUBLIC_PATH?>/plugins/summernote/summernote-bs4.min.js"></script>
+<script>
+    $(function () {
+        // Summernote
+        $('#description').summernote()
+    })
+</script>
 <script>
     var validator = $("#productAddForm").validate();
     $(document).ready(function() {

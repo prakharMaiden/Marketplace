@@ -23,8 +23,66 @@ class productController {
 
     // Function for add
     public function add() {
-        $result = "INSERT INTO products (name,supplier_id,category_id,subcategory_id,description,msrp,quantity_per_unit,sku,id_sku,unit_price,available_size,available_colors,size,color,discount,unit_weight,unit_in_stock,unit_on_order,reorder_level,product_available,size_url,discount_available,current_order)
-                   VALUES('$_REQUEST[name]','$_SESSION[supplier_id]','$_REQUEST[category_id]','$_REQUEST[subcategory_id]','$_REQUEST[description]','$_REQUEST[msrp]','$_REQUEST[quantity_per_unit]','$_REQUEST[sku]','$_REQUEST[id_sku]','$_REQUEST[unit_price]','$_REQUEST[available_size]','$_REQUEST[available_colors]','$_REQUEST[size]','$_REQUEST[color]','$_REQUEST[discount]','$_REQUEST[unit_weight]','$_REQUEST[unit_in_stock]','$_REQUEST[unit_on_order]','$_REQUEST[reorder_level]','$_REQUEST[product_available]','$_REQUEST[size_url]','$_REQUEST[discount_available]','$_REQUEST[current_order]')";
+
+        if(!empty($_FILES['featured_image'])){
+            if(file_exists($_FILES['featured_image']['tmp_name'])){
+
+                $name = $_FILES['featured_image']['name'];
+                getcwd();
+                chdir("../../../public/img/seller/products/featured_image/");
+                $target_dir = getcwd();
+                $target_file = $target_dir . basename($_FILES["featured_image"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                $extensions_arr = array("png");
+                if(in_array($imageFileType,$extensions_arr) ){
+                    $image_base64 = base64_encode(file_get_contents($_FILES['featured_image']['tmp_name']) );
+                    $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+                    $imageName = date("ymdhis").'-'. $name;
+                    move_uploaded_file($_FILES['featured_image']['tmp_name'],$imageName);
+
+
+                }else{
+                    $response = array(
+                        "type" => "danger",
+                        "message" => "Please choose png image only!"
+                    );
+                    return $response;
+
+                }
+            }
+        }else{
+            $imageName = '';
+        }
+
+        // File upload configuration
+        getcwd();
+        chdir("../../../public/img/seller/products/");
+        $targetDir = getcwd();
+        $allowTypes = array('jpg','png','jpeg');
+
+        $insertValuesSQL = $errorUpload = $errorUploadType = '';
+        $fileNames = array_filter($_FILES['images']['name']);
+        if(!empty($fileNames)){
+            foreach($_FILES['images']['name'] as $key=>$val){
+                $fileName = basename($_FILES['images']['name'][$key]);
+                $targetFilePath = $targetDir.'/' . $fileName;
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+                if(in_array($fileType, $allowTypes)){
+                    if(move_uploaded_file($_FILES["images"]["tmp_name"][$key], $targetFilePath)){
+                        $insertValuesSQL .=  date('Y-m-d')."-". $fileName.",";
+                    }else{
+                        $errorUpload .= $_FILES['images']['name'][$key].' | ';
+                    }
+                }else{
+                    $errorUploadType .= $_FILES['images']['name'][$key].' | ';
+                }
+            }
+        }else{
+            $insertValuesSQL='';
+        }
+
+        $result = "INSERT INTO products (name,supplier_id,category_id,subcategory_id,description,msrp,quantity_per_unit,sku,id_sku,unit_price,available_size,available_colors,size,color,discount,unit_weight,unit_in_stock,unit_on_order,reorder_level,product_available,size_url,discount_available,current_order,featured_image,images)
+                   VALUES('$_REQUEST[name]','$_SESSION[supplier_id]','$_REQUEST[category_id]','$_REQUEST[subcategory_id]','$_REQUEST[description]','$_REQUEST[msrp]','$_REQUEST[quantity_per_unit]','$_REQUEST[sku]','$_REQUEST[id_sku]','$_REQUEST[unit_price]','$_REQUEST[available_size]','$_REQUEST[available_colors]','$_REQUEST[size]','$_REQUEST[color]','$_REQUEST[discount]','$_REQUEST[unit_weight]','$_REQUEST[unit_in_stock]','$_REQUEST[unit_on_order]','$_REQUEST[reorder_level]','$_REQUEST[product_available]','$_REQUEST[size_url]','$_REQUEST[discount_available]','$_REQUEST[current_order]','$imageName','$insertValuesSQL')";
 
         if (mysqli_query($this->db, $result)) {
             header("location:index.php");
@@ -55,6 +113,61 @@ class productController {
     public function update($id){
         $result=mysqli_query($this->db,"select * from products where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
         $productData = mysqli_fetch_assoc($result);
+        if(!empty($_FILES['featured_image'])){
+            if(file_exists($_FILES['featured_image']['tmp_name'])){
+
+                $name = $_FILES['featured_image']['name'];
+                getcwd();
+                chdir("../../../public/img/seller/products/featured_image/");
+                $target_dir = getcwd();
+                $target_file = $target_dir . basename($_FILES["featured_image"]["name"]);
+                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                $extensions_arr = array("png");
+                if(in_array($imageFileType,$extensions_arr) ){
+                    $image_base64 = base64_encode(file_get_contents($_FILES['featured_image']['tmp_name']) );
+                    $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
+                    $imageName = date("ymdhis").'-'. $name;
+                    move_uploaded_file($_FILES['featured_image']['tmp_name'],$imageName);
+
+
+                }else{
+                    $response = array(
+                        "type" => "danger",
+                        "message" => "Please choose png image only!"
+                    );
+                    return $response;
+
+                }
+            }
+        }else{
+            $imageName = $productData['featured_image'];
+        }
+        getcwd();
+        chdir("../../../public/img/seller/products/");
+        $targetDir = getcwd();
+        $allowTypes = array('jpg','png','jpeg');
+
+        $insertValuesSQL = $errorUpload = $errorUploadType = '';
+        $fileNames = array_filter($_FILES['images']['name']);
+        if(!empty($fileNames)){
+            foreach($_FILES['images']['name'] as $key=>$val){
+                $fileName = basename($_FILES['images']['name'][$key]);
+                $targetFilePath = $targetDir.'/' . $fileName;
+                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+                if(in_array($fileType, $allowTypes)){
+                    if(move_uploaded_file($_FILES["images"]["tmp_name"][$key], $targetFilePath)){
+                        $insertValuesSQL .=  date('Y-m-d')."-". $fileName.",";
+                    }else{
+                        $errorUpload .= $_FILES['images']['name'][$key].' | ';
+                    }
+                }else{
+                    $errorUploadType .= $_FILES['images']['name'][$key].' | ';
+                }
+            }
+        }else{
+            $insertValuesSQL= $productData['images'];
+        }
+
         if(!empty($_REQUEST['name']))
             $name = $_REQUEST['name'];
         else
@@ -195,10 +308,11 @@ class productController {
                                            size_url='$size_url',
                                            discount_available='$discount_available',
                                            current_order='$current_order',
-                                           active='$active'
+                                           active='$active',
+                                            featured_image='$imageName',
+                                           images='$insertValuesSQL'
                                              WHERE  id='$id'";
         if (mysqli_query($this->db, $result)) {
-            header("location:index.php");
             $response = array(
                 "type" => "success",
                 "message" => "record updated successfully."

@@ -34,17 +34,44 @@ $supplier= mysqli_fetch_assoc($res);
                                 <figure>
                                     <div class="ps-wrapper">
                                         <div class="ps-product__gallery" data-arrow="true">
-                                            <div class="item"><a href="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/1.jpg"><img src="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/1.jpg" alt=""></a></div>
-                                            <div class="item"><a href="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/2.jpg"><img src="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/2.jpg" alt=""></a></div>
-                                            <div class="item"><a href="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/3.jpg"><img src="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/3.jpg" alt=""></a></div>
+                                            <div class="item">
+                                                <?php  if(!empty($productName['featured_image'] )){?>
+                                                    <a href="<?php echo PUBLIC_PATH; ?>/img/seller/products/featured_image/<?php echo $productName['featured_image'];?>">
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/featured_image/<?php echo $productName['featured_image'];?>" alt="">
+                                                    </a>
+                                                <?php }else {?>
+                                                    <a href="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/1.jpg">
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/products/detail/fullwidth/1.jpg" alt="">
+                                                    </a>
+                                                <?php }?>
+                                            </div>
+                                            <?php  foreach (explode(",",$productName['images']) as $image){ ?>
+                                                <div class="item">
+                                                    <?php  if(!empty($image)){?>
+                                                        <a href="<?php echo PUBLIC_PATH; ?>/img/seller/products/<?php echo $image;?>">
+                                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $image;?>" alt="">
+                                                        </a>
+                                                    <?php }else {?>
+                                                        <a href="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/1.jpg">
+                                                            <img src="<?php echo PUBLIC_PATH;?>/img/products/detail/fullwidth/1.jpg" alt="">
+                                                        </a>
+                                                    <?php }?>
+                                                </div>
+                                            <?php }?>
+
                                         </div>
                                     </div>
                                 </figure>
                                 <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false">
-                                    <div class="item"><img src="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/1.jpg" alt=""></div>
-                                    <div class="item"><img src="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/2.jpg" alt=""></div>
-                                    <div class="item"><img src="<?php echo PUBLIC_PATH; ?>/img/products/detail/fullwidth/3.jpg" alt=""></div>
-                                </div>
+                                    <?php  foreach (explode(",",$productName['images']) as $image){ ?>
+                                        <div class="item">
+                                            <?php  if(!empty($image)){?>
+                                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $image;?>" alt="">
+                                            <?php }else {?>
+                                                <img src="<?php echo PUBLIC_PATH;?>/img/products/detail/fullwidth/1.jpg" alt="">
+                                            <?php }?>
+                                        </div>
+                                    <?php }?> </div>
                             </div>
                             <div class="ps-product__info">
                                 <h1><?php echo ucfirst($productName['name']) ?></h1>
@@ -60,7 +87,7 @@ $supplier= mysqli_fetch_assoc($res);
                                         </select><span>(1 review)</span>
                                     </div>
                                 </div>
-                                <h4 class="ps-product__price"><?php echo ucfirst($productName['unit_price']) ?></h4>
+                                <h4 class="ps-product__price">Rs. <?php echo ucfirst($productName['unit_price']) ?></h4>
                                 <div class="ps-product__desc">
                                     <p>Sold By:<a href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><strong><?php echo $supplier['company_name']?></strong></a></p>
                                     <p class="ps-list--dot">
@@ -294,7 +321,7 @@ $supplier= mysqli_fetch_assoc($res);
                             <div class="ps-tabs">
                                 <div class="ps-tab active" id="tab-1">
                                     <div class="ps-document">
-                                       <?php echo $productName['description'] ?> </div>
+                                        <?php echo $productName['description'] ?> </div>
                                 </div>
                                 <div class="ps-tab" id="tab-2">
                                     <div class="table-responsive">
