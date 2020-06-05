@@ -186,7 +186,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
 
                                             <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>">
                                                 <?php  if(!empty($product['featured_image'] )){?>
-                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/featured_image/<?php echo $product['featured_image'];?>" alt="">
+                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products//<?php echo $product['featured_image'];?>" alt="">
 
                                                 <?php }else {?>
                                                     <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
@@ -264,7 +264,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
 
                                                         <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>">
                                                             <?php  if(!empty($subcatproduct['featured_image'] )){?>
-                                                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/featured_image/<?php echo $subcatproduct['logo'];?>" alt="">
+                                                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/products//<?php echo $subcatproduct['logo'];?>" alt="">
                                                             <?php }else {?>
                                                                 <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
                                                             <?php }?>
@@ -311,7 +311,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                             <div class="ps-product__thumbnail">
                                                 <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>">
                                                     <?php  if(!empty($subcatproduct['featured_image'] )){?>
-                                                        <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/featured_image/<?php echo $subcatproduct['logo'];?>" alt="">
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/seller/products//<?php echo $subcatproduct['logo'];?>" alt="">
                                                     <?php }else {?>
                                                         <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
                                                     <?php }?>

@@ -92,7 +92,7 @@ include("../../includes/header.php");
                                             <label for="featured_image">Featured image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="featured_image" name="featured_image">
+                                                    <input type="file" class="custom-file-input" id="featured_image" name="featured_image" >
                                                     <label class="custom-file-label" for="featured_image">Choose file</label>
                                                 </div>
                                             </div>
@@ -104,7 +104,7 @@ include("../../includes/header.php");
                                             <label for="images">Images</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="images" name="images[]" multiple>
+                                                    <input type="file" class="custom-file-input" id="images" name="images[]" multiple >
                                                     <label class="custom-file-label" for="images">Choose file</label>
                                                 </div>
                                             </div>

@@ -2,7 +2,7 @@
 
 include_once("./../../controller/products/productController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:../../auth/loginController.php");
+    header("location:../../auth/login.php");
 }
 $productClass=new productController();
 $products=$productClass->listing();

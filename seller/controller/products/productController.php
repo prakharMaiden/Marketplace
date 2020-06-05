@@ -113,27 +113,25 @@ class productController {
     public function update($id){
         $result=mysqli_query($this->db,"select * from products where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
         $productData = mysqli_fetch_assoc($result);
+        getcwd();
+        chdir("../../../public/img/seller/products/");
+        $target_dir = getcwd();
+
         if(!empty($_FILES['featured_image'])){
             if(file_exists($_FILES['featured_image']['tmp_name'])){
-
                 $name = $_FILES['featured_image']['name'];
-                getcwd();
-                chdir("../../../public/img/seller/products/featured_image/");
-                $target_dir = getcwd();
                 $target_file = $target_dir . basename($_FILES["featured_image"]["name"]);
                 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                $extensions_arr = array("png");
+                $extensions_arr = array('jpg','png','jpeg');
                 if(in_array($imageFileType,$extensions_arr) ){
                     $image_base64 = base64_encode(file_get_contents($_FILES['featured_image']['tmp_name']) );
                     $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
-                    $imageName = date("ymdhis").'-'. $name;
+                    $imageName = 'featured_image-'.date("ymdhis").'-'. $name;
                     move_uploaded_file($_FILES['featured_image']['tmp_name'],$imageName);
-
-
                 }else{
                     $response = array(
                         "type" => "danger",
-                        "message" => "Please choose png image only!"
+                        "message" => "Please choose jpg,jpeg,png image only!"
                     );
                     return $response;
 
@@ -142,21 +140,19 @@ class productController {
         }else{
             $imageName = $productData['featured_image'];
         }
-        getcwd();
-        chdir("../../../public/img/seller/products/");
-        $targetDir = getcwd();
-        $allowTypes = array('jpg','png','jpeg');
 
+        if(!empty($_FILES['images'])){
+        $allowTypes = array('jpg','png','jpeg');
         $insertValuesSQL = $errorUpload = $errorUploadType = '';
         $fileNames = array_filter($_FILES['images']['name']);
         if(!empty($fileNames)){
             foreach($_FILES['images']['name'] as $key=>$val){
                 $fileName = basename($_FILES['images']['name'][$key]);
-                $targetFilePath = $targetDir.'/' . $fileName;
+                $targetFilePath = $target_dir.'/' . $fileName;
                 $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
                 if(in_array($fileType, $allowTypes)){
-                    if(move_uploaded_file($_FILES["images"]["tmp_name"][$key], $targetFilePath)){
-                        $insertValuesSQL .=  date('Y-m-d')."-". $fileName.",";
+                    if(move_uploaded_file($_FILES["images"]["tmp_name"][$key], 'images-'.date("ymdhis").'-'. $fileName)){
+                        $insertValuesSQL .=  'images-'.date('ymdhis')."-". $fileName.",";
                     }else{
                         $errorUpload .= $_FILES['images']['name'][$key].' | ';
                     }
@@ -164,6 +160,7 @@ class productController {
                     $errorUploadType .= $_FILES['images']['name'][$key].' | ';
                 }
             }
+        }
         }else{
             $insertValuesSQL= $productData['images'];
         }
@@ -282,7 +279,6 @@ class productController {
             $active = $_REQUEST['active'];
         else
             $active = $productData['active'];
-
 
         $result = "UPDATE products SET  
                                        category_id='$category_id',

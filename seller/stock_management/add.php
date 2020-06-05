@@ -1,7 +1,7 @@
 <?php
 include_once("./../controller/stock_management/stockManagementController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:../auth/loginController.php");
+    header("location:../auth/login.php");
 }
 $stockManagement=new stockManagementController();
 if(isset($_POST['submit'])) {

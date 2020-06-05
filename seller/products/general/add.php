@@ -1,7 +1,7 @@
 <?php
 include_once("./../../controller/products/productController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:../../auth/loginController.php");
+    header("location:../../auth/login.php");
 }
 $productClass=new productController();
 if(isset($_POST['submit'])) {
@@ -94,7 +94,7 @@ include("../../includes/header.php");
                                             <label for="images">Images</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
-                                                    <input type="file" class="custom-file-input" id="images" name="images[]" multiple>
+                                                    <input type="file" class="custom-file-input" id="images" name="images[]" multiple required>
                                                     <label class="custom-file-label" for="images">Choose file</label>
                                                 </div>
                                             </div>

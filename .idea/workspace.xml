@@ -20,19 +20,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07a1ef17-1738-41a9-89e4-34fd634d84f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/customer/modal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/product-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/product-details.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/subcategories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/subcategories.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/seller/products/200524011210-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/seller/products/200524011210-7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/seller/products/200524011210-9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/seller/products/15.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/seller/products/852.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/seller/products/featured_image/200524011210-1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/seller/products/featured_image/200524011210-7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/seller/products/featured_image/200524011210-9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/auth/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/auth/profile.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/controller/products/productController.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/controller/products/productController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/controller/stock_management/stockManagementController.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/controller/stock_management/stockManagementController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/products/general/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/add.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/products/general/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/products/general/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/stock_management/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/stock_management/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/stock_management/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,19 +61,19 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\public\img\seller\products" />
       <recent name="C:\xampp\htdocs\Marketplace\customer\dashboard" />
       <recent name="C:\xampp\htdocs\Marketplace\seller\controller" />
       <recent name="C:\xampp\htdocs\Marketplace\customer\functions" />
       <recent name="C:\xampp\htdocs\Marketplace\customer" />
-      <recent name="C:\xampp\htdocs\Marketplace\customer\login" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Marketplace\seller" />
       <recent name="C:\xampp\htdocs\Marketplace\customer" />
+      <recent name="C:\xampp\htdocs\Marketplace\seller" />
       <recent name="C:\xampp\htdocs\Marketplace\customer\includes" />
       <recent name="C:\xampp\htdocs\Marketplace\public" />
       <recent name="C:\xampp\htdocs\Marketplace\public\js" />
@@ -110,6 +114,12 @@
       <workItem from="1591269993134" duration="1779000" />
       <workItem from="1591271803042" duration="1847000" />
       <workItem from="1591273709630" duration="314000" />
+      <workItem from="1591353545192" duration="1695000" />
+      <workItem from="1591355404961" duration="2048000" />
+      <workItem from="1591359505149" duration="1781000" />
+      <workItem from="1591361322209" duration="1772000" />
+      <workItem from="1591363134350" duration="1825000" />
+      <workItem from="1591364997137" duration="868000" />
     </task>
     <servers />
   </component>
@@ -141,10 +151,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1366.728@0.0.1366.728" timestamp="1590585979758" />
-    <state x="389" y="68" width="587" height="592" key="find.popup" timestamp="1590837679588">
+    <state x="389" y="68" width="587" height="592" key="find.popup" timestamp="1591363786853">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="389" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1590837679588" />
+    <state x="389" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1591363786853" />
     <state x="339" y="164" key="run.anything.popup" timestamp="1591183128171">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

@@ -1,7 +1,7 @@
 <?php
 include_once("./../controller/loginController.php");
 if(empty($_SESSION['supplier_id'])){
-    header("location:loginController.php");
+    header("location:login.php");
 
 }
 $userClass=new loginController();
