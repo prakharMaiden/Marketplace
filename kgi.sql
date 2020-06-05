@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 04, 2020 at 02:35 PM
+-- Generation Time: Jun 05, 2020 at 04:06 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -233,9 +233,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `customer_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `featured_image`, `images`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '3%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-1.jpg', '', '56', 1, '2020-05-31 11:18:36', '2020-06-01 13:17:08'),
-(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '10%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-7.jpg', '', '56', 1, '2020-05-31 11:19:04', '2020-06-01 13:17:23'),
-(11, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', '200524011210-9.jpg', '', '56', 1, '2020-06-03 11:19:04', '2020-06-04 12:03:56');
+(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '3%', '500g', '50', '23', '32', '22', '2%', '', 'featured_image-200524011210-1.jpg', 'images-200605034741-logo_light.png,images-200605034741-logo-autopart.png,images-200605034741-logo-electronic.png,images-200605034741-logo-furniture.png,images-200605034741-logo-kids.png,', '56', 1, '2020-05-31 11:18:36', '2020-06-05 13:48:48'),
+(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '10%', '500g', '50', '23', '32', '22', '2%', '', 'featured_image-200524011210-7.jpg', '', '56', 1, '2020-06-05 11:19:04', '2020-06-05 13:30:33'),
+(11, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', 'featured_image-200524011210-9.jpg', '', '56', 1, '2020-06-05 11:19:04', '2020-06-05 13:30:39');
 
 -- --------------------------------------------------------
 
@@ -469,7 +469,7 @@ ALTER TABLE `payment`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `shipper`
