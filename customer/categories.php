@@ -57,7 +57,7 @@ $categoryName= mysqli_fetch_assoc($result);
                                             <img src="<?php echo PUBLIC_PATH;?>/img/seller/category/<?php echo $category['picture'];?>" alt="">
 
                                         <?php }else {?>
-                                            <img src="<?php echo PUBLIC_PATH;?>/img/categories/shop/1.jpg" alt="">
+                                            <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
                                         <?php }?>
                                     </div>
                                     <div class="ps-block__content">
@@ -96,7 +96,7 @@ $categoryName= mysqli_fetch_assoc($result);
                                 <img src="<?php echo PUBLIC_PATH;?>/img/seller/subcategory/<?php echo $subcategory['picture'];?>" alt="">
 
                             <?php }else {?>
-                                <img src="<?php echo PUBLIC_PATH;?>/img/categories/electronic/1.jpg" alt="">
+                                <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
                             <?php }?>
                             <p> <?php echo ucfirst($subcategory['name'])?> </p>
 

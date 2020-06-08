@@ -177,7 +177,7 @@ if(empty($_SESSION['supplier_id'])){
                                 <ul class="products-list product-list-in-card pl-2 pr-2">
                                     <li class="item">
                                         <div class="product-img">
-                                            <img src="../public/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
                                         </div>
                                         <div class="product-info">
                                             <a href="javascript:void(0)" class="product-title">Samsung TV
@@ -189,7 +189,7 @@ if(empty($_SESSION['supplier_id'])){
                                     </li>
                                     <li class="item">
                                         <div class="product-img">
-                                            <img src="../public/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
                                         </div>
                                         <div class="product-info">
                                             <a href="javascript:void(0)" class="product-title">Bicycle
@@ -201,7 +201,7 @@ if(empty($_SESSION['supplier_id'])){
                                     </li>
                                     <li class="item">
                                         <div class="product-img">
-                                            <img src="../public/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
                                         </div>
                                         <div class="product-info">
                                             <a href="javascript:void(0)" class="product-title">Bicycle
@@ -213,7 +213,7 @@ if(empty($_SESSION['supplier_id'])){
                                     </li>
                                     <li class="item">
                                         <div class="product-img">
-                                            <img src="../public/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
                                         </div>
                                         <div class="product-info">
                                             <a href="javascript:void(0)" class="product-title">
@@ -228,7 +228,7 @@ if(empty($_SESSION['supplier_id'])){
                                     </li>
                                     <li class="item">
                                         <div class="product-img">
-                                            <img src="../public/img/default-150x150.png" alt="Product Image" class="img-size-50">
+                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
                                         </div>
                                         <div class="product-info">
                                             <a href="javascript:void(0)" class="product-title">PlayStation 4
