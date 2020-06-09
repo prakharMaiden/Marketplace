@@ -1,6 +1,5 @@
 <?php
-	include 'includes/session.php';
-	$conn = $pdo->open();
+include_once("./../config/config.php");
 
 	$output = '';
 

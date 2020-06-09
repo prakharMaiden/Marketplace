@@ -77,12 +77,47 @@
             </div>
             <div class="header__right">
                 <div class="header__actions"><a class="header__extra" href="#"><i class="icon-chart-bars"></i><span><i>0</i></span></a><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
-                    <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
+                    <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span class="cart_count"></span> </a>
+                        <div class="ps-cart__content">
+                            <div class="ps-cart__items"  id="cart_menu">
 
+                            </div>
+                            <div class="ps-cart__footer">
+                                <figure><a class="ps-btn" href="shopping-cart.php">View Cart</a><a class="ps-btn" href="checkout.php">Checkout</a></figure>
+                            </div>
+                        </div>
                     </div>
                     <div class="ps-block--user-header">
-                        <div class="ps-block__left"><i class="icon-user"></i></div>
-                        <div class="ps-block__right"><a href="<?php echo PATH?>/customer/auth/login.php">Login</a><a href="<?php echo PATH?>/customer/auth/login.php">Register</a></div>
+                        <?php
+                        if(isset($_SESSION['customer_id'])){
+
+                            $stmt = mysqli_query($con, "select * from customer_detail where customer_id='$_SESSION[customer_id]'");
+                            $customer = mysqli_fetch_assoc($stmt);
+                            echo '
+                <ul class="navbar-nav">
+                 <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <span class="hidden-xs">'.$customer['first_name'].' '.$customer['last_name'].'</span>
+                  </a>
+                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#"><p>
+                        '.$customer['first_name'].' '.$customer['last_name'].'
+                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small>
+                      </p></a>
+          </div>
+                </li>
+                </ul>
+              ';
+                        }
+                        else{
+                            echo "
+               <div class='ps-block__left'><i class='icon-user'></i></div>
+                    <div class='ps-block__right'>
+                    <a href='auth/login.php'>Login</a>
+                    <a href='auth/login.php'>Register</a>
+                ";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
@@ -153,12 +188,47 @@
         <div class="navigation__left"><a class="ps-logo" href="#"><h3>Krishna <span style="color:#fcb800;font-weight: 700">Golds Industries</span></h3></a></div>
         <div class="navigation__right">
             <div class="header__actions">
-                <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
+                <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span class="cart_count"></span> </a>
+                    <div class="ps-cart__content">
+                        <div class="ps-cart__items"  id="cart_menu">
 
+                        </div>
+                        <div class="ps-cart__footer">
+                            <figure><a class="ps-btn" href="shopping-cart.php">View Cart</a><a class="ps-btn" href="checkout.php">Checkout</a></figure>
+                        </div>
+                    </div>
                 </div>
                 <div class="ps-block--user-header">
-                    <div class="ps-block__left"><i class="icon-user"></i></div>
-                    <div class="ps-block__right"><a href="<?php echo PATH?>/customer/auth/login.php">Login</a><a href="<?php echo PATH?>/customer/auth/login.php">Register</a></div>
+                    <?php
+                    if(isset($_SESSION['customer_id'])){
+
+                        $stmt = mysqli_query($con, "select * from customer_detail where customer_id='$_SESSION[customer_id]'");
+                        $customer = mysqli_fetch_assoc($stmt);
+                        echo '
+                <ul class="navbar-nav">
+                 <li class="nav-item dropdown">
+                  <a href="#" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                     <span class="hidden-xs">'.$customer['first_name'].' '.$customer['last_name'].'</span>
+                  </a>
+                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="#"><p>
+                        '.$customer['first_name'].' '.$customer['last_name'].'
+                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small>
+                      </p></a>
+          </div>
+                </li>
+                </ul>
+              ';
+                    }
+                    else{
+                        echo "
+               <div class='ps-block__left'><i class='icon-user'></i></div>
+                    <div class='ps-block__right'>
+                    <a href='auth/login.php'>Login</a>
+                    <a href='auth/login.php'>Register</a>
+                ";
+                    }
+                    ?>
                 </div>
             </div>
         </div>

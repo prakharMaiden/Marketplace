@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 08, 2020 at 02:48 PM
+-- Generation Time: Jun 09, 2020 at 04:18 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -36,6 +36,16 @@ CREATE TABLE `cart` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `customer_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 2, '2020-06-09 11:49:41', '2020-06-09 11:49:41'),
+(2, 1, 1, 2, '2020-06-09 12:45:51', '2020-06-09 12:45:51'),
+(3, 1, 1, 2, '2020-06-09 12:45:55', '2020-06-09 12:45:55'),
+(4, 1, 1, 2, '2020-06-09 12:45:58', '2020-06-09 12:45:58');
 
 -- --------------------------------------------------------
 
@@ -87,7 +97,7 @@ CREATE TABLE `customers` (
 --
 
 INSERT INTO `customers` (`id`, `email`, `mobile`, `password`, `email_verification_code`, `email_verified`, `mobile_verified`, `active`, `created_at`, `updated_at`) VALUES
-(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, 0, '2020-05-01 12:45:12', '2020-05-15 13:11:36'),
+(1, 'hello@maidenstride.com', '7042588757', 'e10adc3949ba59abbe56e057f20f883e', '', 0, 0, 1, '2020-05-01 12:45:12', '2020-06-09 10:56:31'),
 (2, 'mayanklion1994@gmail.com', '9891494860', 'e10adc3949ba59abbe56e057f20f883e', NULL, 0, 0, 1, '2020-05-28 10:40:59', '2020-05-28 10:40:59');
 
 -- --------------------------------------------------------
@@ -462,7 +472,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `category`

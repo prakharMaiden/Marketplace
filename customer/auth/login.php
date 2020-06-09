@@ -2,7 +2,7 @@
 include_once("../controller/loginController.php");
 $loginData=new loginController();
 if(isset($_POST['submit'])) {
-    $response= $loginData->signIn($_POST['auth'],md5($_POST['password']));
+    $response= $loginData->signIn($_POST['login'],md5($_POST['password']));
 }
 if(isset($_POST['register_submit'])) {
     $response=$loginData->signUp($_POST['first_name'],$_POST['last_name'],$_POST['mobile'],$_POST['email'],md5($_POST['password']));

@@ -26,7 +26,7 @@ $supplier= mysqli_fetch_assoc($res);
 </div>
 <div class="ps-page--product">
     <div class="ps-container">
-        <div class="callout" id="callout" style="display:none">
+        <div class="alert" id="alert" style="display:none">
             <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
             <span class="message"></span>
         </div>
@@ -93,9 +93,9 @@ $supplier= mysqli_fetch_assoc($res);
                                     </select><span>(1 review)</span>
                                 </div>
                             </div>
-                            <h4 class="ps-product__price">Rs. <?php echo ucfirst($productName['unit_price']) ?> <?php if(!empty($productName['msrp'])){ ?>  <del>Rs. <?php echo $productName['msrp'];?></del> <?php } ?></h4>
+                            <h4 class="ps-product__price">Rs. <?php echo number_format($productName['unit_price'], 2);?> <?php if(!empty($productName['msrp'])){ ?>  <del>Rs. <?php echo number_format($productName['msrp'], 2);?></del> <?php } ?></h4>
                             <div class="ps-product__desc">
-                                <p>Sold By:<a href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><strong><?php echo $supplier['company_name']?></strong></a></p>
+                                <p>Sold By:<a href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><strong><?php echo $supplier['company_name']?></strong></a></p>
                                 <p class="ps-list--dot">
                                     <?php echo ucfirst($productName['description']) ?>
                                 </p>
@@ -126,7 +126,7 @@ $supplier= mysqli_fetch_assoc($res);
                             <div class="ps-product__specification">
                                 <p><strong>SKU:</strong> <?php echo $productName['sku'] ?></p>
                                 <p class="categories"><strong> Categories:</strong>
-                                    <a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $categoryName['id'] ?>"><?php echo ucfirst($categoryName['name']) ?></a>,<a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategoryName['id'] ?>"> <?php echo ucfirst($subcategoryName['name']) ?></a></p>
+                                    <a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $categoryName['id'] ?>"><?php echo ucfirst($categoryName['name']) ?></a>,<a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"> <?php echo ucfirst($subcategoryName['name']) ?></a></p>
                                 <p class="tags"><strong> Tags</strong><a href="#">sofa</a>,<a href="#">technologies</a>,<a href="#">wireless</a></p>
                             </div>
                             <div class="ps-product__sharing"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a><a class="twitter" href="#"><i class="fa fa-twitter"></i></a><a class="google" href="#"><i class="fa fa-google-plus"></i></a><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></div>
@@ -196,8 +196,8 @@ $supplier= mysqli_fetch_assoc($res);
                                     </a>
                                 <?php }?>
                             </div>
-                            <div class="ps-product__container"><a class="ps-product__vendor"  href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
-                                <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                            <div class="ps-product__container"><a class="ps-product__vendor"  href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
+                                <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
                                             <option value="1">1</option>
@@ -207,10 +207,10 @@ $supplier= mysqli_fetch_assoc($res);
                                             <option value="2">5</option>
                                         </select><span>01</span>
                                     </div>
-                                    <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo $subcatproduct['msrp'];?></del> <?php } ?></p>
+                                    <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                 </div>
-                                <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
-                                    <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo $subcatproduct['msrp'];?></del> <?php } ?></p>
+                                <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                                    <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                 </div>
                             </div>
                         </div>
@@ -223,67 +223,3 @@ $supplier= mysqli_fetch_assoc($res);
 </div>
 
 <?php include("includes/footer.php");?>
-<script>
-    $(function(){
-        $('#add').click(function(e){
-            e.preventDefault();
-            var quantity = $('#quantity').val();
-            quantity++;
-            $('#quantity').val(quantity);
-        });
-        $('#minus').click(function(e){
-            e.preventDefault();
-            var quantity = $('#quantity').val();
-            if(quantity > 1){
-                quantity--;
-            }
-            $('#quantity').val(quantity);
-        });
-
-    });
-</script>
-<script>
-    $(function(){
-
-        getCart();
-
-        $('#productForm').submit(function(e){
-            e.preventDefault();
-            var product = $(this).serialize();
-            $.ajax({
-                type: 'POST',
-                url: 'cart_add.php',
-                data: product,
-                dataType: 'json',
-                success: function(response){
-                    $('#callout').show();
-                    $('.message').html(response.message);
-                    if(response.error){
-                        $('#callout').removeClass('callout-success').addClass('callout-danger');
-                    }
-                    else{
-                        $('#callout').removeClass('callout-danger').addClass('callout-success');
-                        getCart();
-                    }
-                }
-            });
-        });
-
-        $(document).on('click', '.close', function(){
-            $('#callout').hide();
-        });
-
-    });
-
-    function getCart(){
-        $.ajax({
-            type: 'POST',
-            url: 'cart_fetch.php',
-            dataType: 'json',
-            success: function(response){
-                $('#cart_menu').html(response.list);
-                $('.cart_count').html(response.count);
-            }
-        });
-    }
-</script>

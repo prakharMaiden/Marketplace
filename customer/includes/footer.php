@@ -94,5 +94,76 @@
 <script src="<?php echo PUBLIC_PATH?>/plugins/select2/dist/js/select2.full.min.js"></script>
 <script src="<?php echo PUBLIC_PATH?>/plugins/gmap3.min.js"></script>
 <script src="<?php echo PUBLIC_PATH?>/js/main.js"></script>
+
+
+<script>
+    $(function(){
+
+        getCart();
+
+        $('#productForm').submit(function(e){
+            e.preventDefault();
+            var product = $(this).serialize();
+            console.log('swati',product);
+            $.ajax({
+                type: 'POST',
+                url: 'cart_add.php',
+                data: product,
+                dataType: 'json',
+                success: function(response){
+                    //console.log("swati",response);
+                    $('.alert').show();
+                    $('.message').html(response.message);
+                    if(response.error){
+                        $('.alert ').removeClass('alert-success').addClass('alert-danger');
+                    }
+                    else{
+                        $('.alert ').removeClass('alert-danger').addClass('alert-success');
+                        getCart();
+                    }
+                }
+            });
+        });
+
+        $(document).on('click', '.close', function(){
+            $('.alert').hide();
+        });
+
+    });
+
+    function getCart(){
+        console.log('swatisdavhs');
+        $.ajax({
+            type: 'POST',
+            url: 'cart_fetch.php',
+            dataType: 'json',
+            success: function(response){
+                console.log('swati',response);
+                $('#cart_menu').html(response.list);
+                $('.cart_count').html(response.count);
+            }
+        });
+    }
+</script>
+
+<script>
+    $(function(){
+        $('#add').click(function(e){
+            e.preventDefault();
+            var quantity = $('#quantity').val();
+            quantity++;
+            $('#quantity').val(quantity);
+        });
+        $('#minus').click(function(e){
+            e.preventDefault();
+            var quantity = $('#quantity').val();
+            if(quantity > 1){
+                quantity--;
+            }
+            $('#quantity').val(quantity);
+        });
+
+    });
+</script>
 </body>
 </html>

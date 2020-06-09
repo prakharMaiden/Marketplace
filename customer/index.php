@@ -73,7 +73,7 @@ include("includes/header.php");
                         foreach ($products as $product) {  ?>
                             <div class="ps-product ps-product--inner">
                                 <div class="ps-product__thumbnail">
-                                    <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>">
+                                    <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>">
                                         <?php  if(!empty($product['featured_image'] )){?>
                                             <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" alt="">
 
@@ -85,14 +85,14 @@ include("includes/header.php");
                                     </a>
                                     <div class="ps-product__badge"><?php echo $product['discount'];?></div>
                                     <ul class="ps-product__actions">
-                                        <li><a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                        <li><a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target= "modal.php/?id=<?php echo $product['id']  ; ?>#product-quickview"><i class="icon-eye"></i></a></li>
                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
                                     </ul>
                                 </div>
                                 <div class="ps-product__container">
-                                    <p class="ps-product__price sale">Rs. <?php echo $product['unit_price'];?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo $product['msrp'];?></del> <?php } ?></p>
+                                    <p class="ps-product__price sale">Rs. <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
                                     <div class="ps-product__content"><a class="ps-product__title" href="#"><?php echo $product['name'];?></a>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
@@ -109,8 +109,6 @@ include("includes/header.php");
                                     </div>
                                 </div>
                             </div>
-
-
                         <?php }?>
                     </div>
 
@@ -140,7 +138,7 @@ include("includes/header.php");
 
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
                             <div class="ps-block--category">
-                                <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $category['id']  ; ?>"></a>
+                                <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $category['id']  ; ?>"></a>
                                 <?php  if(!empty($category['picture'] )){?>
                                     <img src="<?php echo PUBLIC_PATH;?>/img/seller/category/<?php echo $category['picture'];?>" alt="">
 
@@ -177,7 +175,7 @@ include("includes/header.php");
                                 <div class="ps-product">
                                     <div class="ps-product__thumbnail">
 
-                                        <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>">
+                                        <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>">
                                             <?php  if(!empty($subcatproduct['featured_image'] )){?>
                                                 <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $subcatproduct['featured_image'];?>" alt="">
                                             <?php }else {?>
@@ -186,15 +184,15 @@ include("includes/header.php");
                                         </a>
                                         <?php  if(!empty($subcatproduct['discount'] )){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?></div> <?php }?>
                                         <ul class="ps-product__actions">
-                                            <li><a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
+                                            <li><a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                             <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target= "modal.php/?id=<?php echo $subcatproduct['id']  ; ?>/#product-quickview"><i class="icon-eye"></i></a></li>
                                             <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
                                             <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
                                         </ul>
                                     </div>
 
-                                    <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
-                                        <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                                    <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
+                                        <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
                                             <div class="ps-product__rating">
                                                 <select class="ps-rating" data-read-only="true">
                                                     <option value="1">1</option>
@@ -204,10 +202,10 @@ include("includes/header.php");
                                                     <option value="2">5</option>
                                                 </select><span>01 Comment</span>
                                             </div>
-                                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo $subcatproduct['msrp'];?></del> <?php } ?></p>
+                                            <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                         </div>
-                                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
-                                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo $subcatproduct['msrp'];?></del> <?php } ?></p>
+                                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                                            <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -236,7 +234,7 @@ include("includes/header.php");
                         <?php
                         $categories=mysqli_query($con,"select * from category") ;
                         foreach ($categories as $category) {  ?>
-                            <li><a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $category['id']  ; ?>"><?php echo ucfirst( $category['name']);?></a></li>
+                            <li><a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $category['id']  ; ?>"><?php echo ucfirst( $category['name']);?></a></li>
                         <?php }?>
                     </ul>
                 </div>
@@ -248,7 +246,7 @@ include("includes/header.php");
                             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="ps-product--horizontal">
                                     <div class="ps-product__thumbnail">
-                                        <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>">
+                                        <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>">
                                             <?php  if(!empty($product['featured_image'] )){?>
                                                 <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" alt="">
                                             <?php }else {?>
@@ -256,8 +254,8 @@ include("includes/header.php");
                                             <?php }?>
                                         </a>
                                     </div>
-                                    <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>"><?php echo ucfirst( $product['name']);?></a>
-                                        <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo $product['msrp'];?></del> <?php } ?></p>
+                                    <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo ucfirst( $product['name']);?></a>
+                                        <p class="ps-product__price">Rs. <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
                                     </div>
                                 </div>
                             </div>
