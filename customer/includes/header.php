@@ -75,8 +75,9 @@
                     <button>Search</button>
                 </form>
             </div>
-            <div class="header__right">
-                <div class="header__actions"><a class="header__extra" href="#"><i class="icon-chart-bars"></i><span><i>0</i></span></a><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
+            <div class="header__left">
+                <div class="header__actions">
+                    <a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
                     <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span class="cart_count"></span> </a>
                         <div class="ps-cart__content">
                             <div class="ps-cart__items"  id="cart_menu">
@@ -94,20 +95,25 @@
                             $stmt = mysqli_query($con, "select * from customer_detail where customer_id='$_SESSION[customer_id]'");
                             $customer = mysqli_fetch_assoc($stmt);
                             echo '
-                <ul class="navbar-nav">
-                 <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <span class="hidden-xs">'.$customer['first_name'].' '.$customer['last_name'].'</span>
-                  </a>
-                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#"><p>
-                        '.$customer['first_name'].' '.$customer['last_name'].'
-                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small>
-                      </p></a>
-          </div>
-                </li>
-                </ul>
-              ';
+
+                            <ul class="menu">
+    <li class="menu-item-has-children">
+        <a href="#"><div class="ps-block__left"><i class="icon-user"></i></div>
+        </a><span class="sub-toggle"></span>
+        <ul class="sub-menu">
+            <li class="current-menu-item">
+                <a href="#"><i class="icon-user"></i> '.$customer['first_name'].' '.$customer['last_name'].'<br/>
+                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small></a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="#"><i class="icon-user"></i> Profile</a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="'.PATH.'/customer/auth/logout.php"><i class="icon-sign-out-alt"></i> Logout</a>
+            </li>          
+        </ul>
+    </li>
+</ul>';
                         }
                         else{
                             echo "
@@ -205,20 +211,25 @@
                         $stmt = mysqli_query($con, "select * from customer_detail where customer_id='$_SESSION[customer_id]'");
                         $customer = mysqli_fetch_assoc($stmt);
                         echo '
-                <ul class="navbar-nav">
-                 <li class="nav-item dropdown">
-                  <a href="#" class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                     <span class="hidden-xs">'.$customer['first_name'].' '.$customer['last_name'].'</span>
-                  </a>
-                   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#"><p>
-                        '.$customer['first_name'].' '.$customer['last_name'].'
-                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small>
-                      </p></a>
-          </div>
-                </li>
-                </ul>
-              ';
+
+                            <ul class="menu">
+    <li class="menu-item-has-children">
+        <a href="#"><div class="ps-block__left"><i class="icon-user"></i></div>
+        </a><span class="sub-toggle"></span>
+        <ul class="sub-menu">
+            <li class="current-menu-item">
+                <a href="#"><i class="icon-user"></i> '.$customer['first_name'].' '.$customer['last_name'].'<br/>
+                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small></a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="#"><i class="icon-user"></i> Profile</a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="#"><i class="icon-sign-out-alt"></i> Logout</a>
+            </li>          
+        </ul>
+    </li>
+</ul>';
                     }
                     else{
                         echo "

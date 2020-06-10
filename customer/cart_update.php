@@ -1,33 +1,27 @@
 <?php
-	include 'includes/session.php';
 
-	$conn = $pdo->open();
+include_once("./../config/config.php");
+$output = array('error'=>false);
+$id = $_POST['id'];
+$quantity = $_POST['quantity'];
 
-	$output = array('error'=>false);
-
-	$id = $_POST['id'];
-	$qty = $_POST['qty'];
-
-	if(isset($_SESSION['user'])){
-		try{
-			$stmt = $conn->prepare("UPDATE cart SET quantity=:quantity WHERE id=:id");
-			$stmt->execute(['quantity'=>$qty, 'id'=>$id]);
-			$output['message'] = 'Updated';
-		}
-		catch(PDOException $e){
-			$output['message'] = $e->getMessage();
-		}
-	}
-	else{
-		foreach($_SESSION['cart'] as $key => $row){
-			if($row['productid'] == $id){
-				$_SESSION['cart'][$key]['quantity'] = $qty;
-				$output['message'] = 'Updated';
-			}
-		}
-	}
-
-	$pdo->close();
-	echo json_encode($output);
+if(isset($_SESSION['customer_id'])){
+    try{
+        $stmt = mysqli_query($con,"UPDATE cart SET quantity='$quantity' WHERE id='$id'");
+        $output['message'] = 'Updated';
+    }
+    catch(PDOException $e){
+        $output['message'] = $e->getMessage();
+    }
+}
+else{
+    foreach($_SESSION['cart'] as $key => $row){
+        if($row['product_id'] == $id){
+            $_SESSION['cart'][$key]['quantity'] = $quantity;
+            $output['message'] = 'Updated';
+        }
+    }
+}
+echo json_encode($output);
 
 ?>

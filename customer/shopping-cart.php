@@ -6,8 +6,7 @@ include("includes/header.php");
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="<?php echo PATH;?>/customer/index.php">Home</a></li>
-                <li><a href="shop-default.html">Shop</a></li>
-                <li>Wishlist</li>
+                <li>Shopping-cart</li>
             </ul>
         </div>
     </div>
@@ -17,114 +16,146 @@ include("includes/header.php");
                 <h1>Shopping Cart</h1>
             </div>
             <div class="ps-section__content">
-                <div class="table-responsive">
-                    <table class="table ps-table--shopping-cart">
-                        <thead>
-                        <tr>
-                            <th>Product name</th>
-                            <th>PRICE</th>
-                            <th>QUANTITY</th>
-                            <th>TOTAL</th>
-                            <th></th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>
-                                <div class="ps-product--cart">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/electronic/1.jpg" alt=""></a></div>
-                                    <div class="ps-product__content"><a href="product-default.html">Marshall Kilburn Wireless Bluetooth Speaker, Black (A4819189)</a>
-                                        <p>Sold By:<strong> YOUNG SHOP</strong></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="price">$205.00</td>
-                            <td>
-                                <div class="form-group--number">
-                                    <button class="up">+</button>
-                                    <button class="down">-</button>
-                                    <input class="form-control" type="text" placeholder="1" value="1">
-                                </div>
-                            </td>
-                            <td>$205.00</td>
-                            <td><a href="#"><i class="icon-cross"></i></a></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="ps-product--cart">
-                                    <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/clothing/2.jpg" alt=""></a></div>
-                                    <div class="ps-product__content"><a href="product-default.html">Unero Military Classical Backpack</a>
-                                        <p>Sold By:<strong> YOUNG SHOP</strong></p>
-                                    </div>
-                                </div>
-                            </td>
-                            <td class="price">$205.00</td>
-                            <td>
-                                <div class="form-group--number">
-                                    <button class="up">+</button>
-                                    <button class="down">-</button>
-                                    <input class="form-control" type="text" placeholder="1" value="1">
-                                </div>
-                            </td>
-                            <td>$205.00</td>
-                            <td><a href="#"><i class="icon-cross"></i></a></td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="ps-section__cart-actions"><a class="ps-btn" href="shop-default.html"><i class="icon-arrow-left"></i> Back to Shop</a><a class="ps-btn ps-btn--outline" href="shop-default.html"><i class="icon-sync"></i> Update cart</a></div>
-            </div>
-            <div class="ps-section__footer">
                 <div class="row">
-                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                        <figure>
-                            <figcaption>Coupon Discount</figcaption>
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="">
-                            </div>
-                            <div class="form-group">
-                                <button class="ps-btn ps-btn--outline">Apply</button>
-                            </div>
-                        </figure>
+                <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-12 ">
+                    <div class="table-responsive">
+                        <table class="table ps-table--shopping-cart">
+                            <thead>
+                            <tr>
+                                <th>Image</th>
+                                <th>Product name</th>
+                                <th>PRICE</th>
+                                <th>QUANTITY</th>
+                                <th>TOTAL</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody id="tbody">
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                        <figure>
-                            <figcaption>Calculate shipping</figcaption>
-                            <div class="form-group">
-                                <select class="ps-select">
-                                    <option value="1">America</option>
-                                    <option value="2">Italia</option>
-                                    <option value="3">Vietnam</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Town/City">
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" type="text" placeholder="Postcode/Zip">
-                            </div>
-                            <div class="form-group">
-                                <button class="ps-btn ps-btn--outline">Update</button>
-                            </div>
-                        </figure>
+                    <div class="ps-section__cart-actions">
+                        <a class="ps-btn" href="index.php"><i class="icon-arrow-left"></i> Back to Shop</a>
+                        <a class="ps-btn ps-btn--outline" href="index.php"><i class="icon-sync"></i> Update cart</a>
                     </div>
-                    <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-block--shopping-total">
-                            <div class="ps-block__header">
-                                <p>Subtotal <span> $683.49</span></p>
-                            </div>
-                            <div class="ps-block__content">
-                                <ul class="ps-block__product">
-                                    <li><span class="ps-block__shop">YOUNG SHOP Shipping</span><span class="ps-block__shipping">Free Shipping</span><span class="ps-block__estimate">Estimate for <strong>Viet Nam</strong><a href="#"> MVMTH Classical Leather Watch In Black ×1</a></span></li>
-                                    <li><span class="ps-block__shop">ROBERT’S STORE Shipping</span><span class="ps-block__shipping">Free Shipping</span><span class="ps-block__estimate">Estimate for <strong>Viet Nam</strong><a href="#">Apple Macbook Retina Display 12” ×1</a></span></li>
-                                </ul>
-                                <h3>Total <span>$683.49</span></h3>
-                            </div>
-                        </div><a class="ps-btn ps-btn--fullwidth" href="checkout.php">Proceed to checkout</a>
-                    </div>
+
                 </div>
-            </div>
+                <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-12 ">
+                    <div class="ps-block--shopping-total">
+                        <div class="ps-block__header">
+                            <p>Subtotal <span> $683.49</span></p>
+                        </div>
+                        <div class="ps-block__content">
+                            <ul class="ps-block__product">
+                                <li><span class="ps-block__shop">YOUNG SHOP Shipping</span><span class="ps-block__shipping">Free Shipping</span><span class="ps-block__estimate">Estimate for <strong>Viet Nam</strong><a href="#"> MVMTH Classical Leather Watch In Black ×1</a></span></li>
+                                <li><span class="ps-block__shop">ROBERT’S STORE Shipping</span><span class="ps-block__shipping">Free Shipping</span><span class="ps-block__estimate">Estimate for <strong>Viet Nam</strong><a href="#">Apple Macbook Retina Display 12” ×1</a></span></li>
+                            </ul>
+                            <h3>Total <span>$683.49</span></h3>
+                        </div>
+                    </div><a class="ps-btn ps-btn--fullwidth" href="checkout.php">Proceed to checkout</a>
+                </div>
+                </div>
+                   </div>
         </div>
     </div>
 
 <?php include("includes/footer.php");?>
+<script>
+    var total = 0;
+    $(function(){
+        $(document).on('click', '.cart_delete', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: 'cart_delete.php',
+                data: {id:id},
+                dataType: 'json',
+                success: function(response){
+                    if(!response.error){
+                        getDetails();
+                        getCart();
+                        getTotal();
+                    }
+                }
+            });
+        });
+
+        $(document).on('click', '.minus', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            var qty = $('#qty_'+id).val();
+            if(qty>1){
+                qty--;
+            }
+            $('#qty_'+id).val(qty);
+            $.ajax({
+                type: 'POST',
+                url: 'cart_update.php',
+                data: {
+                    id: id,
+                    qty: qty,
+                },
+                dataType: 'json',
+                success: function(response){
+                    if(!response.error){
+                        getDetails();
+                        getCart();
+                        getTotal();
+                    }
+                }
+            });
+        });
+
+        $(document).on('click', '.add', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            var qty = $('#qty_'+id).val();
+            qty++;
+            $('#qty_'+id).val(qty);
+            $.ajax({
+                type: 'POST',
+                url: 'cart_update.php',
+                data: {
+                    id: id,
+                    qty: qty,
+                },
+                dataType: 'json',
+                success: function(response){
+                    if(!response.error){
+                        getDetails();
+                        getCart();
+                        getTotal();
+                    }
+                }
+            });
+        });
+
+        getDetails();
+        getTotal();
+
+    });
+
+    function getDetails(){
+        $.ajax({
+            type: 'POST',
+            url: 'cart_details.php',
+            dataType: 'json',
+            success: function(response){
+                $('#tbody').html(response);
+                getCart();
+            }
+        });
+    }
+
+    function getTotal(){
+        $.ajax({
+            type: 'POST',
+            url: 'cart_total.php',
+            dataType: 'json',
+            success:function(response){
+                total = response;
+            }
+        });
+    }
+</script>
