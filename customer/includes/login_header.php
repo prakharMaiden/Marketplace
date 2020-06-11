@@ -26,63 +26,50 @@
 <body>
 <header class="header header--standard header--market-place-1" data-sticky="true">
     <div class="header__top">
-        <div class="container">
+        <div class="ps-container">
             <div class="header__left">
-
-            </div>
-            <div class="header__right">
-                <ul class="header__top-links">
-                    <li><a href="#">Store Location</a></li>
-                    <li><a href="#">Track Your Order</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="header__content">
-        <div class="container">
-            <div class="header__content-left">
                 <div class="menu--product-categories">
                     <div class="menu__toggle"><i class="icon-menu"></i><span> Shop by Department</span></div>
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            $categories=mysqli_query($con,"select * from category") ;
-                            foreach ($categories as $category) {  ?>
-                            <li <?php  if($category['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+                            //print_r($_SESSION);die;
+                            $categoriesw=mysqli_query($con,"select * from category") ;
+                            foreach ($categoriesw as $categoryw) {  ?>
+                                <li <?php  if($categoryw['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php  echo $category['id'];?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
-                                <?php  if($category['child'] != 0){ ?>
-                                    <div class="mega-menu">
-                                        <div class="mega-menu__column">
-                                            <h4><?php echo ucfirst($category['name'])  ; ?><span class="sub-toggle"></span></h4>
-                                            <ul class="mega-menu__list">
-                                                <?php
-                                                $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
-                                                foreach ($subcategories as $subcategory) {  ?>
-                                                <li><a href="#"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
-                                                <?php }?>
-                                            </ul>
+                                    <a href="<?php  echo $categoryw['id'];?>"><i class="<?php echo $categoryw['icon']  ; ?>"></i> <?php echo ucfirst($categoryw['name'])  ; ?></a>
+                                    <?php  if($categoryw['child'] != 0){ ?>
+                                        <div class="mega-menu">
+                                            <div class="mega-menu__column">
+                                                <h4><?php echo ucfirst($categoryw['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                <ul class="mega-menu__list">
+                                                    <?php
+                                                    $subcategoriess=mysqli_query($con,"select * from subcategory where category_id='$categoryw[id]'") ;
+                                                    foreach ($subcategoriess as $subcategorys){   ?>
+                                                        <li><a href="#"><?php echo ucfirst($subcategorys['name'])  ; ?></a></li>
+                                                    <?php }?>
+                                                </ul>
+                                            </div>
+
                                         </div>
-
-                                    </div>
-                                <?php }?>
-                            </li>
-                                <?php  }  ?>
+                                    <?php }?>
+                                </li>
+                            <?php  }  ?>
 
                         </ul>
                     </div>
-                </div><a class="ps-logo" href="../index.php"><h3>Krishna <span style="color:#fcb800;font-weight: 700">Golds Industries</span></h3></a>
+                </div><a class="ps-logo" href="<?php echo PATH;?>/customer/index.php"><h3>Krishna Golds Industries</h3></a>
             </div>
-            <div class="header__content-center">
-                <form class="ps-form--quick-search" action="#" method="Post">
-                    <div class="form-group--icon">
-                        <i class="icon-chevron-down"></i>
+            <div class="header__center">
+                <form class="ps-form--quick-search" action="" method="Post">
+                    <div class="form-group--icon"><i class="icon-chevron-down"></i>
                         <select class="form-control" name="category_id" id="category_id">
-                            <option value="all">All</option>
+                            <option value="all" selected="selected">All</option>
                             <?php
-                            $categories=mysqli_query($con,"select * from category") ;
-                            foreach ($categories as $category) {  ?>
-                                <option value="<?php  echo $category['id'];?>" ><?php echo $category['name']  ; ?></option>
+                            $categoriess=mysqli_query($con,"select * from category") ;
+                            foreach ($categoriess as $categorys) {  ?>
+                                <option value="<?php  echo $categorys['id'];?>" ><?php echo $categorys['name']  ; ?></option>
                             <?php  }  ?>
                         </select>
                     </div>
@@ -90,40 +77,83 @@
                     <button>Search</button>
                 </form>
             </div>
-            <div class="header__content-right">
-                <div class="header__actions"><a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
-                    <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
+            <div class="header__left">
+                <div class="header__actions">
+                    <a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
+                    <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span class="cart_count"></span> </a>
+                        <div class="ps-cart__content">
+                            <div class="ps-cart__items"  id="cart_menu">
+
+                            </div>
+                            <div class="ps-cart__footer">
+                                <figure><a class="ps-btn" href="shopping-cart.php">View Cart</a><a class="ps-btn" href="checkout.php">Checkout</a></figure>
+                            </div>
+                        </div>
                     </div>
                     <div class="ps-block--user-header">
-                        <div class="ps-block__left"><i class="icon-user"></i></div>
-                        <div class="ps-block__right"><a href="../auth/login.php">Login</a><a href="../auth/login.php">Register</a></div>
+                        <?php
+                        if(isset($_SESSION['customer_id'])){
+
+                            $stmt = mysqli_query($con, "select * from customer_detail where customer_id='$_SESSION[customer_id]'");
+                            $customer = mysqli_fetch_assoc($stmt);
+                            echo '
+
+                            <ul class="menu">
+    <li class="menu-item-has-children">
+        <a href="#"><div class="ps-block__left"><i class="icon-user"></i></div>
+        </a><span class="sub-toggle"></span>
+        <ul class="sub-menu">
+            <li class="current-menu-item">
+                <a href="#"> '.$customer['first_name'].' '.$customer['last_name'].'<br/>
+                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small></a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="#"> Profile</a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="'.PATH.'/customer/auth/logout.php"><i class="icon-sign-out-alt"></i> Logout</a>
+            </li>          
+        </ul>
+    </li>
+</ul>';
+                        }
+                        else{
+                            echo "
+               <div class='ps-block__left'><i class='icon-user'></i></div>
+                    <div class='ps-block__right'>
+                    <a href='auth/login.php'>Login</a>
+                    <a href='auth/login.php'>Register</a></div>
+                    
+                ";
+                        }
+                        ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <nav class="navigation">
-        <div class="container">
+        <div class="ps-container">
             <div class="navigation__left">
                 <div class="menu--product-categories">
                     <div class="menu__toggle"><i class="icon-menu"></i><span> Shop by Department</span></div>
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            $categories=mysqli_query($con,"select * from category") ;
-                            foreach ($categories as $category) {  ?>
-                                <li <?php  if($category['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+                            $categoriesShow=mysqli_query($con,"select * from category") ;
+                            foreach ($categoriesShow as $categorieShow) {  ?>
+                                <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php  echo $category['id'];?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
-                                    <?php  if($category['child'] != 0){ ?>
+                                    <a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                                    <?php  if($categorieShow['child'] != 0){ ?>
                                         <div class="mega-menu">
                                             <div class="mega-menu__column">
-                                                <h4><?php echo ucfirst($category['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                                 <ul class="mega-menu__list">
                                                     <?php
-                                                    $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
-                                                    foreach ($subcategories as $subcategory) {  ?>
-                                                        <li><a href="#"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                                    $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
+                                                    foreach ($subcategoriesShow as $subcategorieShow) {  ?>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -140,12 +170,14 @@
             <div class="navigation__right">
                 <ul class="menu">
                     <li class="current-menu-item menu-item-has-children" style="visibility: hidden">
-                        <a href="../index.php">Home</a><span class="sub-toggle"></span>
+                        <a href="<?php echo PATH; ?>/customer/index.php">Home</a><span class="sub-toggle"></span>
                     </li>
                 </ul>
-                <div class="ps-block--header-hotline inline">
-                    <p><i class="icon-telephone"></i>Hotline:<strong> 1-800-234-5678</strong></p>
-                </div>
+                <ul class="navigation__extra">
+                    <li><a href="<?php echo PATH; ?>/seller/auth/signup.php">Sell on Krishna Golds Industries</a></li>
+                    <li><a href="#">Track your order</a></li>
+
+                </ul>
             </div>
         </div>
     </nav>
@@ -153,25 +185,64 @@
 <header class="header header--mobile" data-sticky="true">
     <div class="header__top">
         <div class="header__left">
-
         </div>
         <div class="header__right">
             <ul class="navigation__extra">
-                <li><a href="#">Sell on Martfury</a></li>
-                <li><a href="#">Tract your order</a></li>
+                <li><a href="<?php echo PATH;?>/seller/auth/signup.php">Sell on Krishna Golds Industries</a></li>
+                <li><a href="#">Track your order</a></li>
             </ul>
         </div>
     </div>
     <div class="navigation--mobile">
-        <div class="navigation__left"><a class="ps-logo" href="../index.php">Krishna Golds Industries</a></div>
+        <div class="navigation__left"><a class="ps-logo" href="#"><h3>Krishna <span style="color:#fcb800;font-weight: 700">Golds Industries</span></h3></a></div>
         <div class="navigation__right">
             <div class="header__actions">
-                <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span><i>0</i></span></a>
+                <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span class="cart_count"></span> </a>
+                    <div class="ps-cart__content">
+                        <div class="ps-cart__items"  id="cart_menu">
 
+                        </div>
+                        <div class="ps-cart__footer">
+                            <figure><a class="ps-btn" href="shopping-cart.php">View Cart</a><a class="ps-btn" href="checkout.php">Checkout</a></figure>
+                        </div>
+                    </div>
                 </div>
                 <div class="ps-block--user-header">
-                    <div class="ps-block__left"><i class="icon-user"></i></div>
-                    <div class="ps-block__right"><a href="../auth/login.php">Login</a><a href="../auth/login.php">Register</a></div>
+                    <?php
+                    if(isset($_SESSION['customer_id'])){
+
+                        $stmt = mysqli_query($con, "select * from customer_detail where customer_id='$_SESSION[customer_id]'");
+                        $customer = mysqli_fetch_assoc($stmt);
+                        echo '
+
+                            <ul class="menu">
+    <li class="menu-item-has-children">
+        <a href="#"><div class="ps-block__left"><i class="icon-user"></i></div>
+        </a><span class="sub-toggle"></span>
+        <ul class="sub-menu">
+            <li class="current-menu-item">
+                <a href="#"><i class="icon-user"></i> '.$customer['first_name'].' '.$customer['last_name'].'<br/>
+                        <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small></a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="#"><i class="icon-user"></i> Profile</a>
+            </li>  
+              <li class="current-menu-item">
+                <a href="#"><i class="icon-sign-out-alt"></i> Logout</a>
+            </li>          
+        </ul>
+    </li>
+</ul>';
+                    }
+                    else{
+                        echo "
+               <div class='ps-block__left'><i class='icon-user'></i></div>
+                    <div class='ps-block__right'>
+                    <a href='auth/login.php'>Login</a>
+                    <a href='auth/login.php'>Register</a>
+                ";
+                    }
+                    ?>
                 </div>
             </div>
         </div>
@@ -197,20 +268,20 @@
     <div class="ps-panel__content">
         <ul class="menu--mobile">
             <?php
-            $categories=mysqli_query($con,"select * from category") ;
-            foreach ($categories as $category) {  ?>
-                <li <?php  if($category['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+            $categoriesShow=mysqli_query($con,"select * from category") ;
+            foreach ($categoriesShow as $categorieShow) {  ?>
+                <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                    <a href="<?php  echo $category['id'];?>"><i class="<?php echo $category['icon']  ; ?>"></i> <?php echo ucfirst($category['name'])  ; ?></a>
-                    <?php  if($category['child'] != 0){ ?>
+                    <a href="<?php  echo $categorieShow['id'];?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                    <?php  if($categorieShow['child'] != 0){ ?>
                         <div class="mega-menu">
                             <div class="mega-menu__column">
-                                <h4><?php echo ucfirst($category['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                 <ul class="mega-menu__list">
                                     <?php
-                                    $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
-                                    foreach ($subcategories as $subcategory) {  ?>
-                                        <li><a href="#"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                    $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
+                                    foreach ($subcategoriesShow as $subcategorieShow) {  ?>
+                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                     <?php }?>
                                 </ul>
                             </div>
@@ -227,7 +298,7 @@
 </div>
 <div class="ps-panel--sidebar" id="search-sidebar">
     <div class="ps-panel__header">
-        <form class="ps-form--search-mobile" action="" method="Post">
+        <form class="ps-form--search-mobile" action="" method="POST">
             <div class="form-group--nest">
                 <input class="form-control" type="text" placeholder="Search something...">
                 <button><i class="icon-magnifier"></i></button>

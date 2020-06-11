@@ -22,24 +22,32 @@ if(isset($_SESSION['customer_id'])){
 		try{
 			$total = 0;
 			$stmt = mysqli_query($con,"SELECT *, cart.id AS cart_id FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE cart.customer_id='$_SESSION[customer_id]'");
+
 			foreach($stmt as $row){
+				//print_r($row);die;
+				$stmt = mysqli_query($con,"SELECT * FROM suppliers WHERE id='$row[supplier_id]'");
+				$supplier = mysqli_fetch_assoc($stmt);
 				$image = (!empty($row['featured_image'])) ? 'img/seller/products/'.$row['featured_image'] : 'img/noimage.jpg';
 				$subtotal = $row['unit_price']*$row['quantity'];
 				$total += $subtotal;
 				$output .= "
 					<tr>
-						<td><img src='".PUBLIC_PATH.'/'.$image."' width='30px' height='30px'></td>
-						<td>".$row['name']."</td>
+						<td><div class='ps-product--cart'>
+    <div class='ps-product__thumbnail'><a href='product-details.php?id=".$row['id']."'><img src='".PUBLIC_PATH.'/'.$image."'></a></div>
+    <div class='ps-product__content'><a href='product-details.php?id=".$row['id']."'>".$row['name']."</a>
+        <p>Sold By:<strong> ".$supplier['company_name']."</strong></p>
+    </div>
+</div></td>
 						<td>Rs.&nbsp;".number_format($row['unit_price'], 2)."</td>
-						<td class='input-group'>
-							<span class='input-group-btn'>
-            					<button type='button' id='minus' class='btn btn-default btn-flat minus' data-id='".$row['cart_id']."'><i class='fa fa-minus'></i></button>
-            				</span>
-            				<input type='text' class='form-control' value='".$row['quantity']."' id='qty_".$row['cart_id']."'>
-				            <span class='input-group-btn'>
-				                <button type='button' id='add' class='btn btn-default btn-flat add' data-id='".$row['cart_id']."'><i class='fa fa-plus'></i>
-				                </button>
-				            </span>
+						<td>
+						
+						<div class='form-group--number'>
+                                            <button class='up' data-id='".$row['cart_id']."'>+</button>
+                                            <button class='down' data-id='".$row['cart_id']."'>-</button>
+                                            <input class='form-control' type='text' placeholder='1' value='".$row['quantity']."' id='qty_".$row['cart_id']."' min='1'>
+                                        </div>
+						
+							
 						</td>
 						<td>Rs.&nbsp;".number_format($subtotal, 2)."</td>
 						<td><a type='button' data-id='".$row['cart_id']."' class='cart_delete'><i class='icon-cross'></i></a></td>						
@@ -49,7 +57,7 @@ if(isset($_SESSION['customer_id'])){
 			$output .= "
 				<tr>
 					<td colspan='4' align='right'><b>Total</b></td>
-					<td><b>Rs.&nbsp;".number_format($total, 2)."</b></td>
+					<td><b  id='total_ammount1'>Rs.&nbsp;".number_format($total, 2)."</b></td>
 				<tr>
 			";
 
@@ -65,26 +73,30 @@ if(isset($_SESSION['customer_id'])){
 			foreach($_SESSION['cart'] as $row){
 				$stmt = mysqli_query($con,"SELECT *, products.name AS prodname, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id='$row[product_id]'");
 				$product = mysqli_fetch_assoc($stmt);
-				$image = (!empty($row['featured_image'])) ? 'img/seller/products/'.$row['featured_image'] : 'img/noimage.jpg';
+				$stmt = mysqli_query($con,"SELECT * FROM suppliers WHERE id='$product[supplier_id]'");
+				$supplier = mysqli_fetch_assoc($stmt);
+				$image = (!empty($product['featured_image'])) ? 'img/seller/products/'.$product['featured_image'] : 'img/noimage.jpg';
 				$subtotal = $product['unit_price']*$row['quantity'];
 				$total += $subtotal;
 				$output .= "
 					<tr>
-					<td><img src='".PUBLIC_PATH.'/'.$image."' width='30px' height='30px'></td>
-						<td>".$product['name']."</td>
-						<td>&#36; ".number_format($product['unit_price'], 2)."</td>
-						<td class='input-group'>
-							<span class='input-group-btn'>
-            					<button type='button' id='minus' class='btn btn-default btn-flat minus' data-id='".$row['product_id']."'><i class='fa fa-minus'></i></button>
-            				</span>
-            				<input type='text' class='form-control' value='".$row['quantity']."' id='qty_".$row['product_id']."'>
-				            <span class='input-group-btn'>
-				                <button type='button' id='add' class='btn btn-default btn-flat add' data-id='".$row['product_id']."'><i class='fa fa-plus'></i>
-				                </button>
-				            </span>
+					<td><div class='ps-product--cart'>
+    <div class='ps-product__thumbnail'><a href='product-details.php?id=".$product['id']."'><img src='".PUBLIC_PATH.'/'.$image."'></a></div>
+    <div class='ps-product__content'><a href='product-details.php?id=".$product['id']."'>".$product['prodname']."</a>
+        <p>Sold By:<strong> ".$supplier['company_name']."</strong></p>
+    </div>
+</div></td>
+						<td>Rs. ".number_format($product['unit_price'], 2)."</td>
+						<td>
+						<div class='form-group--number'>
+                                            <button class='up' data-id='".$row['product_id']."'>+</button>
+                                            <button class='down' data-id='".$row['product_id']."'>-</button>
+                                            <input class='form-control' type='text' placeholder='1' value='".$row['quantity']."' id='qty_".$row['product_id']."' min='1'>
+                                        </div>
+							
 						</td>
-						<td>&#36; ".number_format($subtotal, 2)."</td>
-						<td><a type='button' data-id='".$row['product_id']."' class='cart_delete'><i class='fa fa-remove'></i></a></td>
+						<td>Rs. ".number_format($subtotal, 2)."</td>
+						<td><a type='button' data-id='".$row['product_id']."' class='cart_delete'><i class='icon-cross'></i></a></td>	
 					
 					</tr>
 				";
@@ -94,7 +106,7 @@ if(isset($_SESSION['customer_id'])){
 			$output .= "
 				<tr>
 					<td colspan='5' align='right'><b>Total</b></td>
-					<td><b>&#36; ".number_format($total, 2)."</b></td>
+					<td ><b id='total_ammount1'>Rs. ".number_format($total, 2)."</b></td>
 				<tr>
 			";
 		}
@@ -102,7 +114,7 @@ if(isset($_SESSION['customer_id'])){
 		else{
 			$output .= "
 				<tr>
-					<td colspan='6' align='center'>Shopping cart empty</td>
+					<td colspan='5' class='text-center'><b>Shopping cart empty</b></td>
 				<tr>
 			";
 		}

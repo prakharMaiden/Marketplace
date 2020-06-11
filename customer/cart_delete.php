@@ -1,15 +1,12 @@
 <?php
-	include 'includes/session.php';
-
-	$conn = $pdo->open();
+include_once("./../config/config.php");
 
 	$output = array('error'=>false);
 	$id = $_POST['id'];
 
-	if(isset($_SESSION['user'])){
+	if(isset($_SESSION['customer_id'])){
 		try{
-			$stmt = $conn->prepare("DELETE FROM cart WHERE id=:id");
-			$stmt->execute(['id'=>$id]);
+			$stmt = mysqli_query($con,"DELETE FROM cart WHERE id='$id'");
 			$output['message'] = 'Deleted';
 			
 		}
@@ -19,14 +16,12 @@
 	}
 	else{
 		foreach($_SESSION['cart'] as $key => $row){
-			if($row['productid'] == $id){
+			if($row['product_id'] == $id){
 				unset($_SESSION['cart'][$key]);
 				$output['message'] = 'Deleted';
 			}
 		}
 	}
-
-	$pdo->close();
 	echo json_encode($output);
 
 ?>

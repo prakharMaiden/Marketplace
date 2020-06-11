@@ -1,5 +1,4 @@
 <?php
-
 include_once("./../config/config.php");
 $output = array('error'=>false);
 $id = $_POST['id'];

@@ -91,6 +91,7 @@ include("../includes/login_header.php");
                                 <div class="form-group">
                                     <input type="password" id="confirm_password" name="confirm_password" placeholder="Confirm Password" class="form-control" required>
                                 </div>
+
                                 <input type="hidden" name="recaptcha_response" id="recaptchaResponse">
                                 <div class="form-group submtit">
                                     <button class="ps-btn ps-btn--fullwidth" type="submit" id="register_submit"  name="register_submit">Register</button>
@@ -121,6 +122,7 @@ include("../includes/login_header.php");
 <script>
     grecaptcha.ready(function () {
         grecaptcha.execute('6Lep0vIUAAAAAJuq4uHJRPuuY3ik9SYNuUvMeiTu', { action: 'contact' }).then(function (token) {
+            console.log(token);
             var recaptchaResponse = document.getElementById('recaptchaResponse');
             recaptchaResponse.value = token;
         });

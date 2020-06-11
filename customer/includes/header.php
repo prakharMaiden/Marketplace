@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,6 +33,7 @@
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
+                            //print_r($_SESSION);die;
                             $categoriesw=mysqli_query($con,"select * from category") ;
                             foreach ($categoriesw as $categoryw) {  ?>
                                 <li <?php  if($categoryw['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
@@ -102,11 +104,11 @@
         </a><span class="sub-toggle"></span>
         <ul class="sub-menu">
             <li class="current-menu-item">
-                <a href="#"><i class="icon-user"></i> '.$customer['first_name'].' '.$customer['last_name'].'<br/>
+                <a href="#"> '.$customer['first_name'].' '.$customer['last_name'].'<br/>
                         <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small></a>
             </li>  
               <li class="current-menu-item">
-                <a href="#"><i class="icon-user"></i> Profile</a>
+                <a href="#"> Profile</a>
             </li>  
               <li class="current-menu-item">
                 <a href="'.PATH.'/customer/auth/logout.php"><i class="icon-sign-out-alt"></i> Logout</a>
@@ -120,7 +122,8 @@
                <div class='ps-block__left'><i class='icon-user'></i></div>
                     <div class='ps-block__right'>
                     <a href='auth/login.php'>Login</a>
-                    <a href='auth/login.php'>Register</a>
+                    <a href='auth/login.php'>Register</a></div>
+                    
                 ";
                         }
                         ?>

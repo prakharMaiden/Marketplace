@@ -20,18 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07a1ef17-1738-41a9-89e4-34fd634d84f8" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/customer/xfbkjasdf.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/auth/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/auth/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/cart_delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/cart_delete.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/cart_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/cart_details.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/cart_total.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/cart_total.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/cart_update.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/cart_update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/cart_view.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/controller/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/controller/loginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/dashboard/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/dashboard.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/login_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_header.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/shopping-cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/shopping-cart.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/slider/home-1/promotion-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/slider/promotion-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/slider/home-1/promotion-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/slider/promotion-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/slider/home-1/slide-1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/slider/slide-1.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/slider/home-1/slide-2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/slider/slide-2.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/slider/home-1/slide-3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/slider/slide-3.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +41,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -53,25 +61,27 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../ecommerce" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\Marketplace\public\img\slider" />
-      <recent name="C:\xampp\htdocs\Marketplace\public\img\seller\products" />
-      <recent name="C:\xampp\htdocs\Marketplace\customer\dashboard" />
-      <recent name="C:\xampp\htdocs\Marketplace\seller\controller" />
-      <recent name="C:\xampp\htdocs\Marketplace\customer\functions" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\Marketplace\customer" />
       <recent name="C:\xampp\htdocs\Marketplace\seller" />
       <recent name="C:\xampp\htdocs\Marketplace\customer\includes" />
       <recent name="C:\xampp\htdocs\Marketplace\public" />
       <recent name="C:\xampp\htdocs\Marketplace\public\js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\customer" />
+      <recent name="C:\xampp\htdocs\Marketplace\public\img\slider" />
+      <recent name="C:\xampp\htdocs\Marketplace\public\img\seller\products" />
+      <recent name="C:\xampp\htdocs\Marketplace\customer\dashboard" />
+      <recent name="C:\xampp\htdocs\Marketplace\seller\controller" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -138,6 +148,12 @@
       <workItem from="1591798306476" duration="1062000" />
       <workItem from="1591800176943" duration="607000" />
       <workItem from="1591801991732" duration="599000" />
+      <workItem from="1591872306167" duration="1670000" />
+      <workItem from="1591874027316" duration="1778000" />
+      <workItem from="1591875836490" duration="2179000" />
+      <workItem from="1591878049900" duration="1881000" />
+      <workItem from="1591880009583" duration="1799000" />
+      <workItem from="1591881903381" duration="90000" />
     </task>
     <servers />
   </component>
@@ -161,10 +177,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1590588217657" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1591707061174">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1591876357037">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591707061174" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1591876357037" />
     <state x="492" y="277" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1590585979758">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -173,9 +189,9 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="389" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1591620457141" />
-    <state x="339" y="164" key="run.anything.popup" timestamp="1591183128171">
+    <state x="339" y="164" key="run.anything.popup" timestamp="1591872950816">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="164" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1591183128171" />
+    <state x="339" y="164" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1591872950816" />
   </component>
 </project>
