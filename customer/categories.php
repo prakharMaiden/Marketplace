@@ -28,13 +28,13 @@ $categoryName= mysqli_fetch_assoc($result);
                                     $categories=mysqli_query($con,"select * from category") ;
                                     foreach ($categories as $category) {  ?>
                                         <li <?php  if($category['child'] != 0){ ?> class="menu-item-has-children" <?php }?>>
-                                            <a  href="categories.php/?id=<?php echo $category['id']  ; ?>"><?php echo strtoupper($category['name'])?></a>
+                                            <a  href="categories.php?id=<?php echo $category['id']  ; ?>"><?php echo strtoupper($category['name'])?></a>
                                             <?php  if($category['child'] != 0){?>
                                                 <ul class="sub-menu">
                                                     <?php
                                                     $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
                                                     foreach ($subcategories as $subcategory) {  ?>
-                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             <?php }?>
@@ -67,7 +67,7 @@ $categoryName= mysqli_fetch_assoc($result);
                                                 <?php
                                                 $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]' limit 5") ;
                                                 foreach ($subcategories as $subcategory) {  ?>
-                                                    <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                                    <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
                                                 <?php }?>
 
                                             </ul>
@@ -91,7 +91,7 @@ $categoryName= mysqli_fetch_assoc($result);
                     foreach ($subcategories as $subcategory) {
                         ?>
                         <div class="ps-block__item">
-                            <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategory['id']  ; ?>">  </a>
+                            <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategory['id']  ; ?>">  </a>
                             <?php  if(!empty($subcategory['picture'] )){?>
                                 <img src="<?php echo PUBLIC_PATH;?>/img/seller/subcategory/<?php echo $subcategory['picture'];?>" alt="">
 
@@ -103,7 +103,7 @@ $categoryName= mysqli_fetch_assoc($result);
                             <span><?php echo $subcategory['products'];?> Items</span>
 
                         </div>
-                    <?php } die;?>
+                    <?php } ?>
                 </div>
             </div>
         </div>

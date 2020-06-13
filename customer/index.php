@@ -84,13 +84,7 @@ include("includes/header.php");
 
                                     </a>
                                     <div class="ps-product__badge"><?php echo $product['discount'];?></div>
-                                    <ul class="ps-product__actions">
-                                        <li><a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target= "modal.php/?id=<?php echo $product['id']  ; ?>#product-quickview"><i class="icon-eye"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                    </ul>
-                                </div>
+                                  </div>
                                 <div class="ps-product__container">
                                     <p class="ps-product__price sale">Rs. <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
                                     <div class="ps-product__content"><a class="ps-product__title" href="#"><?php echo $product['name'];?></a>
@@ -183,13 +177,7 @@ include("includes/header.php");
                                             <?php }?>
                                         </a>
                                         <?php  if(!empty($subcatproduct['discount'] )){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?></div> <?php }?>
-                                        <ul class="ps-product__actions">
-                                            <li><a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target= "modal.php/?id=<?php echo $subcatproduct['id']  ; ?>/#product-quickview"><i class="icon-eye"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                        </ul>
-                                    </div>
+                                       </div>
 
                                     <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
                                         <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>

@@ -100,11 +100,11 @@
     $(function(){
 
         getCart();
+        getWishlist();
 
-        $('#productForm').submit(function(e){
+        $('#cartForm').submit(function(e){
             e.preventDefault();
             var product = $(this).serialize();
-            console.log('swati',product);
             $.ajax({
                 type: 'POST',
                 url: 'cart_add.php',
@@ -129,18 +129,51 @@
             $('.alert').hide();
         });
 
+        $('#wishlistForm').submit(function(e){
+            e.preventDefault();
+            var product = $(this).serialize();
+            $.ajax({
+                type: 'POST',
+                url: 'wishlist_add.php',
+                data: product,
+                dataType: 'json',
+                success: function(response){
+                    //console.log("swati",response);
+                    $('.alert').show();
+                    $('.message').html(response.message);
+                    if(response.error){
+                        $('.alert ').removeClass('alert-success').addClass('alert-danger');
+                    }
+                    else{
+                        $('.alert ').removeClass('alert-danger').addClass('alert-success');
+                        getWishlist();
+                    }
+                }
+            });
+        });
+
     });
 
     function getCart(){
-        console.log('swatisdavhs');
         $.ajax({
             type: 'POST',
             url: 'cart_fetch.php',
             dataType: 'json',
             success: function(response){
-                console.log('swati',response);
                 $('#cart_menu').html(response.list);
                 $('.cart_count').html(response.count);
+            }
+        });
+    }
+
+    function getWishlist(){
+        $.ajax({
+            type: 'POST',
+            url: 'wishlist_fetch.php',
+            dataType: 'json',
+            success: function(response){
+                $('#wishlist_menu').html(response.list);
+                $('.wishlist_count').html(response.count);
             }
         });
     }

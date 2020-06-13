@@ -2,14 +2,24 @@
 include_once("./../config/config.php");
 include("includes/header.php");
 ?>
-
+<style>
+    .ps-section--shopping .ps-section__header {
+        text-align: center;
+        padding-bottom: 50px;
+    }
+    .ps-section--shopping {
+        padding: 50px 0 0 0;
+    }
+    small {
+        font-size: 70%;
+    }
+</style>
 <div class="ps-page--single">
     <div class="ps-breadcrumb">
         <div class="container">
             <ul class="breadcrumb">
                 <li><a href="<?php echo PATH;?>/customer/index.php">Home</a></li>
-                    <li><a href="shop-default.html">Shop</a></li>
-                    <li>Whishlist</li>
+                    <li>Wishlist</li>
                 </ul>
             </div>
         </div>
@@ -26,46 +36,10 @@ include("includes/header.php");
                                     <th></th>
                                     <th>Product name</th>
                                     <th>Unit Price</th>
-                                    <th>Stock Status</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td><a href="#"><i class="icon-cross"></i></a></td>
-                                    <td>
-                                        <div class="ps-product--cart">
-                                            <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/electronic/1.jpg" alt=""></a></div>
-                                            <div class="ps-product__content"><a href="product-default.html">Marshall Kilburn Wireless Bluetooth Speaker, Black (A4819189)</a></div>
-                                        </div>
-                                    </td>
-                                    <td class="price">$205.00</td>
-                                    <td><span class="ps-tag ps-tag--in-stock">In-stock</span></td>
-                                    <td><a class="ps-btn" href="#">Add to cart</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#"><i class="icon-cross"></i></a></td>
-                                    <td>
-                                        <div class="ps-product--cart">
-                                            <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/clothing/2.jpg" alt=""></a></div>
-                                            <div class="ps-product__content"><a href="product-default.html">Unero Military Classical Backpack</a></div>
-                                        </div>
-                                    </td>
-                                    <td class="price">$108.00</td>
-                                    <td><span class="ps-tag ps-tag--in-stock">In-stock</span></td>
-                                    <td><a class="ps-btn" href="#">Add to cart</a></td>
-                                </tr>
-                                <tr>
-                                    <td><a href="#"><i class="icon-cross"></i></a></td>
-                                    <td>
-                                        <div class="ps-product--cart">
-                                            <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/electronic/15.jpg" alt=""></a></div>
-                                            <div class="ps-product__content"><a href="product-default.html">XtremepowerUS Stainless Steel Tumble Cloths Dryer</a></div>
-                                        </div>
-                                    </td>
-                                    <td class="price">$508.00</td>
-                                    <td><span class="ps-tag ps-tag--out-stock">Out-stock</span></td>
-                                </tr>
+                            <tbody id="tbody">
                             </tbody>
                         </table>
                     </div>
@@ -75,3 +49,65 @@ include("includes/header.php");
     </div>
 
 <?php include("includes/footer.php");?>
+
+<script>
+    $(function(){
+        getDetails();
+        $(document).on('click', '.add_cart', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            var qty = 1;
+            $.ajax({
+                type: 'POST',
+                url: 'cart_add.php',
+                data: {
+                    id: id,
+                    quantity: qty,
+                },
+                dataType: 'json',
+                success: function(response){
+                    $.ajax({
+                        type: 'POST',
+                        url: 'wishlist_cart_delete.php',
+                        data: {id:id},
+                        dataType: 'json',
+                        success: function(response){
+                            if(!response.error){
+                                getDetails();
+                            }
+                        }
+                    });
+                }
+            });
+        })
+
+
+        $(document).on('click', '.wishlist_delete', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            $.ajax({
+                type: 'POST',
+                url: 'wishlist_delete.php',
+                data: {id:id},
+                dataType: 'json',
+                success: function(response){
+                    if(!response.error){
+                        getDetails();
+                    }
+                }
+            });
+        });
+
+    });
+
+    function getDetails(){
+        $.ajax({
+            type: 'POST',
+            url: 'wishlist_details.php',
+            dataType: 'json',
+            success: function(response){
+                $('#tbody').html(response);
+            }
+        });
+    }
+</script>

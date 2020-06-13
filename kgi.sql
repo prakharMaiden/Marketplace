@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2020 at 04:18 PM
+-- Generation Time: Jun 13, 2020 at 05:47 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -42,10 +42,9 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `customer_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 2, '2020-06-09 11:49:41', '2020-06-09 11:49:41'),
-(2, 1, 1, 2, '2020-06-09 12:45:51', '2020-06-09 12:45:51'),
-(3, 1, 1, 2, '2020-06-09 12:45:55', '2020-06-09 12:45:55'),
-(4, 1, 1, 2, '2020-06-09 12:45:58', '2020-06-09 12:45:58');
+(3, 1, 2, 4, '2020-06-09 12:45:55', '2020-06-11 13:38:14'),
+(6, 1, 2, 5, '2020-06-13 13:34:25', '2020-06-13 13:40:41'),
+(8, 1, 2, 1, '2020-06-13 14:20:28', '2020-06-13 14:20:28');
 
 -- --------------------------------------------------------
 
@@ -144,7 +143,7 @@ CREATE TABLE `customer_detail` (
 --
 
 INSERT INTO `customer_detail` (`id`, `customer_id`, `first_name`, `last_name`, `class`, `room`, `building`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `voicemail`, `credit_card`, `credit_card_type_id`, `card_exp_mo`, `card_ex_yr`, `billing_address`, `billing_city`, `billing_region`, `billing_postal_code`, `billing_country`, `shipping_address`, `shipping_city`, `shipping_region`, `shipping_postal_code`, `shipping_country`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Swati', 'Chaudhary', NULL, '0', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-01 12:45:12', '2020-05-01 14:10:51'),
+(1, 1, 'Swati', 'Chaudhary', NULL, '0', NULL, 'Rz-151/345, Gali Number 2, Shiv Puri, Jagdamba Vihar', 'West Sagarpur, Palam', 'New Delhi', 'New Delhi', '110046', 'India', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-01 12:45:12', '2020-06-11 11:47:30'),
 (2, 2, 'Mayank', 'Chaudhary', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-28 10:41:00', '2020-05-28 10:41:00');
 
 -- --------------------------------------------------------
@@ -374,6 +373,27 @@ CREATE TABLE `suppliers` (
 INSERT INTO `suppliers` (`id`, `customer_id`, `company_name`, `contact_fname`, `contact_lname`, `contact_title`, `password`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `phone`, `fax`, `email`, `url`, `payment_methods`, `discount_type`, `type_goods`, `notes`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
 (5, 1, 'INFINIKEY MEDIA PVT LTD', 'Mayank', 'Chaudhary', 'INFINIKEY MEDIA PVT LTD', 'e10adc3949ba59abbe56e057f20f883e', ' Block M Market', 'Greater Kailash Part 1', 'delhi', 'Delhi', '110048', 'India', '9891494860', '', 'mayanklion1994@gmail.com', '', '', '', '', '', '', '', '', '', 1, '2020-05-26 12:48:12', '2020-05-26 12:48:12');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `wishlist`
+--
+
+CREATE TABLE `wishlist` (
+  `id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `product_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `wishlist`
+--
+
+INSERT INTO `wishlist` (`id`, `customer_id`, `product_id`, `created_at`, `updated_at`) VALUES
+(2, 1, 1, '2020-06-13 14:52:33', '2020-06-13 14:52:33');
+
 --
 -- Indexes for dumped tables
 --
@@ -465,6 +485,14 @@ ALTER TABLE `suppliers`
   ADD KEY `customer_id` (`customer_id`);
 
 --
+-- Indexes for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `customer_id` (`customer_id`),
+  ADD KEY `product_id` (`product_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -472,7 +500,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -533,6 +561,12 @@ ALTER TABLE `subcategory`
 --
 ALTER TABLE `suppliers`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `wishlist`
+--
+ALTER TABLE `wishlist`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

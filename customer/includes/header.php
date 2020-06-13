@@ -79,16 +79,42 @@
             </div>
             <div class="header__left">
                 <div class="header__actions">
-                    <a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
-                    <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span class="cart_count"></span> </a>
+                    <div class="ps-cart--mini">
+                    <a class="header__extra" <?php if(isset($_SESSION['customer_id'])){ ?> href="#" <?php }else {?> href="<?php echo PATH; ?>/customer/auth/login.php" <?php } ?>>
+                        <i class="icon-heart"></i>
+                        <?php if(isset($_SESSION['customer_id'])){ ?>
+                            <span class="wishlist_count"></span>
+                        <?php } ?>
+                        </a>
+                    <?php if(isset($_SESSION['customer_id'])){ ?>
                         <div class="ps-cart__content">
-                            <div class="ps-cart__items"  id="cart_menu">
+                            <div class="ps-cart__items"  id="wishlist_menu">
 
                             </div>
                             <div class="ps-cart__footer">
-                                <figure><a class="ps-btn" href="shopping-cart.php">View Cart</a><a class="ps-btn" href="checkout.php">Checkout</a></figure>
+                                <figure>
+                                    <a class="ps-btn" style="visibility: hidden" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a>
+                                    <a class="ps-btn text-right" href="<?php echo PATH; ?>/customer/wishlist.php">Go to Wishlist</a></figure>
                             </div>
                         </div>
+                    <?php } ?>
+                    </div>
+                    <div class="ps-cart--mini">
+                        <a class="header__extra"<?php if(isset($_SESSION['customer_id'])){ ?> href="#" <?php }else {?> href="<?php echo PATH; ?>/customer/auth/login.php" <?php } ?>><i class="icon-bag2"></i>
+                            <?php if(isset($_SESSION['customer_id'])){ ?>
+                                <span class="cart_count"></span>
+                            <?php } ?>
+                        </a>
+                        <?php if(isset($_SESSION['customer_id'])){ ?>
+                            <div class="ps-cart__content">
+                                <div class="ps-cart__items"  id="cart_menu">
+
+                                </div>
+                                <div class="ps-cart__footer">
+                                    <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                     <div class="ps-block--user-header">
                         <?php
@@ -144,7 +170,7 @@
                             foreach ($categoriesShow as $categorieShow) {  ?>
                                 <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                                    <a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
                                     <?php  if($categorieShow['child'] != 0){ ?>
                                         <div class="mega-menu">
                                             <div class="mega-menu__column">
@@ -153,7 +179,7 @@
                                                     <?php
                                                     $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
                                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -197,15 +223,23 @@
         <div class="navigation__left"><a class="ps-logo" href="#"><h3>Krishna <span style="color:#fcb800;font-weight: 700">Golds Industries</span></h3></a></div>
         <div class="navigation__right">
             <div class="header__actions">
-                <div class="ps-cart--mini"><a class="header__extra" href="#"><i class="icon-bag2"></i><span class="cart_count"></span> </a>
+                <div class="ps-cart--mini">
+                    <a class="header__extra"
+                        <?php if(isset($_SESSION['customer_id'])){ ?> href="#" <?php }else {?> href="<?php echo PATH; ?>/customer/auth/login.php" <?php } ?>><i class="icon-bag2"></i>
+                        <?php if(isset($_SESSION['customer_id'])){ ?>
+                        <span class="cart_count"></span>
+                        <?php } ?>
+                    </a>
+                    <?php if(isset($_SESSION['customer_id'])){ ?>
                     <div class="ps-cart__content">
                         <div class="ps-cart__items"  id="cart_menu">
 
                         </div>
                         <div class="ps-cart__footer">
-                            <figure><a class="ps-btn" href="shopping-cart.php">View Cart</a><a class="ps-btn" href="checkout.php">Checkout</a></figure>
+                            <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
                         </div>
                     </div>
+                    <?php } ?>
                 </div>
                 <div class="ps-block--user-header">
                     <?php
@@ -281,7 +315,7 @@
                                     <?php
                                     $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                     <?php }?>
                                 </ul>
                             </div>

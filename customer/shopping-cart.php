@@ -108,7 +108,7 @@ include("includes/header.php");
                 dataType: 'json',
                 success: function(response){
                     if(!response.error){
-                        window.location.reload(true);
+                        //window.location.reload(true);
                         getDetails();
                         getCart();
                         getTotal();

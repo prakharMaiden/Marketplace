@@ -83,7 +83,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#"></a>
@@ -111,7 +111,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -139,7 +139,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -167,7 +167,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -195,7 +195,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -223,7 +223,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -251,7 +251,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                 <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                 <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                
                                             </ul>
                                         </div>
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -306,7 +306,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#"></a>
@@ -336,7 +336,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -366,7 +366,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -396,7 +396,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -426,7 +426,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -456,7 +456,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -486,7 +486,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
                                                         <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
                                                         <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
+                                                        
                                                     </ul>
                                                 </div>
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
@@ -547,8 +547,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <p class="ps-product__price sale">$1389.99 <del>$1893.00</del></p><a class="ps-btn" href="#">Add to cart</a>
                                                 <ul class="ps-product__actions">
                                                     <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                </ul>
+                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -580,8 +579,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <p class="ps-product__price sale">$820.99 <del>$893.00</del></p><a class="ps-btn" href="#">Add to cart</a>
                                                 <ul class="ps-product__actions">
                                                     <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                </ul>
+                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -613,8 +611,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <p class="ps-product__price sale">$1020.99 <del>$1120.00</del></p><a class="ps-btn" href="#">Add to cart</a>
                                                 <ul class="ps-product__actions">
                                                     <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                </ul>
+                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -646,8 +643,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <p class="ps-product__price sale">$64.99 <del>$80.00</del></p><a class="ps-btn" href="#">Add to cart</a>
                                                 <ul class="ps-product__actions">
                                                     <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                </ul>
+                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -679,8 +675,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <p class="ps-product__price sale">$42.99 <del>$52.00</del></p><a class="ps-btn" href="#">Add to cart</a>
                                                 <ul class="ps-product__actions">
                                                     <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                </ul>
+                                                  </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -712,8 +707,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <p class="ps-product__price sale">$542.99 <del>$592.00</del></p><a class="ps-btn" href="#">Add to cart</a>
                                                 <ul class="ps-product__actions">
                                                     <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                </ul>
+                                                  </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -745,8 +739,7 @@ $supplier= mysqli_fetch_assoc($res);
                                                 <p class="ps-product__price sale">$542.99 <del>$592.00</del></p><a class="ps-btn" href="#">Add to cart</a>
                                                 <ul class="ps-product__actions">
                                                     <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                    <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                </ul>
+                                                  </ul>
                                             </div>
                                         </div>
                                     </div>

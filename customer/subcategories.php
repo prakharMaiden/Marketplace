@@ -24,7 +24,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                             $categories=mysqli_query($con,"select * from category") ;
                             foreach ($categories as $category) {  ?>
                                 <li class="current-menu-item <?php  if($category['child'] != 0){ ?> menu-item-has-children   <?php }?>">
-                                    <a href="<?php echo PATH;?>/customer/categories.php/?id=<?php echo $category['id']  ; ?>">
+                                    <a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $category['id']  ; ?>">
                                         <?php echo ucfirst($category['name'])  ; ?>
                                     </a>
                                     <?php  if($category['child'] != 0){ ?>
@@ -33,7 +33,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                             <?php
                                             $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
                                             foreach ($subcategories as $subcategory) {  ?>
-                                                <li  class="current-menu-item "><a href="<?php echo PATH;?>/customer/subcategories.php/?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
+                                                <li  class="current-menu-item "><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
                                             <?php }?>
 
 
@@ -184,7 +184,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                     <div class="ps-product">
                                         <div class="ps-product__thumbnail">
 
-                                            <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>">
+                                            <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>">
                                                 <?php  if(!empty($product['featured_image'] )){?>
                                                     <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" alt="">
 
@@ -195,16 +195,11 @@ $subcategoryName= mysqli_fetch_assoc($result);
 
                                             </a>
                                             <div class="ps-product__badge"><?php echo $product['discount'];?></div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                            </ul>
+
                                         </div>
 
                                         <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
+                                            <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
                                                 <div class="ps-product__rating">
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
@@ -216,7 +211,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                 </div>
                                                 <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
                                                 <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
                                             </div>
                                         </div>
@@ -262,7 +257,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                 <div class="ps-product">
                                                     <div class="ps-product__thumbnail">
 
-                                                        <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>">
+                                                        <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>">
                                                             <?php  if(!empty($subcatproduct['featured_image'] )){?>
                                                                 <img src="<?php echo PUBLIC_PATH;?>/img/seller/products//<?php echo $subcatproduct['featured_image'];?>" alt="">
                                                             <?php }else {?>
@@ -270,16 +265,10 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                             <?php }?>
                                                         </a>
                                                         <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?></div>
-                                                        <ul class="ps-product__actions">
-                                                            <li><a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                            <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                            <li><a href="#" data-toggle="tooltip" data-placement="top" title="Compare"><i class="icon-chart-bars"></i></a></li>
-                                                        </ul>
-                                                    </div>
+                                                          </div>
 
                                                     <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
-                                                        <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                                                        <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
                                                             <div class="ps-product__rating">
                                                                 <select class="ps-rating" data-read-only="true">
                                                                     <option value="1">1</option>
@@ -291,7 +280,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                             </div>
                                                             <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
                                                         </div>
-                                                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                                                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
                                                             <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
                                                         </div>
                                                     </div>
@@ -309,7 +298,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                     foreach ($subcatproducts as $subcatproduct){ ?>
                                         <div class="ps-product ps-product--wide">
                                             <div class="ps-product__thumbnail">
-                                                <a href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>">
+                                                <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>">
                                                     <?php  if(!empty($subcatproduct['featured_image'] )){?>
                                                         <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $subcatproduct['featured_image'];?>" alt="">
                                                     <?php }else {?>
@@ -318,7 +307,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                 </a>
                                             </div>
                                             <div class="ps-product__container">
-                                                <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php/?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
+                                                <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
                                                     <p class="ps-product__vendor">Sold by: <a href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a></p>
                                                     <p class="ps-product__desc">
                                                         <?php echo $subcatproduct['description'];?>
@@ -326,10 +315,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                 </div>
                                                 <div class="ps-product__shopping">
                                                     <p class="ps-product__price"><?php echo $subcatproduct['unit_price'];?></p><a class="ps-btn" href="#">Add to cart</a>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                        <li><a href="#"><i class="icon-chart-bars"></i> Compare</a></li>
-                                                    </ul>
+
                                                 </div>
                                             </div>
                                         </div>

@@ -5,13 +5,11 @@ include_once("./../config/config.php");
 
 	if(isset($_SESSION['customer_id'])){
 		try{
-			$stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC");
-			//$row= mysqli_fetch_assoc($stmt);
-			//print_r($stmt);die;
+			$stmt = mysqli_query($con,"SELECT *, products.name AS product_name,products.featured_image AS featured_image, category.name AS catname FROM wishlist LEFT JOIN products ON products.id=wishlist.product_id LEFT JOIN category ON category.id=products.category_id WHERE wishlist.customer_id='$_SESSION[customer_id]'");
 			foreach($stmt as $row){
 				$output['count']++;
-				$image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
-				$productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
+				$image = (!empty($row['featured_image'])) ? 'img/seller/products/'.$row['featured_image'] : 'img/noimage.jpg';
+				$productname = (strlen($row['product_name']) > 30) ? substr_replace($row['product_name'], '...', 27) : $row['product_name'];
 				$output['list'] .= "
 					 <div class='ps-product--cart-mobile'>
                                     <div class='ps-product__thumbnail'>
@@ -24,7 +22,7 @@ include_once("./../config/config.php");
                                     <i class='icon-cross'></i></a>
                                     <a href='product-details.php?id=".$row['id']."'>
                                     ".$productname."</a>
-                                        <p> ".$row['catname']."</p><small>&times; ".$row['quantity']."</small>
+                                        <p> ".$row['catname']."</p>
                                     </div>
                                 </div>
 				";
@@ -35,19 +33,19 @@ include_once("./../config/config.php");
 		}
 	}
 	else{
-		if(!isset($_SESSION['cart'])){
-			$_SESSION['cart'] = array();
+		if(!isset($_SESSION['wishlist'])){
+			$_SESSION['wishlist'] = array();
 		}
 
-		if(empty($_SESSION['cart'])){
+		if(empty($_SESSION['wishlist'])){
 			$output['count'] = 0;
 		}
 		else{
-			foreach($_SESSION['cart'] as $row){
+			foreach($_SESSION['wishlist'] as $row){
 				$output['count']++;
-				$stmt =mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id='$id'");
+				$stmt =mysqli_query($con,"SELECT *, products.name AS product_name,products.featured_image AS featured_image, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id='$id'");
 				$product = mysqli_fetch_assoc($stmt);
-				$image = (!empty($product['feature_image'])) ? 'img/seller/products/'.$product['feature_image'] : 'img/noimage.jpg';
+				$image = (!empty($product['featured_image'])) ? 'img/seller/products/'.$product['featured_image'] : 'img/noimage.jpg';
 				$output['list'] .= "
 					
 					 <div class='ps-product--cart-mobile'>
@@ -59,8 +57,8 @@ include_once("./../config/config.php");
                                     <div class='ps-product__content'><a class='ps-product__remove' href='#'>
                                     <i class='icon-cross'></i></a>
                                     <a href='product-details.php?id=".$row['id']."'>
-                                    ".$product['prodname']."</a>
-                                        <p> ".$product['catname']."</p><small>&times; ".$row['quantity']."</small>
+                                    ".$product['product_name']."</a>
+                                        <p> ".$product['catname']."</p>
                                     </div>
                                 </div>
 				";
