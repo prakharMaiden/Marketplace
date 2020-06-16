@@ -46,49 +46,49 @@ if(isset($_POST['submit'])) {
                             <div class="form-group">
                                 <label class="control-label" for="company_name">Company Name</label>
                                 <div class="controls">
-                                    <input type="text" id="company_name" name="company_name" placeholder="" class="form-control" required>
+                                    <input type="text" id="company_name" name="company_name" placeholder="Please Enter Company Name" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label" for="first_name">First name</label>
                                 <div class="controls">
-                                    <input type="text" id="first_name" name="first_name" placeholder="" class="form-control" required>
+                                    <input type="text" id="first_name" name="first_name" placeholder="Please Enter First name" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label" for="last_name">Last name</label>
                                 <div class="controls">
-                                    <input type="text" id="last_name" name="last_name" placeholder="" class="form-control" required>
+                                    <input type="text" id="last_name" name="last_name" placeholder="Please Enter Last name" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label" for="mobile">Mobile Number</label>
                                 <div class="controls">
-                                    <input type="number" id="mobile" maxlength="10"  minlength="10" name="mobile" class="form-control" required>
+                                    <input type="text" id="mobile" maxlength="10"  minlength="10" name="mobile" placeholder="Please Enter Mobile Number" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label" for="email">E-mail</label>
+                                <label class="control-label" for="email">Email</label>
                                 <div class="controls">
-                                    <input type="email" id="email" name="email" placeholder="" class="form-control" required>
+                                    <input type="email" id="email" name="email" placeholder="Please Enter Email Address" class="form-control" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label" for="password">Password</label>
                                 <div class="controls">
-                                    <input id="password" type="password" class="form-control" name="password" placeholder="">
+                                    <input id="password" type="password" class="form-control" name="password" placeholder="******" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="control-label" for="confirm_password">Confirm Password</label>
                                 <div class="controls">
-                                    <input type="password" id="confirm_password" name="confirm_password" placeholder="" class="form-control" required>
+                                    <input type="password" id="confirm_password" name="confirm_password" placeholder="******" class="form-control" required>
                                 </div>
                             </div>
 
@@ -121,16 +121,20 @@ if(isset($_POST['submit'])) {
     $(document).ready(function () {
         $('#registrationForm').validate({
             rules: {
+                mobile: {
+                    number: true
+                },
                 password: {
-                    required: true,
                     minlength: 6
                 },
+                confirm_password: {equalTo: "#password"},
+
             },
             messages: {
                 password: {
-                    required: "Please provide a password",
                     minlength: "Your password must be at least 6 characters long"
-                }
+                },
+                confirm_password: "Both passwords must be same."
             },
             errorElement: 'span',
             errorPlacement: function (error, element) {

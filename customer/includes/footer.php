@@ -143,9 +143,11 @@
                     $('.message').html(response.message);
                     if(response.error){
                         $('.alert ').removeClass('alert-success').addClass('alert-danger');
+                        $(".icon-heart").css({"color": "999", "font-weight": "bold", "font-size": "35px"});
                     }
                     else{
                         $('.alert ').removeClass('alert-danger').addClass('alert-success');
+                        $(".icon-heart").css({"color": "fcb800", "font-weight": "bold", "font-size": "35px"});
                         getWishlist();
                     }
                 }

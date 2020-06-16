@@ -9,7 +9,7 @@ include_once("./../config/config.php");
 		try{
 			$stmt = mysqli_query($con,"DELETE FROM wishlist WHERE id='$id'");
             //$customer = mysqli_fetch_assoc($stmt);
-            print_r($stmt);die;
+           // print_r($stmt);die;
 			$output['message'] = 'Deleted';
 			
 		}

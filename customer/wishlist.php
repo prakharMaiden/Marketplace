@@ -65,16 +65,15 @@ include("includes/header.php");
                     quantity: qty,
                 },
                 dataType: 'json',
-                success: function(response){
+                success: function(){
                     $.ajax({
                         type: 'POST',
                         url: 'wishlist_cart_delete.php',
                         data: {id:id},
                         dataType: 'json',
-                        success: function(response){
-                            if(!response.error){
-                                getDetails();
-                            }
+                        success: function(){
+                            getDetails();
+                            window.location.reload(true);
                         }
                     });
                 }
@@ -90,10 +89,8 @@ include("includes/header.php");
                 url: 'wishlist_delete.php',
                 data: {id:id},
                 dataType: 'json',
-                success: function(response){
-                    if(!response.error){
-                        getDetails();
-                    }
+                success: function(){
+                    getDetails();
                 }
             });
         });

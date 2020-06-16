@@ -5,10 +5,10 @@ include_once("./../config/config.php");
 
 	if(isset($_SESSION['customer_id'])){
 		try{
-			$stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC");
-			//$row= mysqli_fetch_assoc($stmt);
-			//print_r($stmt);die;
+			$stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, products.unit_price AS unit_price FROM cart LEFT JOIN products ON products.id=cart.product_id  WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC");
 			foreach($stmt as $row){
+				$stmt = mysqli_query($con,"SELECT * FROM suppliers WHERE id='$row[supplier_id]'");
+				$supplier = mysqli_fetch_assoc($stmt);
 				$output['count']++;
 				$image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
 				$productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
@@ -20,11 +20,12 @@ include_once("./../config/config.php");
                                     <img src='".PUBLIC_PATH.'/'.$image."' class='thumbnail' alt='User Image'>
                                     </a>
                                     </div>
-                                    <div class='ps-product__content'><a class='ps-product__remove' href='#'>
+                                    <div class='ps-product__content'>
+                                    <a class='ps-product__remove' href='#'>
                                     <i class='icon-cross'></i></a>
                                     <a href='product-details.php?id=".$row['id']."'>
                                     ".$productname."</a>
-                                        <p> ".$row['catname']."</p><small>&times; ".$row['quantity']."</small>
+                                        <p>Sold By:<small> ".$supplier['company_name']."</small><br/><small>".$row['quantity']."&times;  Rs.".number_format($row['unit_price'],2)."</small>
                                     </div>
                                 </div>
 				";
@@ -43,29 +44,13 @@ include_once("./../config/config.php");
 			$output['count'] = 0;
 		}
 		else{
-			foreach($_SESSION['cart'] as $row){
-				$output['count']++;
-				$stmt =mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM products LEFT JOIN category ON category.id=products.category_id WHERE products.id='$id'");
-				$product = mysqli_fetch_assoc($stmt);
-				$image = (!empty($product['feature_image'])) ? 'img/seller/products/'.$product['feature_image'] : 'img/noimage.jpg';
-				$output['list'] .= "
-					
-					 <div class='ps-product--cart-mobile'>
-                                    <div class='ps-product__thumbnail'>
-                                   <a href='product-details.php?id=".$product['id']."'>
-                                    <img src='".PUBLIC_PATH.'/'.$image."' class='thumbnail' alt='User Image'>
-                                    </a>
-                                    </div>
-                                    <div class='ps-product__content'><a class='ps-product__remove' href='#'>
-                                    <i class='icon-cross'></i></a>
-                                    <a href='product-details.php?id=".$row['id']."'>
-                                    ".$product['prodname']."</a>
-                                        <p> ".$product['catname']."</p><small>&times; ".$row['quantity']."</small>
-                                    </div>
-                                </div>
+			$output['list'] .= "
+					<div class='ps-product--cart-mobile'>
+					<tr>
+					<td colspan='5' class='text-center'><b>Login to proceed</b></td>				
+					</tr>
+					 </div>
 				";
-				
-			}
 		}
 	}
 	echo json_encode($output);

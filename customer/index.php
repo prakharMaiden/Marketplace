@@ -69,7 +69,7 @@ include("includes/header.php");
                     <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
                         <?php
                         $currentDate = date("Y-m-d");
-                        $products=mysqli_query($con,"select * from products where date(created_at) ='$currentDate'  and discount != ''") ;
+                        $products=mysqli_query($con,"select * from products where date(created_at) ='$currentDate' and discount_available ='yes'") ;
                         foreach ($products as $product) {  ?>
                             <div class="ps-product ps-product--inner">
                                 <div class="ps-product__thumbnail">
@@ -83,7 +83,7 @@ include("includes/header.php");
 
 
                                     </a>
-                                    <div class="ps-product__badge"><?php echo $product['discount'];?></div>
+                                    <?php  if(isset($product['discount_available'] ) && $product['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
                                   </div>
                                 <div class="ps-product__container">
                                     <p class="ps-product__price sale">Rs. <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
@@ -176,7 +176,7 @@ include("includes/header.php");
                                                 <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
                                             <?php }?>
                                         </a>
-                                        <?php  if(!empty($subcatproduct['discount'] )){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?></div> <?php }?>
+                                        <?php  if(isset($subcatproduct['discount_available'] ) && $subcatproduct['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?>%</div> <?php }?>
                                        </div>
 
                                     <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>

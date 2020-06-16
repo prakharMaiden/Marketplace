@@ -69,9 +69,9 @@ include("../../includes/header.php");
                                     <td><?php  echo $product['quantity_per_unit'];?></td>
                                     <td><?php  echo $product['unit_price'];?></td>
                                     <td><?php  echo $product['color'];?></td>
-                                    <td><?php  echo $product['discount'];?></td>
+                                    <td><?php  echo $product['discount'];?>%</td>
                                     <td><?php  echo $product['msrp'];?></td>
-                                    <td><?php  if($product['active'] == 0){
+                                    <td><?php  if($product['product_available'] == 0){
                                         ?>
                                         <span class="badge badge-danger">De-active</span>
                                         <?php
@@ -80,7 +80,7 @@ include("../../includes/header.php");
                                         <?php }?></td>
                                     <td>
                                         <a href="edit.php?id=<?php  echo $product['id'];?>" ><i class="fas fa-edit" style="color:#3e8f3e;" aria-hidden="false"></i></a>
-                                        <?php  if($product['active'] == 0){
+                                        <?php  if($product['product_available'] == 0){
                                             ?>
                                             <i class="fas fa-toggle-off" style="color:#dc3545;cursor: pointer;"></i>
                                             <?php

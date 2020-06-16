@@ -1,5 +1,15 @@
 <?php
 include_once("../controller/loginController.php");
+if(isset($_SESSION['supplier_id'])){
+    $result=mysqli_query($con,"select * from suppliers where id='$_SESSION[supplier_id]'");
+    $row = mysqli_fetch_assoc($result);
+    if($row['city'] == Null && $row['state'] == Null){
+        header("location:profile.php");
+    }else{
+        header("location:../dashboard.php");
+    }
+
+}
 
 $loginData=new loginController();
 if(isset($_POST['submit'])) {

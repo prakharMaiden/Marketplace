@@ -19,7 +19,7 @@ $supplier = mysqli_fetch_assoc($result);
      }
  </style>
 </head>
-<body class="hold-transition sidebar-mini">
+<body class="hold-transition sidebar-mini"  onload="myFunction()">
 <div class="wrapper">
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <ul class="navbar-nav">
@@ -92,3 +92,16 @@ $supplier = mysqli_fetch_assoc($result);
             </nav>
         </div>
     </aside>
+    <script>
+        function myFunction() {
+            var discount_available = $('#discount_available').children("option:selected").val();
+            console.log(discount_available);
+            if(discount_available == 'yes'){
+                $(".discount").css({"display": "block"});
+            }else{
+                $(".discount").css({"display": "none"});
+            }
+
+
+        }
+    </script>

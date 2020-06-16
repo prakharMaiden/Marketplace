@@ -24,12 +24,6 @@ if(isset($_SESSION['customer_id'])){
         .ps-product--detail .ps-product__desc ul {
             list-style-type: disc;
         }
-        .ps-product--detail .ps-product__desc p a {
-            text-transform: capitalize;
-            font-weight: 600;
-            color: #09c;
-            font-size: 16px;
-        }
     </style>
     <div class="ps-breadcrumb">
         <div class="ps-container">
@@ -98,12 +92,8 @@ if(isset($_SESSION['customer_id'])){
                             </div>
                             <div class="ps-product__info">
                                 <h1><?php echo ucfirst($productName['name']) ?></h1>
-                                <?php if(isset($productName['product_available']) && $productName['product_available'] == 'no'){
-                                    echo "<div class='ps-product__actions out-stock' style='width: 30%;'><p  style='padding: 10px 20px;background: #000;margin-right: 20px;color:#fff;'>Out Of Stock</p></div>";
-                                } ?>
                                 <div class="ps-product__meta">
-
-                                    <br/><p>Sub-category: <a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"><?php echo ucfirst($subcategoryName['name']) ?></a></p>
+                                    <p>Sub-category: <a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"><?php echo ucfirst($subcategoryName['name']) ?></a></p>
                                     <div class="ps-product__rating">
                                         <select class="ps-rating" data-read-only="true">
                                             <option value="1">1</option>
@@ -123,53 +113,33 @@ if(isset($_SESSION['customer_id'])){
                                 </div>
                                 <div class="ps-product__variations">
                                     <?php
-                                    if (isset($productName['size'])){ ?>
-                                    <figure>
-                                        <figcaption>Sizes</figcaption>
+                                    if (isset($productName['color'])){ ?>
+                                        <figure>
+                                            <figcaption>Color</figcaption>
 
 
-                                        <div class="">
-                                           <?php echo $productName['size']; ?></div>
+                                            <div class="ps-variant ps-variant--color" style="background-color: <?php echo $productName['color']; ?>">
+                                                <span class="ps-variant__tooltip"><?php echo $productName['color']; ?></span></div>
 
-
-                                            <div class="">
-                                                <select id="size" name="size" class="form-control col-md-4">
-                                                    <option value="">Please select</option>
-                                                    <?php
-
-                                        if (isset($productName['available_sizes'])) {
-                                            foreach (explode(",",$productName['available_sizes']) as $available_size){ ?>
-                                                        <option value="<?php echo $available_size; ?>"><?php echo $available_size; ?></option>
-                                                    <?php } }?>
-                                                </select></div>
-
-
-                                    </figure>
+                                        </figure>
                                     <?php }?>
                                     <?php
                                     if (isset($productName['available_colors'])){ ?>
                                         <figure>
-                                        <figcaption>Colors</figcaption>
-                                        <?php
-                                        if (isset($productName['color'])){ ?>
-                                            <div class="ps-variant ps-variant--color" style="background-color: <?php echo $productName['color']; ?>">
-                                                <span class="ps-variant__tooltip">Selected Color</span></div>
-                                        <?php }?>
-                                        <?php
-                                        foreach (explode(",",$productName['available_colors']) as $available_color){ ?>
+                                            <figcaption>Available Colors</figcaption>
+                                            <?php
+                                            foreach (explode(",",$productName['available_colors']) as $available_color){ ?>
 
-                                            <div class="ps-variant ps-variant--color" style="background-color: <?php echo $available_color; ?>">
-                                                <span class="ps-variant__tooltip">Available Colors</span></div>
-                                        <?php }?>
+                                                <div class="ps-variant ps-variant--color" style="background-color: <?php echo $available_color; ?>">
+                                                    <span class="ps-variant__tooltip"><?php echo $available_color; ?></span></div>
+                                            <?php }?>
 
-                                    </figure>
+                                        </figure>
                                     <?php }?>
                                 </div>
                                 <div class="ps-product__shopping">
-<?php if(isset($productName['product_available']) && $productName['product_available'] == 'yes'){?>
                                     <form id="cartForm" method="post">
                                         <div class="form-group--number">
-
                                             <button  type="button" class="up" id="add"><i class="fa fa-plus"></i></button>
                                             <button  type="button" class="down" id="minus"><i class="fa fa-minus"></i></button>
                                             <input class="form-control" name="quantity" id="quantity" type="text" value="1">
@@ -179,7 +149,6 @@ if(isset($_SESSION['customer_id'])){
                                     </form>
 
                                     <a class="ps-btn" href="#">Buy Now</a>
-<?php } ?>
                                     <?php if(isset($wishlist)){?>
                                         <div class="ps-product__actions">
                                             <i class="icon-heart" style="color: #fcb800;font-weight: bold;cursor: no-drop;font-size: 35px;" title="Already added in wishlist"></i></div>
@@ -201,7 +170,7 @@ if(isset($_SESSION['customer_id'])){
                                     <p><strong>SKU:</strong> <?php echo $productName['sku'] ?></p>
                                     <p class="categories"><strong> Categories:</strong>
                                         <a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $categoryName['id'] ?>"><?php echo ucfirst($categoryName['name']) ?></a>,<a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"> <?php echo ucfirst($subcategoryName['name']) ?></a></p>
- </div>
+                                </div>
                                 <div class="ps-product__sharing"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a><a class="twitter" href="#"><i class="fa fa-twitter"></i></a><a class="google" href="#"><i class="fa fa-google-plus"></i></a><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></div>
                             </div>
                         </div>

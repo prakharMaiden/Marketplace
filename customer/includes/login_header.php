@@ -79,7 +79,25 @@
             </div>
             <div class="header__left">
                 <div class="header__actions">
-                    <a class="header__extra" href="#"><i class="icon-heart"></i><span><i>0</i></span></a>
+                    <div class="ps-cart--mini">
+                        <a class="header__extra" <?php if(isset($_SESSION['customer_id'])){ ?> href="#" <?php }else {?> href="<?php echo PATH; ?>/customer/auth/login.php" <?php } ?>>
+                            <i class="icon-heart"></i>
+                            <?php if(isset($_SESSION['customer_id'])){ ?>
+                                <span class="wishlist_count"></span>
+                            <?php } ?>
+                        </a>
+                        <?php if(isset($_SESSION['customer_id'])){ ?>
+                            <div class="ps-cart__content">
+                                <div class="ps-cart__items"  id="wishlist_menu">
+                                </div>
+                                <div class="ps-cart__footer">
+                                    <figure>
+                                        <a class="ps-btn text-right" href="<?php echo PATH; ?>/customer/wishlist.php">Go to Wishlist</a>
+                                    </figure>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
                     <div class="ps-cart--mini"><a class="header__extra" href="<?php echo PATH; ?>/customer/auth/login.php"><i class="icon-bag2"></i></a>
                     </div>
                     <div class="ps-block--user-header">

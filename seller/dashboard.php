@@ -175,73 +175,33 @@ if(empty($_SESSION['supplier_id'])){
                             </div>
                             <div class="card-body p-0">
                                 <ul class="products-list product-list-in-card pl-2 pr-2">
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">Samsung TV
-                                                <span class="badge badge-warning float-right">$1800</span></a>
-                                            <span class="product-description">
-                        Samsung 32" 1080p 60Hz LED Smart HDTV.
+                                    <?php
+
+                                    $products=mysqli_query($con,"select * from products where (supplier_id='$_SESSION[supplier_id]')") ;
+                                    foreach ($products as $product){
+                                    ?>
+                                        <li class="item">
+                                            <div class="product-img">
+                                                <?php  if(!empty($product['featured_image'] )){?>
+                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" alt="" class="img-size-50">
+                                                <?php }else {?>
+                                                    <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="Product Image" class="img-size-50">
+                                                <?php }?>
+                                            </div>
+                                            <div class="product-info">
+                                                <a href="<?php echo PATH;?>/seller/products/general/index.php" class="product-title"><?php echo $product['name'] ?>
+                                                    <span class="badge badge-warning float-right"><?php echo $product['unit_price'] ?></span></a>
+                                                <span class="product-description">
+                        <?php echo (strlen($product['description']) > 30) ? substr_replace($product['description'], '...', 27) : $product['description']; ?>
                       </span>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">Bicycle
-                                                <span class="badge badge-info float-right">$700</span></a>
-                                            <span class="product-description">
-                        26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                      </span>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">Bicycle
-                                                <span class="badge badge-info float-right">$700</span></a>
-                                            <span class="product-description">
-                        26" Mongoose Dolomite Men's 7-speed, Navy Blue.
-                      </span>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">
-                                                Xbox One <span class="badge badge-danger float-right">
-                        $350
-                      </span>
-                                            </a>
-                                            <span class="product-description">
-                        Xbox One Console Bundle with Halo Master Chief Collection.
-                      </span>
-                                        </div>
-                                    </li>
-                                    <li class="item">
-                                        <div class="product-img">
-                                            <img src="../public/img/noimage.jpg" alt="Product Image" class="img-size-50">
-                                        </div>
-                                        <div class="product-info">
-                                            <a href="javascript:void(0)" class="product-title">PlayStation 4
-                                                <span class="badge badge-success float-right">$399</span></a>
-                                            <span class="product-description">
-                        PlayStation 4 500GB Console (PS4)
-                      </span>
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
+                                        <?php }?>
+
                                 </ul>
                             </div>
                             <div class="card-footer text-center">
-                                <a href="javascript:void(0)" class="uppercase">View All Products</a>
+                                <a href="<?php echo PATH;?>/seller/products/general/index.php" class="uppercase">View All Products</a>
                             </div>
                         </div>
                     </div>

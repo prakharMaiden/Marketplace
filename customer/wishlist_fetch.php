@@ -5,8 +5,10 @@ include_once("./../config/config.php");
 
 	if(isset($_SESSION['customer_id'])){
 		try{
-			$stmt = mysqli_query($con,"SELECT *, products.name AS product_name,products.featured_image AS featured_image, category.name AS catname FROM wishlist LEFT JOIN products ON products.id=wishlist.product_id LEFT JOIN category ON category.id=products.category_id WHERE wishlist.customer_id='$_SESSION[customer_id]'");
+			$stmt = mysqli_query($con,"SELECT *, products.name AS product_name,products.featured_image AS featured_image, products.unit_price AS unit_price  FROM wishlist LEFT JOIN products ON products.id=wishlist.product_id  WHERE wishlist.customer_id='$_SESSION[customer_id]'");
 			foreach($stmt as $row){
+				$stmt = mysqli_query($con,"SELECT * FROM suppliers WHERE id='$row[supplier_id]'");
+				$supplier = mysqli_fetch_assoc($stmt);
 				$output['count']++;
 				$image = (!empty($row['featured_image'])) ? 'img/seller/products/'.$row['featured_image'] : 'img/noimage.jpg';
 				$productname = (strlen($row['product_name']) > 30) ? substr_replace($row['product_name'], '...', 27) : $row['product_name'];
@@ -22,8 +24,8 @@ include_once("./../config/config.php");
                                     <i class='icon-cross'></i></a>
                                     <a href='product-details.php?id=".$row['id']."'>
                                     ".$productname."</a>
-                                        <p> ".$row['catname']."</p>
-                                    </div>
+                                            <p>Sold By:<small> ".$supplier['company_name']."</small><br/><small>Rs.".number_format($row['unit_price'],2)."</small>
+                                 </div>
                                 </div>
 				";
 			}

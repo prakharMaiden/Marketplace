@@ -14,23 +14,28 @@ class loginController {
     }
 
     // Function for signUp
-    public function signUp($company_name,$first_name,$last_name,$mobile,$email,$password) {
-        $result=mysqli_query($this->db,"select * from suppliers where (email='$email' or phone='$mobile')") ;
+    public function signUp($company_name,$first_name,$last_name,$phone,$email,$password) {
+        $result=mysqli_query($this->db,"select * from suppliers where (email='$email' or phone='$phone')") ;
         if (mysqli_num_rows($result) > 0) {
             $row = mysqli_fetch_assoc($result);
-            if($email == $row['email']) {
+            if($email == $row['email'] && $phone == $row['phone']) {
+                $response = array(
+                    "type" => "danger",
+                    "message" => "Email and Mobile number already exists in our records."
+                );
+            }elseif ($email == $row['email'] ){
                 $response = array(
                     "type" => "danger",
                     "message" => "Email already exists in our records."
                 );
-            }elseif ($mobile == $row['mobile']){
+        }elseif ($phone == $row['phone']){
                 $response = array(
                     "type" => "danger",
                     "message" => "Mobile number already exists in our records."
                 );
             }
         }else{
-            $result =   mysqli_query($this->db,"insert into suppliers(company_name,contact_fname,contact_lname,email,phone,password) values('$company_name','$first_name','$last_name','$email','$mobile','$password')") ;
+            $result =   mysqli_query($this->db,"insert into suppliers(company_name,contact_fname,contact_lname,email,phone,password) values('$company_name','$first_name','$last_name','$email','$phone','$password')") ;
             if (mysqli_num_rows($result) > 0) {
                 $response = array(
                     "type" => "success",

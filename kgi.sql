@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 13, 2020 at 05:47 PM
+-- Generation Time: Jun 16, 2020 at 05:14 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -33,18 +33,11 @@ CREATE TABLE `cart` (
   `customer_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `quantity` int(11) NOT NULL,
+  `color` varchar(255) DEFAULT NULL,
+  `size` varchar(255) DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `cart`
---
-
-INSERT INTO `cart` (`id`, `customer_id`, `product_id`, `quantity`, `created_at`, `updated_at`) VALUES
-(3, 1, 2, 4, '2020-06-09 12:45:55', '2020-06-11 13:38:14'),
-(6, 1, 2, 5, '2020-06-13 13:34:25', '2020-06-13 13:40:41'),
-(8, 1, 2, 1, '2020-06-13 14:20:28', '2020-06-13 14:20:28');
 
 -- --------------------------------------------------------
 
@@ -228,12 +221,12 @@ CREATE TABLE `products` (
   `id_sku` varchar(10) DEFAULT NULL,
   `vendor_product_id` int(11) DEFAULT NULL,
   `name` varchar(255) DEFAULT NULL,
-  `description` text,
+  `description` longtext,
   `quantity_per_unit` varchar(50) DEFAULT NULL,
   `unit_price` varchar(50) DEFAULT NULL,
-  `msrp` varchar(100) DEFAULT NULL,
+  `msrp` varchar(50) DEFAULT NULL,
   `available_size` varchar(50) DEFAULT NULL,
-  `available_colors` varchar(50) DEFAULT NULL,
+  `available_colors` varchar(255) DEFAULT NULL,
   `size` varchar(10) DEFAULT NULL,
   `color` varchar(10) DEFAULT NULL,
   `discount` varchar(50) DEFAULT NULL,
@@ -241,8 +234,8 @@ CREATE TABLE `products` (
   `unit_in_stock` varchar(50) DEFAULT NULL,
   `unit_on_order` varchar(50) DEFAULT NULL,
   `reorder_level` varchar(50) DEFAULT NULL,
-  `product_available` varchar(50) DEFAULT NULL,
-  `discount_available` varchar(50) DEFAULT NULL,
+  `product_available` enum('yes','no') NOT NULL DEFAULT 'yes',
+  `discount_available` enum('yes','no') NOT NULL DEFAULT 'yes',
   `current_order` varchar(100) DEFAULT NULL,
   `featured_image` varchar(256) DEFAULT NULL,
   `images` varchar(256) DEFAULT NULL,
@@ -257,9 +250,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `customer_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `featured_image`, `images`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '3%', '500g', '50', '23', '32', '22', '2%', '', 'featured_image-200524011210-1.jpg', 'images-200605034741-logo_light.png,images-200605034741-logo-autopart.png,images-200605034741-logo-electronic.png,images-200605034741-logo-furniture.png,images-200605034741-logo-kids.png,', '56', 1, '2020-05-31 11:18:36', '2020-06-05 13:48:48'),
-(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '10%', '500g', '50', '23', '32', '22', '2%', '', 'featured_image-200524011210-7.jpg', '', '56', 1, '2020-06-05 11:19:04', '2020-06-05 13:30:33'),
-(11, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', 'blue', '5%', '500g', '50', '23', '32', '22', '2%', '', 'featured_image-200524011210-9.jpg', '', '56', 1, '2020-06-05 11:19:04', '2020-06-05 13:30:39');
+(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19  <ul>\r\n                                        <li> Unrestrained and portable active stereo speaker</li>\r\n                                        <li> Free from the confines of wires and chords</li>\r\n                                        <li> 20 hours of portable capabilities</li>\r\n                                        <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>\r\n                                        <li> 3/4? Dome Tweeters: 2X and 4? Woofer: 1X</li>\r\n                                    </ul>', '20', '34000', '45000', '', 'blue,black,white', '3', 'red', '3', '500g', '50', '23', '32', 'no', 'yes', '', 'featured_image-200524011210-7.jpg', 'images-200524011210-1.jpg,images-200524011210-7.jpg', '56', 1, '2020-05-31 11:18:36', '2020-06-16 14:45:38'),
+(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', '#ddd', NULL, '500g', '50', '23', '32', 'yes', 'no', '', 'featured_image-200524011210-7.jpg', '', '56', 1, '2020-06-17 11:19:04', '2020-06-16 15:13:49'),
+(3, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', '#Ff0', '5', '500g', '50', '23', '32', 'yes', 'yes', '', 'featured_image-200524011210-9.jpg', '', '56', 1, '2020-06-17 11:19:04', '2020-06-16 15:13:53');
 
 -- --------------------------------------------------------
 
@@ -295,14 +288,6 @@ CREATE TABLE `stock_management` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `stock_management`
---
-
-INSERT INTO `stock_management` (`id`, `supplier_id`, `product_id`, `quantity`, `price_per_product`, `total_price`, `total_discount`, `date_in_stock`, `active`, `created_at`, `updated_at`) VALUES
-(1, 5, 2, '50', '50000', '12000', '3', '2020-06-30 00:00:00', 1, '2020-06-04 08:08:39', '2020-06-04 12:02:21'),
-(2, 5, 1, '50', '100', '12007', '4', '2020-06-30 00:00:00', 1, '2020-06-04 12:00:13', '2020-06-04 12:02:15');
 
 -- --------------------------------------------------------
 
@@ -371,7 +356,7 @@ CREATE TABLE `suppliers` (
 --
 
 INSERT INTO `suppliers` (`id`, `customer_id`, `company_name`, `contact_fname`, `contact_lname`, `contact_title`, `password`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `phone`, `fax`, `email`, `url`, `payment_methods`, `discount_type`, `type_goods`, `notes`, `discount_available`, `current_order`, `logo`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(5, 1, 'INFINIKEY MEDIA PVT LTD', 'Mayank', 'Chaudhary', 'INFINIKEY MEDIA PVT LTD', 'e10adc3949ba59abbe56e057f20f883e', ' Block M Market', 'Greater Kailash Part 1', 'delhi', 'Delhi', '110048', 'India', '9891494860', '', 'mayanklion1994@gmail.com', '', '', '', '', '', '', '', '', '', 1, '2020-05-26 12:48:12', '2020-05-26 12:48:12');
+(5, 1, 'Infinkey Media Pvt Ltd', 'Mayank', 'Chaudhary', 'Infinkey Media Pvt Ltd', 'e10adc3949ba59abbe56e057f20f883e', ' Block M Market', 'Greater Kailash Part 1', 'delhi', 'Delhi', '110048', 'India', '9891494860', '', 'mayanklion1994@gmail.com', '', '', '', '', '', '', '', '', '', 1, '2020-06-16 14:19:32', '2020-06-16 14:19:32');
 
 -- --------------------------------------------------------
 
@@ -392,7 +377,7 @@ CREATE TABLE `wishlist` (
 --
 
 INSERT INTO `wishlist` (`id`, `customer_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(2, 1, 1, '2020-06-13 14:52:33', '2020-06-13 14:52:33');
+(5, 1, 1, '2020-06-14 13:22:10', '2020-06-14 13:22:10');
 
 --
 -- Indexes for dumped tables
@@ -500,7 +485,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -566,7 +551,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Constraints for dumped tables

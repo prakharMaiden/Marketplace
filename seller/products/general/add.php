@@ -41,15 +41,31 @@ include("../../includes/header.php");
                                     </div>
                                 <?php } ?>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="name">Name</label>
                                             <div class="controls">
-                                                <input type="text" id="name" name="name"  class="form-control"  required>
+                                                <input type="text" id="name" name="name" placeholder="Name of the product" class="form-control"  required>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="unit_price">Unit price</label>
+                                            <div class="controls">
+                                                <input type="text" id="unit_price" name="unit_price"   placeholder="Actual price of product" class="form-control" required>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="category_id">Category</label>
                                             <div class="controls">
@@ -64,7 +80,7 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="subcategory_id">Sub Category</label>
                                             <div class="controls">
@@ -74,202 +90,176 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label for="featured_image">Featured image</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="featured_image" name="featured_image" required>
-                                                    <label class="custom-file-label" for="featured_image">Choose file</label>
+                                                    <label class="custom-file-label" for="featured_image">Choose main image of product</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
-                                            <label for="images">Images</label>
+                                            <label for="images">Additional Images</label>
                                             <div class="input-group">
                                                 <div class="custom-file">
                                                     <input type="file" class="custom-file-input" id="images" name="images[]" multiple required>
-                                                    <label class="custom-file-label" for="images">Choose file</label>
+                                                    <label class="custom-file-label" for="images">Choose multiple images of product</label>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="unit_price">Unit price</label>
-                                            <div class="controls">
-                                                <input type="number" min="0" id="unit_price" name="unit_price"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="sku">SKU</label>
                                             <div class="controls">
-                                                <input type="text" id="sku" name="sku"   class="form-control" >
+                                                <input type="text" id="sku" name="sku"   class="form-control">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="id_sku">ID SKU</label>
                                             <div class="controls">
-                                                <input type="text" id="id_sku" name="id_sku"  class="form-control" >
+                                                <input type="text" id="id_sku" name="id_sku"  class="form-control">
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="col-md-4">
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="quantity_per_unit">Quantity Per Unit</label>
                                             <div class="controls">
-                                                <input type="number" min="0"  id="quantity_per_unit" name="quantity_per_unit"  class="form-control" >
+                                                <input type="text" placeholder="Number of quantity allowed in per product" id="quantity_per_unit" name="quantity_per_unit"  class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="msrp">MRP</label>
+                                            <div class="controls">
+                                                <input type="text" placeholder="MRP price of product" id="msrp" name="msrp"  class="form-control">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="msrp">MSRP</label>
+                                            <label class="control-label" for="available_size">Available sizes</label>
                                             <div class="controls">
-                                                <input type="number" min="0"  id="msrp" name="msrp"  class="form-control" >
+                                                <input type="text" placeholder="Available sizes of the product comma(,) separated" id="available_size" name="available_size"  class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="available_size">Available size</label>
-                                            <div class="controls">
-                                                <input type="text" id="available_size" name="available_size"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="available_colors">Available colors</label>
-                                            <div class="controls">
-                                                <input type="text" id="available_colors" name="available_colors"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="size">Size</label>
                                             <div class="controls">
-                                                <input type="text" id="size" name="size"  class="form-control" >
+                                                <input type="text" id="size" placeholder="Available size of the product"  name="size"  class="form-control">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="color">Color</label>
-                                            <div class="controls">
-                                                <input type="text" id="color" name="color"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="discount">Discount</label>
-                                            <div class="controls">
-                                                <input type="number" min="0"  id="discount" name="discount"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="unit_weight">Unit weight</label>
-                                            <div class="controls">
-                                                <input type="text" id="unit_weight" name="unit_weight"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="unit_in_stock">Unit in stock</label>
-                                            <div class="controls">
-                                                <input type="text" id="unit_in_stock" name="unit_in_stock"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="available_size">Available size</label>
-                                            <div class="controls">
-                                                <input type="text" id="available_size" name="available_size"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                <div class="row">
-
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="available_colors">Available colors</label>
                                             <div class="controls">
-                                                <input type="text" id="available_colors" name="available_colors"  class="form-control" >
+                                                <input type="text" id="available_colors" placeholder="Available colors of the product comma(,) separated" name="available_colors"  class="form-control">
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="reorder_level">Reorder level</label>
+                                            <label class="control-label" for="color">Color</label>
                                             <div class="controls">
-                                                <input type="text" id="reorder_level" name="reorder_level"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="unit_on_order">Unit on order</label>
-                                            <div class="controls">
-                                                <input type="text" id="unit_on_order" name="unit_on_order"  class="form-control" >
+                                                <input type="text" id="color" placeholder="Available color of the product" name="color"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="product_available">Product available</label>
+                                            <label class="control-label" for="unit_in_stock">Unit in stock</label>
                                             <div class="controls">
-                                                <select id="product_available" name="product_available" class="form-control" >
-                                                    <option value="">Please select</option>
-                                                    <option value="yes" >Yes</option>
-                                                    <option value="no" >No</option>
-                                                </select>
+                                                <input type="text" id="unit_in_stock" name="unit_in_stock"  placeholder="How many product in stock"   class="form-control">
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="unit_weight">Unit weight</label>
+                                            <div class="controls">
+                                                <input type="text" id="unit_weight" placeholder="Product weight" name="unit_weight" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="current_order">Current order</label>
+                                            <div class="controls">
+                                                <input type="text" id="current_order" name="current_order"  class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="reorder_level">Reorder level</label>
+                                            <div class="controls">
+                                                <input type="text" id="reorder_level" name="reorder_level" placeholder=""   class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="unit_on_order">Unit on order</label>
+                                            <div class="controls">
+                                                <input type="text" id="unit_on_order" name="unit_on_order"   class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="size_url">Size Url</label>
+                                            <div class="controls">
+                                                <input type="text" id="size_url" name="size_url"  class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                                <div class="row">
+                                    <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="discount_available">Discount available</label>
                                             <div class="controls">
-                                                <select id="discount_available" name="discount_available" class="form-control" >
+                                                <select id="discount_available" name="discount_available" class="form-control">
                                                     <option value="">Please select</option>
                                                     <option value="yes">Yes</option>
                                                     <option value="no">No</option>
@@ -277,33 +267,28 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-4">
+
+                                    <div class="col-md-6 discount" style="display: none;">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="current_order">Current order</label>
+                                            <label class="control-label" for="discount">Discount</label>
                                             <div class="controls">
-                                                <input type="text" id="current_order" name="current_order"  class="form-control" >
+                                                <input type="text" id="discount" placeholder="Discount if any have (please not include %)"  name="discount"  class="form-control">
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
+
                                     <div class="col-md-6">
                                         <div class="form-group col-md-12">
-                                            <label class="control-label" for="size_url">Size Url</label>
+                                            <label class="control-label" for="product_available">Product available</label>
                                             <div class="controls">
-                                                <input type="text" id="size_url" name="size_url"  class="form-control" >
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group col-md-12">
-                                            <label class="control-label" for="active">Publish</label>
-                                            <div class="controls">
-                                                <select id="active" name="active" class="form-control" >
+                                                <select id="product_available" name="product_available" class="form-control">
                                                     <option value="">Please select</option>
-                                                    <option value="1" >Yes</option>
-                                                    <option value="0" >No</option>
+                                                    <option value="yes" >Yes</option>
+                                                    <option value="no" >No</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -347,7 +332,41 @@ include("../../includes/header.php");
     })
 </script>
 <script>
-    var validator = $("#productAddForm").validate();
+    $('#productAddForm').validate({
+        rules: {
+            unit_price: {
+                number: true,
+                maxlength: 10
+            },
+            quantity_per_unit: {
+                number: true,
+                maxlength: 6
+            },
+            msrp: {
+                number: true,
+                maxlength: 11
+            },
+            unit_in_stock:{
+                number: true,
+                maxlength: 6
+            },
+            discount:{
+                number: true,
+                maxlength: 6
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
     $(document).ready(function() {
         $('#category_id').on('change', function() {
             var category_id = this.value;
@@ -362,6 +381,15 @@ include("../../includes/header.php");
                     $("#subcategory_id").html(dataResult);
                 }
             });
+        });
+
+        $('#discount_available').on('change', function() {
+            var discount_available = this.value;
+            if(discount_available == 'yes'){
+                $(".discount").css({"display": "block"});
+            }else{
+                $(".discount").css({"display": "none"});
+            }
 
 
         });

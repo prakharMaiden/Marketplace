@@ -7,8 +7,7 @@ include_once("./../config/config.php");
 	if(isset($_SESSION['customer_id'])){
 		try{
 			$stmt = mysqli_query($con,"DELETE FROM cart WHERE id='$id'");
-            $customer = mysqli_fetch_assoc($stmt);
-			$output['message'] = 'Deleted';
+           $output['message'] = 'Deleted';
 			
 		}
 		catch(PDOException $e){
