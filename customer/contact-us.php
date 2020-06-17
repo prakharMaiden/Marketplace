@@ -61,7 +61,7 @@ include("includes/header.php");
         </div>
         <div class="ps-contact-form">
             <div class="container">
-                <form class="ps-form--contact-us" action="http://nouthemes.net/html/martfury/index.html" method="get">
+                <form class="ps-form--contact-us" action="l" method="post">
                     <h3>Get In Touch</h3>
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 col-12 ">

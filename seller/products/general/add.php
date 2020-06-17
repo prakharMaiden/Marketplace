@@ -10,6 +10,7 @@ if(isset($_POST['submit'])) {
 include("../../includes/header.php");
 ?>
 <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/summernote/summernote-bs4.css">
+<link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -190,8 +191,12 @@ include("../../includes/header.php");
                                     <div class="col-md-6">
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="color">Color</label>
-                                            <div class="controls">
-                                                <input type="text" id="color" placeholder="Available color of the product" name="color"  class="form-control" >
+                                            <div class="input-group my-colorpicker1">
+                                                <input type="text" id="color" placeholder="Available color of the product" name="color" class="form-control">
+
+                                                <div class="input-group-append">
+                                                    <span class="input-group-text"><i class="fas fa-square"></i></span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -325,10 +330,16 @@ include("../../includes/header.php");
 </div>
 <?php include("../../includes/footer.php");?>
 <script src="<?php echo PUBLIC_PATH?>/plugins/summernote/summernote-bs4.min.js"></script>
+<script src="<?php echo PUBLIC_PATH?>/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
 <script>
     $(function () {
         // Summernote
-        $('#description').summernote()
+        $('#description').summernote();
+
+        $('.my-colorpicker1').colorpicker();
+        $('.my-colorpicker1').on('colorpickerChange', function(event) {
+            $('.my-colorpicker1 .fa-square').css('color', event.color.toString());
+        });
     })
 </script>
 <script>

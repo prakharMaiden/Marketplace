@@ -4,6 +4,9 @@ include("includes/header.php");
 $id = $_GET['id'];
 $res= mysqli_query($con,"select * from suppliers where id='$id'") ;
 $supplier= mysqli_fetch_assoc($res);
+
+$result=mysqli_query($con,"select *,COUNT(*) AS product_count from products where supplier_id='$supplier[id]'") ;
+$productName= mysqli_fetch_assoc($result);
 ?>
 
     <div class="ps-page--single">
@@ -23,7 +26,7 @@ $supplier= mysqli_fetch_assoc($res);
                             <div class="ps-block__thumbnail"><img src="img/vendor/vendor-store.jpg" alt=""></div>
                             <div class="ps-block__container">
                                 <div class="ps-block__header">
-                                    <h4>Digitalworld us</h4>
+                                    <h4><?php echo $supplier['company_name']; ?></h4>
                                     <select class="ps-rating" data-read-only="true">
                                         <option value="1">1</option>
                                         <option value="1">2</option>
@@ -34,7 +37,7 @@ $supplier= mysqli_fetch_assoc($res);
                                     <p><strong>85% Positive</strong> (562 rating)</p>
                                 </div><span class="ps-block__divider"></span>
                                 <div class="ps-block__content">
-                                    <p><strong>Digiworld US</strong>, New York’s no.1 online retailer was established in May 2012 with the aim and vision to become the one-stop shop for retail in New York with implementation of best practices both online</p><span class="ps-block__divider"></span>
+                                    <p><?php echo $supplier['notes']; ?></p>
                                     <p><strong>Address</strong> 325 Orchard Str, New York, NY 10002</p>
                                     <figure>
                                         <figcaption>Foloow us on social</figcaption>
@@ -47,7 +50,7 @@ $supplier= mysqli_fetch_assoc($res);
                                     </figure>
                                 </div>
                                 <div class="ps-block__footer">
-                                    <p>Call us directly<strong>(+053) 77-637-3300</strong></p>
+                                    <p>Call us directly<strong>+91-<?php echo $supplier['phone']; ?></strong></p>
                                     <p>or Or if you have any question</p><a class="ps-btn ps-btn--fullwidth" href="#">Contact Seller</a>
                                 </div>
                             </div>
@@ -58,12 +61,10 @@ $supplier= mysqli_fetch_assoc($res);
                             <div class="ps-block__left">
                                 <ul>
                                     <li class="active"><a href="#">Products</a></li>
-                                    <li><a href="#">Reviews</a></li>
-                                    <li><a href="#">About</a></li>
                                 </ul>
                             </div>
                             <div class="ps-block__right">
-                                <form class="ps-form--search" action="http://nouthemes.net/html/martfury/index.html" method="get">
+                                <form class="ps-form--search" action="l" method="post">
                                     <input class="form-control" type="text" placeholder="Search in this shop">
                                     <button><i class="fa fa-search"></i></button>
                                 </form>
@@ -76,208 +77,51 @@ $supplier= mysqli_fetch_assoc($res);
                             </div>
                             <div class="ps-section__content">
                                 <div class="owl-slider" id="vendor-bestseller" data-owl-auto="true" data-owl-loop="true" data-owl-speed="5000" data-owl-gap="0" data-owl-nav="false" data-owl-dots="false" data-owl-item="4" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="3" data-owl-item-lg="4" data-owl-duration="1000" data-owl-mousedrag="on">
-                                    <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/1.jpg" alt=""></a>
-                                            <div class="ps-product__badge">11%</div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="ps-product__container"><a class="ps-product__vendor" href="#"></a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
+                                    <?php
+                                    $products = mysqli_query($con, "select * from   products where supplier_id='$supplier[id]'");
+
+                                    foreach ($products as $product){ ?>
+                                            <div class="ps-product">
+                                                <div class="ps-product__thumbnail">
+
+                                                    <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>">
+                                                        <?php  if(!empty($product['featured_image'] )){?>
+                                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/products//<?php echo $product['featured_image'];?>" alt="">
+                                                        <?php }else {?>
+                                                            <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
+                                                        <?php }?>
+                                                    </a>
+                                                    <?php  if(isset($product['discount_available'] ) && $product['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
+                                                    <?php if(isset($product['product_available']) && $product['product_available'] == 'no'){
+                                                        echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
+                                                    } ?>
                                                 </div>
-                                                <p class="ps-product__price sale">$1389.99 <del>$1893.00</del></p>
-                                            </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
-                                                <p class="ps-product__price sale">$1389.99 <del>$1893.00</del></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/2.jpg" alt=""></a>
-                                            <div class="ps-product__badge">11%</div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
+
+                                                <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
+                                                    <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
+                                                        <div class="ps-product__rating">
+                                                            <select class="ps-rating" data-read-only="true">
+                                                                <option value="1">1</option>
+                                                                <option value="1">2</option>
+                                                                <option value="1">3</option>
+                                                                <option value="1">4</option>
+                                                                <option value="2">5</option>
+                                                            </select><span>01 Comment</span>
+                                                        </div>
+                                                        <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                    </div>
+                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
+                                                        <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                    </div>
                                                 </div>
-                                                <p class="ps-product__price sale">$820.99 <del>$893.00</del></p>
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
-                                                <p class="ps-product__price sale">$820.99 <del>$893.00</del></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/3.jpg" alt=""></a>
-                                            <div class="ps-product__badge">21%</div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__price sale">$1020.99 <del>$1120.00</del></p>
-                                            </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
-                                                <p class="ps-product__price sale">$1020.99 <del>$1120.00</del></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/4.jpg" alt=""></a>
-                                            <div class="ps-product__badge">18%</div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__price sale">$64.99 <del>$80.00</del></p>
-                                            </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-                                                <p class="ps-product__price sale">$64.99 <del>$80.00</del></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/5.jpg" alt=""></a>
-                                            <div class="ps-product__badge">18%</div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__price sale">$42.99 <del>$52.00</del></p>
-                                            </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
-                                                <p class="ps-product__price sale">$42.99 <del>$52.00</del></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/6.jpg" alt=""></a>
-                                            <div class="ps-product__badge">17%</div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                            </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/7.jpg" alt=""></a>
-                                            <div class="ps-product__badge">17%</div>
-                                            <ul class="ps-product__actions">
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                
-                                            </ul>
-                                        </div>
-                                        <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                            </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
                         <div class="ps-shopping ps-tab-root">
                             <div class="ps-shopping__header">
-                                <p><strong> 36</strong> Products found</p>
+                                <p><strong> <?php echo $productName['product_count'] ?></strong> Products found</p>
                                 <div class="ps-shopping__actions">
                                     <select class="ps-select" data-placeholder="Sort Items">
                                         <option>Sort by latest</option>
@@ -298,459 +142,85 @@ $supplier= mysqli_fetch_assoc($res);
                             <div class="ps-tabs">
                                 <div class="ps-tab active" id="tab-1">
                                     <div class="row">
-                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                                            <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/1.jpg" alt=""></a>
-                                                    <div class="ps-product__badge">11%</div>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="ps-product__container"><a class="ps-product__vendor" href="#"></a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01</span>
-                                                        </div>
-                                                        <p class="ps-product__price sale">$1389.99 <del>$1893.00</del></p>
+                                        <?php
+                                        $products = mysqli_query($con, "select * from   products where supplier_id='$supplier[id]'");
+
+                                        foreach ($products as $product){ ?>
+                                            <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
+                                                <div class="ps-product">
+                                                    <div class="ps-product__thumbnail">
+
+                                                        <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>">
+                                                            <?php  if(!empty($product['featured_image'] )){?>
+                                                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/products//<?php echo $product['featured_image'];?>" alt="">
+                                                            <?php }else {?>
+                                                                <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
+                                                            <?php }?>
+                                                        </a>
+                                                        <?php  if(isset($product['discount_available'] ) && $product['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
+                                                        <?php if(isset($product['product_available']) && $product['product_available'] == 'no'){
+                                                            echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
+                                                        } ?>
                                                     </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
-                                                        <p class="ps-product__price sale">$1389.99 <del>$1893.00</del></p>
+
+                                                    <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
+                                                        <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
+                                                            <div class="ps-product__rating">
+                                                                <select class="ps-rating" data-read-only="true">
+                                                                    <option value="1">1</option>
+                                                                    <option value="1">2</option>
+                                                                    <option value="1">3</option>
+                                                                    <option value="1">4</option>
+                                                                    <option value="2">5</option>
+                                                                </select><span>01 Comment</span>
+                                                            </div>
+                                                            <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                        </div>
+                                                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
+                                                            <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                                            <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/2.jpg" alt=""></a>
-                                                    <div class="ps-product__badge">11%</div>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01</span>
-                                                        </div>
-                                                        <p class="ps-product__price sale">$820.99 <del>$893.00</del></p>
-                                                    </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
-                                                        <p class="ps-product__price sale">$820.99 <del>$893.00</del></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                                            <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/3.jpg" alt=""></a>
-                                                    <div class="ps-product__badge">21%</div>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01</span>
-                                                        </div>
-                                                        <p class="ps-product__price sale">$1020.99 <del>$1120.00</del></p>
-                                                    </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
-                                                        <p class="ps-product__price sale">$1020.99 <del>$1120.00</del></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                                            <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/4.jpg" alt=""></a>
-                                                    <div class="ps-product__badge">18%</div>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01</span>
-                                                        </div>
-                                                        <p class="ps-product__price sale">$64.99 <del>$80.00</del></p>
-                                                    </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-                                                        <p class="ps-product__price sale">$64.99 <del>$80.00</del></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                                            <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/5.jpg" alt=""></a>
-                                                    <div class="ps-product__badge">18%</div>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01</span>
-                                                        </div>
-                                                        <p class="ps-product__price sale">$42.99 <del>$52.00</del></p>
-                                                    </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
-                                                        <p class="ps-product__price sale">$42.99 <del>$52.00</del></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                                            <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/6.jpg" alt=""></a>
-                                                    <div class="ps-product__badge">17%</div>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01</span>
-                                                        </div>
-                                                        <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                                    </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                        <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
-                                            <div class="ps-product">
-                                                <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/7.jpg" alt=""></a>
-                                                    <div class="ps-product__badge">17%</div>
-                                                    <ul class="ps-product__actions">
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Read More"><i class="icon-bag2"></i></a></li>
-                                                        <li><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview"><i class="icon-eye"></i></a></li>
-                                                        <li><a href="#" data-toggle="tooltip" data-placement="top" title="Add to Whishlist"><i class="icon-heart"></i></a></li>
-                                                        
-                                                    </ul>
-                                                </div>
-                                                <div class="ps-product__container"><a class="ps-product__vendor" href="#">Global Office</a>
-                                                    <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01</span>
-                                                        </div>
-                                                        <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                                    </div>
-                                                    <div class="ps-product__content hover"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                        <p class="ps-product__price sale">$542.99 <del>$592.00</del></p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <?php }?>
                                     </div>
-                                    <div class="ps-pagination">
-                                        <ul class="pagination">
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">Next Page<i class="icon-chevron-right"></i></a></li>
-                                        </ul>
-                                    </div>
+
                                 </div>
                                 <div class="ps-tab" id="tab-2">
-                                    <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/1.jpg" alt=""></a>
-                                            <div class="ps-product__badge">11%</div>
-                                        </div>
-                                        <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone X 256GB T-Mobile – Black</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
+                                   <?php
+                                    $products = mysqli_query($con, "select * from   products where supplier_id='$supplier[id]'");
+
+                                    foreach ($products as $product){ ?>
+                                        <div class="ps-product ps-product--wide">
+                                            <div class="ps-product__thumbnail">
+                                                <a href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>">
+                                                    <?php  if(!empty($product['featured_image'] )){?>
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" alt="">
+                                                    <?php }else {?>
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
+                                                    <?php }?>
+                                                </a>
+                                            </div>
+                                            <div class="ps-product__container">
+                                                <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
+                                                    <p class="ps-product__vendor">Sold by: <a href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a></p>
+                                                    <p class="ps-product__desc">
+                                                        <?php echo $product['description'];?>
+                                                    </p>
                                                 </div>
-                                                <p class="ps-product__vendor">Sold by:<a href="#"></a></p>
-                                                <ul class="ps-product__desc">
-                                                    <li> Unrestrained and portable active stereo speaker</li>
-                                                    <li> Free from the confines of wires and chords</li>
-                                                    <li> 20 hours of portable capabilities</li>
-                                                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                                                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                                                </ul>
-                                            </div>
-                                            <div class="ps-product__shopping">
-                                                <p class="ps-product__price sale">$1389.99 <del>$1893.00</del></p><a class="ps-btn" href="#">Add to cart</a>
-                                                <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                 </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/2.jpg" alt=""></a>
-                                            <div class="ps-product__badge">11%</div>
-                                        </div>
-                                        <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple iPhone 7 Plus 128 GB – Red Color</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
+                                                <div class="ps-product__shopping">
+                                                    <p class="ps-product__price">Rs. <?php echo number_format($product['unit_price'],2);?> <del><small>Rs. <?php echo number_format($product['msrp'],2);?></small></del></p>
+                                                    <?php if(isset($product['product_available']) && $product['product_available'] == 'no'){
+                                                        echo "<div class='ps-product__actions out-stock'><p  style='padding: 10px 20px;background: #000;margin-right: 20px;color:#fff;'>Out Of Stock</p></div>";
+                                                    }else{ ?>
+                                                        <a type="button" data-id="<?php echo $product['id']; ?>" class='ps-btn add_cart'>Add to cart</a>
+                                            <?php }?>
+
                                                 </div>
-                                                <p class="ps-product__vendor">Sold by:<a href="#">Global Office</a></p>
-                                                <ul class="ps-product__desc">
-                                                    <li> Unrestrained and portable active stereo speaker</li>
-                                                    <li> Free from the confines of wires and chords</li>
-                                                    <li> 20 hours of portable capabilities</li>
-                                                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                                                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                                                </ul>
-                                            </div>
-                                            <div class="ps-product__shopping">
-                                                <p class="ps-product__price sale">$820.99 <del>$893.00</del></p><a class="ps-btn" href="#">Add to cart</a>
-                                                <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                 </ul>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/3.jpg" alt=""></a>
-                                            <div class="ps-product__badge">21%</div>
-                                        </div>
-                                        <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Apple MacBook Air Retina 13.3-Inch Laptop</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__vendor">Sold by:<a href="#">Global Office</a></p>
-                                                <ul class="ps-product__desc">
-                                                    <li> Unrestrained and portable active stereo speaker</li>
-                                                    <li> Free from the confines of wires and chords</li>
-                                                    <li> 20 hours of portable capabilities</li>
-                                                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                                                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                                                </ul>
-                                            </div>
-                                            <div class="ps-product__shopping">
-                                                <p class="ps-product__price sale">$1020.99 <del>$1120.00</del></p><a class="ps-btn" href="#">Add to cart</a>
-                                                <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                 </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/4.jpg" alt=""></a>
-                                            <div class="ps-product__badge">18%</div>
-                                        </div>
-                                        <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gear VR Virtual Reality Headset</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__vendor">Sold by:<a href="#">Global Office</a></p>
-                                                <ul class="ps-product__desc">
-                                                    <li> Unrestrained and portable active stereo speaker</li>
-                                                    <li> Free from the confines of wires and chords</li>
-                                                    <li> 20 hours of portable capabilities</li>
-                                                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                                                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                                                </ul>
-                                            </div>
-                                            <div class="ps-product__shopping">
-                                                <p class="ps-product__price sale">$64.99 <del>$80.00</del></p><a class="ps-btn" href="#">Add to cart</a>
-                                                <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                 </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/5.jpg" alt=""></a>
-                                            <div class="ps-product__badge">18%</div>
-                                        </div>
-                                        <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Bose Bluetooth &amp; Wireless Speaker 2.0 – Blue</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__vendor">Sold by:<a href="#">Global Office</a></p>
-                                                <ul class="ps-product__desc">
-                                                    <li> Unrestrained and portable active stereo speaker</li>
-                                                    <li> Free from the confines of wires and chords</li>
-                                                    <li> 20 hours of portable capabilities</li>
-                                                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                                                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                                                </ul>
-                                            </div>
-                                            <div class="ps-product__shopping">
-                                                <p class="ps-product__price sale">$42.99 <del>$52.00</del></p><a class="ps-btn" href="#">Add to cart</a>
-                                                <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                  </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/6.jpg" alt=""></a>
-                                            <div class="ps-product__badge">17%</div>
-                                        </div>
-                                        <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__vendor">Sold by:<a href="#">Global Office</a></p>
-                                                <ul class="ps-product__desc">
-                                                    <li> Unrestrained and portable active stereo speaker</li>
-                                                    <li> Free from the confines of wires and chords</li>
-                                                    <li> 20 hours of portable capabilities</li>
-                                                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                                                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                                                </ul>
-                                            </div>
-                                            <div class="ps-product__shopping">
-                                                <p class="ps-product__price sale">$542.99 <del>$592.00</del></p><a class="ps-btn" href="#">Add to cart</a>
-                                                <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                  </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-product ps-product--wide">
-                                        <div class="ps-product__thumbnail"><a href="product-default.html"><img src="img/products/technology/7.jpg" alt=""></a>
-                                            <div class="ps-product__badge">17%</div>
-                                        </div>
-                                        <div class="ps-product__container">
-                                            <div class="ps-product__content"><a class="ps-product__title" href="product-default.html">Samsung Gallaxy A8 8GB Ram – Sliver Version</a>
-                                                <div class="ps-product__rating">
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span>01</span>
-                                                </div>
-                                                <p class="ps-product__vendor">Sold by:<a href="#">Global Office</a></p>
-                                                <ul class="ps-product__desc">
-                                                    <li> Unrestrained and portable active stereo speaker</li>
-                                                    <li> Free from the confines of wires and chords</li>
-                                                    <li> 20 hours of portable capabilities</li>
-                                                    <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>
-                                                    <li> 3/4″ Dome Tweeters: 2X and 4″ Woofer: 1X</li>
-                                                </ul>
-                                            </div>
-                                            <div class="ps-product__shopping">
-                                                <p class="ps-product__price sale">$542.99 <del>$592.00</del></p><a class="ps-btn" href="#">Add to cart</a>
-                                                <ul class="ps-product__actions">
-                                                    <li><a href="#"><i class="icon-heart"></i> Wishlist</a></li>
-                                                  </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ps-pagination">
-                                        <ul class="pagination">
-                                            <li class="active"><a href="#">1</a></li>
-                                            <li><a href="#">2</a></li>
-                                            <li><a href="#">3</a></li>
-                                            <li><a href="#">Next Page<i class="icon-chevron-right"></i></a></li>
-                                        </ul>
-                                    </div>
+
+                                    <?php }?>
                                 </div>
                             </div>
                         </div>
@@ -761,3 +231,25 @@ $supplier= mysqli_fetch_assoc($res);
     </div>
 
 <?php include("includes/footer.php");?>
+<script>
+    $(function(){
+        $(document).on('click', '.add_cart', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            var qty = 1;
+            $.ajax({
+                type: 'POST',
+                url: 'cart_add.php',
+                data: {
+                    id: id,
+                    quantity: qty,
+                },
+                dataType: 'json',
+                success: function(){
+
+                }
+            });
+        })
+
+    });
+</script>

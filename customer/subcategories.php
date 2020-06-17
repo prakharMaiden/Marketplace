@@ -194,7 +194,11 @@ $subcategoryName= mysqli_fetch_assoc($result);
 
 
                                             </a>
-                                            <div class="ps-product__badge"><?php echo $product['discount'];?></div>
+                                            <?php  if(isset($product['discount_available'] ) && $product['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
+                                            <?php  if(isset($product['discount_available'] ) && $product['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
+                                            <?php if(isset($product['product_available']) && $product['product_available'] == 'no'){
+                                                echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
+                                            } ?>
 
                                         </div>
 
@@ -264,8 +268,11 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                                 <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
                                                             <?php }?>
                                                         </a>
-                                                        <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?></div>
-                                                          </div>
+                                                        <?php  if(isset($subcatproduct['discount_available'] ) && $subcatproduct['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
+                                                        <?php if(isset($subcatproduct['product_available']) && $subcatproduct['product_available'] == 'no'){
+                                                            echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
+                                                        } ?>
+                                                    </div>
 
                                                     <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
                                                         <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
@@ -314,8 +321,12 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                     </p>
                                                 </div>
                                                 <div class="ps-product__shopping">
-                                                    <p class="ps-product__price"><?php echo $subcatproduct['unit_price'];?></p><a class="ps-btn" href="#">Add to cart</a>
-
+                                                    <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'],2);?> <del><small>Rs. <?php echo number_format($subcatproduct['msrp'],2);?></small></del></p>
+                                                    <?php if(isset($subcatproduct['product_available']) && $subcatproduct['product_available'] == 'no'){
+                                                        echo "<div class='ps-product__actions out-stock'><p  style='padding: 10px 20px;background: #000;margin-right: 20px;color:#fff;'>Out Of Stock</p></div>";
+                                                    }else{ ?>
+                                                        <a type="button" data-id="<?php echo $subcatproduct['id']; ?>" class='ps-btn add_cart'>Add to cart</a>
+                                                    <?php }?>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,3 +341,25 @@ $subcategoryName= mysqli_fetch_assoc($result);
         </div>
     </div>
 <?php include("includes/footer.php");?>
+<script>
+    $(function(){
+        $(document).on('click', '.add_cart', function(e){
+            e.preventDefault();
+            var id = $(this).data('id');
+            var qty = 1;
+            $.ajax({
+                type: 'POST',
+                url: 'cart_add.php',
+                data: {
+                    id: id,
+                    quantity: qty,
+                },
+                dataType: 'json',
+                success: function(){
+
+                }
+            });
+        })
+
+    });
+</script>

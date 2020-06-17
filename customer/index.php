@@ -84,7 +84,10 @@ include("includes/header.php");
 
                                     </a>
                                     <?php  if(isset($product['discount_available'] ) && $product['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
-                                  </div>
+                                    <?php if(isset($product['product_available']) && $product['product_available'] == 'no'){
+                                        echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
+                                    } ?>
+                                </div>
                                 <div class="ps-product__container">
                                     <p class="ps-product__price sale">Rs. <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
                                     <div class="ps-product__content"><a class="ps-product__title" href="#"><?php echo $product['name'];?></a>
@@ -177,7 +180,10 @@ include("includes/header.php");
                                             <?php }?>
                                         </a>
                                         <?php  if(isset($subcatproduct['discount_available'] ) && $subcatproduct['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?>%</div> <?php }?>
-                                       </div>
+                                        <?php if(isset($subcatproduct['product_available']) && $subcatproduct['product_available'] == 'no'){
+                                            echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
+                                        } ?>
+                                    </div>
 
                                     <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
                                         <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
