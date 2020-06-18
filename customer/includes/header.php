@@ -138,10 +138,13 @@ if(empty($_SESSION['customer_id'])){
                         <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small></a>
             </li>  
               <li class="current-menu-item">
-                <a href="#"> Profile</a>
+                <a href="'.PATH.'/customer/profile.php"> Your Profile</a>
+            </li>  
+            <li class="current-menu-item">
+                <a href="'.PATH.'/customer/orders.php">Your Orders</a>
             </li>  
               <li class="current-menu-item">
-                <a href="'.PATH.'/customer/auth/logout.php"><i class="icon-sign-out-alt"></i> Logout</a>
+                <a href="'.PATH.'/customer/auth/logout.php"> Logout</a>
             </li>          
         </ul>
     </li>

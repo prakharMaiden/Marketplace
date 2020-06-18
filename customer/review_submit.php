@@ -14,15 +14,16 @@ if(isset($_POST['submit'])) {
             "type" => "success",
             "message" => "record added successfully."
         );
-        return $response;
+        header("Location: product-details.php?id=".$product_id."#tab-4");
+
     } else {
         $response = array(
             "type" => "danger",
             "message" => "Something went wrong!"
         );
-        return $response;
-    }
 
+    }
+    return $response;
 
 }
 

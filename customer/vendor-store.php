@@ -23,24 +23,27 @@ $productName= mysqli_fetch_assoc($result);
                 <div class="ps-section__container">
                     <div class="ps-section__left">
                         <div class="ps-block--vendor">
-                            <div class="ps-block__thumbnail"><img src="img/vendor/vendor-store.jpg" alt=""></div>
+                            <div class="ps-block__thumbnail">
+                                <?php  if(!empty($supplier['logo'] )){?>
+                                    <a href="#">
+                                        <img src="<?php echo PUBLIC_PATH;?>/img/seller/logo/<?php echo $supplier['logo'];?>"  title="Vendor Image" >
+                                    </a>
+                                <?php }else {?>
+                                    <a href="#">
+                                        <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" title="Vendor Image">
+                                    </a>
+                                <?php }?>
+                                <img src="img/vendor/vendor-store.jpg" alt="">
+                            </div>
                             <div class="ps-block__container">
                                 <div class="ps-block__header">
                                     <h4><?php echo $supplier['company_name']; ?></h4>
-                                    <select class="ps-rating" data-read-only="true">
-                                        <option value="1">1</option>
-                                        <option value="1">2</option>
-                                        <option value="1">3</option>
-                                        <option value="1">4</option>
-                                        <option value="2">5</option>
-                                    </select>
-                                    <p><strong>85% Positive</strong> (562 rating)</p>
                                 </div><span class="ps-block__divider"></span>
                                 <div class="ps-block__content">
                                     <p><?php echo $supplier['notes']; ?></p>
-                                    <p><strong>Address</strong> 325 Orchard Str, New York, NY 10002</p>
+                                    <h5 style="color:#666;"><strong>Address:</strong> <?php echo $supplier['address1'].','.$supplier['address2'] ?><br/> <?php echo $supplier['city'].','.$supplier['state'] ?><br/> <?php echo $supplier['country'].'-'.$supplier['postal_code'] ?></h5>
                                     <figure>
-                                        <figcaption>Foloow us on social</figcaption>
+                                        <figcaption>Follow us on social</figcaption>
                                         <ul class="ps-list--social-color">
                                             <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                                             <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -80,7 +83,11 @@ $productName= mysqli_fetch_assoc($result);
                                     <?php
                                     $products = mysqli_query($con, "select * from   products where supplier_id='$supplier[id]'");
 
-                                    foreach ($products as $product){ ?>
+                                    foreach ($products as $product){
+                                        $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$product[id]'") ;
+                                        $reviews= mysqli_fetch_assoc($ret);
+
+                                        ?>
                                             <div class="ps-product">
                                                 <div class="ps-product__thumbnail">
 
@@ -99,15 +106,27 @@ $productName= mysqli_fetch_assoc($result);
 
                                                 <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
                                                     <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
-                                                        <div class="ps-product__rating">
-                                                            <select class="ps-rating" data-read-only="true">
-                                                                <option value="1">1</option>
-                                                                <option value="1">2</option>
-                                                                <option value="1">3</option>
-                                                                <option value="1">4</option>
-                                                                <option value="2">5</option>
-                                                            </select><span>01 Comment</span>
-                                                        </div>
+                                                        <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
+                                                            <div class="ps-product__rating">
+                                                                <select class="ps-rating" data-read-only="true">
+                                                                    <option value="<?php echo $reviews['sum_rating']/$reviews['review_count'] ?>"><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></option>
+                                                                    <option value="1">2</option>
+                                                                    <option value="1">3</option>
+                                                                    <option value="1">4</option>
+                                                                    <option value="2">5</option>
+                                                                </select><span><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> (<?php echo $reviews['review_count'] ?> review)</span>
+                                                            </div>
+                                                        <?php } else{?>
+                                                            <div class="ps-product__rating">
+                                                                <select class="ps-rating" data-read-only="true">
+                                                                    <option value="1">1</option>
+                                                                    <option value="1">2</option>
+                                                                    <option value="1">3</option>
+                                                                    <option value="1">4</option>
+                                                                    <option value="1">5</option>
+                                                                </select><span>(0 review)</span>
+                                                            </div>
+                                                        <?php }?>
                                                         <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
                                                     </div>
                                                     <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
@@ -145,7 +164,10 @@ $productName= mysqli_fetch_assoc($result);
                                         <?php
                                         $products = mysqli_query($con, "select * from   products where supplier_id='$supplier[id]'");
 
-                                        foreach ($products as $product){ ?>
+                                        foreach ($products as $product){
+                                            $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$product[id]'") ;
+                                            $reviews= mysqli_fetch_assoc($ret);
+                                            ?>
                                             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                                 <div class="ps-product">
                                                     <div class="ps-product__thumbnail">
@@ -165,15 +187,27 @@ $productName= mysqli_fetch_assoc($result);
 
                                                     <div class="ps-product__container"><a class="ps-product__vendor" href="<?php echo PATH;?>/customer/vendor-store.php/?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
                                                         <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
-                                                            <div class="ps-product__rating">
-                                                                <select class="ps-rating" data-read-only="true">
-                                                                    <option value="1">1</option>
-                                                                    <option value="1">2</option>
-                                                                    <option value="1">3</option>
-                                                                    <option value="1">4</option>
-                                                                    <option value="2">5</option>
-                                                                </select><span>01 Comment</span>
-                                                            </div>
+                                                            <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
+                                                                <div class="ps-product__rating">
+                                                                    <select class="ps-rating" data-read-only="true">
+                                                                        <option value="<?php echo $reviews['sum_rating']/$reviews['review_count'] ?>"><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></option>
+                                                                        <option value="1">2</option>
+                                                                        <option value="1">3</option>
+                                                                        <option value="1">4</option>
+                                                                        <option value="2">5</option>
+                                                                    </select><span><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> (<?php echo $reviews['review_count'] ?> review)</span>
+                                                                </div>
+                                                            <?php } else{?>
+                                                                <div class="ps-product__rating">
+                                                                    <select class="ps-rating" data-read-only="true">
+                                                                        <option value="1">1</option>
+                                                                        <option value="1">2</option>
+                                                                        <option value="1">3</option>
+                                                                        <option value="1">4</option>
+                                                                        <option value="1">5</option>
+                                                                    </select><span>(0 review)</span>
+                                                                </div>
+                                                            <?php }?>
                                                             <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
                                                         </div>
                                                         <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>

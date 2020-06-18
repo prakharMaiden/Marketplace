@@ -2,6 +2,38 @@
 include_once("./../config/config.php");
 include("includes/header.php");
 ?>
+    <style>
+        .ps-section--shopping .ps-section__header {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+        .ps-section--shopping {
+            padding: 50px 0 0 0;
+        }
+        small {
+            font-size: 70%;
+        }
+        .ps-form__billing-info{
+            padding: 20px;
+        }.ps-form--checkout{
+                     background: #f1f1f1;
+                 }
+        .form-control {
+            outline: none;
+            height: 50px;
+            font-size: 14px;
+            padding: 0 20px;
+            border: none;
+            height: 50px;
+            background-color: #fff;
+            border: 1px solid #dddddd;
+            border-radius: 0;
+            box-shadow: 0 0 rgba(0, 0, 0, 0);
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            box-shadow: 0 0 0 #000;
+        }
+    </style>
     <div class="ps-page--simple">
         <div class="ps-breadcrumb">
             <div class="container">
@@ -17,7 +49,7 @@ include("includes/header.php");
                     <h1>Compare Product</h1>
                 </div>
                 <div class="ps-section__content">
-                    <form class="ps-form--checkout" action="http://nouthemes.net/html/martfury/do_action" method="post">
+                    <form class="ps-form--checkout" action="" method="post">
                         <div class="row">
                             <div class="col-xl-7 col-lg-8 col-md-12 col-sm-12  ">
                                 <div class="ps-form__billing-info">

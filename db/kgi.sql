@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 17, 2020 at 05:00 PM
+-- Generation Time: Jun 18, 2020 at 05:22 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -251,8 +251,8 @@ CREATE TABLE `products` (
 
 INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `customer_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `featured_image`, `images`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19  <ul>\r\n                                        <li> Unrestrained and portable active stereo speaker</li>\r\n                                        <li> Free from the confines of wires and chords</li>\r\n                                        <li> 20 hours of portable capabilities</li>\r\n                                        <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>\r\n                                        <li> 3/4? Dome Tweeters: 2X and 4? Woofer: 1X</li>\r\n                                    </ul>', '20', '34000', '45000', 'Small,Medium,Large,Extra Large', 'blue,black,white', 'Medium', '#795959', '3', '500g', '50', '23', '32', 'no', 'yes', '', 'featured_image-200524011210-7.jpg', 'images-200524011210-1.jpg,images-200524011210-7.jpg', '56', 1, '2020-05-31 11:18:36', '2020-06-17 12:46:54'),
-(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', '#ddd', NULL, '500g', '50', '23', '32', 'yes', 'no', '', 'featured_image-200524011210-7.jpg', '', '56', 1, '2020-06-17 11:19:04', '2020-06-16 15:13:49'),
-(3, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', '#Ff0', '5', '500g', '50', '23', '32', 'yes', 'yes', '', 'featured_image-200524011210-9.jpg', '', '56', 1, '2020-06-17 11:19:04', '2020-06-16 15:13:53');
+(2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', '#ddd', NULL, '500g', '50', '23', '32', 'yes', 'no', '', 'featured_image-200524011210-7.jpg', '', '56', 1, '2020-06-19 11:19:04', '2020-06-18 12:10:39'),
+(3, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', '#Ff0', '5', '500g', '50', '23', '32', 'yes', 'yes', '', 'featured_image-200524011210-9.jpg', '', '56', 1, '2020-06-18 11:19:04', '2020-06-18 12:10:34');
 
 -- --------------------------------------------------------
 
@@ -277,7 +277,11 @@ CREATE TABLE `reviews` (
 INSERT INTO `reviews` (`id`, `customer_id`, `product_id`, `review`, `rating`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 'saASSCZXCXCAWDARAWEQWEQE', 4, '2020-06-17 13:25:44', '2020-06-17 13:25:44'),
 (2, 1, 1, 'nice product', 5, '2020-06-17 13:27:13', '2020-06-17 13:27:13'),
-(3, 1, 1, 'sadsdasdas', 3, '2020-06-17 13:47:14', '2020-06-17 13:47:14');
+(3, 1, 1, 'sadsdasdas', 3, '2020-06-17 13:47:14', '2020-06-17 13:47:14'),
+(4, 1, 3, 'SDasdasdasd', 4, '2020-06-18 11:54:29', '2020-06-18 11:54:29'),
+(5, 1, 3, 'sdasdsadczczxczxawdaewqwezcxczxcqwedqwed', 1, '2020-06-18 11:54:58', '2020-06-18 11:54:58'),
+(6, 1, 3, 'czxczxczxc', 2, '2020-06-18 11:55:50', '2020-06-18 11:55:50'),
+(7, 1, 3, 'zxczxczxc', 5, '2020-06-18 11:58:26', '2020-06-18 11:58:26');
 
 -- --------------------------------------------------------
 
@@ -560,7 +564,7 @@ ALTER TABLE `products`
 -- AUTO_INCREMENT for table `reviews`
 --
 ALTER TABLE `reviews`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `shipper`

@@ -7,7 +7,6 @@ $result=mysqli_query($con,"select * from products where id='$id'") ;
 $productName= mysqli_fetch_assoc($result);
 
 $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$productName[id]'") ;
-//print_r($ret);die;
 $reviews= mysqli_fetch_assoc($ret);
 
 $result=mysqli_query($con,"select * from subcategory where id='$productName[subcategory_id]'") ;
@@ -109,15 +108,27 @@ if(isset($_SESSION['customer_id'])){
                                 <div class="ps-product__meta">
 
                                     <br/><p>Sub-category: <a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"><?php echo ucfirst($subcategoryName['name']) ?></a></p>
-                                    <div class="ps-product__rating">
-                                        <select class="ps-rating" data-read-only="true">
-                                            <option value="<?php echo $reviews['sum_rating']/$reviews['review_count'] ?>"><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></option>
-                                            <option value="1">2</option>
-                                            <option value="1">3</option>
-                                            <option value="1">4</option>
-                                            <option value="2">5</option>
-                                        </select><span><?php echo $reviews['sum_rating']/$reviews['review_count'] ?> (<?php echo $reviews['review_count'] ?> review)</span>
-                                    </div>
+                                    <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
+                                        <div class="ps-product__rating">
+                                            <select class="ps-rating" data-read-only="true">
+                                                <option value="<?php echo $reviews['sum_rating']/$reviews['review_count'] ?>"><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></option>
+                                                <option value="1">2</option>
+                                                <option value="1">3</option>
+                                                <option value="1">4</option>
+                                                <option value="2">5</option>
+                                            </select><span><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> (<?php echo $reviews['review_count'] ?> review)</span>
+                                        </div>
+                                    <?php } else{?>
+                                        <div class="ps-product__rating">
+                                            <select class="ps-rating" data-read-only="true">
+                                                <option value="2">1</option>
+                                                <option value="2">2</option>
+                                                <option value="2">3</option>
+                                                <option value="2">4</option>
+                                                <option value="2">5</option>
+                                            </select><span>(0 review)</span>
+                                        </div>
+                                    <?php }?>
                                 </div>
                                 <h4 class="ps-product__price">Rs. <?php echo number_format($productName['unit_price'], 2);?> <?php if(!empty($productName['msrp'])){ ?>  <del>Rs. <?php echo number_format($productName['msrp'], 2);?></del> <?php } ?></h4>
                                 <div class="ps-product__desc">
@@ -259,7 +270,9 @@ if(isset($_SESSION['customer_id'])){
                                         <div class="col-xl-5 col-lg-5 col-md-12 col-sm-12 col-12 ">
                                             <div class="ps-block--average-rating">
                                                 <div class="ps-block__header">
-                                                    <h3><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></h3>
+                                                    <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
+                                                        <h3><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> rating</h3>
+                                                    <?php }?>
                                                     <select class="ps-rating" data-read-only="true">
                                                         <option value="1">1</option>
                                                         <option value="1">2</option>
@@ -269,26 +282,34 @@ if(isset($_SESSION['customer_id'])){
                                                     </select><span><?php echo $reviews['review_count']; ?> Review</span>
                                                 </div>
                                                 <?php
-                                                 if($reviews['sum_rating']/$reviews['review_count'] == 5){?>
-                                                <div class="ps-block__star"><span>5 Star</span>
-                                                    <div class="ps-progress" data-value="100"><span></span></div><span></span>
-                                                </div>
-                                                <?php }      else if($reviews['sum_rating']/$reviews['review_count'] == 4){?>
-                                                <div class="ps-block__star"><span>4 Star</span>
-                                                    <div class="ps-progress" data-value="80"><span></span></div><span></span>
-                                                </div>
-                                                      <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 3){?>
-                                                <div class="ps-block__star"><span>3 Star</span>
-                                                    <div class="ps-progress" data-value="60"><span></span></div><span></span>
-                                                </div>
-                                                 <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 2){?>
-                                                <div class="ps-block__star"><span>2 Star</span>
-                                                    <div class="ps-progress" data-value="25"><span></span></div><span></span>
-                                                </div>
-                                                 <?php } else{?>
-                                                <div class="ps-block__star"><span>1 Star</span>
-                                                    <div class="ps-progress" data-value="0"><span></span></div><span></span>
-                                                </div>
+                                                if (isset($reviews['review_count']) && $reviews['review_count'] > 0) {
+                                                    if($reviews['sum_rating']/$reviews['review_count'] == 5){
+                                                ?>
+                                                        <div class="ps-block__star"><span>5 Star</span>
+                                                            <div class="ps-progress" data-value="100"><span></span></div><span></span>
+                                                        </div>
+                                                    <?php }      else if($reviews['sum_rating']/$reviews['review_count'] == 4){?>
+                                                        <div class="ps-block__star"><span>4 Star</span>
+                                                            <div class="ps-progress" data-value="80"><span></span></div><span></span>
+                                                        </div>
+                                                    <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 3){?>
+                                                        <div class="ps-block__star"><span>3 Star</span>
+                                                            <div class="ps-progress" data-value="60"><span></span></div><span></span>
+                                                        </div>
+                                                    <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 2){?>
+                                                        <div class="ps-block__star"><span>2 Star</span>
+                                                            <div class="ps-progress" data-value="25"><span></span></div><span></span>
+                                                        </div>
+                                                    <?php } else{?>
+                                                        <div class="ps-block__star"><span>1 Star</span>
+                                                            <div class="ps-progress" data-value="0"><span></span></div><span></span>
+                                                        </div>
+                                                    <?php
+                                                    }
+                                                } else{ ?>
+                                                    <div class="ps-block__star"><span>0 Star</span>
+                                                        <div class="ps-progress" data-value="0"><span></span></div><span></span>
+                                                    </div>
                                                 <?php }?>
                                             </div>
                                         </div>
@@ -361,11 +382,13 @@ if(isset($_SESSION['customer_id'])){
                 </div>
                 <div class="ps-section__content">
                     <div class="ps-carousel--nav owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
-
-
                         <?php
                         $subcatproducts = mysqli_query($con, "select * from   products where products.supplier_id='$supplier[id]'");
-                        foreach ($subcatproducts as $subcatproduct){ ?>
+                        foreach ($subcatproducts as $subcatproduct){
+                            $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$subcatproduct[id]'") ;
+                            $reviews= mysqli_fetch_assoc($ret);
+
+                            ?>
                             <div class="ps-product">
                                 <div class="ps-product__thumbnail">
                                     <?php  if(!empty($subcatproduct['featured_image'] )){?>
@@ -377,18 +400,34 @@ if(isset($_SESSION['customer_id'])){
                                             <img src="<?php echo PUBLIC_PATH;?>/img/products/shop/1.jpg" alt="">
                                         </a>
                                     <?php }?>
+                                    <?php  if(isset($subcatproduct['discount_available'] ) && $subcatproduct['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?>%</div> <?php }?>
+                                    <?php if(isset($subcatproduct['product_available']) && $subcatproduct['product_available'] == 'no'){
+                                        echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
+                                    } ?>
                                 </div>
                                 <div class="ps-product__container"><a class="ps-product__vendor"  href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><?php echo $supplier['company_name']?></a>
                                     <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
-                                        <div class="ps-product__rating">
-                                            <select class="ps-rating" data-read-only="true">
-                                                <option value="1">1</option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
-                                            </select><span>01</span>
-                                        </div>
+                                        <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="<?php echo $reviews['sum_rating']/$reviews['review_count'] ?>"><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="2">5</option>
+                                                </select><span><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> (<?php echo $reviews['review_count'] ?> review)</span>
+                                            </div>
+                                        <?php } else{?>
+                                            <div class="ps-product__rating">
+                                                <select class="ps-rating" data-read-only="true">
+                                                    <option value="1">1</option>
+                                                    <option value="1">2</option>
+                                                    <option value="1">3</option>
+                                                    <option value="1">4</option>
+                                                    <option value="1">5</option>
+                                                </select><span>(0 review)</span>
+                                            </div>
+                                        <?php }?>
                                         <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                     </div>
                                     <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
