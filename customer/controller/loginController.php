@@ -58,7 +58,7 @@ class loginController {
             $row = mysqli_fetch_assoc($result);
             if($row['active']  == 1){
                 $_SESSION['customer_id']= $row['id'];
-                header("location:../dashboard.php");
+                header("location:../index.php");
             }else{
                 $response = array(
                     "type" => "danger",

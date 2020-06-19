@@ -22,30 +22,25 @@ class profileController {
         $res=mysqli_query($this->db,"select * from customer_detail where customer_id='$_SESSION[customer_id]'") ;
         $customerData= mysqli_fetch_assoc($res);
 
-        if(!empty($_REQUEST['company_name']))
-            $company_name = $_REQUEST['company_name'];
+        if(!empty($_REQUEST['mobile']))
+            $phone = $_REQUEST['mobile'];
         else
-            $company_name = $customerData['company_name'];
+            $phone = $customer['mobile'];
 
-        if(!empty($_REQUEST['contact_fname']))
-            $contact_fname = $_REQUEST['contact_fname'];
+        if(!empty($_REQUEST['email']))
+            $email = $_REQUEST['email'];
         else
-            $contact_fname = $customerData['contact_fname'];
+            $email = $customer['email'];
 
-        if(!empty($_REQUEST['contact_lname']))
-            $contact_lname = $_REQUEST['contact_lname'];
+        if(!empty($_REQUEST['first_name']))
+            $first_name = $_REQUEST['first_name'];
         else
-            $contact_lname = $customerData['contact_lname'];
+            $first_name = $customerData['first_name'];
 
-        if(!empty($_REQUEST['contact_title']))
-            $contact_title = $_REQUEST['contact_title'];
+        if(!empty($_REQUEST['last_name']))
+            $last_name = $_REQUEST['last_name'];
         else
-            $contact_title = $customerData['contact_title'];
-
-        if(!empty($_REQUEST['customer_id']))
-            $customer_id = $_REQUEST['customer_id'];
-        else
-            $customer_id = $customerData['customer_id'];
+            $last_name = $customerData['last_name'];
 
         if(!empty($_REQUEST['address1']))
             $address1 = $_REQUEST['address1'];
@@ -77,134 +72,60 @@ class profileController {
         else
             $country = $customerData['country'];
 
-        if(!empty($_REQUEST['phone']))
-            $phone = $_REQUEST['phone'];
-        else
-            $phone = $customerData['phone'];
 
-        if(!empty($_REQUEST['fax']))
-            $fax = $_REQUEST['fax'];
+       if(!empty($_REQUEST['card_name']))
+           $card_name = $_REQUEST['card_name'];
         else
-            $fax = $customerData['fax'];
+            $card_name = $customerData['card_name'];
 
-        if(!empty($_REQUEST['email']))
-            $email = $_REQUEST['email'];
+        if(!empty($_REQUEST['card_number']))
+            $card_number = $_REQUEST['card_number'];
         else
-            $email = $customerData['email'];
+            $card_number = $customerData['card_number'];
 
-        if(!empty($_REQUEST['url']))
-            $url = $_REQUEST['url'];
+        if(!empty($_REQUEST['card_exp1']))
+            $card_exp = $_REQUEST['card_exp1'].'/'.$_REQUEST['card_exp2'];
         else
-            $url = $customerData['url'];
+            $card_exp = $customerData['card_exp'];
 
-        if(!empty($_REQUEST['payment_methods']))
-            $payment_methods = $_REQUEST['payment_methods'];
+        if(!empty($_REQUEST['card_cvv']))
+            $card_cvv = $_REQUEST['card_cvv'];
         else
-            $payment_methods = $customerData['payment_methods'];
+            $card_cvv = $customerData['card_cvv'];
 
-        if(!empty($_REQUEST['discount_type']))
-            $discount_type = $_REQUEST['discount_type'];
-        else
-            $discount_type = $customerData['discount_type'];
-
-        if(!empty($_REQUEST['type_goods']))
-            $type_goods = $_REQUEST['type_goods'];
-        else
-            $type_goods = $customerData['type_goods'];
-
-        if(!empty($_REQUEST['current_order']))
-            $current_order = $_REQUEST['current_order'];
-        else
-            $current_order = $customerData['current_order'];
-
-        if(!empty($_REQUEST['discount_available']))
-            $discount_available = $_REQUEST['discount_available'];
-        else
-            $discount_available = $customerData['discount_available'];
-
-        if(!empty($_REQUEST['notes']))
-            $notes = $_REQUEST['notes'];
-        else
-            $notes = $customerData['notes'];
-
-        if(!empty($_REQUEST['size_url']))
-            $size_url = $_REQUEST['size_url'];
-        else
-            $size_url = $customerData['size_url'];
-
-        if(!empty($_REQUEST['password']))
+       if(!empty($_REQUEST['password']))
             $password = md5($_REQUEST['password']);
         else
             $password = $customerData['password'];
 
-        if(!empty($_REQUEST['active']))
-            $active = $_REQUEST['active'];
-        else
-            $active = $customerData['active'];
-
-        if(!empty($_FILES['logo'])){
-            if(file_exists($_FILES['logo']['tmp_name'])){
-
-                $name = $_FILES['logo']['name'];
-                getcwd();
-                chdir("../../public/img/seller/logo/");
-                $target_dir = getcwd();
-                $target_file = $target_dir . basename($_FILES["logo"]["name"]);
-                $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-                $extensions_arr = array("png");
-                if(in_array($imageFileType,$extensions_arr) ){
-                    $image_base64 = base64_encode(file_get_contents($_FILES['logo']['tmp_name']) );
-                    $image = 'data:image/'.$imageFileType.';base64,'.$image_base64;
-                    $imageName = date("ymdhis").'-'. $name;
-                    move_uploaded_file($_FILES['logo']['tmp_name'],$imageName);
 
 
-                }else{
-                    $response = array(
-                        "type" => "danger",
-                        "message" => "Please choose png image only!"
-                    );
-                    return $response;
-
-                }
-            }
-        }else{
-            $imageName = $customerData['logo'];
-        }
-
-        $result =   "UPDATE suppliers SET  
-                                       customer_id='$customer_id',
-                                         company_name='$company_name',
-                                         contact_fname='$contact_fname',
-                                         contact_lname='$contact_lname',
-                                         contact_title='$contact_title',
-                                         address1='$address1',
-                                         address2='$address2',
-                                         city='$city',
-                                         state='$state',
-                                         postal_code='$postal_code',
-                                         country='$country',
-                                         phone='$phone',
-                                         fax='$fax',
+        $result =   "UPDATE customers SET  
+                                        mobile='$phone',
                                          email='$email',
-                                          url='$url',
-                                          payment_methods='$payment_methods',
-                                           size_url='$size_url',
-                                           notes='$notes',
-                                           discount_type='$discount_type',
-                                           discount_available='$discount_available',
-                                           current_order='$current_order',
-                                            type_goods='$type_goods',
-                                             password='$password',
-                                             active='$active',
-                                             logo='$imageName'
-                                             WHERE  id='$_SESSION[supplier_id]'" ;
+                                         password='$password'                                         
+                                             WHERE  id='$_SESSION[customer_id]'" ;
+        $result ="UPDATE customer_detail SET  
+                                        first_name='$first_name',
+                                         last_name='$last_name',  
+                                         address1='$address1',
+                                         address2='$address2',  
+                                         city='$city',
+                                         state='$state', 
+                                         postal_code='$postal_code',
+                                         country='$country',  
+                                         card_name='$card_name',
+                                         card_number='$card_number',  
+                                         card_exp='$card_exp',
+                                         card_cvv='$card_cvv'                                             
+                                             WHERE  id='$_SESSION[customer_id]'" ;
 
         if (mysqli_query($this->db, $result)) {
             $response = array(
                 "type" => "success",
                 "message" => "Profile updated successfully."
             );
+           // header("Location: profile.php");
         }else{
             $response = array(
                 "type" => "danger",
