@@ -6,7 +6,7 @@ if($_REQUEST["action"] == "logout" ) {
     session_destroy();
 }
 if(empty($_SESSION['customer_id'])) {
-    header("location:".PATH."/customer/signup.php");
+    header("location:".PATH."/seller/login/signup.php");
     exit;
 }
 ?>

@@ -87,7 +87,7 @@ include("../../includes/header.php");
                                                 <select id="category_id" name="category_id" class="form-control"  required>
                                                     <option value="">Please select</option>
                                                     <?php
-                                                    $categories=mysqli_query($con,"select * from category") ;
+                                                    $categories=mysqli_query($con,"select * from category ") ;
                                                     foreach ($categories as $category) {  ?>
                                                         <option value="<?php  echo $category['id'];?>" ><?php echo $category['name']  ; ?></option>
                                                     <?php  }  ?>
@@ -106,7 +106,31 @@ include("../../includes/header.php");
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="subcategory_id">Sub Category 1</label>
+                                            <div class="controls">
+                                                <select id="subcategory_id1" name="subcategory_id" class="form-control" required>
+                                                    <option value="">Please select</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group col-md-12">
+                                            <label class="control-label" for="subcategory_id">Sub Category 2</label>
+                                            <div class="controls">
+                                                <select id="subcategory_id2" name="subcategory_id" class="form-control" required>
+                                                    <option value="">Please select</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="attrDiv" class="row"></div>
                                 </div>
+                                <!--
                                 <div class="clearfix"></div>
                                 <div class="row">
                                     <div class="col-md-6">
@@ -299,7 +323,7 @@ include("../../includes/header.php");
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                                 <div class="clearfix"></div>
                                 <div class="row">
@@ -324,16 +348,89 @@ include("../../includes/header.php");
     var validator = $("#productAddForm").validate();
     $(document).ready(function() {
         $('#category_id').on('change', function() {
-            var category_id = this.value;
+            var parent_id = this.value;
             $.ajax({
-                url: "category.php",
+                url: "subCategory.php",
                 type: "POST",
                 data: {
-                    category_id: category_id
+                    parent_id: parent_id,
+                    level : 1
                 },
                 cache: false,
                 success: function(dataResult){
                     $("#subcategory_id").html(dataResult);
+                }
+            });
+
+
+        });
+        $('#subcategory_id').on('change', function() {
+            var parent_id = this.value;
+            $.ajax({
+                url: "subCategory.php",
+                type: "POST",
+                data: {
+                    parent_id: parent_id,
+                    level : 2
+                },
+                cache: false,
+                success: function(dataResult){
+                    $("#subcategory_id1").html(dataResult);
+                }
+            });
+
+
+        });
+        $('#subcategory_id1').on('change', function() {
+            var parent_id = this.value;
+            $.ajax({
+                url: "subCategory.php",
+                type: "POST",
+                data: {
+                    parent_id: parent_id,
+                    level : 3
+                },
+                cache: false,
+                success: function(dataResult){
+                    //console.log(data);
+                    $("#subcategory_id2").html(dataResult);
+                }
+            });
+
+
+        });
+        $('#subcategory_id2').on('change', function() {
+            var parent_id = this.value;
+            $.ajax({
+                url: "attributes.php",
+                type: "POST",
+                data: {
+                    id: parent_id,
+                    level : 3
+                },
+                cache: false,
+                success: function(dataResult){
+                    console.log(dataResult);
+                    var str="";
+                   
+                                          
+                    var data =JSON.parse(dataResult);
+                    data=data[0];
+                   // console.log(data);
+                    Object.keys(data).forEach(function(key) {
+                        var str1="";
+                        str1+='<div class="col-md-3"><div class="form-group col-md-12">';
+                        str1+='<div class="controls">';
+                        str1+='<label>'+ key +'</label><input type="text" />';
+                        str1+='</div></div></div>';
+                        str+=str1;
+                        //str1="";
+                        //console.log('Key : ' + key + ', Value : ' + data[key])
+                        })
+                        console.log(str);
+                        
+                    document.getElementById("attrDiv").innerHTML=str;
+                    //$("#subcategory_id2").html(dataResult);
                 }
             });
 
