@@ -16,6 +16,7 @@ class profileController {
     // Function for profileUpdate
     public function profileUpdate()
     {
+        //print_r($password);die;
         $result = mysqli_query($this->db,"select * from customers where (id='$_SESSION[customer_id]')");
         $customer = mysqli_fetch_assoc($result);
 
@@ -31,6 +32,11 @@ class profileController {
             $email = $_REQUEST['email'];
         else
             $email = $customer['email'];
+
+        if(!empty($_REQUEST['password']))
+            $password = md5($_REQUEST['password']);
+        else
+            $password = $customer['password'];
 
         if(!empty($_REQUEST['first_name']))
             $first_name = $_REQUEST['first_name'];
@@ -73,6 +79,37 @@ class profileController {
             $country = $customerData['country'];
 
 
+        if(!empty($_REQUEST['shipping_address1']))
+            $shipping_address1 = $_REQUEST['shipping_address1'];
+        else
+            $shipping_address1 = $customerData['shipping_address1'];
+
+        if(!empty($_REQUEST['shipping_address2']))
+            $shipping_address2 = $_REQUEST['shipping_address2'];
+        else
+            $shipping_address2 = $customerData['shipping_address2'];
+
+        if(!empty($_REQUEST['shipping_city']))
+            $shipping_city = $_REQUEST['shipping_city'];
+        else
+            $shipping_city = $customerData['shipping_city'];
+
+        if(!empty($_REQUEST['shipping_region']))
+            $shipping_region = $_REQUEST['shipping_region'];
+        else
+            $shipping_region = $customerData['shipping_region'];
+
+        if(!empty($_REQUEST['shipping_postal_code']))
+            $shipping_postal_code = $_REQUEST['shipping_postal_code'];
+        else
+            $shipping_postal_code = $customerData['postal_code'];
+
+        if(!empty($_REQUEST['shipping_country']))
+            $shipping_country = $_REQUEST['shipping_country'];
+        else
+            $shipping_country = $customerData['shipping_country'];
+
+
        if(!empty($_REQUEST['card_name']))
            $card_name = $_REQUEST['card_name'];
         else
@@ -93,12 +130,9 @@ class profileController {
         else
             $card_cvv = $customerData['card_cvv'];
 
-       if(!empty($_REQUEST['password']))
-            $password = md5($_REQUEST['password']);
-        else
-            $password = $customerData['password'];
 
 
+//print_r($password);die;
 
         $result =   "UPDATE customers SET  
                                         mobile='$phone',
@@ -117,7 +151,13 @@ class profileController {
                                          card_name='$card_name',
                                          card_number='$card_number',  
                                          card_exp='$card_exp',
-                                         card_cvv='$card_cvv'                                             
+                                         card_cvv='$card_cvv',
+                                         shipping_address1='$shipping_address1',
+                                         shipping_address2='$shipping_address2',  
+                                         shipping_city='$shipping_city',
+                                         shipping_region='$shipping_region', 
+                                         shipping_country='$shipping_country',  
+                                         shipping_postal_code='$shipping_postal_code'                                                                                      
                                              WHERE  id='$_SESSION[customer_id]'" ;
 
         if (mysqli_query($this->db, $result)) {

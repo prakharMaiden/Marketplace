@@ -83,7 +83,10 @@ include("includes/header.php");
                     </div>
                     <?php
                             if(isset($_SESSION['customer_id'])){?>
-                    <a class="ps-btn ps-btn--fullwidth" href="<?php echo PATH ?>/customer/checkout.php">Proceed to checkout</a>
+                                <form action="<?php echo PATH ?>/customer/checkout.php" method="post">
+                                    <input type="hidden" name="total_amount" id="checkout_totalamount" value="">
+                                    <button type="submit" id="submit" name="submit" class="ps-btn ps-btn--fullwidth">Proceed to checkout</button>
+                                </form>
                             <?php }else{?>
                                 <a class="ps-btn ps-btn--fullwidth" href="<?php echo PATH ?>/customer/auth/login.php">Login to proceed</a>
                             <?php }?>
@@ -185,6 +188,7 @@ include("includes/header.php");
 
                 var total_ammount1 =$('#total_ammount1').html();
                 $('#total_ammount').html(total_ammount1);
+                $('#checkout_totalamount').val(total_ammount1);
                 getCart();
             }
         });

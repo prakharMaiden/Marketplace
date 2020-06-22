@@ -72,7 +72,8 @@ include("../includes/header.php");
                                         <td><?php  echo $stock['quantity'];?></td>
                                         <td><?php  echo $stock['price_per_product'];?></td>
                                         <td><?php  echo $stock['total_price'];?></td>
-                                        <td><?php  echo $stock['total_discount'];?></td>
+                                        <td><?php if(isset($stock['total_discount'])) {  echo $stock['total_discount'].'%'; }else{ echo'-';};?></td>
+
                                         <td><?php  echo date("d-m-Y",strtotime($stock['date_in_stock']));?></td>
                                         <td><?php  if($stock['active'] == 0){
                                                 ?>

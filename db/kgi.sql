@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 19, 2020 at 06:24 PM
+-- Generation Time: Jun 20, 2020 at 04:18 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -38,6 +38,13 @@ CREATE TABLE `cart` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `customer_id`, `product_id`, `quantity`, `color`, `size`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, 2, NULL, NULL, '2020-06-20 10:52:07', '2020-06-20 13:35:25');
 
 -- --------------------------------------------------------
 
@@ -122,7 +129,8 @@ CREATE TABLE `customer_detail` (
   `billing_region` varchar(10) DEFAULT NULL,
   `billing_postal_code` varchar(7) DEFAULT NULL,
   `billing_country` varchar(10) DEFAULT NULL,
-  `shipping_address` varchar(255) DEFAULT NULL,
+  `shipping_address1` varchar(255) DEFAULT NULL,
+  `shipping_address2` varchar(255) DEFAULT NULL,
   `shipping_city` varchar(10) DEFAULT NULL,
   `shipping_region` varchar(10) DEFAULT NULL,
   `shipping_postal_code` varchar(7) DEFAULT NULL,
@@ -135,9 +143,9 @@ CREATE TABLE `customer_detail` (
 -- Dumping data for table `customer_detail`
 --
 
-INSERT INTO `customer_detail` (`id`, `customer_id`, `first_name`, `last_name`, `class`, `room`, `building`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `voicemail`, `card_name`, `card_number`, `card_exp`, `card_cvv`, `billing_address`, `billing_city`, `billing_region`, `billing_postal_code`, `billing_country`, `shipping_address`, `shipping_city`, `shipping_region`, `shipping_postal_code`, `shipping_country`, `created_at`, `updated_at`) VALUES
-(1, 1, 'Swati', 'Chaudhary', NULL, '0', NULL, 'Rz-151/345, Gali Number 2, Shiv Puri, Jagdamba Vihar', 'West Sagarpur, Palam', 'New Delhi', 'New Delhi', '110046', 'India', NULL, 'swatii', '9891234533456789', '12/33', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-01 12:45:12', '2020-06-19 15:39:46'),
-(2, 2, 'Mayank', 'Chaudhary', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-28 10:41:00', '2020-05-28 10:41:00');
+INSERT INTO `customer_detail` (`id`, `customer_id`, `first_name`, `last_name`, `class`, `room`, `building`, `address1`, `address2`, `city`, `state`, `postal_code`, `country`, `voicemail`, `card_name`, `card_number`, `card_exp`, `card_cvv`, `billing_address`, `billing_city`, `billing_region`, `billing_postal_code`, `billing_country`, `shipping_address1`, `shipping_address2`, `shipping_city`, `shipping_region`, `shipping_postal_code`, `shipping_country`, `created_at`, `updated_at`) VALUES
+(1, 1, 'Swati', 'Chaudhary', NULL, '0', NULL, 'Rz-151/345, Gali Number 2, Shiv Puri, Jagdamba Vihar', 'West Sagarpur, Palam', 'New Delhi', 'New Delhi', '110046', 'India', NULL, 'swati', '9891234533456789', '06/20', '123', NULL, NULL, NULL, NULL, NULL, 'Rz-151/345, Gali Number 2, Shiv Puri, Jagdamba Vihar', 'West Sagarpur, Palam', 'New Delhi', 'New Delhi', '110046', 'India', '2020-05-01 12:45:12', '2020-06-20 14:06:03'),
+(2, 2, 'Mayank', 'Chaudhary', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-05-28 10:41:00', '2020-05-28 10:41:00');
 
 -- --------------------------------------------------------
 
@@ -411,13 +419,6 @@ CREATE TABLE `wishlist` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `wishlist`
---
-
-INSERT INTO `wishlist` (`id`, `customer_id`, `product_id`, `created_at`, `updated_at`) VALUES
-(5, 1, 1, '2020-06-14 13:22:10', '2020-06-14 13:22:10');
-
---
 -- Indexes for dumped tables
 --
 
@@ -530,7 +531,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `category`

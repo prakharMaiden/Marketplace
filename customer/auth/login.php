@@ -122,7 +122,6 @@ include("../includes/login_header.php");
 <script>
     grecaptcha.ready(function () {
         grecaptcha.execute('6Lep0vIUAAAAAJuq4uHJRPuuY3ik9SYNuUvMeiTu', { action: 'contact' }).then(function (token) {
-            console.log(token);
             var recaptchaResponse = document.getElementById('recaptchaResponse');
             recaptchaResponse.value = token;
         });

@@ -1,10 +1,11 @@
 <?php
+
+include_once("controller/profileController.php");
+$profileData=new profileController();
+//print_r($_SESSION);die;
 if(empty($_SESSION['customer_id'])){
     header("location:auth/login.php");
 }
-include_once("controller/profileController.php");
-$profileData=new profileController();
-
 if(isset($_POST['submit'])) {
     $response= $profileData->profileUpdate();
 }
@@ -88,14 +89,19 @@ $customerDetail= mysqli_fetch_assoc($res);
                     </div>
                     <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12  ">
 
-                        <form class="ps-form--checkout" action="" id="profileForm" method="post"  onSubmit="return validate();">
-                            <?php if (!empty($response)) { ?>
-                                <div id="response" class="alert alert-<?php echo $response["type"]; ?> ">
-                                    <?php echo $response["message"]; ?>
-                                </div>
-                            <?php } ?>
+                        <form class="ps-form--checkout" action="" id="profileForm" method="post">
+
                             <div class="ps-form__billing-info">
                                 <h3 class="ps-form__heading">Profile </h3>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <?php if (!empty($response)) { ?>
+                                            <div id="response" class="alert alert-<?php echo $response["type"]; ?> ">
+                                                <?php echo $response["message"]; ?>
+                                            </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
@@ -226,7 +232,7 @@ $customerDetail= mysqli_fetch_assoc($res);
                                             <label>Name on Card<sup>*</sup>
                                             </label>
                                             <div class="form-group__content">
-                                                <input class="form-control" pattern="/^[a-z ,.'-]+$/i" type="text" value="<?php echo $customerDetail['card_name'] ?>" placeholder="Name on card" name="card_name" id="card_name" required>
+                                                <input class="form-control" type="text" value="<?php echo $customerDetail['card_name'] ?>" placeholder="Name on card" name="card_name" id="card_name" required>
                                             </div>
                                         </div>
                                     </div>
@@ -279,7 +285,7 @@ $customerDetail= mysqli_fetch_assoc($res);
                                             <label>CVV<sup>*</sup>
                                             </label>
                                             <div class="form-group__content">
-                                                <input class="form-control" pattern="/^[0-9]{3,3}$/"  type="text" value="<?php echo $customerDetail['card_cvv'] ?>" placeholder="CVV No" maxlength="4"    name="card_cvv" id="card_cvv" required>
+                                                <input class="form-control" type="text" value="<?php echo $customerDetail['card_cvv'] ?>" placeholder="CVV No" maxlength="4"    name="card_cvv" id="card_cvv" required>
                                             </div>
                                         </div>
                                     </div>

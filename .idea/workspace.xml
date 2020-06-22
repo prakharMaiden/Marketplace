@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0cd8eedb-ad77-4d42-ae88-f9459deed2e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/js/jquery.payform.min.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/auth/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/auth/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/checkout.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/checkout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/controller/profileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/controller/profileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/product-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/product-details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/shopping-cart.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/shopping-cart.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/kgi.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/kgi.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/products/general/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/stock_management/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/stock_management/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/stock_management/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/index.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1dRm1Q6Y8eUJy0kxzxWtCwS68Wc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
+    <property name="ignore.virus.scanning.warn.message" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\public\js" />
+      <recent name="C:\xampp\htdocs\Marketplace\customer\controller" />
+      <recent name="C:\xampp\htdocs\Marketplace\customer" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0cd8eedb-ad77-4d42-ae88-f9459deed2e7" name="Default Changelist" comment="" />
+      <created>1592396069495</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1592396069495</updated>
+      <workItem from="1592396114880" duration="1697000" />
+      <workItem from="1592398052385" duration="1782000" />
+      <workItem from="1592399935577" duration="1791000" />
+      <workItem from="1592402174508" duration="1789000" />
+      <workItem from="1592403985657" duration="1788000" />
+      <workItem from="1592405802219" duration="531000" />
+      <workItem from="1592477984361" duration="1680000" />
+      <workItem from="1592479811283" duration="1553000" />
+      <workItem from="1592481779766" duration="1775000" />
+      <workItem from="1592483612054" duration="1217000" />
+      <workItem from="1592485606142" duration="955000" />
+      <workItem from="1592487583851" duration="1785000" />
+      <workItem from="1592489429493" duration="1783000" />
+      <workItem from="1592491261658" duration="1860000" />
+      <workItem from="1592493162564" duration="703000" />
+      <workItem from="1592567748034" duration="1727000" />
+      <workItem from="1592569519509" duration="1124000" />
+      <workItem from="1592571366228" duration="1798000" />
+      <workItem from="1592573293017" duration="1042000" />
+      <workItem from="1592579806886" duration="1777000" />
+      <workItem from="1592581746361" duration="1779000" />
+      <workItem from="1592583566950" duration="316000" />
+      <workItem from="1592649685498" duration="1864000" />
+      <workItem from="1592651649673" duration="1102000" />
+      <workItem from="1592653462000" duration="1800000" />
+      <workItem from="1592655695642" duration="1027000" />
+      <workItem from="1592657522403" duration="1116000" />
+      <workItem from="1592659330881" duration="1785000" />
+      <workItem from="1592661152235" duration="1840000" />
+      <workItem from="1592827892941" duration="1740000" />
+      <workItem from="1592829698959" duration="1769000" />
+      <workItem from="1592831583981" duration="1595000" />
+      <workItem from="1592834981267" duration="70000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1592657329997">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592657329997" />
+    <state x="446" y="68" width="587" height="592" key="find.popup" timestamp="1592830973030">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="446" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1592830973030" />
+    <state x="339" y="162" key="run.anything.popup" timestamp="1592828161847">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="339" y="162" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1592828161847" />
+  </component>
+</project>

@@ -94,6 +94,7 @@
 <script src="<?php echo PUBLIC_PATH?>/plugins/select2/dist/js/select2.full.min.js"></script>
 <script src="<?php echo PUBLIC_PATH?>/plugins/gmap3.min.js"></script>
 <script src="<?php echo PUBLIC_PATH?>/js/main.js"></script>
+<script src="<?php echo PUBLIC_PATH?>/js/jquery.payform.min.js" charset="utf-8"></script>
 
 
 <script>
@@ -111,8 +112,7 @@
                 data: product,
                 dataType: 'json',
                 success: function(response){
-                    //console.log("swati",response);
-                    $('.alert').show();
+                     $('.alert').show();
                     $('.message').html(response.message);
                     if(response.error){
                         $('.alert ').removeClass('alert-success').addClass('alert-danger');
@@ -138,8 +138,7 @@
                 data: product,
                 dataType: 'json',
                 success: function(response){
-                    //console.log("swati",response);
-                    $('.alert').show();
+                     $('.alert').show();
                     $('.message').html(response.message);
                     if(response.error){
                         $('.alert ').removeClass('alert-success').addClass('alert-danger');
@@ -186,13 +185,20 @@
         $('#add').click(function(e){
             e.preventDefault();
             var quantity = $('#quantity').val();
-            quantity++;
+            var quantity_maxlength =$('#quantity').attr('maxLength');
+            console.log(quantity_maxlength);
+            if(quantity < 10){
+                quantity++;
+
+            }
+
+
             $('#quantity').val(quantity);
         });
         $('#minus').click(function(e){
             e.preventDefault();
             var quantity = $('#quantity').val();
-            if(quantity > 1){
+              if(quantity > 1){
                 quantity--;
             }
             $('#quantity').val(quantity);

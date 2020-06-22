@@ -79,7 +79,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="price_per_product">Price per product</label>
                                             <div class="controls">
-                                                <input type="number" min="0"  id="price_per_product" value="<?php echo $stockManagement['price_per_product']?>"  name="price_per_product"  class="form-control" >
+                                                <input type="text"  id="price_per_product" value="<?php echo $stockManagement['price_per_product']?>"  name="price_per_product"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -87,7 +87,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="total_price">Total Price</label>
                                             <div class="controls">
-                                                <input type="number" min="0"  id="total_price" value="<?php echo $stockManagement['total_price']?>"  name="total_price"  class="form-control" >
+                                                <input type="text"  id="total_price" value="<?php echo $stockManagement['total_price']?>"  name="total_price"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -98,7 +98,7 @@ include("../includes/header.php");
                                         <div class="form-group col-md-12">
                                             <label class="control-label" for="total_discount">Total Discount</label>
                                             <div class="controls">
-                                                <input type="number" min="0" id="total_discount" value="<?php echo $stockManagement['total_discount']?>"  name="total_discount"  class="form-control" >
+                                                <input type="text" id="total_discount" value="<?php echo $stockManagement['total_discount']?>"  name="total_discount"  class="form-control" >
                                             </div>
                                         </div>
                                     </div>
@@ -146,5 +146,31 @@ include("../includes/header.php");
 </div>
 <?php include("../includes/footer.php");?>
 <script>
-    var validator = $("#productAddForm").validate();
+    var validator = $("#productAddForm").validate({
+        rules: {
+            price_per_product: {
+                number: true,
+                maxlength: 10
+            },
+            total_discount: {
+                number: true,
+                maxlength: 3
+            },
+            total_price: {
+                number: true,
+                maxlength: 11
+            }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+            error.addClass('invalid-feedback');
+            element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+            $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+            $(element).removeClass('is-invalid');
+        }
+    });
 </script>

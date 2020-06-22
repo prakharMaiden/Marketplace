@@ -189,11 +189,13 @@ if(isset($_SESSION['customer_id'])){
 
                                                 <button  type="button" class="up" id="add"><i class="fa fa-plus"></i></button>
                                                 <button  type="button" class="down" id="minus"><i class="fa fa-minus"></i></button>
-                                                <input class="form-control" name="quantity" id="quantity" type="text" value="1">
+                                                <input class="form-control" name="quantity" id="quantity" maxlength="<?php echo $productName['quantity_per_unit']; ?>" type="text" value="1">
                                                 <input type="hidden" value="<?php echo $productName['id']; ?>" name="id">
                                             </div>
                                             <button type="submit" class="ps-btn ps-btn--black">Add to cart</button>
                                         </form>
+
+
 
                                         <a class="ps-btn" href="#">Buy Now</a>
                                     <?php } ?>

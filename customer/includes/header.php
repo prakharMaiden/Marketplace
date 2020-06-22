@@ -115,7 +115,11 @@ if(empty($_SESSION['customer_id'])){
 
                                 </div>
                                 <div class="ps-cart__footer">
-                                    <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
+                                    <figure>
+                                        <a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php" style="visibility: hidden">View Cart</a>
+                                        <a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a>
+
+                                    </figure>
                                 </div>
                             </div>
                         <?php } ?>
