@@ -1,111 +1,159 @@
 <?php
 include_once("./../config/config.php");
+if(empty($_SESSION['customer_id'])){
+    header("location:auth/login.php");
+}
 include("includes/header.php");
-$id = $_GET['id'];
-$result=mysqli_query($con,"select * from category where id='$id'") ;
-$categoryName= mysqli_fetch_assoc($result);
+$orders=mysqli_query($con,"select * from orders where customer_id='$_SESSION[customer_id]'") ;
+
+
 ?>
-    <div class="ps-breadcrumb">
-        <div class="container">
-            <ul class="breadcrumb">
-                <li><a href="<?php echo PATH;?>/customer/index.php">Home</a></li>
-                <li><?php echo ucfirst($categoryName['name'])?></li>
-            </ul>
+    <style>
+        .error, sup{
+            color:red;
+        }
+        .ps-section--shopping .ps-section__header {
+            text-align: center;
+            padding-bottom: 50px;
+        }
+        .ps-section--shopping {
+            padding: 50px 0 0 0;
+        }
+        small {
+            font-size: 70%;
+        }
+        .ps-form__billing-info{
+            padding: 20px;
+        }.ps-form--checkout{
+             background: #f1f1f1;
+         }
+        .form-control {
+            outline: none;
+            height: 50px;
+            font-size: 14px;
+            padding: 0 20px;
+            border: none;
+            height: 50px;
+            background-color: #fff;
+            border: 1px solid #dddddd;
+            border-radius: 0;
+            box-shadow: 0 0 rgba(0, 0, 0, 0);
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            box-shadow: 0 0 0 #000;
+        }
+        .widget--vendor{
+            background: #f1f1f1;
+            padding: 20px;
+        }
+        #example1_filter, #example1_paginate{
+            float: right;
+        }
+        .dataTables_empty{
+            text-align: center;
+        }
+    </style>
+    <div class="ps-page--simple">
+        <div class="ps-breadcrumb">
+            <div class="container">
+                <ul class="breadcrumb">
+                    <li><a href="<?php echo PATH;?>/customer/index.php">Home</a></li>
+                    <li>Your Orders</li>
+                </ul>
+            </div>
         </div>
-    </div>
-    <div class="ps-page--shop" id="shop-categories">
-        <div class="container">
-            <div class="ps-catalog-top">
-                <div class="row">
-                    <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-block--menu-categories" data-mh="catalog-top">
-                            <div class="ps-block__header">
-                                <h3>Categories</h3>
-                            </div>
-                            <div class="ps-block__content">
-                                <ul class="ps-list--menu-cateogories">
-                                    <?php
-                                    $categories=mysqli_query($con,"select * from category") ;
-                                    foreach ($categories as $category) {  ?>
-                                        <li <?php  if($category['child'] != 0){ ?> class="menu-item-has-children" <?php }?>>
-                                            <a  href="categories.php?id=<?php echo $category['id']  ; ?>"><?php echo strtoupper($category['name'])?></a>
-                                            <?php  if($category['child'] != 0){?>
-                                                <ul class="sub-menu">
-                                                    <?php
-                                                    $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
-                                                    foreach ($subcategories as $subcategory) {  ?>
-                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
-                                                    <?php }?>
-                                                </ul>
-                                            <?php }?>
-                                        </li>
-
-                                    <?php }?>
+        <div class="ps-checkout ps-section--shopping">
+            <div class="container">
+                <div class="ps-section__header">
+                    <h1>Your Orders</h1>
+                </div>
+                <div class="ps-section__content">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-3 col-md-12 col-sm-12 ">
+                            <aside class="widget widget--vendor">
+                                <h3 class="widget-title">Your List </h3>
+                                <ul class="ps-list--arrow">
+                                    <li><a href="<?php echo PATH; ?>/customer/profile.php">Profile</a></li>
+                                    <li><a href="<?php echo PATH; ?>/customer/orders.php">Orders</a></li>
+                                    <li><a href="<?php echo PATH; ?>/customer/shopping-cart.php">Shopping-Cart</a></li>
+                                    <li><a href="<?php echo PATH; ?>/customer/wishlist.php">Wishlist</a></li>
+                                    <li><a href="<?php echo PATH; ?>/customer/auth/logout.php">Logout</a></li>
                                 </ul>
+                            </aside>
+                        </div>
+                        <div class="col-xl-9 col-lg-9 col-md-12 col-sm-12 ps-form--checkout">
+                            <div class="table-responsive" style="margin: 20px 0 0 0">
+                                <table  id="example1"  class="table table-striped table-bordered table-hover table-default" style="background: #fff;">
+                                    <thead>
+                                    <tr>
+                                        <th><b>Order#</b></th>
+                                        <th><b>Order&nbsp;placed</b></th>
+                                        <th><b>Product</b></th>
+                                        <th><b>Price</b></th>
+                                        <th><b>Discount</b></th>
+                                        <th><b>Total</b></th>
+                                        <th><b>Status</b></th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <?php  foreach ($orders as $order){
+                                        $res=mysqli_query($con,"select * from order_details where order_id='$order[id]'") ;
+                                        $orderDetail= mysqli_fetch_assoc($res);
+                                        $result=mysqli_query($con,"select * from products where id='$orderDetail[product_id]'") ;
+                                        $product= mysqli_fetch_assoc($result);
+                                        $resu=mysqli_query($con,"select * from suppliers where id='$product[supplier_id]'") ;
+                                        $supplier= mysqli_fetch_assoc($resu);
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $order['order_number'];?></td>
+                                                <td><?php echo date('d M Y', strtotime($order['order_date']));?></td>
+                                                <td>
+                                                    <div class="ps-product--cart-mobile">
+                                                        <div class="ps-product__thumbnail">
+                                                            <?php  if(!empty($product['featured_image'] )){?>
+                                                                <a href="product-details.php?id=<?php echo $product['id'];?>">
+                                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" class="thumbnail">
+                                                                </a>
+                                                            <?php }else {?>
+                                                                <a href="product-details.php?id=<?php echo $product['id'];?>">
+                                                                    <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" class="thumbnail" alt="Image">
+                                                                </a>
+                                                            <?php }?>
+
+                                                        </div>
+                                                        <div class="ps-product__content">
+                                                            <a href="product-details.php?id=2"><?php echo ucfirst($product['name']);?></a>
+                                                            <p style="font-size: 12px;font-weight: bold;">Sold By:<small style="font-size: 12px;"> <?php echo $supplier['company_name'];?></small></p>
+                                                        </div>
+                                                    </div></td>
+                                                <td><?php echo ($orderDetail['price']).'X'.$orderDetail['quantity'];?></td>
+
+                                                <td><?php if(isset($orderDetail['discount'])) {  echo $orderDetail['discount'].'%'; }else{ echo'-';};?></td>
+                                                <td><?php echo number_format($orderDetail['total'],2);?></td>
+                                                <td><?php echo $order['transaction_status'];?></td>
+                                            </tr>
+                                        <?php }?>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12 col-12 ">
-                        <div class="ps-block--categories-grid" data-mh="catalog-top">
-
-                            <?php
-                            $categories=mysqli_query($con,"select * from category") ;
-                            foreach ($categories as $category) {  ?>
-                                <div class="ps-block--category-2" data-mh="categories">
-                                    <div class="ps-block__thumbnail">
-                                        <?php  if(!empty($category['picture'] )){?>
-                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/category/<?php echo $category['picture'];?>" alt="">
-
-                                        <?php }else {?>
-                                            <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
-                                        <?php }?>
-                                    </div>
-                                    <div class="ps-block__content">
-                                        <h4><?php echo ucfirst($category['name'])  ; ?></h4>
-                                        <?php  if($category['child'] != 0){?>
-                                            <ul>
-                                                <?php
-                                                $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]' limit 5") ;
-                                                foreach ($subcategories as $subcategory) {  ?>
-                                                    <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategory['id']  ; ?>"><?php echo ucfirst($subcategory['name'])  ; ?></a></li>
-                                                <?php }?>
-
-                                            </ul>
-                                        <?php }?>
-                                    </div>
-                                </div>
-                            <?php }?>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="ps-block--categories-box">
-                <div class="ps-block__header">
-                    <h3><?php echo ucfirst($categoryName['name'])?></h3>
-                </div>
-
-                <div class="ps-block__content">
-                    <?php
-                    $subcategories = mysqli_query($con, "select count(*) as products,subcategory.name,subcategory.picture,subcategory.id from subcategory, products where subcategory.id=products.subcategory_id group by subcategory.name");
-                    foreach ($subcategories as $subcategory) {
-                        ?>
-                        <div class="ps-block__item">
-                            <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategory['id']  ; ?>">  </a>
-                            <?php  if(!empty($subcategory['picture'] )){?>
-                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/subcategory/<?php echo $subcategory['picture'];?>" alt="">
-
-                            <?php }else {?>
-                                <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
-                            <?php }?>
-                            <p> <?php echo ucfirst($subcategory['name'])?> </p>
-
-                            <span><?php echo $subcategory['products'];?> Items</span>
-
-                        </div>
-                    <?php } ?>
                 </div>
             </div>
         </div>
     </div>
-<?php include("includes/footer.php");?>
+<?php include("includes/footer.php"); ?>
+<script src="<?php echo PUBLIC_PATH; ?>/css/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo PUBLIC_PATH; ?>/css/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="<?php echo PUBLIC_PATH; ?>/css/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="<?php echo PUBLIC_PATH; ?>/css/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<script>
+    $(function () {
+        $("#example1").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+    });
+</script>
+

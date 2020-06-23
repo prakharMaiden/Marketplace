@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 20, 2020 at 04:18 PM
+-- Generation Time: Jun 23, 2020 at 04:28 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.10
 
@@ -44,7 +44,8 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `customer_id`, `product_id`, `quantity`, `color`, `size`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 2, NULL, NULL, '2020-06-20 10:52:07', '2020-06-20 13:35:25');
+(1, 1, 1, 2, NULL, NULL, '2020-06-20 10:52:07', '2020-06-20 13:35:25'),
+(2, 1, 2, 0, NULL, NULL, '2020-06-22 12:40:19', '2020-06-22 12:40:19');
 
 -- --------------------------------------------------------
 
@@ -157,24 +158,29 @@ CREATE TABLE `orders` (
   `id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `payment_id` int(11) NOT NULL,
-  `order_number` varchar(10) NOT NULL,
+  `order_number` varchar(100) NOT NULL,
   `order_date` datetime NOT NULL,
   `shipment_date` datetime NOT NULL,
-  `required_date` datetime NOT NULL,
   `shipper_id` int(11) NOT NULL,
-  `freight` varchar(15) NOT NULL,
-  `sales_tax` varchar(15) NOT NULL,
-  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `transaction_status` varchar(10) NOT NULL,
+  `freight` varchar(150) NOT NULL,
+  `sales_tax` varchar(150) NOT NULL,
+  `transaction_status` enum('Order placed','In-process','Return','Delivered') NOT NULL DEFAULT 'Order placed',
   `err_loc` varchar(255) NOT NULL,
   `err_msg` varchar(255) NOT NULL,
-  `fulfilled` varchar(10) NOT NULL,
-  `deleted` varchar(10) NOT NULL,
-  `paid` varchar(4) NOT NULL,
+  `fulfilled` tinyint(4) NOT NULL DEFAULT '1',
+  `deleted` tinyint(4) NOT NULL DEFAULT '0',
+  `paid` tinyint(4) NOT NULL DEFAULT '0',
   `payment_date` datetime NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `customer_id`, `payment_id`, `order_number`, `order_date`, `shipment_date`, `shipper_id`, `freight`, `sales_tax`, `transaction_status`, `err_loc`, `err_msg`, `fulfilled`, `deleted`, `paid`, `payment_date`, `created_at`, `updated_at`) VALUES
+(1, 1, 4, '171-0418065-5981138', '2020-06-23 00:00:00', '2020-06-29 00:00:00', 1, '', '', 'Order placed', '', '', 1, 0, 1, '2020-06-23 00:00:00', '2020-06-23 13:20:23', '2020-06-23 13:20:23');
 
 -- --------------------------------------------------------
 
@@ -186,18 +192,23 @@ CREATE TABLE `order_details` (
   `id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
-  `order_number` varchar(50) DEFAULT NULL,
   `price` varchar(10) DEFAULT NULL,
   `quantity` varchar(15) DEFAULT NULL,
   `discount` varchar(10) DEFAULT NULL,
   `total` varchar(10) DEFAULT NULL,
-  `id_sku` varchar(10) DEFAULT NULL,
   `size` varchar(10) DEFAULT NULL,
   `color` varchar(10) DEFAULT NULL,
   `billing_date` datetime DEFAULT NULL,
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `order_details`
+--
+
+INSERT INTO `order_details` (`id`, `order_id`, `product_id`, `price`, `quantity`, `discount`, `total`, `size`, `color`, `billing_date`, `created_at`, `updated_at`) VALUES
+(1, 1, 1, '30000', '2', '3', '60000', NULL, 'black', '2020-06-23 00:00:00', '2020-06-23 13:26:12', '2020-06-23 13:26:59');
 
 -- --------------------------------------------------------
 
@@ -207,11 +218,21 @@ CREATE TABLE `order_details` (
 
 CREATE TABLE `payment` (
   `id` int(11) NOT NULL,
-  `type` varchar(10) NOT NULL,
-  `allowed` varchar(10) NOT NULL,
+  `type` varchar(255) NOT NULL,
+  `allowed` varchar(100) NOT NULL,
   `created_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `payment`
+--
+
+INSERT INTO `payment` (`id`, `type`, `allowed`, `created_at`, `updated_at`) VALUES
+(1, 'Credit & Debit Card', 'yes', '2020-06-23 13:01:30', '2020-06-23 13:01:30'),
+(2, 'Net Banking', 'yes', '2020-06-23 13:01:30', '2020-06-23 13:01:30'),
+(3, 'Pay on Delivery', 'yes', '2020-06-23 13:02:45', '2020-06-23 13:02:45'),
+(4, 'UPI(Pay With Bank Accounts)', 'yes', '2020-06-23 13:02:45', '2020-06-23 13:02:45');
 
 -- --------------------------------------------------------
 
@@ -258,7 +279,7 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `category_id`, `subcategory_id`, `customer_id`, `supplier_id`, `sku`, `id_sku`, `vendor_product_id`, `name`, `description`, `quantity_per_unit`, `unit_price`, `msrp`, `available_size`, `available_colors`, `size`, `color`, `discount`, `unit_weight`, `unit_in_stock`, `unit_on_order`, `reorder_level`, `product_available`, `discount_available`, `current_order`, `featured_image`, `images`, `size_url`, `active`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19  <ul>\r\n                                        <li> Unrestrained and portable active stereo speaker</li>\r\n                                        <li> Free from the confines of wires and chords</li>\r\n                                        <li> 20 hours of portable capabilities</li>\r\n                                        <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>\r\n                                        <li> 3/4? Dome Tweeters: 2X and 4? Woofer: 1X</li>\r\n                                    </ul>', '20', '34000', '45000', 'Small,Medium,Large,Extra Large', 'blue,black,white', 'Medium', '#795959', '3', '500g', '50', '23', '32', 'no', 'yes', '', 'featured_image-200524011210-7.jpg', 'images-200524011210-1.jpg,images-200524011210-7.jpg', '56', 1, '2020-05-31 11:18:36', '2020-06-17 12:46:54'),
+(1, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v19', 'vivo v19  <ul>\r\n                                        <li> Unrestrained and portable active stereo speaker</li>\r\n                                        <li> Free from the confines of wires and chords</li>\r\n                                        <li> 20 hours of portable capabilities</li>\r\n                                        <li> Double-ended Coil Cord with 3.5mm Stereo Plugs Included</li>\r\n                                        <li> 3/4? Dome Tweeters: 2X and 4? Woofer: 1X</li>\r\n                                    </ul>', '10', '34000', '45000', 'Small,Medium,Large,Extra Large', 'blue,black,white', 'Medium', '#795959', '3', '500g', '50', '23', '32', 'yes', 'yes', '', 'featured_image-200623125447-slide-3.jpg', 'images-200623125447-promotion-1.jpg,images-200623125447-promotion-2.jpg,images-200623125447-slide-1.jpg,images-200623125447-slide-2.jpg,images-200623125447-slide-3.jpg', '56', 1, '2020-05-31 11:18:36', '2020-06-23 11:22:48'),
 (2, 1, 1, 0, 5, 'SKU', '12234', NULL, 'vivo v20', 'vivo v20', '20', '40000', '45000', '', 'blue,black,white', '3', '#ddd', NULL, '500g', '50', '23', '32', 'yes', 'no', '', 'featured_image-200524011210-7.jpg', '', '56', 1, '2020-06-19 11:19:04', '2020-06-18 12:10:39'),
 (3, 2, 2, 0, 5, 'SKU', '12234', NULL, 'vivo v21', 'vivo v21', '20', '40000', '45000', '', 'blue,black,white', '3', '#Ff0', '5', '500g', '50', '23', '32', 'yes', 'yes', '', 'featured_image-200524011210-9.jpg', '', '56', 1, '2020-06-18 11:19:04', '2020-06-18 12:10:34');
 
@@ -325,6 +346,13 @@ CREATE TABLE `stock_management` (
   `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `stock_management`
+--
+
+INSERT INTO `stock_management` (`id`, `supplier_id`, `product_id`, `quantity`, `price_per_product`, `total_price`, `total_discount`, `date_in_stock`, `active`, `created_at`, `updated_at`) VALUES
+(1, 5, 1, '500', '100000000', '1200000000', '12', '2020-06-25 00:00:00', 1, '2020-06-22 13:41:31', '2020-06-22 13:41:31');
 
 -- --------------------------------------------------------
 
@@ -456,14 +484,15 @@ ALTER TABLE `customer_detail`
 ALTER TABLE `orders`
   ADD PRIMARY KEY (`id`),
   ADD KEY `customer_id` (`customer_id`),
-  ADD KEY `payment_id` (`payment_id`),
-  ADD KEY `shipper_id` (`shipper_id`);
+  ADD KEY `payment_id` (`payment_id`);
 
 --
 -- Indexes for table `order_details`
 --
 ALTER TABLE `order_details`
-  ADD KEY `order_id` (`order_id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `order_id` (`order_id`),
+  ADD KEY `product_id` (`product_id`);
 
 --
 -- Indexes for table `payment`
@@ -531,7 +560,7 @@ ALTER TABLE `wishlist`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `category`
@@ -555,13 +584,13 @@ ALTER TABLE `customer_detail`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `payment`
 --
 ALTER TABLE `payment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `products`
@@ -585,7 +614,7 @@ ALTER TABLE `shipper`
 -- AUTO_INCREMENT for table `stock_management`
 --
 ALTER TABLE `stock_management`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `subcategory`
@@ -603,7 +632,7 @@ ALTER TABLE `suppliers`
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -626,15 +655,15 @@ ALTER TABLE `customer_detail`
 -- Constraints for table `orders`
 --
 ALTER TABLE `orders`
-  ADD CONSTRAINT `orders_ibfk_1` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_2` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`shipper_id`) REFERENCES `shipper` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `orders_ibfk_3` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `orders_ibfk_4` FOREIGN KEY (`payment_id`) REFERENCES `payment` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `order_details`
 --
 ALTER TABLE `order_details`
-  ADD CONSTRAINT `order_details_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_details_ibfk_2` FOREIGN KEY (`product_id`) REFERENCES `products` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_details_ibfk_3` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `products`

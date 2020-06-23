@@ -62,25 +62,27 @@ if(isset($_SESSION['customer_id'])){
                                             <div class="item">
                                                 <?php  if(!empty($productName['featured_image'] )){?>
                                                     <a href="<?php echo PUBLIC_PATH; ?>/img/seller/products/<?php echo $productName['featured_image'];?>">
-                                                        <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $productName['featured_image'];?>" alt="">
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $productName['featured_image'];?>" title="Product featured Image">
                                                     </a>
                                                 <?php }else {?>
                                                     <a href="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
-                                                        <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
                                                     </a>
                                                 <?php }?>
                                             </div>
-                                            <?php  foreach (explode(",",$productName['images']) as $image){ ?>
-                                                <div class="item">
-                                                    <?php  if(!empty($image)){?>
+                                            <?php  if(!empty($productName['images'])){
+                                                foreach (explode(",",$productName['images']) as $image){ ?>
+                                                    <div class="item">
                                                         <a href="<?php echo PUBLIC_PATH; ?>/img/seller/products/<?php echo $image;?>">
-                                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $image;?>" alt="">
+                                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $image;?>">
                                                         </a>
-                                                    <?php }else {?>
-                                                        <a href="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
-                                                            <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
-                                                        </a>
-                                                    <?php }?>
+                                                    </div>
+                                                <?php }
+                                            }else{ ?>
+                                                <div class="item">
+                                                    <a href="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
+                                                        <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
+                                                    </a>
                                                 </div>
                                             <?php }?>
 
@@ -88,17 +90,25 @@ if(isset($_SESSION['customer_id'])){
                                     </div>
                                 </figure>
                                 <div class="ps-product__variants" data-item="4" data-md="4" data-sm="4" data-arrow="false">
+                                    <?php  if(!empty($productName['featured_image'] )){?>
 
-                                    <?php  //print_r((explode(",",$productName['images'])));die;
-                                    foreach (explode(",",$productName['images']) as $image){ ?>
+                                            <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $productName['featured_image'];?>" title="Product featured Image">
+                                       <?php }else {?>
+                                             <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
+                                     <?php }?>
+                                    <?php if (!empty($productName['images'])) {
+                                        foreach (explode(",",$productName['images']) as $image){ ?>
+                                            <div class="item">
+                                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $image;?>">
+
+                                            </div>
+                                        <?php }
+                                    }else{ ?>
                                         <div class="item">
-                                            <?php  if(!empty($image)){?>
-                                                <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $image;?>" alt="">
-                                            <?php }else {?>
-                                                <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
-                                            <?php }?>
+                                            <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
                                         </div>
-                                    <?php }?> </div>
+                                    <?php }?>
+                                </div>
                             </div>
                             <div class="ps-product__info">
                                 <h1><?php echo ucfirst($productName['name']) ?></h1>
@@ -146,14 +156,10 @@ if(isset($_SESSION['customer_id'])){
 
                                             <div class="">
                                                 <?php echo $productName['size']; ?></div>
-
-
                                             <div class="">
                                                 <select id="size" name="size" class="form-control col-md-4">
                                                     <option value="">Please select</option>
                                                     <?php
-
-
                                                     if (isset($productName['available_size'])) {
                                                         foreach (explode(",",$productName['available_size']) as $available_size){ ?>
                                                             <option value="<?php echo $available_size; ?>"><?php echo $available_size; ?></option>
@@ -229,8 +235,7 @@ if(isset($_SESSION['customer_id'])){
                                 <li class="active"><a href="#tab-1">Description</a></li>
                                 <li><a href="#tab-2">Specification</a></li>
                                 <li><a href="#tab-3">Vendor</a></li>
-                                <li><a href="#tab-4">Reviews (<?php echo $reviews['review_count']; ?>)</a></li>
-                                <li><a href="#tab-5">More Offers</a></li>
+                                <li><a href="#tab-4">Reviews (<?php echo $reviews['review_count']; ?>)</a></li>00
                             </ul>
                             <div class="ps-tabs">
                                 <div class="ps-tab active" id="tab-1">
@@ -286,7 +291,7 @@ if(isset($_SESSION['customer_id'])){
                                                 <?php
                                                 if (isset($reviews['review_count']) && $reviews['review_count'] > 0) {
                                                     if($reviews['sum_rating']/$reviews['review_count'] == 5){
-                                                ?>
+                                                        ?>
                                                         <div class="ps-block__star"><span>5 Star</span>
                                                             <div class="ps-progress" data-value="100"><span></span></div><span></span>
                                                         </div>
@@ -306,7 +311,7 @@ if(isset($_SESSION['customer_id'])){
                                                         <div class="ps-block__star"><span>1 Star</span>
                                                             <div class="ps-progress" data-value="0"><span></span></div><span></span>
                                                         </div>
-                                                    <?php
+                                                        <?php
                                                     }
                                                 } else{ ?>
                                                     <div class="ps-block__star"><span>0 Star</span>
@@ -344,9 +349,7 @@ if(isset($_SESSION['customer_id'])){
                                     </div>
                                 </div>
 
-                                <div class="ps-tab active" id="tab-5">
-                                    <p>Sorry no more offers available</p>
-                                </div>
+
                             </div>
                         </div>
                     </div>

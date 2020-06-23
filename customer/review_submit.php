@@ -1,6 +1,6 @@
 <?php
 
-include '../config/config.php';
+include_once("./../config/config.php");
 if(isset($_POST['submit'])) {
     $product_id=$_POST["product_id"];
     $customer_id=$_SESSION['customer_id'];

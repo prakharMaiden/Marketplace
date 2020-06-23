@@ -24,7 +24,7 @@ class productController {
     // Function for add
     public function add() {
 
-        if(!empty($_FILES['featured_image'])){
+        if(!empty($_FILES['featured_image']['name'])){
             if(file_exists($_FILES['featured_image']['tmp_name'])){
 
                 $name = $_FILES['featured_image']['name'];
@@ -117,7 +117,8 @@ class productController {
         chdir("../../../public/img/seller/products/");
         $target_dir = getcwd();
 
-        if(!empty($_FILES['featured_image'])){
+
+        if(!empty($_FILES['featured_image']['name'])){
             if(file_exists($_FILES['featured_image']['tmp_name'])){
                 $name = $_FILES['featured_image']['name'];
                 $target_file = $target_dir . basename($_FILES["featured_image"]["name"]);
@@ -141,11 +142,12 @@ class productController {
             $imageName = $productData['featured_image'];
         }
 
-        if(!empty($_FILES['images'])){
+        if(!empty(array_filter($_FILES['images']['name']))){
+            //echo'<pre>';print_r($_FILES);die;
         $allowTypes = array('jpg','png','jpeg');
         $insertValuesSQL = $errorUpload = $errorUploadType = '';
         $fileNames = array_filter($_FILES['images']['name']);
-        if(!empty($fileNames)){
+        if(!empty(($_FILES['images']['name']))){
             foreach($_FILES['images']['name'] as $key=>$val){
                 $fileName = basename($_FILES['images']['name'][$key]);
                 $targetFilePath = $target_dir.'/' . $fileName;
@@ -313,6 +315,7 @@ class productController {
                 "type" => "success",
                 "message" => "record updated successfully."
             );
+            header("Location: index.php");
         } else {
             $response = array(
                 "type" => "danger",
