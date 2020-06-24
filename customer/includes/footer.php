@@ -96,7 +96,40 @@
 <script src="<?php echo PUBLIC_PATH?>/js/main.js"></script>
 <script src="<?php echo PUBLIC_PATH?>/js/jquery.payform.min.js" charset="utf-8"></script>
 
+<script type="text/javascript">
+    $(document).ready(function(){
 
+        function search(){
+
+            var title=$("#text_search").val();
+
+            if(title!=""){
+                $.ajax({
+                    type:"post",
+                    url:"search.php",
+                    data:"title="+title,
+                    success:function(data){
+                        $("#result").html(data);
+                        $("#text_search").val("");
+                    }
+                });
+            }
+
+
+
+        }
+
+        $("#button_search").click(function(){
+            search();
+        });
+
+        $('#text_search').keyup(function(e) {
+            if(e.keyCode == 13) {
+                search();
+            }
+        });
+    });
+</script>
 <script>
     $(function(){
 

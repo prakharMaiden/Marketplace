@@ -20,12 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cd8eedb-ad77-4d42-ae88-f9459deed2e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/customer/order-details.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/customer/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/orders.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/orders.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/product-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/product-details.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/review_submit.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/review_submit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/controller/products/productController.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/controller/products/productController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/products/general/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/edit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/subcategories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/subcategories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/vendor-store.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/vendor-store.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +43,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1dRm1Q6Y8eUJy0kxzxWtCwS68Wc" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -50,13 +56,13 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\customer" />
       <recent name="C:\xampp\htdocs\Marketplace\public\js" />
       <recent name="C:\xampp\htdocs\Marketplace\customer\controller" />
-      <recent name="C:\xampp\htdocs\Marketplace\customer" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -109,6 +115,14 @@
       <workItem from="1592914750875" duration="1971000" />
       <workItem from="1592918872954" duration="1790000" />
       <workItem from="1592920731044" duration="1845000" />
+      <workItem from="1592988956276" duration="1762000" />
+      <workItem from="1592990750409" duration="1939000" />
+      <workItem from="1592992711470" duration="1436000" />
+      <workItem from="1592998783411" duration="1633000" />
+      <workItem from="1593000744658" duration="1891000" />
+      <workItem from="1593002751907" duration="1779000" />
+      <workItem from="1593004567675" duration="2004000" />
+      <workItem from="1593010781293" duration="1027000" />
     </task>
     <servers />
   </component>
@@ -128,10 +142,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1592657329997">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1592989883378">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592657329997" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592989883378" />
+    <state x="517" y="287" key="NewPhpFileDialog" timestamp="1593003817435">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state x="517" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1593003817435" />
     <state x="446" y="68" width="587" height="592" key="find.popup" timestamp="1592830973030">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

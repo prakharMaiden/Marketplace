@@ -76,8 +76,9 @@ if(empty($_SESSION['customer_id'])){
                             <?php  }  ?>
                         </select>
                     </div>
-                    <input class="form-control" type="text" placeholder="I'm shopping for...">
-                    <button>Search</button>
+                    <input class="form-control" type="text"  id="text_search" name="text_search" placeholder="I'm shopping for...">
+                    <button id="button_search" name="button_search">Search</button>
+                    <ul id="result"></ul>
                 </form>
             </div>
             <div class="header__left">

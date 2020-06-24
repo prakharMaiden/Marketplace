@@ -121,21 +121,61 @@ if(isset($_SESSION['customer_id'])){
                                     <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
-                                                <option value="<?php echo $reviews['sum_rating']/$reviews['review_count'] ?>"><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></option>
-                                                <option value="1">2</option>
-                                                <option value="1">3</option>
-                                                <option value="1">4</option>
-                                                <option value="2">5</option>
+
+                                                <?php
+                                                if (isset($reviews['review_count']) && $reviews['review_count'] > 0) {
+                                                    if($reviews['sum_rating']/$reviews['review_count'] == 5){
+                                                        ?>
+                                                        <option value="1">1</option>
+                                                        <option value="1">2</option>
+                                                        <option value="1">3</option>
+                                                        <option value="1">4</option>
+                                                        <option value="1">5</option>
+                                                    <?php }      else if($reviews['sum_rating']/$reviews['review_count'] == 4){?>
+                                                        <option value="1">1</option>
+                                                        <option value="1">2</option>
+                                                        <option value="1">3</option>
+                                                        <option value="1">4</option>
+                                                        <option value="2">5</option>
+                                                    <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 3){?>
+                                                        <option value="1">1</option>
+                                                        <option value="1">2</option>
+                                                        <option value="1">3</option>
+                                                        <option value="2">4</option>
+                                                        <option value="2">5</option>
+                                                    <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 2){?>
+                                                        <option value="1">1</option>
+                                                        <option value="1">2</option>
+                                                        <option value="2">3</option>
+                                                        <option value="2">4</option>
+                                                        <option value="2">5</option>
+                                                    <?php } else{?>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="2">3</option>
+                                                        <option value="2">4</option>
+                                                        <option value="2">5</option>
+                                                        <?php
+                                                    }
+                                                } else{ ?>
+                                                    <option value="0">0</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                <?php }?>
                                             </select><span><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> (<?php echo $reviews['review_count'] ?> review)</span>
                                         </div>
                                     <?php } else{?>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
-                                                <option value="2">1</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
                                                 <option value="2">2</option>
-                                                <option value="2">3</option>
-                                                <option value="2">4</option>
-                                                <option value="2">5</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
                                             </select><span>(0 review)</span>
                                         </div>
                                     <?php }?>
@@ -235,7 +275,7 @@ if(isset($_SESSION['customer_id'])){
                                 <li class="active"><a href="#tab-1">Description</a></li>
                                 <li><a href="#tab-2">Specification</a></li>
                                 <li><a href="#tab-3">Vendor</a></li>
-                                <li><a href="#tab-4">Reviews (<?php echo $reviews['review_count']; ?>)</a></li>00
+                                <li><a href="#tab-4">Reviews (<?php echo $reviews['review_count']; ?>)</a></li>
                             </ul>
                             <div class="ps-tabs">
                                 <div class="ps-tab active" id="tab-1">
@@ -280,13 +320,60 @@ if(isset($_SESSION['customer_id'])){
                                                     <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
                                                         <h3><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> rating</h3>
                                                     <?php }?>
-                                                    <select class="ps-rating" data-read-only="true">
-                                                        <option value="1">1</option>
-                                                        <option value="1">2</option>
-                                                        <option value="1">3</option>
-                                                        <option value="1">4</option>
-                                                        <option value="2">5</option>
-                                                    </select><span><?php echo $reviews['review_count']; ?> Review</span>
+
+
+                                                            <select class="ps-rating" data-read-only="true">
+
+                                                                <?php
+                                                                if (isset($reviews['review_count']) && $reviews['review_count'] > 0) {
+                                                                    if($reviews['sum_rating']/$reviews['review_count'] == 5){
+                                                                        ?>
+                                                                        <option value="1">1</option>
+                                                                        <option value="1">2</option>
+                                                                        <option value="1">3</option>
+                                                                        <option value="1">4</option>
+                                                                        <option value="1">5</option>
+                                                                    <?php }      else if($reviews['sum_rating']/$reviews['review_count'] == 4){?>
+                                                                        <option value="1">1</option>
+                                                                        <option value="1">2</option>
+                                                                        <option value="1">3</option>
+                                                                        <option value="1">4</option>
+                                                                        <option value="2">5</option>
+                                                                    <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 3){?>
+                                                                        <option value="1">1</option>
+                                                                        <option value="1">2</option>
+                                                                        <option value="1">3</option>
+                                                                        <option value="2">4</option>
+                                                                        <option value="2">5</option>
+                                                                    <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 2){?>
+                                                                        <option value="1">1</option>
+                                                                        <option value="1">2</option>
+                                                                        <option value="2">3</option>
+                                                                        <option value="2">4</option>
+                                                                        <option value="2">5</option>
+                                                                    <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 1){?>
+                                                                        <option value="1">1</option>
+                                                                        <option value="2">2</option>
+                                                                        <option value="2">3</option>
+                                                                        <option value="2">4</option>
+                                                                        <option value="2">5</option>
+                                                                        <?php
+                                                                    }
+                                                                } else{ ?>
+                                                                    <option value="0">0</option>
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                <?php }?>
+                                                            </select>
+                                                        <?php if(isset($reviews['review_count']) && $reviews['review_count'] > 0) { ?>
+                                                                    <span><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> (<?php echo $reviews['review_count'] ?> review)</span>
+                                                                    <?php }else{?>
+                                                            <span> (<?php echo $reviews['review_count'] ?> review)</span>
+<?php }?>
+
                                                 </div>
                                                 <?php
                                                 if (isset($reviews['review_count']) && $reviews['review_count'] > 0) {
@@ -415,22 +502,62 @@ if(isset($_SESSION['customer_id'])){
                                         <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
                                             <div class="ps-product__rating">
                                                 <select class="ps-rating" data-read-only="true">
-                                                    <option value="<?php echo $reviews['sum_rating']/$reviews['review_count'] ?>"><?php echo $reviews['sum_rating']/$reviews['review_count'] ?></option>
-                                                    <option value="1">2</option>
-                                                    <option value="1">3</option>
-                                                    <option value="1">4</option>
-                                                    <option value="2">5</option>
-                                                </select><span><?php echo round($reviews['sum_rating']/$reviews['review_count'],2); ?> (<?php echo $reviews['review_count'] ?> review)</span>
+
+                                                    <?php
+                                                    if (isset($reviews['review_count']) && $reviews['review_count'] > 0) {
+                                                        if($reviews['sum_rating']/$reviews['review_count'] == 5){
+                                                            ?>
+                                                            <option value="1">1</option>
+                                                            <option value="1">2</option>
+                                                            <option value="1">3</option>
+                                                            <option value="1">4</option>
+                                                            <option value="1">5</option>
+                                                        <?php }      else if($reviews['sum_rating']/$reviews['review_count'] == 4){?>
+                                                            <option value="1">1</option>
+                                                            <option value="1">2</option>
+                                                            <option value="1">3</option>
+                                                            <option value="1">4</option>
+                                                            <option value="2">5</option>
+                                                        <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 3){?>
+                                                            <option value="1">1</option>
+                                                            <option value="1">2</option>
+                                                            <option value="1">3</option>
+                                                            <option value="2">4</option>
+                                                            <option value="2">5</option>
+                                                        <?php } elseif($reviews['sum_rating']/$reviews['review_count'] == 2){?>
+                                                            <option value="1">1</option>
+                                                            <option value="1">2</option>
+                                                            <option value="2">3</option>
+                                                            <option value="2">4</option>
+                                                            <option value="2">5</option>
+                                                        <?php } else{?>
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="2">3</option>
+                                                            <option value="2">4</option>
+                                                            <option value="2">5</option>
+                                                            <?php
+                                                        }
+                                                    } else{ ?>
+                                                        <option value="0">0</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5</option>
+                                                    <?php }?>
+                                                </select>
                                             </div>
                                         <?php } else{?>
                                             <div class="ps-product__rating">
                                                 <select class="ps-rating" data-read-only="true">
+                                                    <option value="0">0</option>
                                                     <option value="1">1</option>
-                                                    <option value="1">2</option>
-                                                    <option value="1">3</option>
-                                                    <option value="1">4</option>
-                                                    <option value="1">5</option>
-                                                </select><span>(0 review)</span>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                    <option value="5">5</option>
+                                                </select>
                                             </div>
                                         <?php }?>
                                         <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
