@@ -26,6 +26,34 @@ if(empty($_SESSION['customer_id'])){
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/css/style.css">
+    <style type="text/css">
+        .ps-form--quick-search{
+            position: relative;
+        }
+
+        .result{
+            position: absolute;
+            z-index: 999;
+            top: 67px;
+            background: #fff;
+            left: 29%;
+        }
+        .result{
+            width: 531px;
+            box-sizing: border-box;
+        }
+        /* Formatting result items */
+        .result p{
+            margin: 0;
+            padding: 7px 10px;
+            border: 1px solid #CCCCCC;
+            border-top: none;
+            cursor: pointer;
+        }
+        .result p:hover{
+            background: #f2f2f2;
+        }
+    </style>
 </head>
 <body>
 <header class="header header--1" data-sticky="true">
@@ -64,22 +92,23 @@ if(empty($_SESSION['customer_id'])){
                     </div>
                 </div><a class="ps-logo" href="<?php echo PATH;?>/customer/index.php"><h3>Krishna Golds Industries</h3></a>
             </div>
-            <div class="header__center">
-                <form class="ps-form--quick-search" action="" method="Post">
+            <div class="header__center search-box">
+                <div class="ps-form--quick-search">
                     <div class="form-group--icon"><i class="icon-chevron-down"></i>
                         <select class="form-control" name="category_id" id="category_id">
                             <option value="all" selected="selected">All</option>
                             <?php
                             $categoriess=mysqli_query($con,"select * from category") ;
-                            foreach ($categoriess as $categorys) {  ?>
-                                <option value="<?php  echo $categorys['id'];?>" ><?php echo $categorys['name']  ; ?></option>
+                            foreach ($categoriess as $categorys) {
+                                ?>
+                                <option value="categories.php?id=<?php  echo $categorys['id'];?>" ><?php echo $categorys['name']  ; ?></option>
                             <?php  }  ?>
                         </select>
                     </div>
-                    <input class="form-control" type="text"  id="text_search" name="text_search" placeholder="I'm shopping for...">
+                    <input class="form-control" type="text" autocomplete="off"   id="text_search" name="text_search" placeholder="I'm shopping for...">
                     <button id="button_search" name="button_search">Search</button>
-                    <ul id="result"></ul>
-                </form>
+                </div>
+                <div class="result"></div>
             </div>
             <div class="header__left">
                 <div class="header__actions">
@@ -349,41 +378,41 @@ if(empty($_SESSION['customer_id'])){
         <h3>Shopping Cart</h3>
     </div>
     <?php if(isset($_SESSION['customer_id'])){ ?>
-    <div class="navigation__content">
-        <div class="ps-cart--mobile">
+        <div class="navigation__content">
+            <div class="ps-cart--mobile">
 
-            <?php
-            $stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC Limit 5");
-            foreach($stmt as $row){
-                $image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
-                $productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
-                ?>
-            <div class="ps-cart__content">
+                <?php
+                $stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC Limit 5");
+                foreach($stmt as $row){
+                    $image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
+                    $productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
+                    ?>
+                    <div class="ps-cart__content">
 
-                    <div class='ps-product--cart-mobile'>
-                        <div class='ps-product__thumbnail'>
-                            <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id'] ?>'>
+                        <div class='ps-product--cart-mobile'>
+                            <div class='ps-product__thumbnail'>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id'] ?>'>
 
-                                <img src='<?php echo PUBLIC_PATH.'/'.$image; ?>' class='thumbnail' alt='User Image'>
-                            </a>
+                                    <img src='<?php echo PUBLIC_PATH.'/'.$image; ?>' class='thumbnail' alt='User Image'>
+                                </a>
+                            </div>
+                            <div class='ps-product__content'><a class='ps-product__remove' href='#'>
+                                    <i class='icon-cross'></i></a>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id']; ?>'><?php echo $productname; ?>
+                                </a>
+                                <p><?php echo $row['catname']; ?></p><small>&times; <?php echo $row['quantity']; ?></small>
+                            </div>
                         </div>
-                        <div class='ps-product__content'><a class='ps-product__remove' href='#'>
-                                <i class='icon-cross'></i></a>
-                            <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id']; ?>'><?php echo $productname; ?>
-                            </a>
-                            <p><?php echo $row['catname']; ?></p><small>&times; <?php echo $row['quantity']; ?></small>
-                        </div>
+
                     </div>
+                <?php } ?>
+
+                <div class="ps-cart__footer">
+                    <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
+                </div>
 
             </div>
-            <?php } ?>
-
-            <div class="ps-cart__footer">
-                <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
-            </div>
-
-    </div>
-    </div>
+        </div>
     <?php } ?>
 </div>
 <div class="ps-panel--sidebar" id="wishlist-mobile">
@@ -391,38 +420,38 @@ if(empty($_SESSION['customer_id'])){
         <h3>Wishlist</h3>
     </div>
     <?php if(isset($_SESSION['customer_id'])){ ?>
-    <div class="navigation__content">
-        <div class="ps-cart--mobile">
+        <div class="navigation__content">
+            <div class="ps-cart--mobile">
 
-            <?php
-            $stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC Limit 5");
-            foreach($stmt as $row){
-                $image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
-                $productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
-                ?>
+                <?php
+                $stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC Limit 5");
+                foreach($stmt as $row){
+                    $image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
+                    $productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
+                    ?>
 
-                <div class="ps-cart__content">
-                    <div class='ps-product--cart-mobile'>
-                        <div class='ps-product__thumbnail'>
-                            <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id'] ?>'>
+                    <div class="ps-cart__content">
+                        <div class='ps-product--cart-mobile'>
+                            <div class='ps-product__thumbnail'>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id'] ?>'>
 
-                                <img src='<?php echo PUBLIC_PATH.'/'.$image; ?>' class='thumbnail' alt='User Image'>
-                            </a>
-                        </div>
-                        <div class='ps-product__content'><a class='ps-product__remove' href='#'>
-                                <i class='icon-cross'></i></a>
-                            <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id']; ?>'><?php echo $productname; ?>
-                            </a>
-                            <p><?php echo $row['catname']; ?></p><small>&times; <?php echo $row['quantity']; ?></small>
+                                    <img src='<?php echo PUBLIC_PATH.'/'.$image; ?>' class='thumbnail' alt='User Image'>
+                                </a>
+                            </div>
+                            <div class='ps-product__content'><a class='ps-product__remove' href='#'>
+                                    <i class='icon-cross'></i></a>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id']; ?>'><?php echo $productname; ?>
+                                </a>
+                                <p><?php echo $row['catname']; ?></p><small>&times; <?php echo $row['quantity']; ?></small>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php } ?>
+                <?php } ?>
+            </div>
+            <div class="ps-cart__footer">
+                <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
+            </div>
         </div>
-        <div class="ps-cart__footer">
-            <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
-        </div>
-    </div>
     <?php } ?>
 </div>
 <div class="navigation--list">

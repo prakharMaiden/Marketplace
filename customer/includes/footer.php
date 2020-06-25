@@ -95,7 +95,24 @@
 <script src="<?php echo PUBLIC_PATH?>/plugins/gmap3.min.js"></script>
 <script src="<?php echo PUBLIC_PATH?>/js/main.js"></script>
 <script src="<?php echo PUBLIC_PATH?>/js/jquery.payform.min.js" charset="utf-8"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.ps-form--quick-search input[type="text"]').on("keyup input", function(){
 
+            var inputVal = $("#text_search").val();
+            var resultDropdown = $(".search-box").children(".result");
+            if(inputVal.length){
+                $.get("search.php", {term: inputVal}).done(function(data){
+                    // Display the returned data in browser
+                  resultDropdown.html(data);
+                    console.log($(this));
+                });
+            } else{
+                resultDropdown.empty();
+            }
+        });
+    });
+</script>
 <script type="text/javascript">
     $(document).ready(function(){
 
@@ -107,9 +124,9 @@
                 $.ajax({
                     type:"post",
                     url:"search.php",
-                    data:"title="+title,
+                    data:"term="+title,
                     success:function(data){
-                        $("#result").html(data);
+                        $(".result").html(data);
                         $("#text_search").val("");
                     }
                 });

@@ -20,21 +20,19 @@ if(isset($_SESSION['customer_id'])){
 
 		try{
 			$total = 0;
-			$stmt = mysqli_query($con,"SELECT *, cart.id AS cart_id FROM cart LEFT JOIN products ON products.id=cart.product_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC");
+			$stmt = mysqli_query($con,"SELECT *, cart.id AS cart_id ,suppliers.id as supplier_id FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN suppliers ON suppliers.id=products.supplier_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC");
 
 			foreach($stmt as $row){
 				//print_r($row);die;
-				$stmt = mysqli_query($con,"SELECT * FROM suppliers WHERE id='$row[supplier_id]'");
-				$supplier = mysqli_fetch_assoc($stmt);
 				$image = (!empty($row['featured_image'])) ? 'img/seller/products/'.$row['featured_image'] : 'img/noimage.jpg';
 				$subtotal = $row['unit_price']*$row['quantity'];
 				$total += $subtotal;
 				$output .= "
 					<tr>
 						<td><div class='ps-product--cart'>
-    <div class='ps-product__thumbnail'><a href='product-details.php?id=".$row['id']."'><img src='".PUBLIC_PATH.'/'.$image."'></a></div>
-    <div class='ps-product__content'><a href='product-details.php?id=".$row['id']."'>".$row['name']."</a>
-        <p>Sold By:<strong> ".$supplier['company_name']."</strong></p>
+    <div class='ps-product__thumbnail'><a href='product-details.php?id=".$row['product_id']."'><img src='".PUBLIC_PATH.'/'.$image."'></a></div>
+    <div class='ps-product__content'><a href='product-details.php?id=".$row['product_id']."'>".$row['name']."</a>
+        <p>Sold By:<strong> ".$row['company_name']."</strong></p>
     </div>
 </div></td>
 						<td>Rs.&nbsp;".number_format($row['unit_price'], 2)."</td>
