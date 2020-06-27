@@ -36,10 +36,10 @@ if(empty($_SESSION['customer_id'])){
             z-index: 999;
             top: 67px;
             background: #fff;
-            left: 29%;
+            left: 24.5%;
         }
         .result{
-            width: 531px;
+            width: 592px;
             box-sizing: border-box;
         }
         /* Formatting result items */
@@ -93,21 +93,10 @@ if(empty($_SESSION['customer_id'])){
                 </div><a class="ps-logo" href="<?php echo PATH;?>/customer/index.php"><h3>Krishna Golds Industries</h3></a>
             </div>
             <div class="header__center search-box">
-                <div class="ps-form--quick-search">
-                    <div class="form-group--icon"><i class="icon-chevron-down"></i>
-                        <select class="form-control" name="category_id" id="category_id">
-                            <option value="all" selected="selected">All</option>
-                            <?php
-                            $categoriess=mysqli_query($con,"select * from category") ;
-                            foreach ($categoriess as $categorys) {
-                                ?>
-                                <option value="categories.php?id=<?php  echo $categorys['id'];?>" ><?php echo $categorys['name']  ; ?></option>
-                            <?php  }  ?>
-                        </select>
-                    </div>
-                    <input class="form-control" type="text" autocomplete="off"   id="text_search" name="text_search" placeholder="I'm shopping for...">
+                <form class="ps-form--quick-search" action="<?php echo PATH?>/customer/search-result.php" method="POST">
+                    <input class="form-control" type="text" autocomplete="off"   id="text_search" name="text_search" value="<?php if(isset($_POST["text_search"])){ echo $_POST["text_search"];} ?>" placeholder="I'm shopping for...">
                     <button id="button_search" name="button_search">Search</button>
-                </div>
+                </form>
                 <div class="result"></div>
             </div>
             <div class="header__left">
@@ -320,7 +309,7 @@ if(empty($_SESSION['customer_id'])){
         </div>
     </div>
     <div class="ps-search--mobile">
-        <form class="ps-form--search-mobile" action="" method="Post">
+        <form class="ps-form--search-mobile" action="<?php echo PATH?>/customer/search-result.php" method="POST">
             <div class="form-group--nest">
                 <input class="form-control" type="text" placeholder="Search something...">
                 <button><i class="icon-magnifier"></i></button>
@@ -364,10 +353,10 @@ if(empty($_SESSION['customer_id'])){
 </div>
 <div class="ps-panel--sidebar" id="search-sidebar">
     <div class="ps-panel__header">
-        <form class="ps-form--search-mobile" action="" method="POST">
+        <form class="ps-form--search-mobile" action="<?php echo PATH?>/customer/search-result.php" method="POST">
             <div class="form-group--nest">
-                <input class="form-control" type="text" placeholder="Search something...">
-                <button><i class="icon-magnifier"></i></button>
+                <input class="form-control" type="text"  placeholder="Search something...">
+                <button type="submit" name="submit" id="submit"><i class="icon-magnifier"></i></button>
             </div>
         </form>
     </div>
