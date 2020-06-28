@@ -3,6 +3,9 @@ require_once("./../config/config.php");
 if(empty($_SESSION['supplier_id'])){
     header("location:auth/login.php");
 }
+$orders=mysqli_query($con,"select *,orders.id as order_id from orders left join order_details on orders.id = order_details.order_id left join products on order_details.product_id = products.id where products.supplier_id='$_SESSION[supplier_id]'") ;
+//1print_r($orders);die;
+//print_r($_SESSION['supplier_id']);die;
 ?>
 <?php include("includes/header.php");?>
     <div class="content-wrapper">
@@ -89,69 +92,55 @@ if(empty($_SESSION['supplier_id'])){
                                     <table class="table m-0">
                                         <thead>
                                         <tr>
-                                            <th>Order ID</th>
-                                            <th>Item</th>
-                                            <th>Status</th>
-                                            <th>Popularity</th>
+                                            <th><b>Order#</b></th>
+                                            <th><b>Product</b></th>
+                                            <th><b>Order&nbsp;placed</b></th>
+                                            <th><b>Shipment Date</b></th>
+                                            <th><b>Price</b></th>
+                                            <th><b>Size</b></th>
+                                            <th><b>Color</b></th>
+                                            <th><b>Status</b></th>
+                                            <th><b>View</b></th>
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <?php
+                                        foreach ($orders as $order){
+                                              $image = (!empty($order['featured_image'])) ? 'img/seller/products/'.$order['featured_image'] : 'img/noimage.jpg';
+                                        ?>
                                         <tr>
-                                            <td><a href="#">OR9842</a></td>
-                                            <td>Call of Duty IV</td>
-                                            <td><span class="badge badge-success">Shipped</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                            </td>
+                                            <td><a href="#"><?php echo $order['order_number'] ?></a></td>
+                                            <td><?php echo $order['name'] ?></td>
+                                            <td><?php echo date('d-m-Y',strtotime($order['order_date'])) ?></td>
+                                            <td><?php echo date('d-m-Y',strtotime($order['shipment_date'])) ?></td>
+                                            <td><?php echo $order['price'] ?></td>
+                                            <td><?php echo $order['size'] ?></td>
+                                            <td><?php echo $order['color'] ?></td>
+                                            <td><span class="badge badge-success"><?php echo $order['transaction_status'] ?></span></td>
+                                            <td><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview<?php echo $order['id'];?>"><i class="fas fa fa-eye" title="Order Detail" style="font-size: 20px;color: #007bff;font-weight: bold"></i></a></td>
+
+
+
+
+                                            <div class="modal fade" id="product-quickview<?php echo $order['id'];?>" tabindex="-1" role="dialog" aria-labelledby="product-quickview" aria-hidden="true">
+                                                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px;">
+
+                                                    <div class="modal-content">
+                                                        <span class="modal-close" data-dismiss="modal">
+                                                            <i class="icon-cross2" style="float: right;padding: 5px;"></i></span>
+                                                        <article class="ps-product--detail ps-product--fullwidth ps-product--quickview">
+                                                         <table>
+                                                             <tr>
+                                                                 <td>sdhgas</td>
+                                                                 <td>savdhgfasdgh</td>
+                                                             </tr>
+                                                         </table>
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </tr>
-                                        <tr>
-                                            <td><a href="#">OR1848</a></td>
-                                            <td>Samsung Smart TV</td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">OR7429</a></td>
-                                            <td>iPhone 6 Plus</td>
-                                            <td><span class="badge badge-danger">Delivered</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">OR7429</a></td>
-                                            <td>Samsung Smart TV</td>
-                                            <td><span class="badge badge-info">Processing</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">OR1848</a></td>
-                                            <td>Samsung Smart TV</td>
-                                            <td><span class="badge badge-warning">Pending</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">OR7429</a></td>
-                                            <td>iPhone 6 Plus</td>
-                                            <td><span class="badge badge-danger">Delivered</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td><a href="#">OR9842</a></td>
-                                            <td>Call of Duty IV</td>
-                                            <td><span class="badge badge-success">Shipped</span></td>
-                                            <td>
-                                                <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
-                                            </td>
-                                        </tr>
+                                        <?php }?>
                                         </tbody>
                                     </table>
                                 </div>
@@ -177,22 +166,22 @@ if(empty($_SESSION['supplier_id'])){
                                 <ul class="products-list product-list-in-card pl-2 pr-2">
                                     <?php
 
-                                    $products=mysqli_query($con,"select * from products where (supplier_id='$_SESSION[supplier_id]')") ;
-                                    foreach ($products as $product){
+                                    $orders=mysqli_query($con,"select * from products where (supplier_id='$_SESSION[supplier_id]')") ;
+                                    foreach ($orders as $order){
                                     ?>
                                         <li class="item">
                                             <div class="product-img">
-                                                <?php  if(!empty($product['featured_image'] )){?>
-                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" alt="" class="img-size-50">
+                                                <?php  if(!empty($order['featured_image'] )){?>
+                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $order['featured_image'];?>" alt="" class="img-size-50">
                                                 <?php }else {?>
                                                     <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="Product Image" class="img-size-50">
                                                 <?php }?>
                                             </div>
                                             <div class="product-info">
-                                                <a href="<?php echo PATH;?>/seller/products/general/index.php" class="product-title"><?php echo $product['name'] ?>
-                                                    <span class="badge badge-warning float-right"><?php echo $product['unit_price'] ?></span></a>
+                                                <a href="<?php echo PATH;?>/seller/products/general/index.php" class="product-title"><?php echo $order['name'] ?>
+                                                    <span class="badge badge-warning float-right"><?php echo $order['unit_price'] ?></span></a>
                                                 <span class="product-description">
-                        <?php echo (strlen($product['description']) > 30) ? substr_replace($product['description'], '...', 27) : $product['description']; ?>
+                        <?php echo (strlen($order['description']) > 30) ? substr_replace($order['description'], '...', 27) : $order['description']; ?>
                       </span>
                                             </div>
                                         </li>

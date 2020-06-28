@@ -429,7 +429,7 @@ if(isset($_SESSION['customer_id'])){
                                                 <input type="hidden" value="<?php echo $_SESSION['customer_id']; ?>" name="customer_id">
 
                                                 <div class="form-group submit">
-                                                    <button class="ps-btn" type="submit" name="submit" id="submit">Submit Review</button>
+                                                    <button class="ps-btn" type="submit" name="review_submit" id="review_submit">Submit Review</button>
                                                 </div>
                                             </form>
                                         </div>

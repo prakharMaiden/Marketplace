@@ -1,7 +1,7 @@
 <?php
 
 include_once("./../config/config.php");
-if(isset($_POST['submit'])) {
+if(isset($_POST['review_submit'])) {
     $product_id=$_POST["product_id"];
     $customer_id=$_SESSION['customer_id'];
     $rating= $_POST["rating"];

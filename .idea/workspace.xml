@@ -20,8 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cd8eedb-ad77-4d42-ae88-f9459deed2e7" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/customer/includes/scripts.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/login_footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/login_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/product-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/product-details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/review_submit.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/review_submit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/kgi.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/kgi.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/dashboard.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,10 +56,11 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/customer/includes" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Marketplace\customer\includes" />
       <recent name="C:\xampp\htdocs\Marketplace\customer" />
       <recent name="C:\xampp\htdocs\Marketplace\public\js" />
       <recent name="C:\xampp\htdocs\Marketplace\customer\controller" />
@@ -128,6 +136,10 @@
       <workItem from="1593255596996" duration="1772000" />
       <workItem from="1593257409862" duration="1774000" />
       <workItem from="1593259456273" duration="1586000" />
+      <workItem from="1593342451868" duration="2044000" />
+      <workItem from="1593344575409" duration="2125000" />
+      <workItem from="1593349023588" duration="2048000" />
+      <workItem from="1593352298013" duration="1918000" />
     </task>
     <servers />
   </component>
@@ -147,10 +159,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1592989883378">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593352479679">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1592989883378" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593352479679" />
     <state x="517" y="287" key="NewPhpFileDialog" timestamp="1593003817435">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -159,10 +171,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1593082959502" />
-    <state x="446" y="68" width="587" height="592" key="find.popup" timestamp="1592830973030">
+    <state x="446" y="68" width="587" height="592" key="find.popup" timestamp="1593343909695">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="446" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1592830973030" />
+    <state x="446" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1593343909695" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1593085324611">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

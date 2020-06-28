@@ -61,21 +61,12 @@
                     </div>
                 </div><a class="ps-logo" href="<?php echo PATH;?>/customer/index.php"><h3>Krishna Golds Industries</h3></a>
             </div>
-            <div class="header__center">
-                <form class="ps-form--quick-search" action="" method="Post">
-                    <div class="form-group--icon"><i class="icon-chevron-down"></i>
-                        <select class="form-control" name="category_id" id="category_id">
-                            <option value="all" selected="selected">All</option>
-                            <?php
-                            $categoriess=mysqli_query($con,"select * from category") ;
-                            foreach ($categoriess as $categorys) {  ?>
-                                <option value="<?php  echo $categorys['id'];?>" ><?php echo $categorys['name']  ; ?></option>
-                            <?php  }  ?>
-                        </select>
-                    </div>
-                    <input class="form-control" type="text" placeholder="I'm shopping for...">
-                    <button>Search</button>
+            <div class="header__center search-box">
+                <form class="ps-form--quick-search" action="<?php echo PATH?>/customer/search-result.php" method="POST">
+                    <input class="form-control" type="text" autocomplete="off"   id="text_search" name="text_search" value="<?php if(isset($_POST["text_search"])){ echo $_POST["text_search"];} ?>" placeholder="I'm shopping for...">
+                    <button id="button_search" name="button_search">Search</button>
                 </form>
+                <div class="result"></div>
             </div>
             <div class="header__left">
                 <div class="header__actions">

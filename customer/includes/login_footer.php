@@ -60,23 +60,6 @@
     <div class="loader-section section-left"></div>
     <div class="loader-section section-right"></div>
 </div>
-<script src="<?php echo PUBLIC_PATH?>/plugins/jquery-1.12.4.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/popper.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/owl-carousel/owl.carousel.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/bootstrap4/js/bootstrap.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/imagesloaded.pkgd.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/masonry.pkgd.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/isotope.pkgd.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/jquery.matchHeight-min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/slick/slick/slick.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/jquery-bar-rating/dist/jquery.barrating.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/slick-animation.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/lightGallery-master/dist/js/lightgallery-all.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/jquery-ui/jquery-ui.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/sticky-sidebar/dist/sticky-sidebar.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/jquery.slimscroll.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/select2/dist/js/select2.full.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/plugins/gmap3.min.js"></script>
-<script src="<?php echo PUBLIC_PATH?>/js/main.js"></script>
+<?php include 'scripts.php';?>
 </body>
 </html>
