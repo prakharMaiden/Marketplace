@@ -3,7 +3,7 @@ include_once("./../controller/stock_management/stockManagementController.php");
 if(empty($_SESSION['supplier_id'])){
     header("location:../auth/login.php");
 }
-$stockManagement=new stockManagementController();
+$stockManagement=new ordersController();
 if(isset($_POST['submit'])) {
     $response=$stockManagement->add();
 }

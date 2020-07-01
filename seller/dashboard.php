@@ -3,9 +3,8 @@ require_once("./../config/config.php");
 if(empty($_SESSION['supplier_id'])){
     header("location:auth/login.php");
 }
-$orders=mysqli_query($con,"select *,orders.id as order_id from orders left join order_details on orders.id = order_details.order_id left join products on order_details.product_id = products.id where products.supplier_id='$_SESSION[supplier_id]'") ;
-//1print_r($orders);die;
-//print_r($_SESSION['supplier_id']);die;
+$orders=mysqli_query($con,"select orders.transaction_status as transaction_status,order_details.price as price,orders.order_number as order_number,orders.id as order_id,products.name as product_name,products.id as product_id,order_details.color as color,order_details.size as size,orders.order_date as order_date,orders.shipment_date as shipment_date from orders left join order_details on orders.id = order_details.order_id left join products on order_details.product_id = products.id where products.supplier_id='$_SESSION[supplier_id]' order by orders.id desc limit 10") ;
+
 ?>
 <?php include("includes/header.php");?>
     <div class="content-wrapper">
@@ -94,8 +93,8 @@ $orders=mysqli_query($con,"select *,orders.id as order_id from orders left join 
                                         <tr>
                                             <th><b>Order#</b></th>
                                             <th><b>Product</b></th>
-                                            <th><b>Order&nbsp;placed</b></th>
-                                            <th><b>Shipment Date</b></th>
+                                            <th><b>Order&nbsp;Date</b></th>
+                                            <th><b>Shipment&nbsp;Date</b></th>
                                             <th><b>Price</b></th>
                                             <th><b>Size</b></th>
                                             <th><b>Color</b></th>
@@ -106,40 +105,25 @@ $orders=mysqli_query($con,"select *,orders.id as order_id from orders left join 
                                         <tbody>
                                         <?php
                                         foreach ($orders as $order){
-                                              $image = (!empty($order['featured_image'])) ? 'img/seller/products/'.$order['featured_image'] : 'img/noimage.jpg';
-                                        ?>
-                                        <tr>
-                                            <td><a href="#"><?php echo $order['order_number'] ?></a></td>
-                                            <td><?php echo $order['name'] ?></td>
-                                            <td><?php echo date('d-m-Y',strtotime($order['order_date'])) ?></td>
-                                            <td><?php echo date('d-m-Y',strtotime($order['shipment_date'])) ?></td>
-                                            <td><?php echo $order['price'] ?></td>
-                                            <td><?php echo $order['size'] ?></td>
-                                            <td><?php echo $order['color'] ?></td>
-                                            <td><span class="badge badge-success"><?php echo $order['transaction_status'] ?></span></td>
-                                            <td><a href="#" data-placement="top" title="Quick View" data-toggle="modal" data-target="#product-quickview<?php echo $order['id'];?>"><i class="fas fa fa-eye" title="Order Detail" style="font-size: 20px;color: #007bff;font-weight: bold"></i></a></td>
-
-
-
-
-                                            <div class="modal fade" id="product-quickview<?php echo $order['id'];?>" tabindex="-1" role="dialog" aria-labelledby="product-quickview" aria-hidden="true">
-                                                <div class="modal-dialog modal-dialog-centered" role="document" style="max-width: 800px;">
-
-                                                    <div class="modal-content">
-                                                        <span class="modal-close" data-dismiss="modal">
-                                                            <i class="icon-cross2" style="float: right;padding: 5px;"></i></span>
-                                                        <article class="ps-product--detail ps-product--fullwidth ps-product--quickview">
-                                                         <table>
-                                                             <tr>
-                                                                 <td>sdhgas</td>
-                                                                 <td>savdhgfasdgh</td>
-                                                             </tr>
-                                                         </table>
-                                                        </article>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </tr>
+                                            //echo'<pre>';print_r($order);die;
+                                            $res=mysqli_query($con,"select * from order_details where order_id='$order[order_id]'") ;
+                                            $orderDetail= mysqli_fetch_assoc($res);
+                                            $result=mysqli_query($con,"select *,products.name AS prodname, suppliers.id AS supplier_id, products.description AS prod_description from products LEFT JOIN suppliers ON products.supplier_id =suppliers.id LEFT JOIN subcategory ON products.subcategory_id =subcategory.id  where products.id='$orderDetail[product_id]'") ;
+                                            $product= mysqli_fetch_assoc($result);
+                                            $image = (!empty($product['featured_image'])) ? 'img/seller/products/'.$product['featured_image'] : 'img/noimage.jpg';
+                                            ?>
+                                            <tr>
+                                                <td><a href="<?php echo PATH;?>/seller/orders/index.php"><?php echo $order['order_number'] ?></a></td>
+                                                <td><a href="<?php echo PATH;?>/seller/products/general/index.php"><?php echo $order['product_name'] ?></a></td>
+                                                <td><?php echo date('d-m-Y',strtotime($order['order_date'])) ?></td>
+                                                <td><?php echo date('d-m-Y',strtotime($order['shipment_date'])) ?></td>
+                                                <td><?php echo $order['price'] ?></td>
+                                                <td><?php echo $order['size'] ?></td>
+                                                <td><?php echo $order['color'] ?></td>
+                                                <td><span class="badge badge-success"><?php echo $order['transaction_status'] ?></span></td>
+                                                <td><a href="<?php echo PATH;?>/seller/orders/order.php/<?php echo $order['order_id'];?>">
+                                                        <i class="fas fa fa-eye" title="Order Detail" style="font-size: 20px;color: #007bff;font-weight: bold"></i></a></td>
+                                            </tr>
                                         <?php }?>
                                         </tbody>
                                     </table>
@@ -168,7 +152,7 @@ $orders=mysqli_query($con,"select *,orders.id as order_id from orders left join 
 
                                     $orders=mysqli_query($con,"select * from products where (supplier_id='$_SESSION[supplier_id]')") ;
                                     foreach ($orders as $order){
-                                    ?>
+                                        ?>
                                         <li class="item">
                                             <div class="product-img">
                                                 <?php  if(!empty($order['featured_image'] )){?>
@@ -185,7 +169,7 @@ $orders=mysqli_query($con,"select *,orders.id as order_id from orders left join 
                       </span>
                                             </div>
                                         </li>
-                                        <?php }?>
+                                    <?php }?>
 
                                 </ul>
                             </div>

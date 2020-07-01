@@ -4,7 +4,7 @@ if(empty($_SESSION['supplier_id'])){
     header("location:../auth/login.php");
 }
 $id = $_GET['id'];
-$stockManagementClass=new stockManagementController();
+$stockManagementClass=new ordersController();
 $stockManagement=$stockManagementClass->edit($id);
 if(isset($_POST['submit'])) {
     $response=$stockManagementClass->update($id);
