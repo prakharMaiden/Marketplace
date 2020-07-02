@@ -20,14 +20,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0cd8eedb-ad77-4d42-ae88-f9459deed2e7" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/seller/controller/orders/ordersController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seller/orders/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/seller/orders/order.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/login_footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/product-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/product-details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/controller/orders/ordersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/controller/orders/ordersController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/seller/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/stock_management/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/add.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/stock_management/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/stock_management/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/stock_management/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/orders/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/orders/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/orders/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/orders/order.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +56,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP" />
     <property name="ignore.virus.scanning.warn.message" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/seller/controller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ecommerce" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -146,6 +147,14 @@
       <workItem from="1593606143475" duration="1521000" />
       <workItem from="1593608055077" duration="849000" />
       <workItem from="1593610248157" duration="2082000" />
+      <workItem from="1593683150906" duration="1095000" />
+      <workItem from="1593685521529" duration="1787000" />
+      <workItem from="1593687447496" duration="1514000" />
+      <workItem from="1593689530011" duration="1430000" />
+      <workItem from="1593691361405" duration="1787000" />
+      <workItem from="1593693207296" duration="2181000" />
+      <workItem from="1593695482513" duration="1377000" />
+      <workItem from="1593697314158" duration="1587000" />
     </task>
     <servers />
   </component>
@@ -173,10 +182,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593605819848" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593519406398">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593695589550">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593519406398" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593695589550" />
     <state x="517" y="287" key="NewPhpFileDialog" timestamp="1593003817435">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

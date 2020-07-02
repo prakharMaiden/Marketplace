@@ -6,11 +6,9 @@
                     <aside class="widget widget_footer">
                         <h4 class="widget-title">Quick links</h4>
                         <ul class="ps-list--link">
-                            <li><a href="#">Policy</a></li>
-                            <li><a href="#">Terms & Conditions</a></li>
-                            <li><a href="#">Shipping</a></li>
-                            <li><a href="#">Return</a></li>
-                            <li><a href="#">FAQs</a></li>
+                            <li><a href="<?php echo PATH?>/customer/policy.php">Policy</a></li>
+                            <li><a href="<?php echo PATH?>/customer/term-condition.php">Terms & Conditions</a></li>
+                            <li><a href="<?php echo PATH?>/customer/faqs.php">FAQs</a></li>
                         </ul>
                     </aside>
                 </div>
@@ -18,10 +16,9 @@
                     <aside class="widget widget_footer">
                         <h4 class="widget-title">Company</h4>
                         <ul class="ps-list--link">
-                            <li><a href="#">About Us</a></li>
+                            <li><a href="<?php echo PATH?>/customer/about-us.php">About Us</a></li>
                             <li><a href="#">Affilate</a></li>
-                            <li><a href="#">Career</a></li>
-                            <li><a href="#">Contact</a></li>
+                            <li><a href="<?php echo PATH?>/customer/contact-us.php">Contact</a></li>
                         </ul>
                     </aside>
                 </div>
@@ -30,9 +27,8 @@
                         <h4 class="widget-title">Bussiness</h4>
                         <ul class="ps-list--link">
                             <li><a href="#">Our Press</a></li>
-                            <li><a href="#">Checkout</a></li>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Shop</a></li>
+                            <li><a href="<?php echo PATH?>/customer/auth/login.php">My account</a></li>
+                            <li><a href="<?php echo PATH?>/customer/category.php">Shop</a></li>
                         </ul>
                     </aside>
                 </div>

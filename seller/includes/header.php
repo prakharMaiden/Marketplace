@@ -83,6 +83,12 @@ $supplier = mysqli_fetch_assoc($result);
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="<?php echo PATH;?>/seller/orders/index.php" class="nav-link">
+                            <i class="nav-icon fas fa-shopping-cart"></i>
+                            <p>Orders</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="<?php echo PATH;?>/seller/auth/logout.php" class="nav-link">
                             <i class="nav-icon fas fa-sign-out-alt"></i>
                             <p>logout</p>

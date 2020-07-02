@@ -23,7 +23,7 @@ class ordersController {
     public function order($id){
         $result=mysqli_query($this->db,"select orders.* from orders left join order_details on orders.id = order_details.order_id left join products on order_details.product_id = products.id where (products.supplier_id='$_SESSION[supplier_id]') and (orders.id='$id')") ;
         $order= mysqli_fetch_assoc($result);
-        echo'<pre>';print_r($order);die;
+        //echo'<pre>';print_r($order);die;
         return $order;
 
     }

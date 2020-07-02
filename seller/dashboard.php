@@ -121,7 +121,7 @@ $orders=mysqli_query($con,"select orders.transaction_status as transaction_statu
                                                 <td><?php echo $order['size'] ?></td>
                                                 <td><?php echo $order['color'] ?></td>
                                                 <td><span class="badge badge-success"><?php echo $order['transaction_status'] ?></span></td>
-                                                <td><a href="<?php echo PATH;?>/seller/orders/order.php/<?php echo $order['order_id'];?>">
+                                                <td><a href="<?php echo PATH;?>/seller/orders/order.php?id=<?php echo $order['order_id'];?>">
                                                         <i class="fas fa fa-eye" title="Order Detail" style="font-size: 20px;color: #007bff;font-weight: bold"></i></a></td>
                                             </tr>
                                         <?php }?>

@@ -73,12 +73,15 @@ include("../includes/header.php");
                                         <td>
                                             <?php if(isset( $order['transaction_status']) &&  $order['transaction_status'] == 'Order placed'){?>
                                             <span class="badge badge-info"><?php echo $order['transaction_status'] ?></span>
-                                            <?php }elseif(isset( $order['transaction_status']) &&  $order['transaction_status'] == 'Shipped'){ ?>
+                                            <?php }elseif(isset( $order['transaction_status']) &&  $order['transaction_status'] == 'In-process'){ ?>
                                             <span class="badge badge-warning"><?php echo $order['transaction_status'] ?></span>
-                                            <?php }elseif(isset( $order['transaction_status']) &&  $order['transaction_status'] == 'Order Received'){ ?>
+                                            <?php }elseif(isset( $order['transaction_status']) &&  $order['transaction_status'] == 'Return'){ ?>
+                                            <span class="badge badge-danger"><?php echo $order['transaction_status'] ?></span>
+                                             <?php }elseif(isset( $order['transaction_status']) &&  $order['transaction_status'] == 'Delivered'){ ?>
                                                 <span class="badge badge-success"><?php echo $order['transaction_status'] ?></span>
                                             <?php }?>
                                         </td>
+
                                         <td><a href="<?php echo PATH;?>/seller/orders/order.php?id=<?php echo $order['order_id'];?>">
                                                 <i class="fas fa fa-eye" title="Order Detail" style="font-size: 20px;color: #007bff;font-weight: bold"></i></a></td>
                                     </tr>

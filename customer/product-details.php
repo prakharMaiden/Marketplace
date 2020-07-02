@@ -78,13 +78,7 @@ if(isset($_SESSION['customer_id'])){
                                                         </a>
                                                     </div>
                                                 <?php }
-                                            }else{ ?>
-                                                <div class="item">
-                                                    <a href="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
-                                                        <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
-                                                    </a>
-                                                </div>
-                                            <?php }?>
+                                            }?>
 
                                         </div>
                                     </div>
@@ -103,11 +97,8 @@ if(isset($_SESSION['customer_id'])){
 
                                             </div>
                                         <?php }
-                                    }else{ ?>
-                                        <div class="item">
-                                            <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg">
-                                        </div>
-                                    <?php }?>
+                                    }?>
+
                                 </div>
                             </div>
                             <div class="ps-product__info">
@@ -470,12 +461,14 @@ if(isset($_SESSION['customer_id'])){
             </div>
             <div class="ps-section--default">
                 <div class="ps-section__header">
-                    <h3>Related products</h3>
+                    <h3>Most Viewed Today</h3>
                 </div>
                 <div class="ps-section__content">
                     <div class="ps-carousel--nav owl-slider" data-owl-auto="true" data-owl-loop="true" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="6" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="5" data-owl-duration="1000" data-owl-mousedrag="on">
                         <?php
-                        $subcatproducts = mysqli_query($con, "select * from   products where products.supplier_id='$supplier[id]'");
+                        $now = date('Y-m-d');
+                        $inc = 3;
+                        $subcatproducts = mysqli_query($con, "select * from   products where  date_view='$now' ORDER BY counter DESC LIMIT 20");
                         foreach ($subcatproducts as $subcatproduct){
                             $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$subcatproduct[id]'") ;
                             $reviews= mysqli_fetch_assoc($ret);

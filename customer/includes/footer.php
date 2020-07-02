@@ -6,7 +6,7 @@
                 <div class="widget_content">
                     <p>Call us 24/7</p>
                     <h3>1800 97 97 69</h3>
-                    <p>502 New Design Str, Melbourne, Australia <br><a href="http://nouthemes.net/cdn-cgi/l/email-protection#20434f4e54414354604d415254465552590e434f"><span class="__cf_email__" data-cfemail="93f0fcfde7f2f0e7d3fef2e1e7f5e6e1eabdf0fc">[email&#160;protected]</span></a></p>
+                    <p>502 New Design Str, Melbourne, Australia <br><a href="#"><span class="__cf_email__" data-cfemail="93f0fcfde7f2f0e7d3fef2e1e7f5e6e1eabdf0fc">[email&#160;protected]</span></a></p>
                     <ul class="ps-list--social">
                         <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
                         <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
@@ -18,29 +18,25 @@
             <aside class="widget widget_footer">
                 <h4 class="widget-title">Quick links</h4>
                 <ul class="ps-list--link">
-                    <li><a href="#">Policy</a></li>
-                    <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Shipping</a></li>
-                    <li><a href="#">Return</a></li>
-                    <li><a href="#">FAQs</a></li>
+                    <li><a href="<?php echo PATH?>/customer/policy.php">Policy</a></li>
+                    <li><a href="<?php echo PATH?>/customer/term-condition.php">Terms & Conditions</a></li>
+                    <li><a href="<?php echo PATH?>/customer/faqs.php">FAQs</a></li>
                 </ul>
             </aside>
             <aside class="widget widget_footer">
                 <h4 class="widget-title">Company</h4>
                 <ul class="ps-list--link">
-                    <li><a href="#">About Us</a></li>
+                    <li><a href="<?php echo PATH?>/customer/about-us.php">About Us</a></li>
                     <li><a href="#">Affilate</a></li>
-                    <li><a href="#">Career</a></li>
-                    <li><a href="#">Contact</a></li>
+                    <li><a href="<?php echo PATH?>/customer/contact-us.php">Contact</a></li>
                 </ul>
             </aside>
             <aside class="widget widget_footer">
                 <h4 class="widget-title">Bussiness</h4>
                 <ul class="ps-list--link">
                     <li><a href="#">Our Press</a></li>
-                    <li><a href="#">Checkout</a></li>
-                    <li><a href="#">My account</a></li>
-                    <li><a href="#">Shop</a></li>
+                    <li><a href="<?php echo PATH?>/customer/auth/login.php">My account</a></li>
+                    <li><a href="<?php echo PATH?>/customer/category.php">Shop</a></li>
                 </ul>
             </aside>
         </div>
