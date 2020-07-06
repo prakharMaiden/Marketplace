@@ -21,14 +21,17 @@
   <component name="ChangeListManager">
     <list default="true" id="0cd8eedb-ad77-4d42-ae88-f9459deed2e7" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/includes/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/customer/includes/login_footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/categories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/categories.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/includes/login_header.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/includes/login_header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/customer/product-details.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/product-details.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/controller/orders/ordersController.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/controller/orders/ordersController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/dashboard.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/dashboard.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/orders/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/orders/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/seller/orders/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/orders/order.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/profile.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/profile.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/customer/subcategories.php" beforeDir="false" afterPath="$PROJECT_DIR$/customer/subcategory.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/kgi.sql" beforeDir="false" afterPath="$PROJECT_DIR$/db/kgi.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/seller/category/200524011210-7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/seller/category/200524011210-7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/products/general/add.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/add.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/seller/products/general/edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/seller/products/general/edit.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,6 +158,18 @@
       <workItem from="1593693207296" duration="2181000" />
       <workItem from="1593695482513" duration="1377000" />
       <workItem from="1593697314158" duration="1587000" />
+      <workItem from="1593771224421" duration="1237000" />
+      <workItem from="1593772969515" duration="1763000" />
+      <workItem from="1593774829332" duration="1644000" />
+      <workItem from="1593780281885" duration="1392000" />
+      <workItem from="1593782264205" duration="1685000" />
+      <workItem from="1593784608028" duration="657000" />
+      <workItem from="1594032416395" duration="912000" />
+      <workItem from="1594035114927" duration="1104000" />
+      <workItem from="1594037120326" duration="1587000" />
+      <workItem from="1594038957376" duration="1790000" />
+      <workItem from="1594040769791" duration="1847000" />
+      <workItem from="1594042993813" duration="1394000" />
     </task>
     <servers />
   </component>
@@ -182,10 +197,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="413" y="110" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1366.728@0.0.1366.728" timestamp="1593605819848" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593695589550">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1593775538232">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593695589550" />
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1593775538232" />
     <state x="517" y="287" key="NewPhpFileDialog" timestamp="1593003817435">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
@@ -194,10 +209,10 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state width="498" height="446" key="SwitcherDM/0.0.1366.728@0.0.1366.728" timestamp="1593082959502" />
-    <state x="446" y="68" width="587" height="592" key="find.popup" timestamp="1593343909695">
+    <state x="483" y="68" width="587" height="592" key="find.popup" timestamp="1594032626361">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="446" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1593343909695" />
+    <state x="483" y="68" width="587" height="592" key="find.popup/0.0.1366.728@0.0.1366.728" timestamp="1594032626361" />
     <state x="339" y="162" key="run.anything.popup" timestamp="1593610532399">
       <screen x="0" y="0" width="1366" height="728" />
     </state>

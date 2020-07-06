@@ -56,6 +56,11 @@ include("includes/header.php");
                 </div>
             </div>
         </div>
+         <?php
+                        $currentDate = date("Y-m-d");
+                        $products=mysqli_query($con,"select * from products where date(created_at) ='$currentDate' and discount_available ='yes'") ;
+                        if(mysqli_num_rows($products)> 0){
+                            ?>
         <div class="ps-deal-of-day">
             <div class="ps-container">
                 <div class="ps-section__header">
@@ -67,10 +72,7 @@ include("includes/header.php");
                 </div>
                 <div class="ps-section__content">
                     <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="30" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="3" data-owl-item-md="4" data-owl-item-lg="5" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
-                        <?php
-                        $currentDate = date("Y-m-d");
-                        $products=mysqli_query($con,"select * from products where date(created_at) ='$currentDate' and discount_available ='yes'") ;
-                        foreach ($products as $product) {
+                       <?php   foreach ($products as $product) {
                             $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$product[id]'") ;
                             $reviews= mysqli_fetch_assoc($ret);
                             ?>
@@ -167,6 +169,7 @@ include("includes/header.php");
                 </div>
             </div>
         </div>
+        <?php }?>
 
         <div class="ps-home-ads">
             <div class="ps-container">
@@ -185,12 +188,12 @@ include("includes/header.php");
                 <h3>Top categories of the month</h3>
                 <div class="row">
                     <?php
-                    $categories=mysqli_query($con,"select * from category") ;
+                    $categories=mysqli_query($con,"select * from category where active=1") ;
                     foreach ($categories as $category) {  ?>
 
                         <div class="col-xl-2 col-lg-3 col-md-4 col-sm-4 col-6 ">
                             <div class="ps-block--category">
-                                <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $category['id']  ; ?>"></a>
+                                <a class="ps-block__overlay" href="<?php echo PATH;?>/customer/category.php?id=<?php echo $category['id']  ; ?>"></a>
                                 <?php  if(!empty($category['picture'] )){?>
                                     <img src="<?php echo PUBLIC_PATH;?>/img/seller/category/<?php echo $category['picture'];?>" alt="">
 
@@ -208,17 +211,20 @@ include("includes/header.php");
             </div>
         </div>
         <?php
-        $categories=mysqli_query($con,"select * from category") ;
+        $categories=mysqli_query($con,"select * from category where active=1 order by id desc ") ;
         foreach ($categories as $category) {  ?>
             <div class="ps-product-list ps-clothings">
                 <div class="ps-container">
                     <div class="ps-section__header">
                         <h3><?php echo strtoupper($category['name'])  ; ?></h3>
+                        <ul class="ps-section__links">
+                            <li><a href="<?php echo PATH;?>/customer/categories.php">View All</a></li>
+                        </ul>
                     </div>
                     <div class="ps-section__content">
                         <div class="ps-carousel--nav owl-slider" data-owl-auto="false" data-owl-loop="false" data-owl-speed="10000" data-owl-gap="0" data-owl-nav="true" data-owl-dots="true" data-owl-item="7" data-owl-item-xs="2" data-owl-item-sm="2" data-owl-item-md="3" data-owl-item-lg="4" data-owl-item-xl="6" data-owl-duration="1000" data-owl-mousedrag="on">
                             <?php
-                            $subcatproducts = mysqli_query($con, "select * from   products where products.category_id='$category[id]'");
+                            $subcatproducts = mysqli_query($con, "select * from   products where products.category_id='$category[id]' and active=1 order by id desc limit 15 ");
                             foreach ($subcatproducts as $subcatproduct){
                                 $res= mysqli_query($con,"select * from suppliers where id='$subcatproduct[supplier_id]'") ;
                                 $supplier= mysqli_fetch_assoc($res);
@@ -335,16 +341,17 @@ include("includes/header.php");
                     <h3>Hot New Arrivals</h3>
                     <ul class="ps-section__links">
                         <?php
-                        $categories=mysqli_query($con,"select * from category") ;
+                        $categories=mysqli_query($con,"select * from category where active=1 order by id desc limit 5") ;
                         foreach ($categories as $category) {  ?>
-                            <li><a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $category['id']  ; ?>"><?php echo ucfirst( $category['name']);?></a></li>
+                            <li><a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $category['id']  ; ?>"><?php echo ucfirst( $category['name']);?></a></li>
                         <?php }?>
+                        <li><a href="<?php echo PATH;?>/customer/categories.php">View All</a></li>
                     </ul>
                 </div>
                 <div class="ps-section__content">
                     <div class="row">
                         <?php
-                        $products=mysqli_query($con,"select * from products") ;
+                        $products=mysqli_query($con,"select * from products where active=1 order by id desc limit 8") ;
                         foreach ($products as $product) {  ?>
                             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-12 ">
                                 <div class="ps-product--horizontal">

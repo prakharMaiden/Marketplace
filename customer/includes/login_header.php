@@ -34,7 +34,7 @@
                         <ul class="menu--dropdown">
                             <?php
                             //print_r($_SESSION);die;
-                            $categoriesw=mysqli_query($con,"select * from category") ;
+                            $categoriesw=mysqli_query($con,"select * from category where active=1") ;
                             foreach ($categoriesw as $categoryw) {  ?>
                                 <li <?php  if($categoryw['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
@@ -141,11 +141,11 @@
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            $categoriesShow=mysqli_query($con,"select * from category") ;
+                            $categoriesShow=mysqli_query($con,"select * from category where active=1") ;
                             foreach ($categoriesShow as $categorieShow) {  ?>
                                 <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                                    <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
                                     <?php  if($categorieShow['child'] != 0){ ?>
                                         <div class="mega-menu">
                                             <div class="mega-menu__column">
@@ -154,7 +154,7 @@
                                                     <?php
                                                     $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
                                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -261,7 +261,7 @@
     <div class="ps-panel__content">
         <ul class="menu--mobile">
             <?php
-            $categoriesShow=mysqli_query($con,"select * from category") ;
+            $categoriesShow=mysqli_query($con,"select * from category where active=1") ;
             foreach ($categoriesShow as $categorieShow) {  ?>
                 <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
@@ -274,7 +274,7 @@
                                     <?php
                                     $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
                                     <?php }?>
                                 </ul>
                             </div>

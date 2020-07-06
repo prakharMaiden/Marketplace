@@ -39,8 +39,8 @@ if(isset($_SESSION['customer_id'])){
         <div class="ps-container">
             <ul class="breadcrumb">
                 <li><a href="<?php echo PATH;?>/customer/index.php">Home</a></li>
-                <li><a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $categoryName['id'] ?>"><?php echo strtolower($categoryName['name']) ?></a></li>
-                <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"><?php echo strtolower($subcategoryName['name']) ?></a></li>
+                <li><a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categoryName['id'] ?>"><?php echo strtolower($categoryName['name']) ?></a></li>
+                <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoryName['id'] ?>"><?php echo strtolower($subcategoryName['name']) ?></a></li>
                 <li><?php echo strtolower($productName['name']) ?></li>
             </ul>
         </div>
@@ -108,7 +108,7 @@ if(isset($_SESSION['customer_id'])){
                                 } ?>
                                 <div class="ps-product__meta">
 
-                                    <br/><p>Sub-category: <a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"><?php echo ucfirst($subcategoryName['name']) ?></a></p>
+                                    <br/><p>Sub-category: <a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoryName['id'] ?>"><?php echo ucfirst($subcategoryName['name']) ?></a></p>
                                     <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
                                         <div class="ps-product__rating">
                                             <select class="ps-rating" data-read-only="true">
@@ -256,7 +256,7 @@ if(isset($_SESSION['customer_id'])){
                                 <div class="ps-product__specification">
                                     <p><strong>SKU:</strong> <?php echo $productName['sku'] ?></p>
                                     <p class="categories"><strong> Categories:</strong>
-                                        <a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $categoryName['id'] ?>"><?php echo ucfirst($categoryName['name']) ?></a>,<a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategoryName['id'] ?>"> <?php echo ucfirst($subcategoryName['name']) ?></a></p>
+                                        <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categoryName['id'] ?>"><?php echo ucfirst($categoryName['name']) ?></a>,<a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoryName['id'] ?>"> <?php echo ucfirst($subcategoryName['name']) ?></a></p>
                                 </div>
                                 <div class="ps-product__sharing"><a class="facebook" href="#"><i class="fa fa-facebook"></i></a><a class="twitter" href="#"><i class="fa fa-twitter"></i></a><a class="google" href="#"><i class="fa fa-google-plus"></i></a><a class="linkedin" href="#"><i class="fa fa-linkedin"></i></a><a class="instagram" href="#"><i class="fa fa-instagram"></i></a></div>
                             </div>

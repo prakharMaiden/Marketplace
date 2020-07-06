@@ -1,8 +1,4 @@
-<?php
-if(empty($_SESSION['customer_id'])){
-    header("location:auth/login.php");
-}
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -65,20 +61,52 @@ if(empty($_SESSION['customer_id'])){
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            $categoriesw=mysqli_query($con,"select * from category") ;
-                            foreach ($categoriesw as $categoryw) {  ?>
-                                <li <?php  if($categoryw['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+                            $categoriesShow=mysqli_query($con,"select * from category where active=1") ;
+                            foreach ($categoriesShow as $categorieShow) {  ?>
+                                <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php  echo $categoryw['id'];?>"><i class="<?php echo $categoryw['icon']  ; ?>"></i> <?php echo ucfirst($categoryw['name'])  ; ?></a>
-                                    <?php  if($categoryw['child'] != 0){ ?>
-                                        <div class="mega-menu">
+                                    <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                                    <?php  if($categorieShow['child'] != 0){ ?>
+                                        <div class="mega-menu" style="min-width: 150px;">
                                             <div class="mega-menu__column">
-                                                <h4><?php echo ucfirst($categoryw['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                                 <ul class="mega-menu__list">
                                                     <?php
-                                                    $subcategoriess=mysqli_query($con,"select * from subcategory where category_id='$categoryw[id]'") ;
-                                                    foreach ($subcategoriess as $subcategorys){   ?>
-                                                        <li><a href="#"><?php echo ucfirst($subcategorys['name'])  ; ?></a></li>
+                                                    $subcategoriesShow=mysqli_query($con,"select id,name from subcategory where category_id='$categorieShow[id]' and parent_id IS NULL and active=1") ;
+                                                    $subcatName =mysqli_fetch_assoc($subcategoriesShow);
+                                                    foreach ($subcategoriesShow as $subcategorieShow) {  ?>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a>
+
+                                                            <div class="mega-menu" style="min-width: 150px;">
+                                                                <div class="mega-menu__column">
+                                                                    <h4><?php echo ucfirst($subcatName['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                    <ul class="mega-menu__list">
+                                                                        <?php
+                                                                        $subcategoriesShows=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShow[id]'  and active=1") ;
+                                                                        $subcatName2 =mysqli_fetch_assoc($subcategoriesShows);
+                                                                        foreach ($subcategoriesShows as $subcategorieShowff) {  ?>
+                                                                            <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShowff['id']  ; ?>"><?php echo ucfirst($subcategorieShowff['name'])  ; ?></a>
+                                                                                <div class="mega-menu" style="min-width: 150px;">
+                                                                                    <div class="mega-menu__column">
+                                                                                        <h4><?php echo ucfirst($subcatName2['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                                        <ul class="mega-menu__list">
+                                                                                            <?php
+                                                                                            $subcategoriesShowesssds=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShowff[id]'  and active=1") ;
+                                                                                            foreach ($subcategoriesShowesssds as $subcategoriesShowesss) {
+                                                                                                ?>
+
+                                                                                                <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoriesShowesss['id']  ; ?>"><?php echo ucfirst($subcategoriesShowesss['name'])  ; ?></a></li>
+                                                                                            <?php } ?>
+                                                                                        </ul>
+                                                                                    </div>
+
+                                                                                </div></li>
+                                                                        <?php }?>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -196,20 +224,52 @@ if(empty($_SESSION['customer_id'])){
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            $categoriesShow=mysqli_query($con,"select * from category") ;
+                            $categoriesShow=mysqli_query($con,"select * from category where active=1") ;
                             foreach ($categoriesShow as $categorieShow) {  ?>
                                 <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php echo PATH;?>/customer/categories.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                                    <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
                                     <?php  if($categorieShow['child'] != 0){ ?>
-                                        <div class="mega-menu">
+                                        <div class="mega-menu" style="min-width: 150px;">
                                             <div class="mega-menu__column">
                                                 <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                                 <ul class="mega-menu__list">
                                                     <?php
-                                                    $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
+                                                    $subcategoriesShow=mysqli_query($con,"select id,name from subcategory where category_id='$categorieShow[id]' and parent_id IS NULL and active=1") ;
+                                                    $subcatName =mysqli_fetch_assoc($subcategoriesShow);
                                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                                        <li><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a>
+
+                                                            <div class="mega-menu" style="min-width: 150px;">
+                                                                <div class="mega-menu__column">
+                                                                    <h4><?php echo ucfirst($subcatName['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                    <ul class="mega-menu__list">
+                                                                        <?php
+                                                                        $subcategoriesShows=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShow[id]'  and active=1") ;
+                                                                        $subcatName2 =mysqli_fetch_assoc($subcategoriesShows);
+                                                                        foreach ($subcategoriesShows as $subcategorieShowff) {  ?>
+                                                                            <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShowff['id']  ; ?>"><?php echo ucfirst($subcategorieShowff['name'])  ; ?></a>
+                                                                                <div class="mega-menu" style="min-width: 150px;">
+                                                                                    <div class="mega-menu__column">
+                                                                                        <h4><?php echo ucfirst($subcatName2['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                                        <ul class="mega-menu__list">
+                                                                                            <?php
+                                                                                            $subcategoriesShowesssds=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShowff[id]'  and active=1") ;
+                                                                                            foreach ($subcategoriesShowesssds as $subcategoriesShowesss) {
+                                                                                                ?>
+
+                                                                                                <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoriesShowesss['id']  ; ?>"><?php echo ucfirst($subcategoriesShowesss['name'])  ; ?></a></li>
+                                                                                            <?php } ?>
+                                                                                        </ul>
+                                                                                    </div>
+
+                                                                                </div></li>
+                                                                        <?php }?>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -323,30 +383,60 @@ if(empty($_SESSION['customer_id'])){
     </div>
     <div class="ps-panel__content">
         <ul class="menu--mobile">
-            <li <?php  if($categorieShow['child'] != 0){ ?>class="current-menu-item menu-item-has-children has-mega-menu" <?php }?>>
+            <?php
+            $categoriesShow=mysqli_query($con,"select * from category where active=1") ;
+            foreach ($categoriesShow as $categorieShow) {  ?>
+                <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                <a href="<?php  echo PATH;?>/customer/categories.php?id=<?php  echo $categorieShow['id'];?>">
-                    <i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
-                <span class="sub-toggle"></span>
-                <?php  if($categorieShow['child'] != 0){ ?>
-                <?php
-                $categoriesShow=mysqli_query($con,"select * from category") ;
-                foreach ($categoriesShow as $categorieShow) {  ?>
-                    <div class="mega-menu">
-                        <div class="mega-menu__column">
-                            <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
-                            <ul class="mega-menu__list">
-                                <?php
-                                $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
-                                foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                    <li  class="current-menu-item "><a href="<?php echo PATH;?>/customer/subcategories.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
-                                <?php }?>
-                            </ul>
+                    <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                    <?php  if($categorieShow['child'] != 0){ ?>
+                        <div class="mega-menu" style="min-width: 150px;">
+                            <div class="mega-menu__column">
+                                <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                <ul class="mega-menu__list">
+                                    <?php
+                                    $subcategoriesShow=mysqli_query($con,"select id,name from subcategory where category_id='$categorieShow[id]' and parent_id IS NULL and active=1") ;
+                                    $subcatName =mysqli_fetch_assoc($subcategoriesShow);
+                                    foreach ($subcategoriesShow as $subcategorieShow) {  ?>
+                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a>
+
+                                            <div class="mega-menu" style="min-width: 150px;">
+                                                <div class="mega-menu__column">
+                                                    <h4><?php echo ucfirst($subcatName['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                    <ul class="mega-menu__list">
+                                                        <?php
+                                                        $subcategoriesShows=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShow[id]'  and active=1") ;
+                                                        $subcatName2 =mysqli_fetch_assoc($subcategoriesShows);
+                                                        foreach ($subcategoriesShows as $subcategorieShowff) {  ?>
+                                                            <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShowff['id']  ; ?>"><?php echo ucfirst($subcategorieShowff['name'])  ; ?></a>
+                                                                <div class="mega-menu" style="min-width: 150px;">
+                                                                    <div class="mega-menu__column">
+                                                                        <h4><?php echo ucfirst($subcatName2['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                        <ul class="mega-menu__list">
+                                                                            <?php
+                                                                            $subcategoriesShowesssds=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShowff[id]'  and active=1") ;
+                                                                            foreach ($subcategoriesShowesssds as $subcategoriesShowesss) {
+                                                                                ?>
+
+                                                                                <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoriesShowesss['id']  ; ?>"><?php echo ucfirst($subcategoriesShowesss['name'])  ; ?></a></li>
+                                                                            <?php } ?>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                </div></li>
+                                                        <?php }?>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </li>
+                                    <?php }?>
+                                </ul>
+                            </div>
+
                         </div>
-
-                    </div>
-                <?php }?>
-            </li>
+                    <?php }?>
+                </li>
             <?php  }  ?>
         </ul>
     </div>

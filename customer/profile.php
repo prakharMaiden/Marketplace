@@ -241,8 +241,7 @@ $customerDetail= mysqli_fetch_assoc($res);
                                             <label>Card Number<sup>*</sup>
                                             </label>
                                             <div class="form-group__content">
-                                                <input class="form-control" id="card_number" type="tel"  value="<?php echo $customerDetail['card_number'] ?>" name="card_number"  inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx">
-
+                                                <input class="form-control" id="card_number" type="text"  value="<?php echo $customerDetail['card_number'] ?>" name="card_number"  inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="16" placeholder="xxxx xxxx xxxx xxxx">
                                             </div>
                                         </div>
                                     </div>
@@ -285,7 +284,7 @@ $customerDetail= mysqli_fetch_assoc($res);
                                             <label>CVV<sup>*</sup>
                                             </label>
                                             <div class="form-group__content">
-                                                <input class="form-control" type="text" value="<?php echo $customerDetail['card_cvv'] ?>" placeholder="CVV No" maxlength="4"    name="card_cvv" id="card_cvv" required>
+                                                <input class="form-control" type="text"  placeholder="***" value="<?php echo $customerDetail['card_cvv'] ?>" maxlength="4"    name="card_cvv" id="card_cvv" required>
                                             </div>
                                         </div>
                                     </div>
@@ -303,61 +302,16 @@ $customerDetail= mysqli_fetch_assoc($res);
 </div>
 
 <?php include("includes/footer.php"); ?>
-<script src="https://cdn.jsdelivr.net/npm/jquery-creditcardvalidator@1.0.0/jquery.creditCardValidator.min.js"></script>
 <script>
-    function validate() {
-        var valid = true;
-        var message = "";
+    $(document).ready(function(character = "*") {
+        var number = $("#card_number").val();
+        var character = "*";
+        number = number.replace(/[^0-9]+/g, ''); /*ensureOnlyNumbers*/
+        var l = number.length;
+        $("#card_number").val(number.substring(0,4) + character.repeat(l-8) + number.substring(l-4,l));
+    });
 
-        var cardHolderNameRegex = /^[a-z ,.'-]+$/i;
-        var cvvRegex = /^[0-9]{3,3}$/;
 
-        var cardHolderName = $("#card_name").val();
-        var cardNumber = $("#card_number").val();
-        var cvv = $("#card_cvv").val();
-
-        if (cardHolderName == "" || cardNumber == "" || cvv == "") {
-            message += "<div>All Fields are Required.</div>";
-            if (cardHolderName == "") {
-                $("#card_name").css('background-color', '#FFFFDF');
-            }
-            if (cardNumber == "") {
-                $("#card_number").css('background-color', '#FFFFDF');
-            }
-            if (cvv == "") {
-                $("#card_cvv").css('background-color', '#FFFFDF');
-            }
-            valid = false;
-        }
-
-        if (cardHolderName != "" && !cardHolderNameRegex.test(cardHolderName)) {
-            message += "<div>Card Holder Name is Invalid</div>";
-            $("#card_name").css('background-color', '#FFFFDF');
-            valid = false;
-        }
-
-        if (cardNumber != "") {
-            $('#card_number').validateCreditCard(function(result) {
-                if (!(result.valid)) {
-                    message += "<div>Card Number is Invalid</div>";
-                    $("#card_number").css('background-color', '#FFFFDF');
-                    valid = false;
-                }
-            });
-        }
-
-        else if (cvv != "" && !cvvRegex.test(cvv)) {
-            message += "<div>CVV is Invalid</div>";
-            $("#card_cvv").css('background-color', '#FFFFDF');
-            valid = false;
-        }
-
-        if (message != "") {
-            $(".error").show();
-            $(".error").html(message);
-        }
-        return valid;
-    }
 </script>
 <script src="<?php echo PUBLIC_PATH;?>/css/plugins/jquery-validation/jquery.validate.min.js"></script>
 <script src="<?php echo PUBLIC_PATH;?>/css/plugins/jquery-validation/additional-methods.min.js"></script>

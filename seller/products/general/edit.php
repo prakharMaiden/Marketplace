@@ -77,7 +77,7 @@ include("../../includes/header.php");
                                                 <select id="category_id" name="category_id" class="form-control"  required>
                                                     <option value="">Please select</option>
                                                     <?php
-                                                    $categories=mysqli_query($con,"select * from category") ;
+                                                    $categories=mysqli_query($con,"select * from category where active=1") ;
                                                     foreach ($categories as $category) {  ?>
                                                         <option value="<?php  echo $category['id'];?>" <?php if($product['category_id'] == $category['id']){ echo'selected'; }?>><?php echo $category['name']  ; ?></option>
                                                     <?php  }  ?>
