@@ -18,11 +18,16 @@
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/owl-carousel/assets/owl.carousel.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/slick/slick/slick.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/lightGallery-master/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/jquery-bar-rating/dist/themes/fontawesome-sta₹ css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/css/style.css">
     <style type="text/css">
+        del{
+            font-style: normal;
+            color: #bcbcbc;
+            font-size: 1.3rem;
+        }
         .ps-form--quick-search{
             position: relative;
         }
@@ -192,7 +197,7 @@
                 <a href="'.PATH.'/customer/profile.php"> Your Profile</a>
             </li>  
             <li class="current-menu-item">
-                <a href="'.PATH.'/customer/orders.php">Your Orders</a>
+                <a href="'.PATH.'/customer/orde₹ php">Your Orders</a>
             </li>  
               <li class="current-menu-item">
                 <a href="'.PATH.'/customer/auth/logout.php"> Logout</a>

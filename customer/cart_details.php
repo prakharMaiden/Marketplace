@@ -20,7 +20,7 @@ if(isset($_SESSION['customer_id'])){
 
 		try{
 			$total = 0;
-			$stmt = mysqli_query($con,"SELECT *, cart.id AS cart_id ,suppliers.id as supplier_id FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN suppliers ON suppliers.id=products.supplier_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC");
+			$stmt = mysqli_query($con,"SELECT *, cart.id AS cart_id ,supplie₹ id as supplier_id FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN suppliers ON supplie₹ id=products.supplier_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC");
 
 			foreach($stmt as $row){
 				//print_r($row);die;
@@ -35,7 +35,7 @@ if(isset($_SESSION['customer_id'])){
         <p>Sold By:<strong> ".$row['company_name']."</strong></p>
     </div>
 </div></td>
-						<td>Rs.&nbsp;".number_format($row['unit_price'], 2)."</td>
+						<td>₹ &nbsp;".number_format($row['unit_price'], 2)."</td>
 						<td>
 						
 						<div class='form-group--number'>
@@ -46,7 +46,7 @@ if(isset($_SESSION['customer_id'])){
 						
 							
 						</td>
-						<td>Rs.&nbsp;".number_format($subtotal, 2)."</td>
+						<td>₹ &nbsp;".number_format($subtotal, 2)."</td>
 						<td><a type='button' data-id='".$row['cart_id']."' class='cart_delete'><i class='icon-cross'></i></a></td>						
 					</tr>
 				";
@@ -54,7 +54,7 @@ if(isset($_SESSION['customer_id'])){
 			$output .= "
 				<tr>
 					<td colspan='4' align='right'><b>Total</b></td>
-					<td><b  id='total_ammount1'>Rs.&nbsp;".number_format($total, 2)."</b></td>
+					<td><b  id='total_ammount1'>₹ &nbsp;".number_format($total, 2)."</b></td>
 				<tr>
 			";
 
@@ -89,7 +89,7 @@ if(isset($_SESSION['customer_id'])){
 //        <p>Sold By:<strong> ".$supplier['company_name']."</strong></p>
 //    </div>
 //</div></td>
-//						<td>Rs. ".number_format($product['unit_price'], 2)."</td>
+//						<td>₹  ".number_format($product['unit_price'], 2)."</td>
 //						<td>
 //						<div class='form-group--number'>
 //                                            <button class='up' data-id='".$row['product_id']."'>+</button>
@@ -98,7 +98,7 @@ if(isset($_SESSION['customer_id'])){
 //                                        </div>
 //
 //						</td>
-//						<td>Rs. ".number_format($subtotal, 2)."</td>
+//						<td>₹  ".number_format($subtotal, 2)."</td>
 //						<td><a type='button' data-id='".$row['product_id']."' class='cart_delete'><i class='icon-cross'></i></a></td>
 //
 //					</tr>
@@ -109,7 +109,7 @@ if(isset($_SESSION['customer_id'])){
 //			$output .= "
 //				<tr>
 //					<td colspan='5' align='right'><b>Total</b></td>
-//					<td ><b id='total_ammount1'>Rs. ".number_format($total, 2)."</b></td>
+//					<td ><b id='total_ammount1'>₹  ".number_format($total, 2)."</b></td>
 //				<tr>
 //			";
 //		}

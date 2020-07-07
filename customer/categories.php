@@ -299,10 +299,10 @@ include("includes/header.php");
                                                         </select>
                                                     </div>
                                                 <?php }?>
-                                                <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                <p class="ps-product__price">₹  <?php echo $product['unit_price'];?></p>
                                             </div>
                                             <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
-                                                <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                <p class="ps-product__price">₹  <?php echo $product['unit_price'];?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -425,10 +425,10 @@ include("includes/header.php");
                                                                     </select>
                                                                 </div>
                                                             <?php }?>
-                                                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
+                                                            <p class="ps-product__price">₹  <?php echo $subcatproduct['unit_price'];?></p>
                                                         </div>
                                                         <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
-                                                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
+                                                            <p class="ps-product__price">₹  <?php echo $subcatproduct['unit_price'];?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -461,7 +461,7 @@ include("includes/header.php");
                                                     </p>
                                                 </div>
                                                 <div class="ps-product__shopping">
-                                                    <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'],2);?> <del><small>Rs. <?php echo number_format($subcatproduct['msrp'],2);?></small></del></p>
+                                                    <p class="ps-product__price">₹  <?php echo number_format($subcatproduct['unit_price'],2);?> <del><small>₹  <?php echo number_format($subcatproduct['msrp'],2);?></small></del></p>
                                                     <?php if(isset($subcatproduct['product_available']) && $subcatproduct['product_available'] == 'no'){
                                                         echo "<div class='ps-product__actions out-stock'><p  style='padding: 10px 20px;background: #000;margin-right: 20px;color:#fff;'>Out Of Stock</p></div>";
                                                     }else{ ?>

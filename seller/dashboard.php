@@ -114,7 +114,7 @@ $orders=mysqli_query($con,"select orders.transaction_status as transaction_statu
                                             ?>
                                             <tr>
                                                 <td><a href="<?php echo PATH;?>/seller/orders/index.php"><?php echo $order['order_number'] ?></a></td>
-                                                <td><a href="<?php echo PATH;?>/seller/products/general/index.php"><?php echo $order['product_name'] ?></a></td>
+                                                <td><a href="<?php echo PATH;?>/seller/products/general/index.php"><?php echo  (strlen($order['product_name']) > 20) ? substr_replace($order['product_name'], '...', 17) : $order['product_name'];?></a></td>
                                                 <td><?php echo date('d-m-Y',strtotime($order['order_date'])) ?></td>
                                                 <td><?php echo date('d-m-Y',strtotime($order['shipment_date'])) ?></td>
                                                 <td><?php echo $order['price'] ?></td>
@@ -150,23 +150,20 @@ $orders=mysqli_query($con,"select orders.transaction_status as transaction_statu
                                 <ul class="products-list product-list-in-card pl-2 pr-2">
                                     <?php
 
-                                    $orders=mysqli_query($con,"select * from products where (supplier_id='$_SESSION[supplier_id]')") ;
-                                    foreach ($orders as $order){
+                                    $products=mysqli_query($con,"select * from products where (supplier_id='$_SESSION[supplier_id]')") ;
+                                    foreach ($products as $product){
                                         ?>
                                         <li class="item">
                                             <div class="product-img">
-                                                <?php  if(!empty($order['featured_image'] )){?>
-                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $order['featured_image'];?>" alt="" class="img-size-50">
+                                                <?php  if(!empty($product['featured_image'] )){?>
+                                                    <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $product['featured_image'];?>" alt="" class="img-size-50">
                                                 <?php }else {?>
                                                     <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="Product Image" class="img-size-50">
                                                 <?php }?>
                                             </div>
                                             <div class="product-info">
-                                                <a href="<?php echo PATH;?>/seller/products/general/index.php" class="product-title"><?php echo $order['name'] ?>
-                                                    <span class="badge badge-warning float-right"><?php echo $order['unit_price'] ?></span></a>
-                                                <span class="product-description">
-                        <?php echo (strlen($order['description']) > 30) ? substr_replace($order['description'], '...', 27) : $order['description']; ?>
-                      </span>
+                                                <a href="<?php echo PATH;?>/seller/products/general/index.php" class="product-title"><?php echo (strlen($product['name']) > 20) ? substr_replace($product['name'], '...', 17) : $product['name'];?>
+                                                    <span class="badge badge-warning float-right">₹ <?php echo number_format($product['unit_price'], 2);?></span></a>
                                             </div>
                                         </li>
                                     <?php }?>

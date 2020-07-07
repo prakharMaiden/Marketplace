@@ -17,7 +17,7 @@ if(!empty($_POST["text_search"])) {
     }
 }
 $orderby = " ORDER BY id desc";
-$sql = "select *,products.name AS prodname, suppliers.id AS supplier_id, products.description AS prod_description from products LEFT JOIN suppliers ON products.supplier_id =suppliers.id LEFT JOIN subcategory ON products.subcategory_id =subcategory.id  " . $queryCondition;
+$sql = "select *,products.name AS prodname, supplie₹ id AS supplier_id, products.description AS prod_description from products LEFT JOIN suppliers ON products.supplier_id =supplie₹ id LEFT JOIN subcategory ON products.subcategory_id =subcategory.id  " . $queryCondition;
 $result = mysqli_query($con,$sql);
 include("includes/header.php");
 ?>
@@ -115,7 +115,7 @@ while($row = mysqli_fetch_assoc($result)) {
                                     <div class='ps-product__content'>
                                     <a href='product-details.php?id=".$row['id']."'>
                                     ".$productname."</a>
-                                        <p>Sold By:<small> ".$row['company_name']."</small><br/><small>Rs.".number_format($row['unit_price'],2)."</small>
+                                        <p>Sold By:<small> ".$row['company_name']."</small><br/><small>₹ ".number_format($row['unit_price'],2)."</small>
                                     </div>
                                 </div>";
                             ?><?php }

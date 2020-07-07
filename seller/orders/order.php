@@ -77,7 +77,7 @@ include("../includes/header.php");
                                     </tr>
                                     <tr>
                                         <td class="meta-head">Amount</td>
-                                        <td><div class="due">Rs.&nbsp;<?php echo number_format($orderDetail['total'],2);?></div></td>
+                                        <td><div class="due">₹ &nbsp;<?php echo number_format($orderDetail['total'],2);?></div></td>
                                     </tr>
 
                                 </table>
@@ -100,30 +100,30 @@ include("../includes/header.php");
                                 <tr class="item-row">
                                     <td class="item-name"><div class="delete-wpr"><div><?php echo ucfirst($product['prodname']);?></div></div></td>
                                     <td class="item-name"><div><?php echo ucfirst($product['subcategory_name']);?></div></td>
-                                    <td><div class="cost">Rs.&nbsp;<?php echo number_format($orderDetail['price'],2);?></div></td>
+                                    <td><div class="cost">₹ &nbsp;<?php echo number_format($orderDetail['price'],2);?></div></td>
                                     <td><div class="qty"><?php echo ($orderDetail['quantity']);?></div></td>
                                     <td><div class="qty"><?php if(isset($orderDetail['discount'])) {  echo $orderDetail['discount'].'%'; }else{ echo'-';};?></div></td>
                                     <td><div class="qty"><?php if(isset($orderDetail['size'])) {  echo ucfirst($orderDetail['size']); }else{ echo'-';};?></div></td>
                                     <td><div class="qty"><?php if(isset($orderDetail['color'])) {  echo ucfirst($orderDetail['color']); }else{ echo'-';};?></div></td>
-                                    <td><span class="price">Rs.&nbsp;<?php echo number_format($orderDetail['total'],2);?></span></td>
+                                    <td><span class="price">₹ &nbsp;<?php echo number_format($orderDetail['total'],2);?></span></td>
                                 </tr>
 
                                 <tr>
                                     <td colspan="5" class="blank"> </td>
                                     <td colspan="2" class="total-line">Subtotal</td>
-                                    <td class="total-value"><div id="subtotal">Rs.&nbsp;<?php echo number_format($orderDetail['price'],2);?> x <?php echo ($orderDetail['quantity']);?></div></td>
+                                    <td class="total-value"><div id="subtotal">₹ &nbsp;<?php echo number_format($orderDetail['price'],2);?> x <?php echo ($orderDetail['quantity']);?></div></td>
                                 </tr>
                                 <tr>
 
                                     <td colspan="5" class="blank"> </td>
                                     <td colspan="2" class="total-line">Total</td>
-                                    <td class="total-value"><div id="total">Rs.&nbsp;<?php echo number_format($orderDetail['total'],2);?></div></td>
+                                    <td class="total-value"><div id="total">₹ &nbsp;<?php echo number_format($orderDetail['total'],2);?></div></td>
                                 </tr>
                                 <tr>
                                     <td colspan="5" class="blank"> </td>
                                     <td colspan="2" class="total-line">Amount Paid</td>
 
-                                    <td class="total-value"><div id="paid">Rs.&nbsp;<?php echo number_format($orderDetail['total'],2);?></div></td>
+                                    <td class="total-value"><div id="paid">₹ &nbsp;<?php echo number_format($orderDetail['total'],2);?></div></td>
                                 </tr>
 
                             </table>

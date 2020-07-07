@@ -267,10 +267,12 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                         </select>
                                                     </div>
                                                 <?php }?>
-                                                <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                <p class="ps-product__price">₹  <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>₹  <?php echo number_format($product['msrp'], 2);?></del> <?php } ?></p>
+
                                             </div>
-                                            <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
-                                                <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                            <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo  (strlen($product['name']) > 30) ? substr_replace($product['name'], '...', 27) : $product['name'] ;?></a>
+                                                <p class="ps-product__price">₹  <?php echo number_format($product['unit_price'], 2);?>  <?php if(!empty($product['msrp'])){ ?>  <del>₹  <?php echo number_format($product['msrp'], 2);?></del> <?php } ?></p>
+
                                             </div>
                                         </div>
                                     </div>
@@ -324,7 +326,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                                 <img src="<?php echo PUBLIC_PATH;?>/img/noimage.jpg" alt="">
                                                             <?php }?>
                                                         </a>
-                                                        <?php  if(isset($subcatproduct['discount_available'] ) && $subcatproduct['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $product['discount'];?>%</div> <?php }?>
+                                                        <?php  if(isset($subcatproduct['discount_available'] ) && $subcatproduct['discount_available'] =='yes'){?>  <div class="ps-product__badge"><?php echo $subcatproduct['discount'];?>%</div> <?php }?>
                                                         <?php if(isset($subcatproduct['product_available']) && $subcatproduct['product_available'] == 'no'){
                                                             echo "   <div class='ps-product__badge out-stock'>Out Of Stock</div>";
                                                         } ?>
@@ -393,10 +395,10 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                                     </select>
                                                                 </div>
                                                             <?php }?>
-                                                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
+                                                            <p class="ps-product__price">₹  <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>₹  <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                                         </div>
-                                                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
-                                                            <p class="ps-product__price">Rs. <?php echo $subcatproduct['unit_price'];?></p>
+                                                        <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo  (strlen($subcatproduct['name']) > 30) ? substr_replace($subcatproduct['name'], '...', 27) : $subcatproduct['name'] ;?></a>
+                                                            <p class="ps-product__price">₹  <?php echo number_format($subcatproduct['unit_price'], 2);?>  <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>₹  <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -429,7 +431,7 @@ $subcategoryName= mysqli_fetch_assoc($result);
                                                     </p>
                                                 </div>
                                                 <div class="ps-product__shopping">
-                                                    <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'],2);?> <del><small>Rs. <?php echo number_format($subcatproduct['msrp'],2);?></small></del></p>
+                                                    <p class="ps-product__price">₹  <?php echo number_format($subcatproduct['unit_price'],2);?> <del><small>₹  <?php echo number_format($subcatproduct['msrp'],2);?></small></del></p>
                                                     <?php if(isset($subcatproduct['product_available']) && $subcatproduct['product_available'] == 'no'){
                                                         echo "<div class='ps-product__actions out-stock'><p  style='padding: 10px 20px;background: #000;margin-right: 20px;color:#fff;'>Out Of Stock</p></div>";
                                                     }else{ ?>

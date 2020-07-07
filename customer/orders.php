@@ -74,7 +74,7 @@ $orders=mysqli_query($con,"select * from orders where customer_id='$_SESSION[cus
                                 <h3 class="widget-title">Your List </h3>
                                 <ul class="ps-list--arrow">
                                     <li><a href="<?php echo PATH; ?>/customer/profile.php">Profile</a></li>
-                                    <li><a href="<?php echo PATH; ?>/customer/orders.php">Orders</a></li>
+                                    <li><a href="<?php echo PATH; ?>/customer/orde₹ php">Orders</a></li>
                                     <li><a href="<?php echo PATH; ?>/customer/shopping-cart.php">Shopping-Cart</a></li>
                                     <li><a href="<?php echo PATH; ?>/customer/wishlist.php">Wishlist</a></li>
                                     <li><a href="<?php echo PATH; ?>/customer/auth/logout.php">Logout</a></li>
@@ -100,7 +100,7 @@ $orders=mysqli_query($con,"select * from orders where customer_id='$_SESSION[cus
                                     <?php  foreach ($orders as $order){
                                         $res=mysqli_query($con,"select * from order_details where order_id='$order[id]'") ;
                                         $orderDetail= mysqli_fetch_assoc($res);
-                                        $result=mysqli_query($con,"select *,products.name AS prodname, suppliers.id AS supplier_id, products.description AS prod_description from products LEFT JOIN suppliers ON products.supplier_id =suppliers.id LEFT JOIN subcategory ON products.subcategory_id =subcategory.id  where products.id='$orderDetail[product_id]'") ;
+                                        $result=mysqli_query($con,"select *,products.name AS prodname, supplie₹ id AS supplier_id, products.description AS prod_description from products LEFT JOIN suppliers ON products.supplier_id =supplie₹ id LEFT JOIN subcategory ON products.subcategory_id =subcategory.id  where products.id='$orderDetail[product_id]'") ;
                                         $product= mysqli_fetch_assoc($result);
                                         $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$product[id]'") ;
                                         $reviews= mysqli_fetch_assoc($ret);
@@ -214,7 +214,7 @@ $orders=mysqli_query($con,"select * from orders where customer_id='$_SESSION[cus
                                                                                 </div>
                                                                             <?php }?>
                                                                         </div>
-                                                                        <h4 class="ps-product__price">Price: Rs. <?php echo number_format($orderDetail['price'], 2);?><br/> <?php if(!empty($orderDetail['total'])){ ?> Total:  Rs. <?php echo number_format($orderDetail['total'], 2);?> <?php } ?></h4>
+                                                                        <h4 class="ps-product__price">Price: ₹  <?php echo number_format($orderDetail['price'], 2);?><br/> <?php if(!empty($orderDetail['total'])){ ?> Total:  ₹  <?php echo number_format($orderDetail['total'], 2);?> <?php } ?></h4>
                                                                         <div class="ps-product__variations">
                                                                             <div class="row">
                                                                                 <div class="col-md-4">

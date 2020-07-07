@@ -82,7 +82,7 @@ class productController {
         }
 
         $result = "INSERT INTO products (name,supplier_id,category_id,subcategory_id,description,msrp,quantity_per_unit,sku,id_sku,unit_price,available_size,available_colors,size,color,discount,unit_weight,unit_in_stock,unit_on_order,reorder_level,product_available,size_url,discount_available,current_order,featured_image,images)
-                   VALUES('$_REQUEST[name]','$_SESSION[supplier_id]','$_REQUEST[category_id]','$_REQUEST[subcategory_id]','$_REQUEST[description]','$_REQUEST[msrp]','$_REQUEST[quantity_per_unit]','$_REQUEST[sku]','$_REQUEST[id_sku]','$_REQUEST[unit_price]','$_REQUEST[available_size]','$_REQUEST[available_colors]','$_REQUEST[size]','$_REQUEST[color]','$_REQUEST[discount]','$_REQUEST[unit_weight]','$_REQUEST[unit_in_stock]','$_REQUEST[unit_on_order]','$_REQUEST[reorder_level]','$_REQUEST[product_available]','$_REQUEST[size_url]','$_REQUEST[discount_available]','$_REQUEST[current_order]','$imageName','$insertValuesSQL')";
+                   VALUES('$_POST[name]','$_SESSION[supplier_id]','$_POST[category_id]','$_POST[subcategory_id]','$_POST[description]','$_POST[msrp]','$_POST[quantity_per_unit]','$_POST[sku]','$_POST[id_sku]','$_POST[unit_price]','$_POST[available_size]','$_POST[available_colors]','$_POST[size]','$_POST[color]','$_POST[discount]','$_POST[unit_weight]','$_POST[unit_in_stock]','$_POST[unit_on_order]','$_POST[reorder_level]','$_POST[product_available]','$_POST[size_url]','$_POST[discount_available]','$_POST[current_order]','$imageName','$insertValuesSQL')";
 
         if (mysqli_query($this->db, $result)) {
             header("location:index.php");
@@ -111,6 +111,7 @@ class productController {
 
     // Function for update
     public function update($id){
+        $description ='';
         $result=mysqli_query($this->db,"select * from products where (supplier_id='$_SESSION[supplier_id]') and (id='$id')") ;
         $productData = mysqli_fetch_assoc($result);
         getcwd();
@@ -143,173 +144,65 @@ class productController {
         }
 
         if(!empty(array_filter($_FILES['images']['name']))){
-            //echo'<pre>';print_r($_FILES);die;
-        $allowTypes = array('jpg','png','jpeg');
-        $insertValuesSQL = $errorUpload = $errorUploadType = '';
-        $fileNames = array_filter($_FILES['images']['name']);
-        if(!empty(($_FILES['images']['name']))){
-            foreach($_FILES['images']['name'] as $key=>$val){
-                $fileName = basename($_FILES['images']['name'][$key]);
-                $targetFilePath = $target_dir.'/' . $fileName;
-                $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
-                if(in_array($fileType, $allowTypes)){
-                    if(move_uploaded_file($_FILES["images"]["tmp_name"][$key], 'images-'.date("ymdhis").'-'. $fileName)){
-                        $insertValuesSQL .=  'images-'.date('ymdhis')."-". $fileName.",";
+            $allowTypes = array('jpg','png','jpeg');
+            $insertValuesSQL = $errorUpload = $errorUploadType = '';
+            $fileNames = array_filter($_FILES['images']['name']);
+            if(!empty(($_FILES['images']['name']))){
+                foreach($_FILES['images']['name'] as $key=>$val){
+                    $fileName = basename($_FILES['images']['name'][$key]);
+                    $targetFilePath = $target_dir.'/' . $fileName;
+                    $fileType = pathinfo($targetFilePath, PATHINFO_EXTENSION);
+                    if(in_array($fileType, $allowTypes)){
+                        if(move_uploaded_file($_FILES["images"]["tmp_name"][$key], 'images-'.date("ymdhis").'-'. $fileName)){
+                            $insertValuesSQL .=  'images-'.date('ymdhis')."-". $fileName.",";
+                        }else{
+                            $errorUpload .= $_FILES['images']['name'][$key].' | ';
+                        }
                     }else{
-                        $errorUpload .= $_FILES['images']['name'][$key].' | ';
+                        $errorUploadType .= $_FILES['images']['name'][$key].' | ';
                     }
-                }else{
-                    $errorUploadType .= $_FILES['images']['name'][$key].' | ';
                 }
             }
-        }
         }else{
             $insertValuesSQL= $productData['images'];
         }
+        if(!empty($_POST['description']))
+            $description = $_POST['description'];
 
-        if(!empty($_REQUEST['name']))
-            $name = $_REQUEST['name'];
-        else
-            $name = $productData['name'];
-
-        if(!empty($_REQUEST['category_id']))
-            $category_id = $_REQUEST['category_id'];
-        else
-            $category_id = $productData['category_id'];
-
-        if(!empty($_REQUEST['subcategory_id']))
-            $subcategory_id = $_REQUEST['subcategory_id'];
-        else
-            $subcategory_id = $productData['subcategory_id'];
-
-        if(!empty($_REQUEST['sku']))
-            $sku = $_REQUEST['sku'];
-        else
-            $sku = $productData['sku'];
-
-        if(!empty($_REQUEST['id_sku']))
-            $id_sku = $_REQUEST['id_sku'];
-        else
-            $id_sku = $productData['id_sku'];
-
-        if(!empty($_REQUEST['description']))
-            $description = $_REQUEST['description'];
-        else
-            $description = $productData['description'];
-
-        if(!empty($_REQUEST['quantity_per_unit']))
-            $quantity_per_unit = $_REQUEST['quantity_per_unit'];
-        else
-            $quantity_per_unit = $productData['quantity_per_unit'];
-
-        if(!empty($_REQUEST['unit_price']))
-            $unit_price = $_REQUEST['unit_price'];
-        else
-            $unit_price = $productData['unit_price'];
-
-        if(!empty($_REQUEST['msrp']))
-            $msrp = $_REQUEST['msrp'];
-        else
-            $msrp = $productData['msrp'];
-
-        if(!empty($_REQUEST['available_size']))
-            $available_size = $_REQUEST['available_size'];
-        else
-            $available_size = $productData['available_size'];
-
-        if(!empty($_REQUEST['available_colors']))
-            $available_colors = $_REQUEST['available_colors'];
-        else
-            $available_colors = $productData['available_colors'];
-
-        if(!empty($_REQUEST['size']))
-            $size = $_REQUEST['size'];
-        else
-            $size = $productData['size'];
-
-        if(!empty($_REQUEST['color']))
-            $color = $_REQUEST['color'];
-        else
-            $color = $productData['color'];
-
-        if(!empty($_REQUEST['discount']))
-            $discount = $_REQUEST['discount'];
-        else
-            $discount = $productData['discount'];
-
-        if(!empty($_REQUEST['unit_weight']))
-            $unit_weight = $_REQUEST['unit_weight'];
-        else
-            $unit_weight = $productData['unit_weight'];
-
-        if(!empty($_REQUEST['unit_in_stock']))
-            $unit_in_stock = $_REQUEST['unit_in_stock'];
-        else
-            $unit_in_stock = $productData['unit_in_stock'];
-
-        if(!empty($_REQUEST['unit_on_order']))
-            $unit_on_order = $_REQUEST['unit_on_order'];
-        else
-            $unit_on_order = $productData['unit_on_order'];
-
-        if(!empty($_REQUEST['reorder_level']))
-            $reorder_level = $_REQUEST['reorder_level'];
-        else
-            $reorder_level = $productData['reorder_level'];
-
-        if(!empty($_REQUEST['product_available']))
-            $product_available = $_REQUEST['product_available'];
-        else
-            $product_available = $productData['product_available'];
-
-        if(!empty($_REQUEST['discount_available']))
-            $discount_available = $_REQUEST['discount_available'];
-        else
-            $discount_available = $productData['discount_available'];
-
-        if(!empty($_REQUEST['current_order']))
-            $current_order = $_REQUEST['current_order'];
-        else
-            $current_order = $productData['current_order'];
-
-        if(!empty($_REQUEST['size_url']))
-            $size_url = $_REQUEST['size_url'];
-        else
-            $size_url = $productData['size_url'];
-
-        if(!empty($_REQUEST['active']))
-            $active = $_REQUEST['active'];
+        if(!empty($_POST['active']))
+            $active = $_POST['active'];
         else
             $active = $productData['active'];
 
         $result = "UPDATE products SET  
-                                       category_id='$category_id',
-                                         subcategory_id='$subcategory_id',
-                                         name='$name',
+                                       category_id='$_POST[category_id]',
+                                         subcategory_id='$_POST[subcategory_id]',
+                                         name='$_POST[name]',
                                          description='$description',
-                                         msrp='$msrp',
-                                         quantity_per_unit='$quantity_per_unit',
-                                         sku='$sku',
-                                         id_sku='$id_sku',
-                                         unit_price='$unit_price',
-                                         available_size='$available_size',
-                                         available_colors='$available_colors',
-                                         size='$size',
-                                         color='$color',
-                                         discount='$discount',
-                                         unit_weight='$unit_weight',
-                                         unit_in_stock='$unit_in_stock',
-                                         unit_on_order='$unit_on_order',
-                                         reorder_level='$reorder_level',
-                                          product_available='$product_available',
-                                          current_order='$current_order',
-                                           size_url='$size_url',
-                                           discount_available='$discount_available',
-                                           current_order='$current_order',
+                                         msrp='$_POST[msrp]',
+                                         quantity_per_unit='$_POST[quantity_per_unit]',
+                                         sku='$_POST[sku]',
+                                         id_sku='$_POST[id_sku]',
+                                         unit_price='$_POST[unit_price]',
+                                         available_size='$_POST[available_size]',
+                                         available_colors='$_POST[available_colors]',
+                                         size='$_POST[size]',
+                                         color='$_POST[color]',
+                                         discount='$_POST[discount]',
+                                         unit_weight='$_POST[unit_weight]',
+                                         unit_in_stock='$_POST[unit_in_stock]',
+                                         unit_on_order='$_POST[unit_on_order]',
+                                         reorder_level='$_POST[reorder_level]',
+                                          product_available='$_POST[product_available]',
+                                          current_order='$_POST[current_order]',
+                                           size_url='$_POST[size_url]',
+                                           discount_available='$_POST[discount_available]',
+                                           current_order='$_POST[current_order]',
                                            active='$active',
                                             featured_image='$imageName',
                                            images='$insertValuesSQL'
                                              WHERE  id='$id'";
+        print_r($result);die;
         if (mysqli_query($this->db, $result)) {
             $response = array(
                 "type" => "success",
@@ -321,6 +214,7 @@ class productController {
                 "type" => "danger",
                 "message" => "Something went wrong!"
             );
+            header("Location: add.php");
         }
 
         return $response;

@@ -24,7 +24,7 @@ include_once("./../config/config.php");
                                     <i class='icon-cross'></i></a>
                                     <a href='product-details.php?id=".$row['id']."'>
                                     ".$productname."</a>
-                                            <p>Sold By:<small> ".$supplier['company_name']."</small><br/><small>Rs.".number_format($row['unit_price'],2)."</small>
+                                            <p>Sold By:<small> ".$supplier['company_name']."</small><br/><small>₹ ".number_format($row['unit_price'],2)."</small>
                                  </div>
                                 </div>
 				";

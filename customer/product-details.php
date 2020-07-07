@@ -71,14 +71,16 @@ if(isset($_SESSION['customer_id'])){
                                                 <?php }?>
                                             </div>
                                             <?php  if(!empty($productName['images'])){
-                                                foreach (explode(",",$productName['images']) as $image){ ?>
+                                                $images = explode(",",$productName['images']);
+                                                foreach ($images as $image){ ?>
+
                                                     <div class="item">
                                                         <a href="<?php echo PUBLIC_PATH; ?>/img/seller/products/<?php echo $image;?>">
                                                             <img src="<?php echo PUBLIC_PATH;?>/img/seller/products/<?php echo $image;?>">
                                                         </a>
                                                     </div>
                                                 <?php }
-                                            }?>
+                                            } ?>
 
                                         </div>
                                     </div>
@@ -171,16 +173,18 @@ if(isset($_SESSION['customer_id'])){
                                         </div>
                                     <?php }?>
                                 </div>
-                                <h4 class="ps-product__price">Rs. <?php echo number_format($productName['unit_price'], 2);?> <?php if(!empty($productName['msrp'])){ ?>  <del>Rs. <?php echo number_format($productName['msrp'], 2);?></del> <?php } ?></h4>
+                                <h4 class="ps-product__price">₹ <?php echo number_format($productName['unit_price'], 2);?> <?php if(!empty($productName['msrp'])){ ?>  <del>₹ <?php echo number_format($productName['msrp'], 2);?></del> <?php } ?></h4>
+                                <p><b>You Save:</b> <?php  if(isset($productName['discount_available'] ) && $productName['discount_available'] =='yes'){?><?php echo $productName['discount'];?>%<?php }?>
+                                (₹<?php echo number_format($productName['unit_price'], 2);?>)</p>
                                 <div class="ps-product__desc">
                                     <p>Sold By:<a href="<?php echo PATH;?>/customer/vendor-store.php?id=<?php echo $supplier['id']  ; ?>"><strong><?php echo $supplier['company_name']?></strong></a></p>
                                     <p class="ps-list--dot">
-                                        <?php echo ucfirst($productName['description']) ?>
+                                        <?php echo  (strlen($productName['description']) > 300) ? substr_replace($productName['description'], '...', 297) : $productName['description'];?>
                                     </p>
                                 </div>
                                 <div class="ps-product__variations">
                                     <?php
-                                    if (isset($productName['size'])){ ?>
+                                    if (isset($productName['size']) && !empty($productName['size'])){ ?>
                                         <figure>
                                             <figcaption>Sizes</figcaption>
 
@@ -202,14 +206,15 @@ if(isset($_SESSION['customer_id'])){
                                     <?php }?>
 
                                     <figure>
-                                        <figcaption>Colors</figcaption>
+
                                         <?php
-                                        if (isset($productName['color'])){ ?>
+                                        if (isset($productName['color'])  && !empty($productName['color']) ){ ?>
+                                            <figcaption>Colors</figcaption>
                                             <div class="ps-variant ps-variant--color" style="background-color: <?php echo $productName['color']; ?>">
                                                 <span class="ps-variant__tooltip">Selected Color</span></div>
                                         <?php }?>
                                         <?php
-                                        if (isset($productName['available_colors'])){
+                                        if (isset($productName['available_colors'])  && !empty($productName['available_colors'])){
                                             foreach (explode(",",$productName['available_colors']) as $available_color){ ?>
 
                                                 <div class="ps-variant ps-variant--color" style="background-color: <?php echo $available_color; ?>">
@@ -254,7 +259,7 @@ if(isset($_SESSION['customer_id'])){
                                     <?php }?>
                                 </div>
                                 <div class="ps-product__specification">
-                                    <p><strong>SKU:</strong> <?php echo $productName['sku'] ?></p>
+                                    <p><strong>SKU:</strong>  <?php echo $productName['sku'] ?>-<?php echo $productName['id_sku'] ?></p>
                                     <p class="categories"><strong> Categories:</strong>
                                         <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categoryName['id'] ?>"><?php echo ucfirst($categoryName['name']) ?></a>,<a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoryName['id'] ?>"> <?php echo ucfirst($subcategoryName['name']) ?></a></p>
                                 </div>
@@ -553,10 +558,10 @@ if(isset($_SESSION['customer_id'])){
                                                 </select>
                                             </div>
                                         <?php }?>
-                                        <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
+                                        <p class="ps-product__price">₹ <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>₹ <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                     </div>
                                     <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
-                                        <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
+                                        <p class="ps-product__price">₹ <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>₹ <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                     </div>
                                 </div>
                             </div>

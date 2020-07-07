@@ -167,10 +167,11 @@ $productName= mysqli_fetch_assoc($result);
                                                                 </select>
                                                             </div>
                                                         <?php }?>
-                                                        <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
-                                                    </div>
+                                                        <p class="ps-product__price">₹ <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>₹ <?php echo number_format($product['msrp'], 2);?></del> <?php } ?></p>
+
+                                                         </div>
                                                     <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
-                                                        <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                        <p class="ps-product__price">₹ <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>₹ <?php echo number_format($product['msrp'], 2);?></del> <?php } ?></p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -206,6 +207,7 @@ $productName= mysqli_fetch_assoc($result);
                                         foreach ($products as $product) {
                                             $ret=mysqli_query($con,"select *,COUNT(*) As review_count,SUM(rating) AS sum_rating from reviews where product_id='$product[id]'") ;
                                             $reviews= mysqli_fetch_assoc($ret);
+
                                             ?>
                                             <div class="col-xl-3 col-lg-4 col-md-4 col-sm-6 col-6 ">
                                                 <div class="ps-product">
@@ -287,10 +289,12 @@ $productName= mysqli_fetch_assoc($result);
                                                                     </select>
                                                                 </div>
                                                             <?php }?>
-                                                            <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                            <p class="ps-product__price">₹ <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>₹ <?php echo number_format($product['msrp'], 2);?></del> <?php } ?></p>
+
                                                         </div>
                                                         <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo $product['name'];?></a>
-                                                            <p class="ps-product__price">Rs. <?php echo $product['unit_price'];?></p>
+                                                            <p class="ps-product__price">₹ <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>₹ <?php echo number_format($product['msrp'], 2);?></del> <?php } ?></p>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -322,7 +326,7 @@ $productName= mysqli_fetch_assoc($result);
                                                     </p>
                                                 </div>
                                                 <div class="ps-product__shopping">
-                                                    <p class="ps-product__price">Rs. <?php echo number_format($product['unit_price'],2);?> <del><small>Rs. <?php echo number_format($product['msrp'],2);?></small></del></p>
+                                                    <p class="ps-product__price">₹  <?php echo number_format($product['unit_price'],2);?> <del><small>₹  <?php echo number_format($product['msrp'],2);?></small></del></p>
                                                     <?php if(isset($product['product_available']) && $product['product_available'] == 'no'){
                                                         echo "<div class='ps-product__actions out-stock'><p  style='padding: 10px 20px;background: #000;margin-right: 20px;color:#fff;'>Out Of Stock</p></div>";
                                                     }else{ ?>

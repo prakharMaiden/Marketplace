@@ -27,16 +27,16 @@
                 <h4 class="widget-title">Company</h4>
                 <ul class="ps-list--link">
                     <li><a href="<?php echo PATH?>/customer/about-us.php">About Us</a></li>
-                    <li><a href="#">Affilate</a></li>
-                    <li><a href="<?php echo PATH?>/customer/contact-us.php">Contact</a></li>
+                    <li><a href="#">Affiliate</a></li>
+                    <li><a href="<?php echo PATH?>/customer/contact-us.php">Contact Us</a></li>
                 </ul>
             </aside>
             <aside class="widget widget_footer">
-                <h4 class="widget-title">Bussiness</h4>
+                <h4 class="widget-title">Business</h4>
                 <ul class="ps-list--link">
                     <li><a href="#">Our Press</a></li>
                     <li><a href="<?php echo PATH?>/customer/auth/login.php">My account</a></li>
-                    <li><a href="<?php echo PATH?>/customer/category.php">Shop</a></li>
+                    <li><a href="<?php echo PATH?>/customer/categories.php">Shop</a></li>
                 </ul>
             </aside>
         </div>
@@ -48,7 +48,7 @@
                 ?>
                 <p><strong><?php echo ucfirst($category['name'])  ; ?></strong>
                     <?php  if($category['child'] != 0){
-                        $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]'") ;
+                        $subcategories=mysqli_query($con,"select * from subcategory where category_id='$category[id]' ORDER BY id DESC  LIMIT 7") ;
                         foreach ($subcategories as $subcategory) { ?>
                             <a href="#">
                                 <?php echo ucfirst($subcategory['name'])  ; ?>

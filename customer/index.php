@@ -94,7 +94,7 @@ include("includes/header.php");
                                     } ?>
                                 </div>
                                 <div class="ps-product__container">
-                                    <p class="ps-product__price sale">Rs. <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
+                                    <p class="ps-product__price sale">₹  <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>₹  <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
                                     <div class="ps-product__content"><a class="ps-product__title" href="#"><?php echo $product['name'];?></a>
                                         <?php if(isset($reviews['review_count']) && $reviews['review_count'] >0){ ?>
                                             <div class="ps-product__rating">
@@ -311,10 +311,10 @@ include("includes/header.php");
                                                     </select>
                                                 </div>
                                             <?php }?>
-                                            <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
+                                            <p class="ps-product__price">₹  <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>₹  <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                         </div>
                                         <div class="ps-product__content hover"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $subcatproduct['id']  ; ?>"><?php echo $subcatproduct['name'];?></a>
-                                            <p class="ps-product__price">Rs. <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>Rs. <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
+                                            <p class="ps-product__price">₹  <?php echo number_format($subcatproduct['unit_price'], 2);?> <?php if(!empty($subcatproduct['msrp'])){ ?>  <del>₹  <?php echo number_format($subcatproduct['msrp'], 2);?></del> <?php } ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -365,7 +365,7 @@ include("includes/header.php");
                                         </a>
                                     </div>
                                     <div class="ps-product__content"><a class="ps-product__title" href="<?php echo PATH;?>/customer/product-details.php?id=<?php echo $product['id']  ; ?>"><?php echo ucfirst( $product['name']);?></a>
-                                        <p class="ps-product__price">Rs. <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>Rs. <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
+                                        <p class="ps-product__price">₹  <?php echo number_format($product['unit_price'], 2);?> <?php if(!empty($product['msrp'])){ ?>  <del>₹  <?php echo number_format($product['msrp'], 2);;?></del> <?php } ?></p>
                                     </div>
                                 </div>
                             </div>

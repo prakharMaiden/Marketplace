@@ -35,7 +35,7 @@ if(isset($_SESSION['customer_id'])){
         <p>Sold By:<strong> ".$supplier['company_name']."</strong></p>
     </div>
 </div></td>
-						<td>Rs.&nbsp;".number_format($row['unit_price'], 2)."</td>
+						<td>₹ &nbsp;".number_format($row['unit_price'], 2)."</td>
 						<td>
 						<a type='button' data-id='".$row['id']."' class='ps-btn add_cart'>Add to cart</a>
 						</td>						
@@ -83,7 +83,7 @@ if(isset($_SESSION['customer_id'])){
 //        <p>Sold By:<strong> ".$supplier['company_name']."</strong></p>
 //    </div>
 //</div></td>
-//						<td>Rs. ".number_format($product['unit_price'], 2)."</td>
+//						<td>₹  ".number_format($product['unit_price'], 2)."</td>
 //						<td>
 //						<div class='form-group--number'>
 //                                            <button class='up' data-id='".$row['product_id']."'>+</button>
@@ -92,7 +92,7 @@ if(isset($_SESSION['customer_id'])){
 //                                        </div>
 //
 //						</td>
-//						<td>Rs. ".number_format($subtotal, 2)."</td>
+//						<td>₹  ".number_format($subtotal, 2)."</td>
 //						<td><a type='button' data-id='".$row['product_id']."' class='cart_delete'><i class='icon-cross'></i></a></td>
 //
 //					</tr>
@@ -103,7 +103,7 @@ if(isset($_SESSION['customer_id'])){
 //			$output .= "
 //				<tr>
 //					<td colspan='5' align='right'><b>Total</b></td>
-//					<td ><b id='total_ammount1'>Rs. ".number_format($total, 2)."</b></td>
+//					<td ><b id='total_ammount1'>₹  ".number_format($total, 2)."</b></td>
 //				<tr>
 //			";
 //		}

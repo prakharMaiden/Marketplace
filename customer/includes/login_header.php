@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/owl-carousel/assets/owl.carousel.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/slick/slick/slick.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/lightGallery-master/dist/css/lightgallery.min.css">
-    <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css">
+    <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/jquery-bar-rating/dist/themes/fontawesome-sta₹ css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/jquery-ui/jquery-ui.min.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/plugins/select2/dist/css/select2.min.css">
     <link rel="stylesheet" href="<?php echo PUBLIC_PATH?>/css/style.css">
@@ -33,21 +33,52 @@
                     <div class="menu__content">
                         <ul class="menu--dropdown">
                             <?php
-                            //print_r($_SESSION);die;
-                            $categoriesw=mysqli_query($con,"select * from category where active=1") ;
-                            foreach ($categoriesw as $categoryw) {  ?>
-                                <li <?php  if($categoryw['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
+                            $categoriesShow=mysqli_query($con,"select * from category where active=1") ;
+                            foreach ($categoriesShow as $categorieShow) {  ?>
+                                <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                                    <a href="<?php  echo $categoryw['id'];?>"><i class="<?php echo $categoryw['icon']  ; ?>"></i> <?php echo ucfirst($categoryw['name'])  ; ?></a>
-                                    <?php  if($categoryw['child'] != 0){ ?>
-                                        <div class="mega-menu">
+                                    <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                                    <?php  if($categorieShow['child'] != 0){ ?>
+                                        <div class="mega-menu" style="min-width: 150px;">
                                             <div class="mega-menu__column">
-                                                <h4><?php echo ucfirst($categoryw['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                                 <ul class="mega-menu__list">
                                                     <?php
-                                                    $subcategoriess=mysqli_query($con,"select * from subcategory where category_id='$categoryw[id]'") ;
-                                                    foreach ($subcategoriess as $subcategorys){   ?>
-                                                        <li><a href="#"><?php echo ucfirst($subcategorys['name'])  ; ?></a></li>
+                                                    $subcategoriesShow=mysqli_query($con,"select id,name from subcategory where category_id='$categorieShow[id]' and parent_id IS NULL and active=1") ;
+                                                    $subcatName =mysqli_fetch_assoc($subcategoriesShow);
+                                                    foreach ($subcategoriesShow as $subcategorieShow) {  ?>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a>
+
+                                                            <div class="mega-menu" style="min-width: 150px;">
+                                                                <div class="mega-menu__column">
+                                                                    <h4><?php echo ucfirst($subcatName['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                    <ul class="mega-menu__list">
+                                                                        <?php
+                                                                        $subcategoriesShows=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShow[id]'  and active=1") ;
+                                                                        $subcatName2 =mysqli_fetch_assoc($subcategoriesShows);
+                                                                        foreach ($subcategoriesShows as $subcategorieShowff) {  ?>
+                                                                            <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShowff['id']  ; ?>"><?php echo ucfirst($subcategorieShowff['name'])  ; ?></a>
+                                                                                <div class="mega-menu" style="min-width: 150px;">
+                                                                                    <div class="mega-menu__column">
+                                                                                        <h4><?php echo ucfirst($subcatName2['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                                        <ul class="mega-menu__list">
+                                                                                            <?php
+                                                                                            $subcategoriesShowesssds=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShowff[id]'  and active=1") ;
+                                                                                            foreach ($subcategoriesShowesssds as $subcategoriesShowesss) {
+                                                                                                ?>
+
+                                                                                                <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoriesShowesss['id']  ; ?>"><?php echo ucfirst($subcategoriesShowesss['name'])  ; ?></a></li>
+                                                                                            <?php } ?>
+                                                                                        </ul>
+                                                                                    </div>
+
+                                                                                </div></li>
+                                                                        <?php }?>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -79,17 +110,38 @@
                         </a>
                         <?php if(isset($_SESSION['customer_id'])){ ?>
                             <div class="ps-cart__content">
-                                <div class="ps-cart__items"  id="wishlist_menu">
+                                <div class="ps-cart__items"  id="wishlist_menu" style="max-height: 400px;overflow-y: scroll;">
+
                                 </div>
                                 <div class="ps-cart__footer">
                                     <figure>
+                                        <a class="ps-btn" style="visibility: hidden" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a>
                                         <a class="ps-btn text-right" href="<?php echo PATH; ?>/customer/wishlist.php">Go to Wishlist</a>
                                     </figure>
                                 </div>
                             </div>
                         <?php } ?>
                     </div>
-                    <div class="ps-cart--mini"><a class="header__extra" href="<?php echo PATH; ?>/customer/auth/login.php"><i class="icon-bag2"></i></a>
+                    <div class="ps-cart--mini">
+                        <a class="header__extra"<?php if(isset($_SESSION['customer_id'])){ ?> href="#" <?php }else {?> href="<?php echo PATH; ?>/customer/auth/login.php" <?php } ?>><i class="icon-bag2"></i>
+                            <?php if(isset($_SESSION['customer_id'])){ ?>
+                                <span class="cart_count"></span>
+                            <?php } ?>
+                        </a>
+                        <?php if(isset($_SESSION['customer_id'])){ ?>
+                            <div class="ps-cart__content">
+                                <div class="ps-cart__items"  id="cart_menu"  style="max-height: 400px;overflow-y: scroll;">
+
+                                </div>
+                                <div class="ps-cart__footer">
+                                    <figure>
+                                        <a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php" style="visibility: hidden">View Cart</a>
+                                        <a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a>
+
+                                    </figure>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                     <div class="ps-block--user-header">
                         <?php
@@ -109,10 +161,13 @@
                         <small>Member since '.date('M. Y', strtotime($customer['created_at'])).'</small></a>
             </li>  
               <li class="current-menu-item">
-                <a href="#"> Profile</a>
+                <a href="'.PATH.'/customer/profile.php"> Your Profile</a>
+            </li>  
+            <li class="current-menu-item">
+                <a href="'.PATH.'/customer/orde₹ php">Your Orders</a>
             </li>  
               <li class="current-menu-item">
-                <a href="'.PATH.'/customer/auth/logout.php"><i class="icon-sign-out-alt"></i> Logout</a>
+                <a href="'.PATH.'/customer/auth/logout.php"> Logout</a>
             </li>          
         </ul>
     </li>
@@ -147,14 +202,46 @@
 
                                     <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
                                     <?php  if($categorieShow['child'] != 0){ ?>
-                                        <div class="mega-menu">
+                                        <div class="mega-menu" style="min-width: 150px;">
                                             <div class="mega-menu__column">
                                                 <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                                 <ul class="mega-menu__list">
                                                     <?php
-                                                    $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
+                                                    $subcategoriesShow=mysqli_query($con,"select id,name from subcategory where category_id='$categorieShow[id]' and parent_id IS NULL and active=1") ;
+                                                    $subcatName =mysqli_fetch_assoc($subcategoriesShow);
                                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a>
+
+                                                            <div class="mega-menu" style="min-width: 150px;">
+                                                                <div class="mega-menu__column">
+                                                                    <h4><?php echo ucfirst($subcatName['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                    <ul class="mega-menu__list">
+                                                                        <?php
+                                                                        $subcategoriesShows=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShow[id]'  and active=1") ;
+                                                                        $subcatName2 =mysqli_fetch_assoc($subcategoriesShows);
+                                                                        foreach ($subcategoriesShows as $subcategorieShowff) {  ?>
+                                                                            <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShowff['id']  ; ?>"><?php echo ucfirst($subcategorieShowff['name'])  ; ?></a>
+                                                                                <div class="mega-menu" style="min-width: 150px;">
+                                                                                    <div class="mega-menu__column">
+                                                                                        <h4><?php echo ucfirst($subcatName2['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                                        <ul class="mega-menu__list">
+                                                                                            <?php
+                                                                                            $subcategoriesShowesssds=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShowff[id]'  and active=1") ;
+                                                                                            foreach ($subcategoriesShowesssds as $subcategoriesShowesss) {
+                                                                                                ?>
+
+                                                                                                <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoriesShowesss['id']  ; ?>"><?php echo ucfirst($subcategoriesShowesss['name'])  ; ?></a></li>
+                                                                                            <?php } ?>
+                                                                                        </ul>
+                                                                                    </div>
+
+                                                                                </div></li>
+                                                                        <?php }?>
+                                                                    </ul>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
                                                     <?php }?>
                                                 </ul>
                                             </div>
@@ -198,7 +285,20 @@
         <div class="navigation__left"><a class="ps-logo" href="#"><h3>Krishna <span style="color:#fcb800;font-weight: 700">Golds Industries</span></h3></a></div>
         <div class="navigation__right">
             <div class="header__actions">
-                <div class="ps-cart--mini"><a class="header__extra" href="<?php echo PATH; ?>/customer/auth/login.php"><i class="icon-bag2"></i> </a>
+                <div class="ps-cart--mini">
+                    <a class="header__extra" <?php if(isset($_SESSION['customer_id'])){ ?> href="<?php echo PATH; ?>/customer/wishlist.php" <?php }else {?> href="<?php echo PATH; ?>/customer/auth/login.php" <?php } ?>>
+                        <i class="icon-heart"></i>
+                        <?php if(isset($_SESSION['customer_id'])){ ?>
+                            <span class="wishlist_count"></span>
+                        <?php } ?>
+                    </a>
+                </div>
+                <div class="ps-cart--mini">
+                    <a class="header__extra"<?php if(isset($_SESSION['customer_id'])){ ?> href="<?php echo PATH; ?>/customer/shopping-cart.php" <?php }else {?> href="<?php echo PATH; ?>/customer/auth/login.php" <?php } ?>><i class="icon-bag2"></i>
+                        <?php if(isset($_SESSION['customer_id'])){ ?>
+                            <span class="cart_count"></span>
+                        <?php } ?>
+                    </a>
                 </div>
                 <div class="ps-block--user-header">
                     <?php
@@ -241,7 +341,7 @@
         </div>
     </div>
     <div class="ps-search--mobile">
-        <form class="ps-form--search-mobile" action="" method="Post">
+        <form class="ps-form--search-mobile" action="<?php echo PATH?>/customer/search-result.php" method="POST">
             <div class="form-group--nest">
                 <input class="form-control" type="text" placeholder="Search something...">
                 <button><i class="icon-magnifier"></i></button>
@@ -249,11 +349,6 @@
         </form>
     </div>
 </header>
-<div class="ps-panel--sidebar" id="cart-mobile">
-    <div class="ps-panel__header">
-        <h3>Shopping Cart</h3>
-    </div>
-</div>
 <div class="ps-panel--sidebar" id="navigation-mobile">
     <div class="ps-panel__header">
         <h3>Categories</h3>
@@ -265,16 +360,48 @@
             foreach ($categoriesShow as $categorieShow) {  ?>
                 <li <?php  if($categorieShow['child'] != 0){ ?>class="menu-item-has-children has-mega-menu" <?php }?>>
 
-                    <a href="<?php  echo $categorieShow['id'];?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
+                    <a href="<?php echo PATH;?>/customer/category.php?id=<?php echo $categorieShow['id']  ; ?>"><i class="<?php echo $categorieShow['icon']  ; ?>"></i> <?php echo ucfirst($categorieShow['name'])  ; ?></a>
                     <?php  if($categorieShow['child'] != 0){ ?>
-                        <div class="mega-menu">
+                        <div class="mega-menu" style="min-width: 150px;">
                             <div class="mega-menu__column">
                                 <h4><?php echo ucfirst($categorieShow['name'])  ; ?><span class="sub-toggle"></span></h4>
                                 <ul class="mega-menu__list">
                                     <?php
-                                    $subcategoriesShow=mysqli_query($con,"select * from subcategory where category_id='$categorieShow[id]'") ;
+                                    $subcategoriesShow=mysqli_query($con,"select id,name from subcategory where category_id='$categorieShow[id]' and parent_id IS NULL and active=1") ;
+                                    $subcatName =mysqli_fetch_assoc($subcategoriesShow);
                                     foreach ($subcategoriesShow as $subcategorieShow) {  ?>
-                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a></li>
+                                        <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShow['id']  ; ?>"><?php echo ucfirst($subcategorieShow['name'])  ; ?></a>
+
+                                            <div class="mega-menu" style="min-width: 150px;">
+                                                <div class="mega-menu__column">
+                                                    <h4><?php echo ucfirst($subcatName['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                    <ul class="mega-menu__list">
+                                                        <?php
+                                                        $subcategoriesShows=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShow[id]'  and active=1") ;
+                                                        $subcatName2 =mysqli_fetch_assoc($subcategoriesShows);
+                                                        foreach ($subcategoriesShows as $subcategorieShowff) {  ?>
+                                                            <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategorieShowff['id']  ; ?>"><?php echo ucfirst($subcategorieShowff['name'])  ; ?></a>
+                                                                <div class="mega-menu" style="min-width: 150px;">
+                                                                    <div class="mega-menu__column">
+                                                                        <h4><?php echo ucfirst($subcatName2['name'])  ; ?><span class="sub-toggle"></span></h4>
+                                                                        <ul class="mega-menu__list">
+                                                                            <?php
+                                                                            $subcategoriesShowesssds=mysqli_query($con,"select id,name from subcategory where parent_id='$subcategorieShowff[id]'  and active=1") ;
+                                                                            foreach ($subcategoriesShowesssds as $subcategoriesShowesss) {
+                                                                                ?>
+
+                                                                                <li><a href="<?php echo PATH;?>/customer/subcategory.php?id=<?php echo $subcategoriesShowesss['id']  ; ?>"><?php echo ucfirst($subcategoriesShowesss['name'])  ; ?></a></li>
+                                                                            <?php } ?>
+                                                                        </ul>
+                                                                    </div>
+
+                                                                </div></li>
+                                                        <?php }?>
+                                                    </ul>
+                                                </div>
+
+                                            </div>
+                                        </li>
                                     <?php }?>
                                 </ul>
                             </div>
@@ -286,17 +413,103 @@
         </ul>
     </div>
 </div>
-<div class="navigation--list">
-    <div class="navigation__content"><a class="navigation__item ps-toggle--sidebar" href="#menu-mobile"><i class="icon-menu"></i><span> Menu</span></a><a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="icon-list4"></i><span> Categories</span></a><a class="navigation__item ps-toggle--sidebar" href="#search-sidebar"><i class="icon-magnifier"></i><span> Search</span></a><a class="navigation__item ps-toggle--sidebar" href="#cart-mobile"><i class="icon-bag2"></i><span> Cart</span></a></div>
-</div>
 <div class="ps-panel--sidebar" id="search-sidebar">
     <div class="ps-panel__header">
-        <form class="ps-form--search-mobile" action="" method="POST">
+        <form class="ps-form--search-mobile" action="<?php echo PATH?>/customer/search-result.php" method="POST">
             <div class="form-group--nest">
-                <input class="form-control" type="text" placeholder="Search something...">
-                <button><i class="icon-magnifier"></i></button>
+                <input class="form-control" type="text"  placeholder="Search something...">
+                <button type="submit" name="submit" id="submit"><i class="icon-magnifier"></i></button>
             </div>
         </form>
     </div>
     <div class="navigation__content"></div>
+</div>
+<div class="ps-panel--sidebar" id="cart-mobile">
+    <div class="ps-panel__header">
+        <h3>Shopping Cart</h3>
+    </div>
+    <?php if(isset($_SESSION['customer_id'])){ ?>
+        <div class="navigation__content">
+            <div class="ps-cart--mobile">
+
+                <?php
+                $stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC Limit 5");
+                foreach($stmt as $row){
+                    $image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
+                    $productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
+                    ?>
+                    <div class="ps-cart__content">
+
+                        <div class='ps-product--cart-mobile'>
+                            <div class='ps-product__thumbnail'>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id'] ?>'>
+
+                                    <img src='<?php echo PUBLIC_PATH.'/'.$image; ?>' class='thumbnail' alt='User Image'>
+                                </a>
+                            </div>
+                            <div class='ps-product__content'><a class='ps-product__remove' href='#'>
+                                    <i class='icon-cross'></i></a>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id']; ?>'><?php echo $productname; ?>
+                                </a>
+                                <p><?php echo $row['catname']; ?></p><small>&times; <?php echo $row['quantity']; ?></small>
+                            </div>
+                        </div>
+
+                    </div>
+                <?php } ?>
+
+                <div class="ps-cart__footer">
+                    <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
+                </div>
+
+            </div>
+        </div>
+    <?php } ?>
+</div>
+<div class="ps-panel--sidebar" id="wishlist-mobile">
+    <div class="ps-panel__header">
+        <h3>Wishlist</h3>
+    </div>
+    <?php if(isset($_SESSION['customer_id'])){ ?>
+        <div class="navigation__content">
+            <div class="ps-cart--mobile">
+
+                <?php
+                $stmt = mysqli_query($con,"SELECT *, products.name AS prodname,products.featured_image AS feature_image, category.name AS catname FROM cart LEFT JOIN products ON products.id=cart.product_id LEFT JOIN category ON category.id=products.category_id WHERE cart.customer_id='$_SESSION[customer_id]' ORDER BY cart.id DESC Limit 5");
+                foreach($stmt as $row){
+                    $image = (!empty($row['feature_image'])) ? 'img/seller/products/'.$row['feature_image'] : 'img/noimage.jpg';
+                    $productname = (strlen($row['prodname']) > 30) ? substr_replace($row['prodname'], '...', 27) : $row['prodname'];
+                    ?>
+
+                    <div class="ps-cart__content">
+                        <div class='ps-product--cart-mobile'>
+                            <div class='ps-product__thumbnail'>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id'] ?>'>
+
+                                    <img src='<?php echo PUBLIC_PATH.'/'.$image; ?>' class='thumbnail' alt='User Image'>
+                                </a>
+                            </div>
+                            <div class='ps-product__content'><a class='ps-product__remove' href='#'>
+                                    <i class='icon-cross'></i></a>
+                                <a href='<?php echo PATH; ?>/customer/product-details.php?id=<?php echo $row['id']; ?>'><?php echo $productname; ?>
+                                </a>
+                                <p><?php echo $row['catname']; ?></p><small>&times; <?php echo $row['quantity']; ?></small>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+            <div class="ps-cart__footer">
+                <figure><a class="ps-btn" href="<?php echo PATH; ?>/customer/shopping-cart.php">View Cart</a><a class="ps-btn" href="<?php echo PATH; ?>/customer/checkout.php">Checkout</a></figure>
+            </div>
+        </div>
+    <?php } ?>
+</div>
+<div class="navigation--list">
+    <div class="navigation__content">
+        <a class="navigation__item ps-toggle--sidebar" href="#navigation-mobile"><i class="icon-list4"></i><span> Categories</span></a>
+        <a class="navigation__item ps-toggle--sidebar" href="#search-sidebar"><i class="icon-magnifier"></i><span> Search</span></a>
+        <a class="navigation__item ps-toggle--sidebar" href="#cart-mobile"><i class="icon-bag2"></i><span> Cart</span></a>
+        <a class="navigation__item ps-toggle--sidebar" href="#wishlist-mobile"><i class="icon-heart"></i><span> Wishlist</span></a>
+    </div>
 </div>
